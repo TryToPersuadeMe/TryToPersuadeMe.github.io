@@ -27,10 +27,6 @@ aside {
   display: block;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 html,
 body {
   height: 100%;
@@ -423,13 +419,11 @@ h6 {
     &__nav {
       @media (max-width: 750px) {
         position: absolute;
-        right: -100%;
-        // left: 100%;
+        top: 100%;
       }
       &_burger-state {
         position: absolute;
         right: 0;
-        // left: 0;
         top: 21%;
         width: 40%;
         height: 65%;
