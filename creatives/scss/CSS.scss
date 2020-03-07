@@ -419,7 +419,7 @@ h6 {
     &__nav {
       @media (max-width: 750px) {
         position: absolute;
-        top: 100%;
+        top: -100%;
       }
       &_burger-state {
         position: absolute;
