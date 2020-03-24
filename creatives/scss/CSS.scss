@@ -238,7 +238,7 @@ h6 {
     border-bottom: 1px solid rgb(49%, 49%, 50%, 0.4);
     padding: 0px 20px;
     @media (max-width: 750px) {
-      margin: 63px 0px 18px 0px;
+      margin: 13px 0px 10px 0px;
       padding: 0px 20px 15px 20px;
     }
   }
@@ -259,6 +259,10 @@ h6 {
   &__logo {
     align-self: flex-start;
     flex: 1 1 auto;
+    @media (max-width: 750px) {
+      flex: 0 0 auto;
+    }
+
     img {
       width: 7.9rem;
       height: 7.5rem;
@@ -297,6 +301,10 @@ h6 {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 750px) {
+      margin: 0 auto;
+      justify-content: space-around;
+    }
   }
 }
 

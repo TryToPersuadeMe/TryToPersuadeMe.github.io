@@ -169,7 +169,7 @@ h6 {
 }
 @media (max-width: 750px) {
   .header__panel {
-    margin: 63px 0px 18px 0px;
+    margin: 13px 0px 10px 0px;
     padding: 0px 20px 15px 20px;
   }
 }
@@ -187,6 +187,11 @@ h6 {
 .panel__logo {
   align-self: flex-start;
   flex: 1 1 auto;
+}
+@media (max-width: 750px) {
+  .panel__logo {
+    flex: 0 0 auto;
+  }
 }
 .panel__logo img {
   width: 7.9rem;
@@ -225,6 +230,12 @@ h6 {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 750px) {
+  .panel__social-networks {
+    margin: 0 auto;
+    justify-content: space-around;
+  }
 }
 
 .main-screen__body {
