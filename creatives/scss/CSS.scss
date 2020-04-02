@@ -931,6 +931,7 @@ h6 {
 
 .contact {
   @include placeholder;
+  
   &__body {
     max-width: 1180px;
     margin: 0 auto;

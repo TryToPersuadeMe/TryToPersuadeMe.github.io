@@ -30,4 +30,16 @@ $(document).ready(() => {
     });
   }
   ibg();
+
+  const checkNumber = /\d/gm;
+  const globalCheck = () => {
+    $(".contact__input").on("key", () => {
+      const check = checkNumber.test($(event.currentTarget).val());
+      if (check == false) {
+        $(event.currentTarget).addClass("wrong");
+      }
+    });
+  };
+
+  globalCheck();
 });
