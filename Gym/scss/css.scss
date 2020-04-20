@@ -1030,12 +1030,6 @@ input::-webkit-calendar-picker-indicator {
   &__likes {
     display: flex;
     align-items: baseline;
-    // margin: 0 10px;
-    &::after {
-      content: "\2764";
-      padding: 0 0 0 0.5rem;
-      font-size: 2rem;
-    }
   }
 }
 
@@ -1123,6 +1117,10 @@ input::-webkit-calendar-picker-indicator {
     }
     &_small {
       max-width: 21.8rem;
+      @media (max-width: 525px) {
+        align-items: center;
+        text-align: center;
+      }
     }
 
     &_tags {

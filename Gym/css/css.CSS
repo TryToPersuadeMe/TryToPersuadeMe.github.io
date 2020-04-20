@@ -877,11 +877,6 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   align-items: baseline;
 }
-.column__likes::after {
-  content: "❤";
-  padding: 0 0 0 0.5rem;
-  font-size: 2rem;
-}
 
 .text_toggle {
   display: none;
@@ -949,6 +944,12 @@ input::-webkit-calendar-picker-indicator {
 }
 .footer__column_small {
   max-width: 21.8rem;
+}
+@media (max-width: 525px) {
+  .footer__column_small {
+    align-items: center;
+    text-align: center;
+  }
 }
 .footer__column_tags {
   max-width: 36rem;
