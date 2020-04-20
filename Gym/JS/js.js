@@ -74,8 +74,8 @@ $(document).ready(() => {
   // Makes visible trainers name in their photo
   $(".trainers__profile").hover(() => {
     $(".trainers__profile").removeClass("trainers__profile_active");
-    $(event.currentTarget).toggleClass("trainers__profile_active");
     $(".trainers__profile").find(".data").removeClass("data_active");
+    $(event.currentTarget).toggleClass("trainers__profile_active");
     $(event.currentTarget).find(".data").toggleClass("data_active");
   });
 
