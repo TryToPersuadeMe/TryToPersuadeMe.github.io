@@ -1,0 +1,127 @@
+/* //===============================================================================================================================================
+//======================================================== <!-- Feedback --> ============================================================= */
+
+/* Slider track row */
+.feedback__slider .slick-track {
+  display: flex;
+  /* overflow: hidden; */
+}
+
+/* arrow */
+.feedback__slider .slick-arrow {
+  font-size: 0;
+}
+
+/* Dots */
+.feedback__slider .slick-dots {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0 0 0;
+}
+.feedback__slider .slick-dots li {
+  list-style: none;
+}
+/*Active dot */
+.feedback__slider .slick-dots li.slick-active button {
+  background-color: #12c2e9;
+}
+/* Dots elements */
+.feedback__slider .slick-dots li button {
+  font-size: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  border-radius: 100%;
+  margin: 0 5px;
+}
+
+/* 
+/======================================================== <!-- Feedback --> ===================================================================
+//==============================================================================================================================================
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+//==============================================================================================================================================
+/======================================================== <!-- Training process slider --> ===================================================================
+
+/* Slider track row */
+.training__slider .slick-track {
+  display: flex;
+}
+
+/* arrow */
+.training__slider .slick-arrow {
+  font-size: 0;
+  top: calc(50% - 16px);
+  font-size: 0;
+  height: 32px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  width: 20px;
+  transition: 0.5s ease;
+}
+
+.training__slider .slick-arrow::after,
+.training__slider .slick-arrow::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 5px;
+  background-color: #12c2e9;
+  position: absolute;
+}
+
+.training__slider .slick-arrow::after {
+  transform: rotate(-45deg);
+  top: 8;
+}
+
+.training__slider .slick-arrow::before {
+  transform: rotate(45deg);
+  bottom: 8;
+}
+
+/* arrow left */
+.training__slider .slick-arrow.slick-prev {
+  position: absolute;
+  left: 10px;
+}
+
+/* arrow right */
+.training__slider .slick-arrow.slick-next {
+  position: absolute;
+  right: 10px;
+}
+
+.training__slider .slick-arrow.slick-next::after {
+  transform: rotate(45deg);
+}
+
+.training__slider .slick-arrow.slick-next::before {
+  transform: rotate(-45deg);
+}
+
+/*arrow disabled */
+.training__slider .slick-arrow.slick-disabled {
+  transition: 0.5s ease;
+  width: 0;
+  height: 0;
+}
+
+.training__slider .slick-arrow.slick-disabled::after,
+.training__slider .slick-arrow.slick-disabled::before {
+  transition: 0.5s ease;
+  width: 0;
+  height: 0;
+}
+
+/* /======================================================== <!-- Training process slider --> =====================================================
+//============================================================================================================================================== */
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
