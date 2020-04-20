@@ -196,7 +196,7 @@ input::-webkit-calendar-picker-indicator {
 
 .first-screen {
   padding: 37px 0 0 0;
-  background-image: url("../img/1.first-screen/main-screen.png");
+  background-image: url(../img/1.first-screen/main-screen.png);
   font-size: 1.6rem;
   @include background;
 
@@ -438,7 +438,7 @@ input::-webkit-calendar-picker-indicator {
 
 .subtitle {
   color: #12c2e9;
-  font-family: "Lato - Semibold";
+  font-family: "Lato Semibold";
   font-size: 1.8rem;
   letter-spacing: 0.9px;
   text-align: center;
@@ -476,7 +476,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .about {
-  background-image: url("../img/2.about/about__background.png");
+  background-image: url(../img/2.about/about__background.png);
   @include background;
 
   &__container {
@@ -594,9 +594,6 @@ input::-webkit-calendar-picker-indicator {
 //======================================================== <!-- Trainers --> ====================================================================
 
 .trainers {
-  @include background;
-  background-image: url("../img/2.about/about__background.png");
-
   &__row {
     margin: 7rem 0 0 0;
     @media (max-width: 767px) {
@@ -719,8 +716,6 @@ input::-webkit-calendar-picker-indicator {
 //======================================================== <!-- Feedback --> ====================================================================
 
 .feedback {
-  background-image: url(/img/5.feedback/feedback__background.png);
-  @include background;
   &__row {
     margin: 7.5rem 0 0 0;
   }
@@ -808,8 +803,6 @@ input::-webkit-calendar-picker-indicator {
 //======================================================== <!-- Training slider --> ====================================================================
 
 .training {
-  background-image: url(/img/2.about/about__background.png);
-  @include background;
   padding: 8rem 0;
   @media (max-width: 767px) {
     padding: 5rem 0;
@@ -839,8 +832,6 @@ input::-webkit-calendar-picker-indicator {
 //======================================================== <!-- Price --> ====================================================================
 
 .price {
-  background-image: url(/img/2.about/about__background.png);
-  @include background;
   &__row {
     margin: 8rem -1.5rem 0 -1.5rem;
     @media (max-width: 992px) {
@@ -1065,7 +1056,7 @@ input::-webkit-calendar-picker-indicator {
 //===============================================================================================================================================
 //======================================================== <!-- Call us --> ====================================================================
 .call-us {
-  background-image: url(/img/8.call-us/background.png);
+  background-image: url(../img/8.call-us/background.png);
   @include background();
   &__container {
     max-width: 63.5rem;
@@ -1104,6 +1095,8 @@ input::-webkit-calendar-picker-indicator {
 //======================================================== <!-- Footer --> ====================================================================
 .footer {
   background-color: #111111;
+  background-image: url(../img/2.about/about__background.png);
+  @include background;
   &__container {
     @media (max-width: 992px) {
       padding-bottom: 0;

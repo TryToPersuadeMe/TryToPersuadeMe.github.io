@@ -79,12 +79,12 @@
 
 .training__slider .slick-arrow::after {
   transform: rotate(-45deg);
-  top: 8;
+  top: 8px;
 }
 
 .training__slider .slick-arrow::before {
   transform: rotate(45deg);
-  bottom: 8;
+  bottom: 8px;
 }
 
 /* arrow left */

@@ -154,7 +154,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .first-screen {
   padding: 37px 0 0 0;
-  background-image: url("../img/1.first-screen/main-screen.png");
+  background-image: url(../img/1.first-screen/main-screen.png);
   font-size: 1.6rem;
   background-position: center;
   background-size: cover;
@@ -363,7 +363,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .subtitle {
   color: #12c2e9;
-  font-family: "Lato - Semibold";
+  font-family: "Lato Semibold";
   font-size: 1.8rem;
   letter-spacing: 0.9px;
   text-align: center;
@@ -402,7 +402,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .about {
-  background-image: url("../img/2.about/about__background.png");
+  background-image: url(../img/2.about/about__background.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -508,12 +508,6 @@ input::-webkit-calendar-picker-indicator {
   border: 1px solid #f80759;
 }
 
-.trainers {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../img/2.about/about__background.png");
-}
 .trainers__row {
   margin: 7rem 0 0 0;
 }
@@ -617,12 +611,6 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 
-.feedback {
-  background-image: url(/img/5.feedback/feedback__background.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .feedback__row {
   margin: 7.5rem 0 0 0;
 }
@@ -694,10 +682,6 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .training {
-  background-image: url(/img/2.about/about__background.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 8rem 0;
 }
 @media (max-width: 767px) {
@@ -716,12 +700,6 @@ input::-webkit-calendar-picker-indicator {
   padding-bottom: 9.7%;
 }
 
-.price {
-  background-image: url(/img/2.about/about__background.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .price__row {
   margin: 8rem -1.5rem 0 -1.5rem;
 }
@@ -911,7 +889,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .call-us {
-  background-image: url(/img/8.call-us/background.png);
+  background-image: url(../img/8.call-us/background.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -941,6 +919,10 @@ input::-webkit-calendar-picker-indicator {
 
 .footer {
   background-color: #111111;
+  background-image: url(../img/2.about/about__background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 @media (max-width: 992px) {
   .footer__container {
