@@ -73,7 +73,9 @@ $(document).ready(() => {
 
   // Makes visible trainers name in their photo
   $(".trainers__profile").hover(() => {
+    $(".trainers__profile").removeClass("trainers__profile_active");
     $(event.currentTarget).toggleClass("trainers__profile_active");
+    $(".trainers__profile").find(".data").removeClass("data_active");
     $(event.currentTarget).find(".data").toggleClass("data_active");
   });
 
@@ -123,17 +125,9 @@ $(document).ready(() => {
 
   // Hover OUR MEMBERSHIP PLANS
   $(".price__column").hover(() => {
-    $(".price__column").each(() => {
-      if (
-        $(".price__column").hasClass("price__column_active") &&
-        $(".column__period").hasClass("column__period_active") &&
-        $(".price__column").find(".button").hasClass("button_active")
-      ) {
-        $(".price__column").siblings().removeClass("price__column_active");
-        $(".column__period").removeClass("column__period_active");
-        $(".price__column").find(".button").removeClass("button_active");
-      }
-    });
+    $(".price__column").removeClass("price__column_active");
+    $(".column__period").removeClass("column__period_active");
+    $(".price__column").find(".button").removeClass("button_active");
 
     $(event.currentTarget).toggleClass("price__column_active");
     $(event.currentTarget)
