@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/css.CSS" />
+    <link rel="shortcut icon" href="img/icons/favicon.ico" />
+    <title>The best bakeries</title>
+  </head>
+  <body>
+    <!-- Header with Slider-->
+    <header class="wrapper">
+      <h1 class="text text__title text_bold">
+        The best bakeries
+      </h1>
+      <div class="slider">
+        <!-- U can create new div.slider__slide from JS in const = slidesQuantity -->
+        <span class="slider__arrow slider__arrow slider__arrow_next"></span>
+        <span class="slider__arrow slider__arrow_prev"></span>
+      </div>
+    </header>
+    <!-- Main with Locations and Advantages row blocks -->
+    <main class="wrapper">
+      <!--  Advantages  -->
+      <section class="advantages">
+        <div class="row row__advantages">
+          <div class="column advantages__column">
+            <div class="column__image ibg">
+              <img src="img/advantages/1.jpg" alt="Our bakeries" />
+            </div>
+            <p class="text advantages__text text_bold">
+              Hand made <br />
+              by local bakeries
+            </p>
+          </div>
+          <div class="column advantages__column">
+            <div class="column__image ibg">
+              <img src="img/advantages/2.jpg" alt="good price" />
+            </div>
+            <p class="text advantages__text text_bold">
+              Same price as from bakery - but simpler
+            </p>
+          </div>
+
+          <div class="column advantages__column">
+            <div class="column__image ibg">
+              <img src="img/advantages/3.jpg" alt="good company" />
+            </div>
+            <p class="text advantages__text text_bold">
+              Send cakes<br />
+              anywhere
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- locations -->
+      <section class="location">
+        <h2 class="text text__title text__title_big text_bold">
+          Our most popular locations
+        </h2>
+        <!-- U can create new <ul class="location__column"> from JS in const = locationsQuantity -->
+        <!-- OR u can do it here inside  <div class="row location__row"> . 
+          Just copy div.row.location__box>ul.location__column-->
+        <div class="row location__row">
+          <div class="row location__box">
+            <ul class="location__column"></ul>
+            <ul class="location__column"></ul>
+          </div>
+          <div class="row location__box">
+            <ul class="location__column"></ul>
+            <ul class="location__column"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="row footer__row">
+        <div class="column footer__column">
+          <div class="row mini-section">
+            <div class="mini-section__content-wrapper">
+              <a
+                class="mini-section__link-wrapper"
+                href="https://www.instagram.com/"
+                target="_blank"
+              >
+                <img
+                  class="mini-section__icon"
+                  src="img/icons/instagram.svg"
+                  alt="instagram"
+                />
+              </a>
+              <a
+                class="mini-section__link-wrapper"
+                href="https://ru-ru.facebook.com/"
+                target="_blank"
+              >
+                <img
+                  class="mini-section__icon"
+                  src="img/icons/facebook.svg"
+                  alt="facebook"
+              /></a>
+            </div>
+          </div>
+
+          <div class="row mini-section">
+            <p class="mini-section__title">Countries</p>
+            <div class="mini-section__content-wrapper">
+              <img
+                class="mini-section__icon mini-section__icon_big"
+                src="img/icons/sweden.svg"
+                alt="swened flag"
+              />
+              <img
+                class="mini-section__icon mini-section__icon_big"
+                src="img/icons/norway.svg"
+                alt="norway flag"
+              />
+            </div>
+          </div>
+          <div class="row mini-section">
+            <p class="mini-section__title">Language</p>
+            <div class="mini-section__content-wrapper">
+              <p class="mini-section__text-click">NO</p>
+              <p class="mini-section__text-click">EN</p>
+            </div>
+          </div>
+        </div>
+        <div class="column footer__column">
+          <h6 class="column__header text text_bold">Customer service</h6>
+          <a href="#" class="text column__link">FAQ</a>
+          <a href="#" class="text column__link">Terms of use</a>
+          <a href="#" class="text column__link">Privacy policy</a>
+          <a href="#" class="text column__link">Contact us</a>
+        </div>
+
+        <div class="column footer__column">
+          <h6 class="column__header text text_bold">Information</h6>
+          <a href="#" class="text column__link">How it works</a>
+          <a href="#" class="text column__link">About Cake it easy</a>
+          <a href="#" class="text column__link">For companies</a>
+          <a href="#" class="text column__link"
+            >Send cakes to multiple locations</a
+          >
+          <a href="#" class="text column__link">Cake calendar</a>
+        </div>
+        <div class="column footer__column">
+          <h6 class="column__header text text_bold">Inspiration</h6>
+          <a href="#" class="text column__link">Birthday cake</a>
+          <a href="#" class="text column__link">Cake with image or logo</a>
+          <a href="#" class="text column__link">Confirmation cake</a>
+          <a href="#" class="text column__link">Baptism cake</a>
+          <a href="#" class="text column__link">Glutenfree cake </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Join JS -->
+    <!-- <script src="js/js.js"></script> -->
+    <!-- separate challenge script -->
+    <script src="js/challenge.js"></script>
+  </body>
+</html>
