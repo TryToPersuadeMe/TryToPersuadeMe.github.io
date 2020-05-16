@@ -1,24 +1,26 @@
 $(document).ready(() => {
-  // function testWebP(callback) {
-  //   var webP = new Image();
-  //   webP.onload = webP.onerror = function () {
-  //     callback(webP.height == 2);
-  //   };
-  //   webP.src =
-  //     "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-  // }
+  // its check browser for suppport WEBp img
+  function testWebP(callback) {
+    var webP = new Image();
+    webP.onload = webP.onerror = function () {
+      callback(webP.height == 2);
+    };
+    webP.src =
+      "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+  }
 
-  // testWebP(function (support) {
-  //   if (support == true) {
-  //     document.querySelector("body").classList.add("webp");
-  //   }
-  // });
+  testWebP(function (support) {
+    if (support == true) {
+      document.querySelector("body").classList.add("webp");
+    }
+  });
 
+  // Animate button in header for switch language
   $(".language").on("click", () => {
     $(".language__button").toggleClass("language__button_changed");
   });
 
-  // First screen scripts
+  // First screen scripts for switch background, big window with white background color and etc
 
   $(".navigation__panel")
     .children()
@@ -26,7 +28,7 @@ $(document).ready(() => {
       let index = $(event.currentTarget).index();
 
       if (index != 0) {
-        $(".navigation__item").eq(index).addClass(".navigation__item_active");
+        $(".navigation__item").eq(index).addClass("navigation__item_active");
 
         let windowIndex = index - 1;
         $(".window").removeClass("window_active");
@@ -38,7 +40,7 @@ $(document).ready(() => {
 
   $(document).mouseup(() => {
     if ($(event.target).closest(".window").length == 0) {
-      $(".window").siblings().removeClass("window_active");
+      $(".window").removeClass("window_active");
     }
   });
 
@@ -79,9 +81,7 @@ $(document).ready(() => {
     }
   });
 
-  // Arrows in forms open/close animation
-
-  // dots
+  // Appear dont when click in input form in TRAVEL ORDER block
 
   $(".dots-list_point").on("click", function () {
     const clicked = $(event.currentTarget).index() / 2;
@@ -90,7 +90,7 @@ $(document).ready(() => {
     $(`.dots-list__item:eq(${clicked - 1})`).addClass("dots-list__item_active");
   });
 
-  // Category
+  // Category slider
 
   $(".category").slick({
     slidesToShow: 1,
@@ -98,72 +98,11 @@ $(document).ready(() => {
     arrows: false,
     fade: true,
     asNavFor: ".row__images-keys",
-    //      ***--- turn Off swipe in tracklist on PC ---***
     draggable: false,
-    //      ***--- block/unblock click button for swipe without expect of animate finish ---***
     waitForAnimate: false,
     swipe: false,
     touchMove: false,
     infinite: false,
-    //      ***--- first slide to show ---***
-    // initialSlide: 0,
-    //   arrow: false,
-    //   dots: false,
-    //      ***---responsive Height ---***
-    // adaptiveHeight: false,
-    //      ***--- Slides to show in slider ---***
-    // slidesToShow: 1,
-    //      ***--- show slides per one click on button ---***
-    // slidesToScroll: 1,
-    //  ***--- scroll speed ---***
-    // speed: 300
-    //      ***--- type of animation ---***
-    //  easing: "LINEAR",
-    //      ***--- infinite scroll ---***
-    // infinite: true,
-
-    //      ***--- slides autoplay ---***
-    // autoplay: false,
-    // autoplaySpeed: 3000,
-    // pauseOnFocus: true,
-    // pauseOnHover: true,
-    // pauseOnDotsHover: true,
-
-    //      ***--- turn Off swipe in tracklist on mobiles ---***
-    // swipe: true,
-    //      ***---  ---***
-    // touchThreshold: 5,
-    //      ***--- block swipe contol with swipe-focus image ---***
-    // touchMove: true,
-
-    //      ***--- center mode for center slide ---***
-    // centerMode: false,
-    //      ***--- auto width for slides ---***
-    // variableWidth: false,
-    //      ***--- rows in slider track ---***
-    // rows: 1,
-    //      ***--- slides per row ---***
-    // slidesPerRow: 1,
-    //      ***---  vertical slider ---***
-    // vertical: false,
-    //      ***--- allows use  vertical swipe ---***
-    // verticalSwiping: false,
-    //      ***--- fade img instead slider ---***
-    // fade: false,
-    //      ***--- connect with another slider ---***
-    // asNavFor: ".class"
-    //      ***---  responsive breakpoints---***
-    // responsive: [
-    //     {
-    //         breakpoint: 767,
-    //         settings: {
-    //             // settings here
-    //         }
-    //     }
-    // ]
-    //      ***--- arrows/dots in another div ---***
-    // appendArrows:$(".class")
-    // appendDots: $(".class")
   });
 
   $(".row__images-keys").slick({
@@ -225,7 +164,7 @@ $(document).ready(() => {
   $(".purchases__slider").slick("setPosition");
   $(".row__images-keys").slick("setPosition");
 
-  // Feedback
+  // Feedback slider
   $(".feedback__sliderPhoto").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -263,17 +202,14 @@ $(document).ready(() => {
     ],
   });
 
-  // for SELECT/input style/checkbox -
+  // Change  SELECT/input style/checkbox. jquery.formstyler.min.js + animate all arrows
   $("select").styler({
     selectPlaceholde: true,
   });
-  $(".jq-selectbox__trigger-arrow").on("click", () => {
-    $(".jq-selectbox__trigger-arrow").each(() => {
-      if ($(".jq-selectbox__trigger-arrow").hasClass("jq-selectbox__trigger-arrow_active")) {
-        $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
-      }
-    });
-    $(event.currentTarget).addClass("jq-selectbox__trigger-arrow_active");
+
+  $(".jq-selectbox__trigger-arrow").click(function () {
+    $(this).toggleClass("jq-selectbox__trigger-arrow_active");
+    $(".jq-selectbox__trigger-arrow").not(this).removeClass("jq-selectbox__trigger-arrow_active");
   });
 
   $(document).mouseup(() => {
@@ -289,7 +225,7 @@ $(document).ready(() => {
     $("input:checkbox").attr("disabled", true).trigger("refresh");
   });
 
-  // calendar from/to
+  // Plugin for change calendar from/to
   $('input[name="travelDate-from"],input[name="travelDate-to"]').daterangepicker({
     singleDatePicker: true,
     locale: {
@@ -339,8 +275,7 @@ $(document).ready(() => {
     }
   );
 
-  // Range RU calendar
-
+  // Plugin for change calendar  with range dates in category for every form
   $(
     'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
   ).daterangepicker({
@@ -393,7 +328,7 @@ $(document).ready(() => {
     $(this).val("");
   });
 
-  // advantages responsive hide rows
+  // advantages responsive design. Hide rows with columns in low viewport width. For Appear  click on arrow
   $(".advantages__click").on("click", function () {
     $(".advantages__row").animate({ opacity: "1" }, 500);
     $(".advantages__click").addClass("advantages__click_hide");
@@ -404,24 +339,43 @@ $(document).ready(() => {
   $(".burger-menu").on("click", function () {
     $(".navigation__panel").toggleClass("navigation__panel_active");
     $(".burger-menu").toggleClass("burger-menu_active");
+    $("body").toggleClass("lock");
   });
 
-  $(".navigation__item").on("click", function () {
-    $(".navigation__panel").removeClass("navigation__panel_active");
-    $(".burger-menu").removeClass("burger-menu_active");
+  $(".navResponsive__title").click(function () {
+    $(".navResponsive__title")
+      .siblings()
+      .children()
+      .not(this)
+      .removeClass("navResponsive__link_active");
+
+    $(this).siblings().children().toggleClass("navResponsive__link_active");
   });
 
   $(document).mouseup(() => {
+    // rotate arrow
+    if ($(event.target).closest(".navigation__item").length == 0) {
+      $(".navigation__item").removeClass("arrow_active");
+    }
+
+    // disable all spoilers
+    if ($(event.target).closest(".navResponsive__spoiler").length == 0) {
+      $(".navResponsive__title").removeClass("navResponsive__title_active");
+      $(".navResponsive__link").removeClass("navResponsive__link_active");
+    }
+
+    // rotate panel and burger menu
     if (
       $(event.target).closest(".navigation__panel").length == 0 &&
       $(event.target).closest(".burger-menu").length == 0
     ) {
       $(".navigation__panel").removeClass("navigation__panel_active");
       $(".burger-menu").removeClass("burger-menu_active");
+      $("body").removeClass("lock");
     }
   });
 
-  // search
+  // Click for appear search input in first-screen under sarch icon
   $(".navigation__icon_search").on("click", () => {
     if ($(event.target).closest('input[type = "search"]').length == 0) {
       $(event.currentTarget).toggleClass("navigation__icon_search-hide");
@@ -429,10 +383,33 @@ $(document).ready(() => {
   });
 
   $(document).mouseup(() => {
-    if ($(event.target).closest('input[type = "search"]').length == 0) {
+    if (
+      $(event.target).closest('input[type ="search"]').length == 0 &&
+      $(event.target).closest("navigation__icon_search")
+    ) {
       $(".navigation__icon_search").removeClass("navigation__icon_search-hide");
     }
   });
 
-  //registration
+  // spoiler under else button in first-screen
+  $(".navigation__item_else").on("click", () => {
+    $(event.currentTarget).css({ overflow: "visible" });
+    $(event.currentTarget).addClass("navigation__item_else-active");
+    $(".window__column_navigation-spoiler").addClass("window__column_active");
+  });
+
+  $(".navigation__item_else").on("mouseleave", () => {
+    $(event.currentTarget).css({ overflow: "hidden" });
+    $(".window__column_navigation-spoiler").removeClass("window__column_active");
+    $(event.currentTarget).removeClass("navigation__item_else-active");
+  });
+
+  $(".navigation__item").click(function () {
+    $(event.currentTarget).toggleClass("arrow_active");
+    if ($(".navigation__item").not(this)) {
+      $(".navigation__item").not(this).removeClass("arrow_active");
+    }
+    $(this).next().find("h5").toggleClass("navResponsive__title_active");
+    // console.log($(".navigation__item").next().hasClass("navResponsive__spoiler-wrapper").length);
+  });
 });
