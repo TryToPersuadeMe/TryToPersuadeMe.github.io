@@ -22,33 +22,22 @@ $(document).ready(() => {
 
   // First screen scripts for switch background, big window with white background color and etc
 
-  $(".navigation__panel")
-    .children()
-    .on("click", function () {
-      let index = $(event.currentTarget).index();
+  $(".navigation__item_white-lines").on("mouseenter", function () {
+    $(event.currentTarget).addClass("navigation__item_white-lines-active");
+    let index = $(".navigation__item_white-lines").index(this);
 
-      console.log($(event.target).index());
-      console.log($(event.target));
-
-      if (index != 0) {
-        $(".navigation__item").eq(index).addClass("navigation__item_active");
-
-        let windowIndex = index - 1;
-        $(".window").removeClass("window_active");
-        $(".window").eq(windowIndex).addClass("window_active");
-      } else {
-        $(".window").removeClass("window_active");
-      }
-    });
-
-  $(document).mouseup(() => {
-    if ($(event.target).closest(".window").length == 0) {
+    if (index != 0 && index != 5) {
+      let windowIndex = index - 1;
+      $(".window").removeClass("window_active");
+      $(".window").eq(windowIndex).addClass("window_active");
+    } else {
       $(".window").removeClass("window_active");
     }
+
+    $(".navigation__item_white-lines").not(this).removeClass("navigation__item_white-lines-active");
   });
 
   // first screen slider
-
   $(".first-screen__sliderContent").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -207,12 +196,6 @@ $(document).ready(() => {
     $(".jq-selectbox__trigger-arrow").not(this).removeClass("jq-selectbox__trigger-arrow_active");
   });
 
-  $(document).mouseup(() => {
-    if ($(event.target).closest(".jq-selectbox__trigger-arrow").length == 0) {
-      $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
-    }
-  });
-
   $('input[type="checkbox"]').styler();
   $('input[type="checkbox"]').click(function (e) {
     $('input[type="checkbox"]').toggleClass("jq-checkbox_active");
@@ -333,42 +316,73 @@ $(document).ready(() => {
   // burger menu and navigarion
   $(".burger-menu").on("click", function () {
     $(".navigation__panel").toggleClass("navigation__panel_active");
-    $(".burger-menu").toggleClass("burger-menu_active");
+    // $(".burger-menu").toggleClass("burger-menu_active");
+    $(".burger-menu-active").animate({ opacity: 1, top: "12px" }, 300);
     $("body").toggleClass("lock");
+    $("body").toggleClass("shadow");
   });
 
   $(".navResponsive__title").click(function () {
-    $(".navResponsive__title")
-      .siblings()
-      .children()
-      // .not(this)
-      .removeClass("navResponsive__link_active");
+    $(".navResponsive__title").siblings().children().removeClass("navResponsive__link_active");
 
     $(event.currentTarget).toggleClass("navResponsive__arrow_active");
+
     if ($(".navResponsive__title").not(this)) {
       $(".navResponsive__title").not(this).removeClass("navResponsive__arrow_active");
     }
     $(this).siblings().children().toggleClass("navResponsive__link_active");
+
+
+
+    if (!$(this).hasClass("navResponsive__arrow_active")) {
+      $(".navResponsive__link").removeClass("navResponsive__link_active")
+    }
+
+
   });
 
   $(".navigation__item").on("click", function () {
     $(event.currentTarget).toggleClass("arrow_active");
+    const titleActive = $(event.currentTarget).next().find("h5");
+
+    titleActive.toggleClass("navResponsive__title_active");
+
     if ($(".navigation__item").not(this)) {
       $(".navigation__item").not(this).removeClass("arrow_active");
     }
 
-    const titleActive = $(event.currentTarget).next().find("h5");
-    titleActive.addClass("navResponsive__title_active");
+    if (!$(this).hasClass("arrow_active")) {
+      titleActive.removeClass("navResponsive__title_active");
+    }
   });
 
   // mouse up
   $(document).mouseup(() => {
+    // close search input
+    if (
+      $(event.target).closest('input[type ="search"]').length == 0 &&
+      $(event.target).closest("navigation__icon_search")
+    ) {
+      $(".navigation__icon_search").removeClass("navigation__icon_search-hide");
+    }
+
+    //close window in first screen
+    if ($(event.target).closest(".window").length == 0) {
+      $(".window").removeClass("window_active");
+      $(".navigation__item_white-lines-active").removeClass("navigation__item_white-lines-active");
+    }
+
     // rotate arrow
     if (
       $(event.target).closest(".navigation__item").length == 0 &&
       $(event.target).closest(".navResponsive__spoiler-wrapper").length == 0
     ) {
       $(".navigation__item").removeClass("arrow_active");
+    }
+
+    //  close arrows in input/select
+    if ($(event.target).closest(".jq-selectbox__trigger-arrow").length == 0) {
+      $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
     }
 
     // disable all spoilers
@@ -385,8 +399,11 @@ $(document).ready(() => {
     ) {
       $(".navigation__panel").removeClass("navigation__panel_active");
       $(".burger-menu").removeClass("burger-menu_active");
+      $(".burger-menu-active").animate({ opacity: "0", top: "-100%" }, 300);
+
       $("body").removeClass("lock");
       $(".navResponsive__arrow").removeClass("navResponsive__arrow_active");
+      $("body").removeClass("shadow");
     }
   });
 
@@ -394,15 +411,6 @@ $(document).ready(() => {
   $(".navigation__icon_search").on("click", () => {
     if ($(event.target).closest('input[type = "search"]').length == 0) {
       $(event.currentTarget).toggleClass("navigation__icon_search-hide");
-    }
-  });
-
-  $(document).mouseup(() => {
-    if (
-      $(event.target).closest('input[type ="search"]').length == 0 &&
-      $(event.target).closest("navigation__icon_search")
-    ) {
-      $(".navigation__icon_search").removeClass("navigation__icon_search-hide");
     }
   });
 
