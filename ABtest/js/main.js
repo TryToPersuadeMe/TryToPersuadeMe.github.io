@@ -29,6 +29,7 @@ $(document).ready(() => {
     if (index != 0 && index != 5) {
       let windowIndex = index - 1;
       $(".window").removeClass("window_active");
+
       $(".window").eq(windowIndex).addClass("window_active");
     } else {
       $(".window").removeClass("window_active");
@@ -332,13 +333,9 @@ $(document).ready(() => {
     }
     $(this).siblings().children().toggleClass("navResponsive__link_active");
 
-
-
     if (!$(this).hasClass("navResponsive__arrow_active")) {
-      $(".navResponsive__link").removeClass("navResponsive__link_active")
+      $(".navResponsive__link").removeClass("navResponsive__link_active");
     }
-
-
   });
 
   $(".navigation__item").on("click", function () {
