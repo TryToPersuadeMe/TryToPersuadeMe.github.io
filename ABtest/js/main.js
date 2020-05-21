@@ -205,7 +205,7 @@ $(document).ready(() => {
   });
 
   // Plugin for change calendar from/to
-  $('input[name="travelDate-from"],input[name="travelDate-to"]').daterangepicker({
+  $('input[name="travelDate-from"]').daterangepicker({
     singleDatePicker: true,
     locale: {
       direction: "ltr",
@@ -236,7 +236,42 @@ $(document).ready(() => {
     showCustomRangeLabel: false,
     startDate: "05/05/2020",
     endDate: "05/11/2020",
-    opens: "left",
+    opens: "right",
+    autoUpdateInput: false,
+  });
+
+  $('input[name="travelDate-to"]').daterangepicker({
+    singleDatePicker: true,
+    locale: {
+      direction: "ltr",
+      format: "DD/MM/YYYY HH:mm",
+      separator: " - ",
+      applyLabel: "Apply",
+      cancelLabel: "Clear",
+      fromLabel: "From",
+      toLabel: "To",
+      customRangeLabel: "Custom",
+      daysOfWeek: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      monthNames: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+      firstDay: 1,
+    },
+    showCustomRangeLabel: false,
+    startDate: "05/05/2020",
+    endDate: "05/11/2020",
+    opens: "right",
     autoUpdateInput: false,
   });
 
@@ -258,7 +293,7 @@ $(document).ready(() => {
   $(
     'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
   ).daterangepicker({
-    singleDatePicker: false,
+    singleDatePicker: true,
     autoApply: true,
     locale: {
       direction: "ltr",
@@ -289,21 +324,21 @@ $(document).ready(() => {
     showCustomRangeLabel: false,
     startDate: "05/05/2020",
     endDate: "05/11/2020",
-    opens: "left",
+    opens: "center",
     autoUpdateInput: false,
   });
 
-  $(
+  const purchasesCalendar = $(
     'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
-  ).on("apply.daterangepicker", function (ev, picker) {
+  );
+
+  purchasesCalendar.on("apply.daterangepicker", function (ev, picker) {
     $(this).val(
       picker.startDate.format("DD/MM/YYYY") + " - " + picker.endDate.format("DD/MM/YYYY")
     );
   });
 
-  $(
-    'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
-  ).on("cancel.daterangepicker", function (ev, picker) {
+  purchasesCalendar.on("cancel.daterangepicker", function (ev, picker) {
     $(this).val("");
   });
 
@@ -423,4 +458,8 @@ $(document).ready(() => {
     $(".window__column_navigation-spoiler").removeClass("window__column_active");
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
+
+  // $(".map__city").on("click", () => {
+  //   $(this).attr("width", "200%");
+  // });
 });
