@@ -553,6 +553,7 @@ input::-webkit-calendar-picker-indicator {
   font-size: 15px;
   line-height: 1em;
   height: 330px;
+  margin-top: 0;
 }
 
 .daterangepicker .calendar-table th,
@@ -5158,7 +5159,12 @@ input::-webkit-calendar-picker-indicator {
     background-image: url(../img/advantages/advantages__logo-blue.png);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: top 70% left 0%;
+    background-position: top 60% left 0%;
+    min-height: auto;
+  }
+
+  .advantages__container {
+    padding-bottom: 4rem;
   }
 
   .advantages__row {
