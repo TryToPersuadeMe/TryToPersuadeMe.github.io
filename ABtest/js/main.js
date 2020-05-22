@@ -459,7 +459,10 @@ $(document).ready(() => {
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-  // $(".map__city").on("click", () => {
-  //   $(this).attr("width", "200%");
-  // });
+  $(".map__city").on("click", () => {
+    $(event.currentTarget).attr({
+      width: "400",
+      height: "350",
+    });
+  });
 });

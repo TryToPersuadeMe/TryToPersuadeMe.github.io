@@ -545,7 +545,6 @@ input::-webkit-calendar-picker-indicator {
   width: 100%;
   max-width: 360px;
   padding: 0;
-  margin-top: 7px;
   top: 100px;
   left: 20px;
   z-index: 3001;
@@ -2242,6 +2241,25 @@ input::-webkit-calendar-picker-indicator {
 }
 
 /* map */
+
+.map {
+  position: relative;
+  background-image: url(../img/map/cleanMap.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.map__city {
+  width: 180px;
+  height: 45px;
+  z-index: 2;
+  position: absolute;
+  left: 20%;
+  top: 100px;
+}
 
 .map__city:hover {
   cursor: pointer;
@@ -5323,6 +5341,15 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 360px) {
+  .daterangepicker {
+    max-width: 280px;
+    height: 310px;
+  }
+
+  .daterangepicker td.start-date.end-date {
+    height: 40px;
+  }
+
   .header {
     height: 60px;
     padding: 0;
@@ -5495,6 +5522,8 @@ input::-webkit-calendar-picker-indicator {
 .webp .first-screen_background-2{ background-image: url(../img/ftrst-screen/bg-3.webp); }
 
 .webp .travel-order__image{ background-image: url(../img/travelsOrder/airplane.webp); }
+
+.webp .map{ background-image: url(../img/map/cleanMap.webp); }
 
 .webp .advantages{ background-image: url(../img/advantages/advantages__bg.webp); }
 
