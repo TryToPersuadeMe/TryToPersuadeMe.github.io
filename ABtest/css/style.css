@@ -445,6 +445,10 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .jq-selectbox li:hover,
@@ -462,6 +466,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
   position: relative;
   color: #0094f7;
+  padding-right: 35px;
 }
 
 .jq-selectbox ul {
@@ -1234,6 +1239,10 @@ input::-webkit-calendar-picker-indicator {
   height: 25px;
 }
 
+.navigation__icon_hide-360px {
+  border: 1px solid #000;
+}
+
 .navigation__icon img {
   width: 100%;
   height: auto;
@@ -1243,7 +1252,7 @@ input::-webkit-calendar-picker-indicator {
   content: "";
   cursor: default;
   position: absolute;
-  right: calc(-50% - 13px);
+  right: calc(-50% - 21px);
   top: 0;
   height: 30px;
   width: 2px;
@@ -2243,27 +2252,209 @@ input::-webkit-calendar-picker-indicator {
 
 /* map */
 
-.map {
-  position: relative;
-  background-image: url(../img/map/cleanMap.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+.map__bg {
   width: 100%;
-  min-height: 100vh;
 }
 
 .map__city {
-  width: 180px;
-  height: 45px;
-  z-index: 2;
-  position: absolute;
-  left: 20%;
-  top: 100px;
+  width: 240px;
+  height: 60px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__city_small {
+  width: 210px;
+  height: 60px;
 }
 
 .map__city:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 280px;
+  height: 70px;
+}
+
+.map__ship {
   cursor: pointer;
+  width: 315px;
+  height: 180px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__ship:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 345px;
+  height: 200px;
+}
+
+.map__ship_small {
+  width: 160px;
+  height: 140px;
+}
+
+.map__ship_small:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 190px;
+  height: 160px;
+}
+
+.map__tank {
+  cursor: pointer;
+  width: 165px;
+  height: 80px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__tank:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 195px;
+  height: 100px;
+}
+
+.map__helicopter {
+  cursor: pointer;
+  width: 135px;
+  height: 80px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__helicopter:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 165px;
+  height: 100px;
+}
+
+.map__cancer {
+  cursor: pointer;
+  width: 135px;
+  height: 80px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__cancer:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 165px;
+  height: 100px;
+}
+
+.map__dolphin {
+  cursor: pointer;
+  width: 125px;
+  height: 80px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__dolphin:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 155px;
+  height: 100px;
+}
+
+.map__pig {
+  width: 125px;
+  height: 80px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__pig:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 155px;
+  height: 100px;
+}
+
+.map__rocket {
+  cursor: pointer;
+  height: 120px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__rocket:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  height: 150px;
+}
+
+.map__whale {
+  cursor: pointer;
+  height: 150px;
+  width: 140px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__whale:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 160px;
+  height: 170px;
+}
+
+.map__airplane {
+  cursor: pointer;
+  height: 115px;
+  width: 135px;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__airplane:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  height: 135px;
+  width: 155px;
+}
+
+.map__icons {
+  height: 90px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.map__icons:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  height: 110px;
 }
 
 /* Purchases */
@@ -2566,7 +2757,7 @@ input::-webkit-calendar-picker-indicator {
 .feedback {
   background-image: url(../img/feedback/bg-airplane.png);
   background-repeat: no-repeat;
-  background-position: top 43% left 12%;
+  background-position: top 30% left 12%;
 }
 
 .feedback__header-wrapper {
@@ -2574,7 +2765,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .feedback__container {
-  padding-top: 16rem;
+  padding-top: 10rem;
   padding-bottom: 5rem;
 }
 
@@ -3437,7 +3628,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .feedback {
-    background-position: top 50% left 0%;
+    background-position: top 40% left 0%;
   }
 
   .footer__column_contacts p {
@@ -3521,7 +3712,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .feedback {
-    background-position: top 55% left -15%;
+    background-position: top 50% left -13%;
   }
 
   .feedback__container {
@@ -3580,7 +3771,7 @@ input::-webkit-calendar-picker-indicator {
   .jq-selectbox li,
   .jq-selectbox__select-text {
     font-size: 1.4rem;
-    padding: 11px 10px;
+    padding: 11px 35px 11px 10px;
   }
 
   .jq-selectbox .placeholder {
@@ -3828,7 +4019,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .feedback {
-    background-position: top 50% left -45%;
+    background-position: top 50% left -40%;
   }
 
   .feedback__container {
@@ -5528,8 +5719,6 @@ input::-webkit-calendar-picker-indicator {
 .webp .first-screen_background-2{ background-image: url(../img/ftrst-screen/bg-3.webp); }
 
 .webp .travel-order__image{ background-image: url(../img/travelsOrder/airplane.webp); }
-
-.webp .map{ background-image: url(../img/map/cleanMap.webp); }
 
 .webp .advantages{ background-image: url(../img/advantages/advantages__bg.webp); }
 
