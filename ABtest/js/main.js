@@ -24,16 +24,20 @@ $(document).ready(() => {
 
   $(".navigation__item_white-lines").on("mouseenter", function () {
     $(event.currentTarget).addClass("navigation__item_white-lines-active");
+
     let index = $(".navigation__item_white-lines").index(this);
 
     if (index != 0 && index != 5) {
       let windowIndex = index - 1;
       $(".window").removeClass("window_active");
-
       $(".window").eq(windowIndex).addClass("window_active");
     } else {
       $(".window").removeClass("window_active");
     }
+
+    $(".window").on("mouseleave", () => {
+      $(".window").removeClass("window_active");
+    });
 
     $(".navigation__item_white-lines").not(this).removeClass("navigation__item_white-lines-active");
   });
@@ -72,6 +76,10 @@ $(document).ready(() => {
     let indexInput = $(event.currentTarget).index() / 2 - 1;
     $(".dots-list__item").not(this).removeClass("dots-list__item_active");
     $(".dots-list__item").eq(indexInput).addClass("dots-list__item_active");
+
+    if (indexInput == 0) {
+      $(event.currentTarget).find("#purpose").attr("data-placeholder", "привет");
+    }
   });
 
   // Category slider
@@ -401,6 +409,8 @@ $(document).ready(() => {
     //close window in first screen
     if ($(event.target).closest(".window").length == 0) {
       $(".window").removeClass("window_active");
+      $(".window__container").removeClass("window__container_active");
+
       $(".navigation__item_white-lines-active").removeClass("navigation__item_white-lines-active");
     }
 
@@ -457,12 +467,5 @@ $(document).ready(() => {
     $(event.currentTarget).css({ overflow: "hidden" });
     $(".window__column_navigation-spoiler").removeClass("window__column_active");
     $(event.currentTarget).removeClass("navigation__item_else-active");
-  });
-
-  $(".map__city").on("click", () => {
-    $(event.currentTarget).attr({
-      width: "400",
-      height: "350",
-    });
   });
 });
