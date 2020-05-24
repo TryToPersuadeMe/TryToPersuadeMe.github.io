@@ -2098,7 +2098,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .travel-order__container {
-  padding: 11.5rem 0 16rem 0;
+  padding: 11.5rem 0 16.5rem 0;
   position: relative;
 }
 
@@ -2255,8 +2255,16 @@ input::-webkit-calendar-picker-indicator {
 
 /* map */
 
+.tour {
+  background-color: #eaf6fd;
+}
+
+.map {
+  position: relative;
+}
+
 .map__subtitle {
-  margin: 35px 0;
+  margin: 35px 0 38px 0;
 }
 
 .map__bg {
@@ -2272,16 +2280,24 @@ input::-webkit-calendar-picker-indicator {
   transition: 0.3s ease;
 }
 
-.map__city_small {
-  width: 210px;
-  height: 60px;
-}
-
 .map__city:hover {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   width: 280px;
+  height: 70px;
+}
+
+.map__city_small {
+  width: 210px;
+  height: 60px;
+}
+
+.map__city_small:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 270px;
   height: 70px;
 }
 
@@ -2412,7 +2428,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
-  height: 150px;
+  height: 140px;
 }
 
 .map__whale {
@@ -3510,6 +3526,12 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
+@media (min-width: 750px) {
+  .tour__button {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .navigation__item_white-lines {
     position: absolute;
@@ -3580,10 +3602,6 @@ input::-webkit-calendar-picker-indicator {
   .burger-menu-active {
     display: none;
   }
-
-  .purchases__title_hide-768px {
-    display: none;
-  }
 }
 
 @media (min-width: 769px) {
@@ -3592,6 +3610,10 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .column__image p {
+    display: none;
+  }
+
+  .purchases__title_hide-768px {
     display: none;
   }
 }
@@ -3931,6 +3953,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .purchases__container {
+    padding-top: 12.5rem;
     padding-bottom: 14rem;
   }
 
@@ -4704,7 +4727,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .travel-order__container {
-    padding: 9.5rem 0 12.5rem 0;
+    padding: 9.5rem 0 7rem 0;
   }
 
   .travel-order__title {
@@ -4738,7 +4761,138 @@ input::-webkit-calendar-picker-indicator {
     max-width: 10.5rem;
   }
 
+  .map__subtitle {
+    margin: 25px 0 28px 0;
+  }
+
+  .map__city {
+    width: 280px;
+    height: 70px;
+  }
+
+  .map__city:hover {
+    width: 320px;
+    height: auto;
+  }
+
+  .map__city_small {
+    width: 270px;
+    height: 70px;
+  }
+
+  .map__city_small:hover {
+    width: 310px;
+    height: auto;
+  }
+
+  .map__ship {
+    width: 365px;
+    height: auto;
+  }
+
+  .map__ship:hover {
+    width: 395px;
+    height: auto;
+  }
+
+  .map__ship_small {
+    width: 190px;
+    height: auto;
+  }
+
+  .map__ship_small:hover {
+    width: 230px;
+    height: auto;
+  }
+
+  .map__tank {
+    width: 195px;
+    height: 100px;
+  }
+
+  .map__tank:hover {
+    width: 225px;
+    height: 120px;
+  }
+
+  .map__helicopter {
+    width: 165px;
+    height: 100px;
+  }
+
+  .map__helicopter:hover {
+    width: 195px;
+    height: 120px;
+  }
+
+  .map__cancer {
+    width: 165px;
+    height: 100px;
+  }
+
+  .map__cancer:hover {
+    width: 195px;
+    height: 120px;
+  }
+
+  .map__dolphin {
+    width: 155px;
+    height: 100px;
+  }
+
+  .map__dolphin:hover {
+    width: 175px;
+    height: 130px;
+  }
+
+  .map__pig {
+    width: 155px;
+    height: 100px;
+  }
+
+  .map__pig:hover {
+    width: 185px;
+    height: 120px;
+  }
+
+  .map__rocket {
+    height: 150px;
+  }
+
+  .map__rocket:hover {
+    height: 180px;
+  }
+
+  .map__whale {
+    width: 160px;
+    height: 170px;
+  }
+
+  .map__whale:hover {
+    width: 180px;
+    height: 190px;
+  }
+
+  .map__airplane {
+    height: 135px;
+    width: 155px;
+  }
+
+  .map__airplane:hover {
+    height: 155px;
+    width: 175px;
+  }
+
+  .map__icons {
+    height: 110px;
+  }
+
+  .map__icons:hover {
+    height: 130px;
+  }
+
   .purchases__container {
+    padding-top: 7.5rem;
     padding-bottom: 7rem;
   }
 
@@ -4990,6 +5144,48 @@ input::-webkit-calendar-picker-indicator {
 
   .navigation__icon_search input :-moz-placeholder {
     font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .map_shadow::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 749px) {
+  .tour__button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    right: -100%;
+    opacity: 0;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+    z-index: -1;
+  }
+
+  .tour__button_active {
+    z-index: 2;
+    top: calc(50% - 25px);
+    right: calc(50% - 125px);
+    opacity: 1;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
   }
 }
 
@@ -5295,6 +5491,14 @@ input::-webkit-calendar-picker-indicator {
     font-size: 1.6rem;
     padding: 0 35px 0 21px;
     min-height: 4rem;
+  }
+
+  .travel-order__container {
+    padding: 0rem 0 5rem 0;
+  }
+
+  .map__subtitle {
+    margin: 15px 0 35px 0;
   }
 }
 
@@ -5683,10 +5887,6 @@ input::-webkit-calendar-picker-indicator {
 
   .subtitle {
     font-size: 1.8rem;
-  }
-
-  .travel-order__container {
-    padding: 0rem 0 12.5rem 0;
   }
 
   .travel-order__subtitle {

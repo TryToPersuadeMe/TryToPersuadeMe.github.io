@@ -77,8 +77,18 @@ $(document).ready(() => {
     $(".dots-list__item").not(this).removeClass("dots-list__item_active");
     $(".dots-list__item").eq(indexInput).addClass("dots-list__item_active");
 
+    let placeholder = {
+      color: "#0094F7",
+      fontWeight: "500",
+    };
+
     if (indexInput == 0) {
-      $(event.currentTarget).find("#purpose").attr("data-placeholder", "привет");
+      $(event.currentTarget).find(".placeholder").text("Что вас интересует?").css(placeholder);
+    } else if (indexInput == 3) {
+      $(event.currentTarget)
+        .find(".placeholder")
+        .text("Чем вы хотите заниматься?")
+        .css(placeholder);
     }
   });
 
@@ -467,5 +477,10 @@ $(document).ready(() => {
     $(event.currentTarget).css({ overflow: "hidden" });
     $(".window__column_navigation-spoiler").removeClass("window__column_active");
     $(event.currentTarget).removeClass("navigation__item_else-active");
+  });
+
+  $(".map").on("click", () => {
+    $(".map").addClass("map_shadow");
+    $(".tour__button").addClass("tour__button_active");
   });
 });
