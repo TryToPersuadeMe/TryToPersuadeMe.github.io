@@ -82,13 +82,18 @@ $(document).ready(() => {
       fontWeight: "500",
     };
 
+    let changePlaceholder = $(event.currentTarget).find(".placeholder");
+
     if (indexInput == 0) {
-      $(event.currentTarget).find(".placeholder").text("Что вас интересует?").css(placeholder);
+      changePlaceholder.text("Что вас интересует?").css(placeholder);
     } else if (indexInput == 3) {
-      $(event.currentTarget)
-        .find(".placeholder")
-        .text("Чем вы хотите заняться?")
-        .css(placeholder);
+      changePlaceholder.text("Чем вы хотите заняться?").css(placeholder);
+    } else if (indexInput == 4) {
+      changePlaceholder.text("Какие условия выберете?").css(placeholder);
+    } else if (indexInput == 5) {
+      changePlaceholder.text("Ваши предпочтения?").css(placeholder);
+    } else if (indexInput == 6) {
+      changePlaceholder.text("Как вас встречать?").css(placeholder);
     }
   });
 
@@ -177,6 +182,8 @@ $(document).ready(() => {
     dots: true,
     fade: true,
     dotsClass: "slider-control__dots",
+    centerMode:true,
+    // variableWidth:true,
   });
 
   $(".slider-control__arrow_prev").on("click", () => {
@@ -223,7 +230,7 @@ $(document).ready(() => {
   });
 
   // Plugin for change calendar from/to
-  $('input[name="travelDate-from"]').daterangepicker({
+  $('input[name="travelDate-from"],input[name="purchasesFrom"]').daterangepicker({
     singleDatePicker: true,
     locale: {
       direction: "ltr",
@@ -258,7 +265,7 @@ $(document).ready(() => {
     autoUpdateInput: false,
   });
 
-  $('input[name="travelDate-to"]').daterangepicker({
+  $('input[name="travelDate-to"],input[name="purchasesTo"]').daterangepicker({
     singleDatePicker: true,
     locale: {
       direction: "ltr",
@@ -289,76 +296,23 @@ $(document).ready(() => {
     showCustomRangeLabel: false,
     startDate: "05/05/2020",
     endDate: "05/11/2020",
-    opens: "right",
+    opens: "left",
     autoUpdateInput: false,
   });
 
-  $('input[name="travelDate-from"],input[name="travelDate-to"]').on(
+  $('input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]').on(
     "apply.daterangepicker",
     function (ev, picker) {
       $(this).val(picker.startDate.format("DD/MM/YYYY"));
     }
   );
 
-  $('input[name="travelDate-from"],input[name="travelDate-to"]').on(
+  $('input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]').on(
     "cancel.daterangepicker",
     function (ev, picker) {
       $(this).val("");
     }
   );
-
-  // Plugin for change calendar  with range dates in category for every form
-  $(
-    'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
-  ).daterangepicker({
-    singleDatePicker: true,
-    autoApply: true,
-    locale: {
-      direction: "ltr",
-      format: "DD/MM/YYYY HH:mm",
-      separator: " - ",
-      applyLabel: "Apply",
-      cancelLabel: "Clear",
-      fromLabel: "From",
-      toLabel: "To",
-      customRangeLabel: "Custom",
-      daysOfWeek: ["Вс", "Пон", "Вт", "Ср", "Чт", "Пт", "Сб"],
-      monthNames: [
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентбярь",
-        "Октябрь",
-        "Ноябрь",
-        "Декабрь",
-      ],
-      firstDay: 1,
-    },
-    showCustomRangeLabel: false,
-    startDate: "05/05/2020",
-    endDate: "05/11/2020",
-    opens: "center",
-    autoUpdateInput: false,
-  });
-
-  const purchasesCalendar = $(
-    'input[name="dataCar-1"],input[name="dataCar-2"],input[name="dataCar-3"],input[name="dataBoat-1"],input[name="dataBoat-2"],input[name="dataBoat-3"],input[name="dataApprts-1"],input[name="dataApprts-2"],input[name="dataApprts-3"]'
-  );
-
-  purchasesCalendar.on("apply.daterangepicker", function (ev, picker) {
-    $(this).val(
-      picker.startDate.format("DD/MM/YYYY") + " - " + picker.endDate.format("DD/MM/YYYY")
-    );
-  });
-
-  purchasesCalendar.on("cancel.daterangepicker", function (ev, picker) {
-    $(this).val("");
-  });
 
   // advantages responsive design. Hide rows with columns in low viewport width. For Appear  click on arrow
   $(".advantages__click").on("click", function () {
