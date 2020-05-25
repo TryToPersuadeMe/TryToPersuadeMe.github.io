@@ -2261,6 +2261,7 @@ input::-webkit-calendar-picker-indicator {
 
 .map {
   position: relative;
+  z-index: 2;
 }
 
 .map__subtitle {
@@ -2269,6 +2270,10 @@ input::-webkit-calendar-picker-indicator {
 
 .map__bg {
   width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
 }
 
 .map__city {
