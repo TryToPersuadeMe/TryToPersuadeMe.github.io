@@ -479,8 +479,8 @@ $(document).ready(() => {
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-  $(".map").on("click", () => {
-    $(".map").addClass("map_shadow");
+  $(".map_mobile").on("click", () => {
+    $(".map_mobile").addClass("shadow");
     $(".tour__button").addClass("tour__button_active");
   });
 });

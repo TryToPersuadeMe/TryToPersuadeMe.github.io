@@ -2259,9 +2259,8 @@ input::-webkit-calendar-picker-indicator {
   background-color: #eaf6fd;
 }
 
-.map {
+.map_mobile {
   position: relative;
-  z-index: 2;
 }
 
 .map__subtitle {
@@ -2270,10 +2269,6 @@ input::-webkit-calendar-picker-indicator {
 
 .map__bg {
   width: 100%;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
 }
 
 .map__city {
@@ -3537,6 +3532,12 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
+@media (min-width: 751px) {
+  .map_mobile {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .navigation__item_white-lines {
     position: absolute;
@@ -4380,7 +4381,7 @@ input::-webkit-calendar-picker-indicator {
     -o-transition: 0.7s ease;
     transition: 0.7s ease;
     opacity: 0;
-    top: 0px;
+    top: -60px;
     height: 100%;
     padding: 0 0 30px 0;
   }
@@ -5152,20 +5153,20 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
+@media (max-width: 751px) {
+  .map {
+    display: none;
+  }
+}
+
 @media (max-width: 750px) {
-  .map_shadow::after {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.5);
+  .map_mobile {
     height: 100%;
-    position: absolute;
+    max-height: 60vh;
+  }
+
+  .map_mobile img {
     width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    -webkit-transition: 0.3s ease;
-    -o-transition: 0.3s ease;
-    transition: 0.3s ease;
-    z-index: 1;
   }
 }
 
@@ -5184,7 +5185,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .tour__button_active {
-    z-index: 2;
+    z-index: 10000;
     top: calc(50% - 25px);
     right: calc(50% - 125px);
     opacity: 1;
