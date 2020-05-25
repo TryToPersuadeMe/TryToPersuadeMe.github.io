@@ -87,7 +87,7 @@ $(document).ready(() => {
     } else if (indexInput == 3) {
       $(event.currentTarget)
         .find(".placeholder")
-        .text("Чем вы хотите заниматься?")
+        .text("Чем вы хотите заняться?")
         .css(placeholder);
     }
   });
