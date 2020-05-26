@@ -5415,6 +5415,10 @@ input::-webkit-calendar-picker-indicator {
     margin: 3rem 0 0 0;
   }
 
+  .category__column .row__input-small input {
+    max-width: 13rem;
+  }
+
   .category__validPrice {
     padding: 0;
   }
