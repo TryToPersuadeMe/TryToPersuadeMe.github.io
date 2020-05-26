@@ -1567,6 +1567,7 @@ input::-webkit-calendar-picker-indicator {
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
+  padding: 0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -1577,8 +1578,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  height: 38px;
-  padding: 0 40px 0 25px;
+  padding: 19px 40px 19px 25px;
 }
 
 .navResponsive__title_active:hover {
