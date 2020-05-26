@@ -50,16 +50,17 @@ $(document).ready(() => {
     fade: true,
     asNavFor: ".first-screen__slider",
     draggable: false,
+    adaptiveHeight: true,
   });
 
   $(".first-screen__slider").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    asNavFor: ".first-screen__background",
     asNavFor: ".first-screen__sliderContent",
     dots: true,
     speed: 500,
+    adaptiveHeight: true,
   });
 
   $(".first-screen__slider").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
@@ -298,19 +299,17 @@ $(document).ready(() => {
     autoUpdateInput: false,
   });
 
-  $('input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]').on(
-    "apply.daterangepicker",
-    function (ev, picker) {
-      $(this).val(picker.startDate.format("DD/MM/YYYY"));
-    }
-  );
+  $(
+    'input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]'
+  ).on("apply.daterangepicker", function (ev, picker) {
+    $(this).val(picker.startDate.format("DD/MM/YYYY"));
+  });
 
-  $('input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]').on(
-    "cancel.daterangepicker",
-    function (ev, picker) {
-      $(this).val("");
-    }
-  );
+  $(
+    'input[name="travelDate-from"],input[name="travelDate-to"],input[name="purchasesTo"],input[name="purchasesFrom"]'
+  ).on("cancel.daterangepicker", function (ev, picker) {
+    $(this).val("");
+  });
 
   // advantages responsive design. Hide rows with columns in low viewport width. For Appear  click on arrow
   $(".advantages__click").on("click", function () {
