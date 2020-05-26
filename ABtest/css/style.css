@@ -4807,7 +4807,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .row_small-input input {
-    max-width: 10.5rem;
+    max-width: 10rem;
   }
 
   .map__subtitle {
