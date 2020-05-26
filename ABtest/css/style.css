@@ -1563,7 +1563,7 @@ input::-webkit-calendar-picker-indicator {
       -ms-flex-align: center;
           align-items: center;
   font-size: 0rem;
-  height: 0;
+  min-height: 0;
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
@@ -1571,6 +1571,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  height: 0;
 }
 
 .navResponsive__title_active {
@@ -1578,7 +1579,8 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 19px 40px 19px 25px;
+  min-height: 4rem;
+  padding: 0px 40px 0px 25px;
 }
 
 .navResponsive__title_active:hover {
