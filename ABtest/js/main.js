@@ -111,31 +111,40 @@ $(document).ready(() => {
     swipe: false,
     touchMove: false,
     infinite: false,
-  });
-
-  $(".row__images-keys").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: ".category",
-    dots: false,
-    centerMode: false,
-    focusOnSelect: true,
-    draggable: false,
-    waitForAnimate: false,
-    swipe: false,
-    touchMove: false,
-    infinite: false,
     responsive: [
       {
         breakpoint: 450,
         settings: {
-          slidesToShow: 2,
-          dots: false,
-          arrows: false,
           infinite: true,
-          swipe: true,
-          draggable: true,
-          touchMove: false,
+        },
+      },
+    ],
+  });
+
+  $(".row__images-keys").slick({
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    asNavFor: ".category",
+    dots: false,
+    arrows: false,
+    focusOnSelect: true,
+    waitForAnimate: false,
+    infinite: false,
+    variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          variableWidth: false,
+        },
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          variableWidth: false,
         },
       },
     ],
@@ -161,8 +170,8 @@ $(document).ready(() => {
   });
 
   $(".purchases__navigation").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     asNavFor: ".purchases__slider",
     dots: false,
     centerMode: false,

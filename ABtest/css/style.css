@@ -160,17 +160,19 @@ input::-webkit-calendar-picker-indicator {
 
 /* Slick first  */
 
-.row__images-keys .slick-track {
+.row__images-keys .slick-list {
+  max-width: 770px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.row__images-keys .slick-track,
+.category .slick-track,
+.purchases__navigation .slick-track {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.category .slick-track,
-.purchases__navigation .slick-track {
-  -webkit-transform: none !important;
-      -ms-transform: none !important;
-          transform: none !important;
+  margin: 0 auto;
 }
 
 .purchases__navigation .slick-current p {
@@ -1489,7 +1491,7 @@ input::-webkit-calendar-picker-indicator {
   margin: 0 0 0 18px;
 }
 
-.navResponsive__icons img {
+.navResponsive__icons a {
   width: 20.5px;
   height: 20.5px;
   margin: 0 4px 0 0;
@@ -3443,12 +3445,6 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (min-width: 451px) {
-  .row__images-keys .slick-track {
-    -webkit-transform: none !important;
-        -ms-transform: none !important;
-            transform: none !important;
-  }
-
   .advantages::after {
     content: "";
     background-color: rgba(0, 0, 0, 0.3);
@@ -3470,7 +3466,7 @@ input::-webkit-calendar-picker-indicator {
     font-size: 1.8rem;
   }
 
-  .navResponsive__icons img {
+  .navResponsive__icons a {
     height: 30px;
     width: 30px;
   }
@@ -3783,6 +3779,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 1000px) {
+  .row__images-keys .slick-list {
+    max-width: 615px;
+  }
+
   .purchases__navigation .slick-current p {
     border-bottom: none;
   }
@@ -4546,6 +4546,7 @@ input::-webkit-calendar-picker-indicator {
   .navResponsive {
     display: block;
     font-size: 1.6rem;
+    overflow: auto;
   }
 
   .navResponsive__spoiler-wrapper {
@@ -5591,14 +5592,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 450px) {
-  .row__images-keys .slick-track {
-    margin: 0 1.5rem;
-  }
-
   .row__images-keys .slick-list {
     max-width: 310px;
     width: 100%;
-    margin: 0 auto;
     overflow: hidden;
   }
 
