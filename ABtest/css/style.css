@@ -5415,7 +5415,7 @@ input::-webkit-calendar-picker-indicator {
     margin: 3rem 0 0 0;
   }
 
-  .category__column .row__input-small input {
+  .category__column .row_small-input input {
     max-width: 13rem;
   }
 
