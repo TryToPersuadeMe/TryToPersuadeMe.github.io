@@ -4388,7 +4388,6 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .navigation__panel {
-    overflow: auto;
     position: absolute;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -4406,7 +4405,7 @@ input::-webkit-calendar-picker-indicator {
     transition: 0.7s ease;
     opacity: 0;
     top: -60px;
-    height: 100%;
+    height: 100vh;
     padding: 0 0 30px 0;
   }
 
@@ -4416,6 +4415,7 @@ input::-webkit-calendar-picker-indicator {
     -o-transition: 0.7s ease;
     transition: 0.7s ease;
     opacity: 1;
+    overflow: auto;
   }
 
   .navigation__item_white-lines {
@@ -4546,7 +4546,6 @@ input::-webkit-calendar-picker-indicator {
   .navResponsive {
     display: block;
     font-size: 1.6rem;
-    overflow: auto;
   }
 
   .navResponsive__spoiler-wrapper {
