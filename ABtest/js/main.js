@@ -180,10 +180,8 @@ $(document).ready(() => {
     slidesToScroll: 1,
     arrows: true,
     dots: true,
-    fade: true,
+    // fade: true,
     dotsClass: "slider-control__dots",
-    centerMode:true,
-    // variableWidth:true,
   });
 
   $(".slider-control__arrow_prev").on("click", () => {
