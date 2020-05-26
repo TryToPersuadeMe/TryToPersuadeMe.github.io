@@ -1556,12 +1556,17 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .navResponsive__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 0rem;
   height: 0;
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
-  padding: 0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -1572,8 +1577,8 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 13px 40px 13px 25px;
-  height: auto;
+  height: 38px;
+  padding: 0 40px 0 25px;
 }
 
 .navResponsive__title_active:hover {
