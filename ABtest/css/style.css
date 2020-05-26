@@ -2253,7 +2253,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .row_small-input input {
-  max-width: 50%;
+  max-width: 16.5rem;
 }
 
 .row_small-input input:first-child {
@@ -2264,6 +2264,10 @@ input::-webkit-calendar-picker-indicator {
 
 .tour {
   background-color: #eaf6fd;
+}
+
+.map_mobile {
+  position: relative;
 }
 
 .map__subtitle {
@@ -3543,6 +3547,12 @@ input::-webkit-calendar-picker-indicator {
   }
 }
 
+@media (min-width: 751px) {
+  .map_mobile {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .navigation__item_white-lines {
     position: absolute;
@@ -3969,6 +3979,10 @@ input::-webkit-calendar-picker-indicator {
     max-width: 29rem;
     letter-spacing: 0px;
     height: 6rem;
+  }
+
+  .row_small-input input {
+    max-width: 13.3rem;
   }
 
   .purchases__container {
@@ -4792,6 +4806,10 @@ input::-webkit-calendar-picker-indicator {
     font-size: 1.8rem;
   }
 
+  .row_small-input input {
+    max-width: 10.5rem;
+  }
+
   .map__subtitle {
     margin: 25px 0 28px 0;
   }
@@ -5183,6 +5201,23 @@ input::-webkit-calendar-picker-indicator {
 
   .navigation__icon_search input :-moz-placeholder {
     font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 751px) {
+  .map {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .map_mobile {
+    height: 100%;
+    max-height: 60vh;
+  }
+
+  .map_mobile img {
+    width: 100%;
   }
 }
 
