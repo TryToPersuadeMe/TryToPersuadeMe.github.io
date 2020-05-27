@@ -1575,7 +1575,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  height: 38px;
+  height: 100%;
   padding: 0 40px 0 25px;
 }
 
@@ -1623,7 +1623,7 @@ input::-webkit-calendar-picker-indicator {
   height: auto;
   position: relative;
   padding: 0 10px 0px 45px;
-  height: 42px;
+  height: 100%;
 }
 
 .navResponsive__link_active::before {
