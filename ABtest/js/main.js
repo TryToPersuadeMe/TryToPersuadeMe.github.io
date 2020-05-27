@@ -60,7 +60,7 @@ $(document).ready(() => {
     asNavFor: ".first-screen__sliderContent",
     dots: true,
     speed: 500,
-    adaptiveHeight: true,
+    // adaptiveHeight: true,
   });
 
   $(".first-screen__slider").on("beforeChange", function (event, slick, currentSlide, nextSlide) {
