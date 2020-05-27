@@ -4558,9 +4558,7 @@ input::-webkit-calendar-picker-indicator {
   }
 
   .navResponsive__spoiler-wrapper {
-    min-height: -webkit-min-content;
-    min-height: -moz-min-content;
-    min-height: min-content;
+    display: block;
   }
 
   .navResponsive__wrapper-logoSearch {
