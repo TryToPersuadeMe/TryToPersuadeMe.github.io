@@ -1550,7 +1550,6 @@ input::-webkit-calendar-picker-indicator {
           flex-direction: column;
   overflow: hidden;
   background-color: white;
-  min-height: 100%;
 }
 
 .navResponsive__title {
@@ -1577,7 +1576,8 @@ input::-webkit-calendar-picker-indicator {
   transition: 0.3s ease;
   font-size: 1.2rem;
   height: 100%;
-  padding: 13px 40px 13px 25px;
+  padding: 0px 40px 0px 25px;
+  height: 40px;
 }
 
 .navResponsive__title_active:hover {
