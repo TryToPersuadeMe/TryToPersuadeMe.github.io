@@ -1548,8 +1548,8 @@ input::-webkit-calendar-picker-indicator {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: hidden;
   background-color: white;
+  padding: 50px 0;
 }
 
 .navResponsive__title {
@@ -1559,6 +1559,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 0rem;
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
@@ -1566,8 +1567,20 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
-  padding: 13px 40px 13px 25px;
+  height: 0;
+}
+
+.navResponsive__title_active {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
   font-size: 1.2rem;
+  padding: 0 40px 0 25px;
+  height: 44px;
+}
+
+.navResponsive__title_active:hover {
+  font-weight: 700;
 }
 
 .navResponsive__link-wrapper {
@@ -3470,6 +3483,10 @@ input::-webkit-calendar-picker-indicator {
   .navResponsive__icons_big img {
     height: 45px;
     width: 45px;
+  }
+
+  .navResponsive__title_active {
+    font-size: 1.8rem;
   }
 
   .navResponsive__link_active {
