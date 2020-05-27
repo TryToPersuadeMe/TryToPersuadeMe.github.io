@@ -1620,10 +1620,9 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
+  padding: 15px 10px 15px 45px;
   height: auto;
   position: relative;
-  padding: 0 10px 0px 45px;
-  height: 100%;
 }
 
 .navResponsive__link_active::before {
@@ -4566,6 +4565,7 @@ input::-webkit-calendar-picker-indicator {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    height: 100%;
   }
 
   .navResponsive__wrapper-logoSearch {
