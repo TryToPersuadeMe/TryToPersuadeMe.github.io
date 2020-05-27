@@ -1560,7 +1560,6 @@ input::-webkit-calendar-picker-indicator {
       -ms-flex-align: center;
           align-items: center;
   font-size: 0rem;
-  min-height: 100%;
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
