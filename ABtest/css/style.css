@@ -4565,7 +4565,7 @@ input::-webkit-calendar-picker-indicator {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    min-height: 100%;
+    min-height: auto;
   }
 
   .navResponsive__wrapper-logoSearch {
