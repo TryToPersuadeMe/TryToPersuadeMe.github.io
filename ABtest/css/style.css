@@ -1567,19 +1567,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   padding: 13px 40px 13px 25px;
-}
-
-.navResponsive__title_active {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 0 40px 0 25px;
-  height: 44px;
-}
-
-.navResponsive__title_active:hover {
-  font-weight: 700;
 }
 
 .navResponsive__link-wrapper {
@@ -3482,10 +3470,6 @@ input::-webkit-calendar-picker-indicator {
   .navResponsive__icons_big img {
     height: 45px;
     width: 45px;
-  }
-
-  .navResponsive__title_active {
-    font-size: 1.8rem;
   }
 
   .navResponsive__link_active {
