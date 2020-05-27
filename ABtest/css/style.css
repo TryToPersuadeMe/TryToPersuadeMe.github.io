@@ -1560,7 +1560,6 @@ input::-webkit-calendar-picker-indicator {
       -ms-flex-align: center;
           align-items: center;
   font-size: 0rem;
-  min-height: 100%;
   color: #1d3456;
   font-weight: 600;
   cursor: pointer;
@@ -1575,7 +1574,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 0 40px 0 25px;
+  padding: 13px 40px 13px 25px;
 }
 
 .navResponsive__title_active:hover {
@@ -1612,7 +1611,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 0 10px 0 45px;
+  padding: 15px 10px 15px 45px;
   height: auto;
   position: relative;
 }
