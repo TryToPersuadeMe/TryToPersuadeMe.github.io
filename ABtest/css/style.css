@@ -1548,6 +1548,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow: hidden;
   background-color: white;
 }
 
@@ -1566,6 +1567,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  height: 0;
 }
 
 .navResponsive__title_active {
@@ -1573,7 +1575,7 @@ input::-webkit-calendar-picker-indicator {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 1.2rem;
-  padding: 13px 40px 13px 25px;
+  height: 38px;
 }
 
 .navResponsive__title_active:hover {
@@ -1588,6 +1590,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow: hidden;
 }
 
 .navResponsive__link {
