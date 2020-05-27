@@ -1751,6 +1751,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-bottom: 43.1%;
   width: 100%;
   position: relative;
   /* max-width < 768px */
@@ -4584,6 +4585,9 @@ input::-webkit-calendar-picker-indicator {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding-bottom: 0%;
+    border: 1px solid #000;
+    min-height: 100%;
   }
 
   .column__image p {
