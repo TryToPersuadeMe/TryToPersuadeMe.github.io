@@ -150,11 +150,27 @@ $(document).ready(() => {
     ],
   });
 
+  // current active slide in category in small row
   $(".category__slide_small").on("click", () => {
     $(".category__slide_small").not(this).removeClass("category__slide_small-active");
 
     $(event.currentTarget).addClass("category__slide_small-active");
   });
+
+  // add active mark when swaipe small slides in ourchases block
+  $(".row__images-keys").on("afterChange", function (event, slick, currentSlide, nextSlide) {
+    $(".category__slide_small").removeClass("category__slide_small-active");
+    $(".row__images-keys").find(".slick-current").addClass("category__slide_small-active");
+  });
+
+  $(".purchases__navigation")
+    .find("li")
+    .on("click", () => {
+      if (!$(event.currentTarget).hasClass("slick-current")) {
+        $(".row__images-keys").slick("goTo", 0, true);
+        $(".category__slide_small").eq(0).addClass("category__slide_small-active");
+      }
+    });
 
   $(".purchases__slider").slick({
     slidesToShow: 1,
@@ -439,8 +455,8 @@ $(document).ready(() => {
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-  $(".map_mobile").on("click", () => {
-    $(".map_mobile").addClass("shadow");
+  $(".map-mobile").on("click", () => {
+    $(".map-mobile").addClass("shadow");
     $(".tour__button").addClass("tour__button_active");
   });
 });
