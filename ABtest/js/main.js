@@ -1,46 +1,9 @@
 $(document).ready(() => {
-  // its check browser for suppport WEBp img
-  function testWebP(callback) {
-    var webP = new Image();
-    webP.onload = webP.onerror = function () {
-      callback(webP.height == 2);
-    };
-    webP.src =
-      "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-  }
 
-  testWebP(function (support) {
-    if (support == true) {
-      document.querySelector("body").classList.add("webp");
-    }
-  });
 
-  // Animate button in header for switch language
-  $(".language").on("click", () => {
-    $(".language__button").toggleClass("language__button_changed");
-  });
 
-  // First screen scripts for switch background, big window with white background color and etc
 
-  $(".navigation__item_white-lines").on("mouseenter", function () {
-    $(event.currentTarget).addClass("navigation__item_white-lines-active");
 
-    let index = $(".navigation__item_white-lines").index(this);
-
-    if (index != 0 && index != 5) {
-      let windowIndex = index - 1;
-      $(".window").removeClass("window_active");
-      $(".window").eq(windowIndex).addClass("window_active");
-    } else {
-      $(".window").removeClass("window_active");
-    }
-
-    $(".window").on("mouseleave", () => {
-      $(".window").removeClass("window_active");
-    });
-
-    $(".navigation__item_white-lines").not(this).removeClass("navigation__item_white-lines-active");
-  });
 
   // first screen slider
   $(".first-screen__sliderContent").slick({
@@ -343,6 +306,70 @@ $(document).ready(() => {
     $(".advantages__logo").addClass("advantages__logo_hide");
   });
 
+
+
+
+
+
+
+  // mouse up
+  $(document).mouseup(() => {
+    //  close arrows in input/select
+    if ($(event.target).closest(".jq-selectbox__trigger-arrow").length == 0) {
+      $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
+    }
+    
+  $(".map-mobile").on("click", () => {
+    $(".map-mobile").addClass("shadow");
+    $(".tour__button").addClass("tour__button_active");
+  });
+
+
+// global js for navigation and webP
+  
+  // its check browser for suppport WEBp img
+  function testWebP(callback) {
+    var webP = new Image();
+    webP.onload = webP.onerror = function () {
+      callback(webP.height == 2);
+    };
+    webP.src =
+      "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+  }
+
+  testWebP(function (support) {
+    if (support == true) {
+      document.querySelector("body").classList.add("webp");
+    }
+  });
+
+  // Animate button in header for switch language
+  $(".language").on("click", () => {
+    $(".language__button").toggleClass("language__button_changed");
+  });
+
+  // First screen scripts for switch background, big window with white background color and etc
+
+  $(".navigation__item_white-lines").on("mouseenter", function () {
+    $(event.currentTarget).addClass("navigation__item_white-lines-active");
+
+    let index = $(".navigation__item_white-lines").index(this);
+
+    if (index != 0 && index != 5) {
+      let windowIndex = index - 1;
+      $(".window").removeClass("window_active");
+      $(".window").eq(windowIndex).addClass("window_active");
+    } else {
+      $(".window").removeClass("window_active");
+    }
+
+    $(".window").on("mouseleave", () => {
+      $(".window").removeClass("window_active");
+    });
+
+    $(".navigation__item_white-lines").not(this).removeClass("navigation__item_white-lines-active");
+  });
+
   // burger menu and navigarion
   $(".burger-menu").on("click", function () {
     $(".navigation__panel").toggleClass("navigation__panel_active");
@@ -408,11 +435,6 @@ $(document).ready(() => {
       $(".navigation__item").removeClass("arrow_active");
     }
 
-    //  close arrows in input/select
-    if ($(event.target).closest(".jq-selectbox__trigger-arrow").length == 0) {
-      $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
-    }
-
     // disable all spoilers
     if ($(event.target).closest(".navResponsive__spoiler").length == 0) {
       $(".navResponsive__link").removeClass("navResponsive__link_active");
@@ -455,8 +477,6 @@ $(document).ready(() => {
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-  $(".map-mobile").on("click", () => {
-    $(".map-mobile").addClass("shadow");
-    $(".tour__button").addClass("tour__button_active");
-  });
+;
+
 });
