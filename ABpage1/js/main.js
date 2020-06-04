@@ -251,4 +251,22 @@ $(".slider__slide_small").on("click", () => {
     $(event.currentTarget).children().toggleClass("arrowSpoiler_active");
     $(".table__wrapper").slideToggle(300);
   });
+
+  // $(".feedback").on("click",()=>{
+  //   $(".feedback__content").toggleClass("feedback__content_active")
+  // })
+
+  var card = $(".feedback");
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > card.offset().top - 200) {
+      card.find(".feedback__content").addClass("feedback__content_active");
+    }
+  });
+
+  $(".feedback__star").hover(function () {});
+
+  $(".zapiska").find(".zapiska__key").on("click", () => {
+   $(event.currentTarget).next().slideToggle(300);
+  });
 });
