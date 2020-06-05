@@ -252,18 +252,6 @@ $(".slider__slide_small").on("click", () => {
     $(".table__wrapper").slideToggle(300);
   });
 
-  // $(".feedback").on("click",()=>{
-  //   $(".feedback__content").toggleClass("feedback__content_active")
-  // })
-
-  // var card = $(".article__row_feedback");
-
-  // $(window).scroll(function () {
-  //   if ($(this).scrollTop() > card.offset().top - 500) {
-  //     card.find(".feedback__content").addClass("feedback__content_active");
-  //   }
-  // });
-
   var windowHeight = $(window).height();
 
   $(document).on("scroll", function () {
@@ -273,4 +261,20 @@ $(".slider__slide_small").on("click", () => {
       $(".feedback__content").addClass("feedback__content_active");
     }
   });
+
+  $(".feedback__star").on("click", () => {
+    const currentStar = $(event.currentTarget).index();
+    $(event.currentTarget).toggleClass("feedback__star_active");
+    $(".feedback__star").each(function () {
+      
+    })
+  });
+
+  // const articleAlign = () => {
+  //   if ($(event.currentTarget).find(".article__text").height <= 2) {
+  //   }
+  // };
+
+  // articleAlign();
 });
+// $(event.currentTarget).find(".article__column").css({ "align-self": "flex-start" });
