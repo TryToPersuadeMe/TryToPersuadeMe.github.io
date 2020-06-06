@@ -68,6 +68,22 @@ $(".slider__row_big").slick({
   fade: true,
   asNavFor: ".slider__row_small",
   waitForAnimate: false,
+  draggable: false,
+  swipe: false,
+  touchMove: false,
+  responsive: [
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        draggable: true,
+        swipe: true,
+        touchMove: true,
+      },
+    },
+  ],
 });
 
 $(".slider__row_small").slick({
@@ -78,6 +94,40 @@ $(".slider__row_small").slick({
   dots: false,
   focusOnSelect: true,
   infinite: false,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+  ],
 });
 
 // current active slide in category in small row
@@ -86,9 +136,3 @@ $(".slider__slide_small").on("click", () => {
 
   $(event.currentTarget).addClass("slider__slide_small-active");
 });
-
-// add active mark when swaipe small slides in ourchases block
-// $(".slider__row_small").on("afterChange", function (event, slick, currentSlide, nextSlide) {
-//   $(".slider__slide_small").removeClass("slider__slide_small-active");
-//   $(".slider__row_small").find(".slider__slide_small").addClass("slider__slide_small-active");
-// });

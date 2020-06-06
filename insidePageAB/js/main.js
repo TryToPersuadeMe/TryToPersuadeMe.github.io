@@ -49,7 +49,7 @@ $(document).ready(() => {
     // $(".burger-menu").toggleClass("burger-menu_active");
     $(".burger-menu-active").animate({ opacity: 1, top: "12px" }, 300);
     $("body").toggleClass("lock");
-    $("body").toggleClass("shadow");
+    $(".overflow").toggleClass("shadow");
   });
 
   $(".navResponsive__title").click(function () {
@@ -126,7 +126,7 @@ $(document).ready(() => {
 
       $("body").removeClass("lock");
       $(".navResponsive__arrow").removeClass("navResponsive__arrow_active");
-      $("body").removeClass("shadow");
+      $(".overflow").removeClass("shadow");
     }
   });
 
@@ -150,7 +150,16 @@ $(document).ready(() => {
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-;
+
+
+// Slow scroll
+$("body").on("click", '[href*="#"]', function (e) {
+  var fixed_offset = 20;
+  $("html,body")
+    .stop()
+    .animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 500);
+  e.preventDefault();
+});;
   // $(".slider").slick({
 //   arrow: false,
 //   dots: false,
@@ -221,6 +230,22 @@ $(".slider__row_big").slick({
   fade: true,
   asNavFor: ".slider__row_small",
   waitForAnimate: false,
+  draggable: false,
+  swipe: false,
+  touchMove: false,
+  responsive: [
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        draggable: true,
+        swipe: true,
+        touchMove: true,
+      },
+    },
+  ],
 });
 
 $(".slider__row_small").slick({
@@ -231,6 +256,40 @@ $(".slider__row_small").slick({
   dots: false,
   focusOnSelect: true,
   infinite: false,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
+      },
+    },
+  ],
 });
 
 // current active slide in category in small row
@@ -239,12 +298,6 @@ $(".slider__slide_small").on("click", () => {
 
   $(event.currentTarget).addClass("slider__slide_small-active");
 });
-
-// add active mark when swaipe small slides in ourchases block
-// $(".slider__row_small").on("afterChange", function (event, slick, currentSlide, nextSlide) {
-//   $(".slider__slide_small").removeClass("slider__slide_small-active");
-//   $(".slider__row_small").find(".slider__slide_small").addClass("slider__slide_small-active");
-// });
 ;
 
   $(".table__spoiler").on("click", () => {
@@ -262,19 +315,118 @@ $(".slider__slide_small").on("click", () => {
     }
   });
 
-  $(".feedback__star").on("click", () => {
-    const currentStar = $(event.currentTarget).index();
-    $(event.currentTarget).toggleClass("feedback__star_active");
-    $(".feedback__star").each(function () {
-      
-    })
+  /* popUp */
+  const popUp = $(".popUp");
+  const popUp__active = "popUp_active";
+
+  $(".popUp__button-active").on("click", () => {
+    popUp.addClass(popUp__active);
+    $("main").addClass("shadow");
+    $("body").addClass("lock");
   });
 
-  // const articleAlign = () => {
-  //   if ($(event.currentTarget).find(".article__text").height <= 2) {
-  //   }
-  // };
+  $(".popUp__closeIcon").on("click", () => {
+    popUp.removeClass(popUp__active);
+    $("main").removeClass("shadow");
+  });
 
-  // articleAlign();
+  $(document).mouseup(() => {
+    // close search input
+
+    if ($(event.target).closest(popUp).length == 0) {
+      popUp.removeClass(popUp__active);
+      $("main").removeClass("shadow");
+    }
+  });
+  /* popUp end */
+
+  /* map */
+  google.maps.event.addDomListener(window, "load", init);
+
+function init() {
+    // Basic options for a simple Google Map
+    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+    var mapOptions = {
+        zoom: 11,
+
+        center: new google.maps.LatLng(40.67, -73.94),
+
+        styles: [
+            {
+                featureType: "water",
+                elementType: "geometry",
+                stylers: [{ color: "#e9e9e9" }, { lightness: 17 }],
+            },
+            {
+                featureType: "landscape",
+                elementType: "geometry",
+                stylers: [{ color: "#f5f5f5" }, { lightness: 20 }],
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.fill",
+                stylers: [{ color: "#ffffff" }, { lightness: 17 }],
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#ffffff" }, { lightness: 29 }, { weight: 0.2 }],
+            },
+            {
+                featureType: "road.arterial",
+                elementType: "geometry",
+                stylers: [{ color: "#ffffff" }, { lightness: 18 }],
+            },
+            {
+                featureType: "road.local",
+                elementType: "geometry",
+                stylers: [{ color: "#ffffff" }, { lightness: 16 }],
+            },
+            {
+                featureType: "poi",
+                elementType: "geometry",
+                stylers: [{ color: "#f5f5f5" }, { lightness: 21 }],
+            },
+            {
+                featureType: "poi.park",
+                elementType: "geometry",
+                stylers: [{ color: "#dedede" }, { lightness: 21 }],
+            },
+            {
+                elementType: "labels.text.stroke",
+                stylers: [{ visibility: "on" }, { color: "#ffffff" }, { lightness: 16 }],
+            },
+            {
+                elementType: "labels.text.fill",
+                stylers: [{ saturation: 36 }, { color: "#333333" }, { lightness: 40 }],
+            },
+            { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+            {
+                featureType: "transit",
+                elementType: "geometry",
+                stylers: [{ color: "#f2f2f2" }, { lightness: 19 }],
+            },
+            {
+                featureType: "administrative",
+                elementType: "geometry.fill",
+                stylers: [{ color: "#fefefe" }, { lightness: 20 }],
+            },
+            {
+                featureType: "administrative",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#fefefe" }, { lightness: 17 }, { weight: 1.2 }],
+            },
+        ],
+    };
+
+    var mapElement = document.getElementById("map");
+
+    var map = new google.maps.Map(mapElement, mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(40.67, -73.94),
+        map: map,
+        title: "Snazzy!",
+    });
+};
 });
-// $(event.currentTarget).find(".article__column").css({ "align-self": "flex-start" });
