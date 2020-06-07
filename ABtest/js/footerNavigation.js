@@ -48,7 +48,7 @@
     // $(".burger-menu").toggleClass("burger-menu_active");
     $(".burger-menu-active").animate({ opacity: 1, top: "12px" }, 300);
     $("body").toggleClass("lock");
-    $(".overflow").toggleClass("shadow");
+    $("body").toggleClass("shadow");
   });
 
   $(".navResponsive__title").click(function () {
@@ -125,7 +125,7 @@
 
       $("body").removeClass("lock");
       $(".navResponsive__arrow").removeClass("navResponsive__arrow_active");
-      $(".overflow").removeClass("shadow");
+      $("body").removeClass("shadow");
     }
   });
 
@@ -149,13 +149,3 @@
     $(event.currentTarget).removeClass("navigation__item_else-active");
   });
 
-
-
-// Slow scroll
-$("body").on("click", '[href*="#"]', function (e) {
-  var fixed_offset = 20;
-  $("html,body")
-    .stop()
-    .animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 500);
-  e.preventDefault();
-});
