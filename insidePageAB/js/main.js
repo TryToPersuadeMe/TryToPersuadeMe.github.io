@@ -340,6 +340,147 @@ $(".slider__slide_small").on("click", () => {
   });
   /* popUp end */
 
+  /* article responsive  */
+  const article_resp = $(".article__column_responsiveTitle-js");
+  const article__title = $(".article__title");
+
+  const resizeArticle = () => {
+    if ($(window).width() < 768) {
+      for (let el = 0; el < article__title.length; el++) {
+        article__title.eq(el).prependTo($(".article__column_responsiveTitle-js").eq(el));
+      }
+    } else {
+      for (let el = 0; el < article__title.length; el++) {
+        article__title.eq(el).prependTo($(".article__fsCont_title").eq(el));
+      }
+    }
+  };
+
+  $(window).on("resize", function () {
+    resizeArticle();
+  });
+  /* article responsive end */
+
+  /* show next cards row start */
+  $(function () {
+    $(".cards__row").slice(0, 1).show();
+    $(".cards__button").on("click", function (element) {
+      element.preventDefault();
+      $(".cards__row:hidden").slice(0, 1).slideDown().css({ display: "flex" });
+    });
+  });
+
+  /* show next cards row end */
+
+  /* show next cards row start */
+  $(function () {
+    $(".user").slice(0, 3).show();
+    $(".comments__button-js").on("click", function (element) {
+      element.preventDefault();
+      $(".user:hidden").slice(0, 3).slideDown().css({ display: "flex" });
+    });
+  });
+
+  /* show next cards row end */
+
+
+
+
+
+
+
+  /* article columns slider */
+  $(".category__row").slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  infinite: true,
+  draggable: true,
+  swipe: true,
+  arrows: true,
+  // appendArrows: $(".slick-active"),
+});
+
+// On before slide change
+// $('.slick-arrow').on('hover', function (event, slick, currentSlide, nextSlide) {
+//     var btn = $(this);
+//     btn[0].click();
+
+// });
+
+$(".slick-arrow").hover(function (event, slick, currentSlide, nextSlide) {
+  var btn = $(this);
+  btn[0].click();
+});
+
+$(".slick-arrow").mouseenter(function (e) {});
+
+// $(".category__row").on("click", () => {
+//     console.log($(event.target));
+
+// });
+
+//   arrows: false,
+//   dots: false,
+//      ***---responsive Height ---***
+// adaptiveHeight: false,
+//      ***--- Slides to show in slider ---***
+// slidesToShow: 1,
+//      ***--- show slides per one click on button ---***
+// slidesToScroll: 1,
+//      ***--- scroll speed ---***
+// speed: 300,
+//      ***--- type of animation ---***
+//  easing: "LINEAR",
+//      ***--- infinite scroll ---***
+// infinite: true,
+//      ***--- first slide to show ---***
+// initialSlide: 0,
+//      ***--- slides autoplay ---***
+// autoplay: false,
+// autoplaySpeed: 3000,
+// pauseOnFocus: true,
+// pauseOnHover: true,
+// pauseOnDotsHover: true,
+//      ***--- turn Off swipe in tracklist on PC ---***
+// draggable: true,
+//      ***--- turn Off swipe in tracklist on mobiles ---***
+// swipe: true,
+//      ***---  ---***
+// touchThreshold: 5,
+//      ***--- block swipe contol with swipe-focus image ---***
+// touchMove: true,
+//      ***--- block/unblock click button for swipe without expect of animate finish ---***
+// waitForAnimate: true,
+//      ***--- center mode for center slide ---***
+// centerMode: false,
+//      ***--- auto width for slides ---***
+// variableWidth: false,
+//      ***--- rows in slider track ---***
+// rows: 1,
+//      ***--- slides per row ---***
+// slidesPerRow: 1,
+//      ***---  vertical slider ---***
+// vertical: false,
+//      ***--- allows use  vertical swipe ---***
+// verticalSwiping: false,
+//      ***--- fade img instead slider ---***
+// fade: false,
+//      ***--- connect with another slider ---***
+// asNavFor: ".class"
+//      ***---  responsive breakpoints---***
+// responsive: [
+//     {
+//         breakpoint: 767,
+//         settings: {
+//             // settings here
+//         }
+//     }
+// ]
+//      ***--- arrows/dots in another div ---***
+// appendArrows:$(".class")
+// appendDots: $(".class")
+;
+
   /* map */
   google.maps.event.addDomListener(window, "load", init);
 
