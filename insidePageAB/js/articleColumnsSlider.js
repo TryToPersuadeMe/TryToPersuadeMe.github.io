@@ -5,7 +5,24 @@ $(".category__row").slick({
   draggable: true,
   swipe: true,
   arrows: true,
-  // appendArrows: $(".slick-active"),
+  speed: 1500,
+  easing: "LINEAR",
+  variableWidth: true,
+  centerMode: true,
+  responsive: [
+    {
+      breakpoint: 1000,
+      settings: {
+        arrows: false,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
 });
 
 // On before slide change
@@ -15,12 +32,12 @@ $(".category__row").slick({
 
 // });
 
-$(".slick-arrow").hover(function (event, slick, currentSlide, nextSlide) {
-  var btn = $(this);
-  btn[0].click();
-});
+// $(".slick-arrow").hover(function (event, slick, currentSlide, nextSlide) {
+//   var btn = $(this);
+//   btn[0].click();
+// });
 
-$(".slick-arrow").mouseenter(function (e) {});
+// $(".slick-arrow").mouseenter(function (e) {});
 
 // $(".category__row").on("click", () => {
 //     console.log($(event.target));
@@ -87,3 +104,50 @@ $(".slick-arrow").mouseenter(function (e) {});
 //      ***--- arrows/dots in another div ---***
 // appendArrows:$(".class")
 // appendDots: $(".class")
+// hover
+
+// hover
+
+// hover
+
+function playsl(play_st, play_typ) {
+  if (play_st == true) {
+    if (play_typ == "slickNext") $(".category__row").slick("slickNext");
+    if (play_typ == "slickPrev") $(".category__row").slick("slickPrev");
+  }
+}
+
+var play_st = false;
+var play_typ = false;
+var timerId = false;
+
+$(".category__row .slick-next").mouseenter(function () {
+  play_typ = "slickNext";
+
+  play_st = true;
+
+  timerId = setInterval(function () {
+    playsl(play_st, play_typ);
+  }, 220);
+
+  return false;
+});
+
+$(".slick-prev").mouseenter(function () {
+  play_typ = "slickPrev";
+  play_st = true;
+
+  clearInterval(timerId);
+  timerId = setInterval(function () {
+    playsl(play_st, play_typ);
+  }, 220);
+  return false;
+});
+
+$(".category__row")
+  .find(".slick-next, .slick-prev")
+  .mouseout(function () {
+    lay_st = false;
+    clearInterval(timerId);
+    return false;
+  });
