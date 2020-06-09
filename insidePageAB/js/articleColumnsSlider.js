@@ -25,24 +25,6 @@ $(".category__row").slick({
   ],
 });
 
-// On before slide change
-// $('.slick-arrow').on('hover', function (event, slick, currentSlide, nextSlide) {
-//     var btn = $(this);
-//     btn[0].click();
-
-// });
-
-// $(".slick-arrow").hover(function (event, slick, currentSlide, nextSlide) {
-//   var btn = $(this);
-//   btn[0].click();
-// });
-
-// $(".slick-arrow").mouseenter(function (e) {});
-
-// $(".category__row").on("click", () => {
-//     console.log($(event.target));
-
-// });
 
 //   arrows: false,
 //   dots: false,
