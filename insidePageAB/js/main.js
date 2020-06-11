@@ -341,31 +341,27 @@ $(".slider__slide_small").on("click", () => {
   /* popUp end */
 
   /* article responsive  */
-  const article_resp = $(".article__column_responsiveTitle-js");
   const article__title = $(".article__title");
 
   const resizeArticle = () => {
     if ($(window).width() > 1440) {
-    
-      $(".article__title-js")
-        .prependTo(".article__column_responsiveTitle-js:eq(0)")
-        .removeClass("article__column");
-      $(".article__column_responsiveTitle-js:eq(0)").css({ "align-self": "flex-start" });
-    } else if ($(window).width() < 1440) {
-      $(".article__title-js").prependTo(".article__fsCont_title:eq(0)").addClass("article__column");
+      $(".article__title:eq(0)").prependTo(".columnTitleJS:eq(0)");
+    } else if ($(window).width() < 1440 && $(window).width() > 769) {
+      $(".article__title:eq(0)").prependTo(".containerTitleJS:eq(0)");
     } else if ($(window).width() < 768) {
-    /* mobile version */
       for (let el = 0; el < article__title.length; el++) {
-        article__title.eq(el).prependTo($(".article__column_responsiveTitle-js").eq(el));
+        article__title.eq(el).prependTo($(".columnTitleJS").eq(el));
       }
     } else {
       for (let el = 0; el < article__title.length; el++) {
-        article__title.eq(el).prependTo($(".article__fsCont_title").eq(el));
+        article__title.eq(el).prependTo($(".containerTitleJS").eq(el));
       }
     }
   };
 
   resizeArticle();
+
+
 
   $(window).on("resize", function () {
     resizeArticle();
@@ -421,7 +417,6 @@ $(".slider__slide_small").on("click", () => {
     },
   ],
 });
-
 
 //   arrows: false,
 //   dots: false,
@@ -500,28 +495,29 @@ var play_st = false;
 var play_typ = false;
 var timerId = false;
 
-$(".category__row .slick-next").mouseenter(function () {
-  play_typ = "slickNext";
+$(".category__row")
+  .find(".slick-next")
+  .mouseenter(function () {
+    play_typ = "slickNext";
+    play_st = true;
+    timerId = setInterval(function () {
+      playsl(play_st, play_typ);
+    }, 220);
 
-  play_st = true;
+    return false;
+  });
 
-  timerId = setInterval(function () {
-    playsl(play_st, play_typ);
-  }, 220);
-
-  return false;
-});
-
-$(".slick-prev").mouseenter(function () {
-  play_typ = "slickPrev";
-  play_st = true;
-
-  clearInterval(timerId);
-  timerId = setInterval(function () {
-    playsl(play_st, play_typ);
-  }, 220);
-  return false;
-});
+$(".category__row")
+  .find(".slick-prev")
+  .mouseenter(function () {
+    play_typ = "slickPrev";
+    play_st = true;
+    clearInterval(timerId);
+    timerId = setInterval(function () {
+      playsl(play_st, play_typ);
+    }, 220);
+    return false;
+  });
 
 $(".category__row")
   .find(".slick-next, .slick-prev")

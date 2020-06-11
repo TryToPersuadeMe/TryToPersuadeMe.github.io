@@ -25,7 +25,6 @@ $(".category__row").slick({
   ],
 });
 
-
 //   arrows: false,
 //   dots: false,
 //      ***---responsive Height ---***
@@ -103,28 +102,29 @@ var play_st = false;
 var play_typ = false;
 var timerId = false;
 
-$(".category__row .slick-next").mouseenter(function () {
-  play_typ = "slickNext";
+$(".category__row")
+  .find(".slick-next")
+  .mouseenter(function () {
+    play_typ = "slickNext";
+    play_st = true;
+    timerId = setInterval(function () {
+      playsl(play_st, play_typ);
+    }, 220);
 
-  play_st = true;
+    return false;
+  });
 
-  timerId = setInterval(function () {
-    playsl(play_st, play_typ);
-  }, 220);
-
-  return false;
-});
-
-$(".slick-prev").mouseenter(function () {
-  play_typ = "slickPrev";
-  play_st = true;
-
-  clearInterval(timerId);
-  timerId = setInterval(function () {
-    playsl(play_st, play_typ);
-  }, 220);
-  return false;
-});
+$(".category__row")
+  .find(".slick-prev")
+  .mouseenter(function () {
+    play_typ = "slickPrev";
+    play_st = true;
+    clearInterval(timerId);
+    timerId = setInterval(function () {
+      playsl(play_st, play_typ);
+    }, 220);
+    return false;
+  });
 
 $(".category__row")
   .find(".slick-next, .slick-prev")
