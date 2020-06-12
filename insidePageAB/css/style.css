@@ -193,6 +193,25 @@ input::-webkit-calendar-picker-indicator {
 
 /* Dots elements */
 
+.lock {
+  overflow: hidden;
+}
+
+.shadow {
+  position: relative;
+}
+
+.shadow::after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
 /*  container for all content */
 
 .container {
@@ -3077,25 +3096,6 @@ nav::after {
 }
 
 @media (max-width: 768px) {
-  .lock {
-    overflow: hidden;
-  }
-
-  .shadow {
-    position: relative;
-  }
-
-  .shadow::after {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.5);
-    min-height: 100%;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
   .container {
     padding-left: 15px;
     padding-right: 15px;
