@@ -1606,7 +1606,7 @@ nav::after {
 .feedback__row_star-rating label::after {
   content: "";
   display: block;
-  width: 20px;
+  width: 19px;
   height: 20px;
   background-size: contain;
   -webkit-transition: 0.3s ease;
@@ -2171,7 +2171,7 @@ nav::after {
           align-items: center;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0px 15px;
 }
 
 .category__row {
@@ -2210,6 +2210,8 @@ nav::after {
   max-width: 100%;
   overflow: hidden;
   margin: 0 auto;
+  /* for shadow */
+  padding-bottom: 5px !important;
 }
 
 .category .slick-arrow {
@@ -2943,7 +2945,7 @@ nav::after {
   }
 
   .category__wrapper {
-    padding: 0 30px;
+    padding: 0px 30px;
     max-width: 1530px;
   }
 
@@ -3583,7 +3585,7 @@ nav::after {
 
   .feedback__row_star-rating label::before,
   .feedback__row_star-rating label::after {
-    width: 27px;
+    width: 26px;
     height: 27px;
   }
 
