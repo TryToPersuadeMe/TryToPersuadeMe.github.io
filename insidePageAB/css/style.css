@@ -2210,10 +2210,9 @@ nav::after {
   max-width: 100%;
   overflow: hidden;
   margin: 0 auto;
-  /* for shadow */
+  /* for box shadow */
   padding-bottom: 5px !important;
-  padding-right: 50px;
-  padding-left: 50px;
+  max-width: 360px;
 }
 
 .category .slick-arrow {

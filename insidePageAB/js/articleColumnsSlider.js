@@ -39,7 +39,7 @@ $(".category__row").slick({
         speed: 1500,
         easing: "LINEAR",
         variableWidth: true,
-        centerMode: true,
+        centerMode: false,
         touchThreshold: 30,
       },
     },
