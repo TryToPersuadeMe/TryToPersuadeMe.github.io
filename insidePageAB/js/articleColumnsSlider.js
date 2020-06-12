@@ -91,24 +91,21 @@ $(".category__row").slick({
 
 // hover
 
-function playsl(play_st, play_typ) {
+function playsl(slider, play_st, play_typ) {
   if (play_st == true) {
-    if (play_typ == "slickNext") $(".category__row").slick("slickNext");
-    if (play_typ == "slickPrev") $(".category__row").slick("slickPrev");
+    if (play_typ == "slickNext") slider.slick("slickNext");
+    if (play_typ == "slickPrev") slider.slick("slickPrev");
   }
 }
-
-var play_st = false;
-var play_typ = false;
-var timerId = false;
 
 $(".category__row")
   .find(".slick-next")
   .mouseenter(function () {
     play_typ = "slickNext";
     play_st = true;
+    slider = $(this).parent();
     timerId = setInterval(function () {
-      playsl(play_st, play_typ);
+      playsl(slider, play_st, play_typ);
     }, 220);
 
     return false;
@@ -119,17 +116,14 @@ $(".category__row")
   .mouseenter(function () {
     play_typ = "slickPrev";
     play_st = true;
-    clearInterval(timerId);
+    slider = $(this).parent();
     timerId = setInterval(function () {
-      playsl(play_st, play_typ);
+      playsl(slider, play_st, play_typ);
     }, 220);
+
     return false;
   });
 
-$(".category__row")
-  .find(".slick-next, .slick-prev")
-  .mouseout(function () {
-    lay_st = false;
-    clearInterval(timerId);
-    return false;
-  });
+$(".category__row").on("mouseout", () => {
+  play_st = false;
+});

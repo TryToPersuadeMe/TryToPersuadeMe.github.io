@@ -348,7 +348,7 @@ $(".slider__slide_small").on("click", () => {
       $(".article__title:eq(0)").prependTo(".columnTitleJS:eq(0)");
     } else if ($(window).width() < 1440 && $(window).width() > 769) {
       $(".article__title:eq(0)").prependTo(".containerTitleJS:eq(0)");
-    } else if ($(window).width() < 768) {
+    } else if ($(window).width() < 769) {
       for (let el = 0; el < article__title.length; el++) {
         article__title.eq(el).prependTo($(".columnTitleJS").eq(el));
       }
@@ -360,8 +360,6 @@ $(".slider__slide_small").on("click", () => {
   };
 
   resizeArticle();
-
-
 
   $(window).on("resize", function () {
     resizeArticle();
@@ -389,6 +387,20 @@ $(".slider__slide_small").on("click", () => {
   });
 
   /* show next cards row end */
+
+  /* arrow back in prev page START */
+
+  var windowHeight = $(window).height();
+
+  $(document).on("scroll", function () {
+    var self = $("main").children().eq(2),
+      height = self.offset().top + self.height();
+    if ($(document).scrollTop() + windowHeight >= height) {
+      $(".arrowBackPage-fixed").addClass("arrowBackPage-fixed_active");
+    } else $(".arrowBackPage-fixed").removeClass("arrowBackPage-fixed_active");
+  });
+
+  /* arrow back in prev page END */
 
   /* article columns slider */
   $(".category__row").slick({
@@ -484,24 +496,21 @@ $(".slider__slide_small").on("click", () => {
 
 // hover
 
-function playsl(play_st, play_typ) {
+function playsl(slider, play_st, play_typ) {
   if (play_st == true) {
-    if (play_typ == "slickNext") $(".category__row").slick("slickNext");
-    if (play_typ == "slickPrev") $(".category__row").slick("slickPrev");
+    if (play_typ == "slickNext") slider.slick("slickNext");
+    if (play_typ == "slickPrev") slider.slick("slickPrev");
   }
 }
-
-var play_st = false;
-var play_typ = false;
-var timerId = false;
 
 $(".category__row")
   .find(".slick-next")
   .mouseenter(function () {
     play_typ = "slickNext";
     play_st = true;
+    slider = $(this).parent();
     timerId = setInterval(function () {
-      playsl(play_st, play_typ);
+      playsl(slider, play_st, play_typ);
     }, 220);
 
     return false;
@@ -512,20 +521,17 @@ $(".category__row")
   .mouseenter(function () {
     play_typ = "slickPrev";
     play_st = true;
-    clearInterval(timerId);
+    slider = $(this).parent();
     timerId = setInterval(function () {
-      playsl(play_st, play_typ);
+      playsl(slider, play_st, play_typ);
     }, 220);
+
     return false;
   });
 
-$(".category__row")
-  .find(".slick-next, .slick-prev")
-  .mouseout(function () {
-    lay_st = false;
-    clearInterval(timerId);
-    return false;
-  });
+$(".category__row").on("mouseout", () => {
+  play_st = false;
+});
 ;
 
   /* map */
