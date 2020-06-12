@@ -496,43 +496,45 @@ $(".slider__slide_small").on("click", () => {
 
 // hover
 
-function playsl(slider, play_st, play_typ) {
-  if (play_st == true) {
-    if (play_typ == "slickNext") slider.slick("slickNext");
-    if (play_typ == "slickPrev") slider.slick("slickPrev");
-  }
-}
+// function playsl(slider, play_st, play_typ) {
+//   if (play_st == true) {
+//     if (play_typ == "slickNext") slider.slick("slickNext");
+//     if (play_typ == "slickPrev") slider.slick("slickPrev");
+//   }
+// }
 
-$(".category__row")
-  .find(".slick-next")
-  .mouseenter(function () {
-    play_typ = "slickNext";
-    play_st = true;
-    slider = $(this).parent();
-    timerId = setInterval(function () {
-      playsl(slider, play_st, play_typ);
-    }, 220);
+// $(".category__row")
+//   .find(".slick-next")
+//   .mouseenter(function () {
+//     play_typ = "slickNext";
+//     play_st = true;
+//     slider = $(this).parent();
+//     timerId = setInterval(function () {
+//       playsl(slider, play_st, play_typ);
+//     }, 220);
 
-    return false;
-  });
+//     return false;
+//   });
 
-$(".category__row")
-  .find(".slick-prev")
-  .mouseenter(function () {
-    play_typ = "slickPrev";
-    play_st = true;
-    slider = $(this).parent();
-    timerId = setInterval(function () {
-      playsl(slider, play_st, play_typ);
-    }, 220);
+// $(".category__row")
+//   .find(".slick-prev")
+//   .mouseenter(function () {
+//     play_typ = "slickPrev";
+//     play_st = true;
+//     slider = $(this).parent();
+//     timerId = setInterval(function () {
+//       playsl(slider, play_st, play_typ);
+//     }, 220);
 
-    return false;
-  });
+//     return false;
+//   });
 
-$(".category__row").on("mouseout", () => {
-  play_st = false;
-});
-;
+// $(".category__row").on("mouseout", () => {
+//   play_st = false;
+// });
+
+
+// playsl();
 
   /* map */
   google.maps.event.addDomListener(window, "load", init);
