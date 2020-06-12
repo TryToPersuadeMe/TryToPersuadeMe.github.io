@@ -2207,11 +2207,13 @@ nav::after {
 }
 
 .category .slick-list {
-  overflow: hidden;
+  max-width: 100%;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
   /* for box shadow */
   padding-bottom: 5px !important;
-  max-width: 360px;
 }
 
 .category .slick-arrow {
@@ -2231,12 +2233,6 @@ nav::after {
 
 .category .slick-arrow.slick-next {
   right: 0;
-}
-
-.category .slick-list {
-  position: relative;
-  z-index: 5;
-  margin: 0 auto;
 }
 
 .block_margin {
@@ -4133,10 +4129,6 @@ nav::after {
         -ms-flex-direction: column;
             flex-direction: column;
     margin: 0;
-  }
-
-  .category .slick-list {
-    max-width: 300px;
   }
 
   .block__column {

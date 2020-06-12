@@ -444,7 +444,7 @@ $(".slider__slide_small").on("click", () => {
         speed: 1500,
         easing: "LINEAR",
         variableWidth: true,
-        centerMode: false,
+        centerMode: true,
         touchThreshold: 30,
       },
     },
