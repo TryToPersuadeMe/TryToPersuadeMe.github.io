@@ -2208,12 +2208,11 @@ nav::after {
 
 .category .slick-list {
   max-width: 100%;
+  border: 1px solid #000;
   position: relative;
   z-index: 5;
   overflow: hidden;
   padding-bottom: 5px !important;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
 .category .slick-arrow {
@@ -3960,6 +3959,10 @@ nav::after {
   .category__tag {
     margin-bottom: 10px;
     font-size: 16px;
+  }
+
+  .category .slick-list {
+    margin: 0 15px 0 0;
   }
 
   .block__column {
