@@ -2212,6 +2212,8 @@ nav::after {
   margin: 0 auto;
   /* for shadow */
   padding-bottom: 5px !important;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
 .category .slick-arrow {
@@ -2239,7 +2241,7 @@ nav::after {
 }
 
 .block_margin {
-  margin: 0;
+  margin: 0 15px;
 }
 
 .block__column {
