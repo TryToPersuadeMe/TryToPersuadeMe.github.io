@@ -2207,7 +2207,6 @@ nav::after {
 }
 
 .category .slick-list {
-  max-width: 100%;
   overflow: hidden;
   margin: 0 auto;
   /* for box shadow */
@@ -2237,6 +2236,7 @@ nav::after {
 .category .slick-list {
   position: relative;
   z-index: 5;
+  margin: 0 auto;
 }
 
 .block_margin {
@@ -3966,6 +3966,10 @@ nav::after {
     font-size: 16px;
   }
 
+  .category .slick-list {
+    max-width: 350px;
+  }
+
   .block__column {
     max-width: 350px;
   }
@@ -4132,8 +4136,7 @@ nav::after {
   }
 
   .category .slick-list {
-    max-width: 310px;
-    margin: 0 auto;
+    max-width: 300px;
   }
 
   .block__column {
