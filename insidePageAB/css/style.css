@@ -2239,7 +2239,7 @@ nav::after {
 }
 
 .block_margin {
-  padding: 0 15px;
+  margin: 0 0 0 30px;
 }
 
 .block__column {
