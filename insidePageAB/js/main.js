@@ -435,7 +435,7 @@ $(".slider__slide_small").on("click", () => {
     {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
         draggable: true,
