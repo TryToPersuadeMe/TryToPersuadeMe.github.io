@@ -2953,6 +2953,10 @@ nav::after {
     line-height: 5.4rem;
   }
 
+  .category .slick-arrow {
+    display: none;
+  }
+
   .article__title {
     line-height: 5rem;
   }

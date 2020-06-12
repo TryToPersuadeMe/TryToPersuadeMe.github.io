@@ -414,17 +414,38 @@ $(".slider__slide_small").on("click", () => {
   easing: "LINEAR",
   variableWidth: true,
   centerMode: true,
+  touchThreshold: 30,
   responsive: [
     {
       breakpoint: 1000,
       settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        draggable: true,
+        swipe: true,
         arrows: false,
+        speed: 1500,
+        easing: "LINEAR",
+        variableWidth: true,
+        centerMode: true,
+        touchThreshold: 30,
       },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        draggable: true,
+        swipe: true,
+        arrows: false,
+        speed: 1500,
+        easing: "LINEAR",
+        variableWidth: true,
+        centerMode: true,
+        touchThreshold: 30,
       },
     },
   ],
@@ -496,45 +517,49 @@ $(".slider__slide_small").on("click", () => {
 
 // hover
 
-// function playsl(slider, play_st, play_typ) {
-//   if (play_st == true) {
-//     if (play_typ == "slickNext") slider.slick("slickNext");
-//     if (play_typ == "slickPrev") slider.slick("slickPrev");
-//   }
-// }
+function playsl(slider, play_st, play_typ) {
+  if (play_st == true) {
+    if (play_typ == "slickNext") slider.slick("slickNext");
+    if (play_typ == "slickPrev") slider.slick("slickPrev");
+  }
+}
 
-// $(".category__row")
-//   .find(".slick-next")
-//   .mouseenter(function () {
-//     play_typ = "slickNext";
-//     play_st = true;
-//     slider = $(this).parent();
-//     timerId = setInterval(function () {
-//       playsl(slider, play_st, play_typ);
-//     }, 220);
+$(".category__row")
+  .find(".slick-next")
+  .mouseenter(function () {
+    console.log("find next");
 
-//     return false;
-//   });
+    play_typ = "slickNext";
+    play_st = true;
+    slider = $(this).parent();
+    timerId = setInterval(function () {
+      playsl(slider, play_st, play_typ);
+    }, 220);
 
-// $(".category__row")
-//   .find(".slick-prev")
-//   .mouseenter(function () {
-//     play_typ = "slickPrev";
-//     play_st = true;
-//     slider = $(this).parent();
-//     timerId = setInterval(function () {
-//       playsl(slider, play_st, play_typ);
-//     }, 220);
+    return false;
+  });
 
-//     return false;
-//   });
+$(".category__row")
+  .find(".slick-prev")
+  .mouseenter(function () {
+    console.log("find prev");
 
-// $(".category__row").on("mouseout", () => {
-//   play_st = false;
-// });
+    play_typ = "slickPrev";
+    play_st = true;
+    slider = $(this).parent();
+    timerId = setInterval(function () {
+      playsl(slider, play_st, play_typ);
+    }, 220);
 
+    return false;
+  });
 
-// playsl();
+$(".category__row").on("mouseout", () => {
+  play_st = false;
+});
+
+playsl();
+;
 
   /* map */
   google.maps.event.addDomListener(window, "load", init);
