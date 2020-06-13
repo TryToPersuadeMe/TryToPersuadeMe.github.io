@@ -361,23 +361,33 @@ $(".slider__slide_small").on("click", () => {
 
   resizeArticle();
 
-  $(window).on("resize", function () {
-    resizeArticle();
-  });
   /* article responsive end */
 
-  /* show next cards row start */
-  $(function () {
-    $(".cards__row").slice(0, 1).show();
-    $(".cards__button").on("click", function (element) {
-      element.preventDefault();
-      $(".cards__row:hidden").slice(0, 1).slideDown().css({ display: "flex" });
-    });
+  /* CARDS responsive START */
+  const resizeCards = () => {
+    if ($(window).width() < 1025) {
+      $(".cards__item").appendTo(".cards__wrapperResponsive-js");
+      /* show on button click */
+      $(function () {
+        $(".cards__item").slice(0, 4).show();
+        $(".cards__button").on("click", function (element) {
+          element.preventDefault();
+          $(".cards__item:hidden").slice(0, 4).slideDown();
+        });
+      });
+    } else {
+      const $items = $(".cards__item");
+      $(".cards__row").append((i) => $items.slice(i * 3, (i + 1) * 3));
+    }
+  };
+  resizeCards();
+
+  $(window).on("resize", function () {
+    resizeArticle();
+    resizeCards();
   });
 
-  /* show next cards row end */
-
-  /* show next cards row start */
+  /* show next COMMENTS row start */
   $(function () {
     $(".user").slice(0, 3).show();
     $(".comments__button-js").on("click", function (element) {
@@ -386,7 +396,7 @@ $(".slider__slide_small").on("click", () => {
     });
   });
 
-  /* show next cards row end */
+  /* show next COMMENTS row end */
 
   /* arrow back in prev page START */
 
