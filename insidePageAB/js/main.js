@@ -418,16 +418,7 @@ $(".slider__slide_small").on("click", () => {
     {
       breakpoint: 1000,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        swipe: true,
         arrows: false,
-        speed: 1500,
-        easing: "LINEAR",
-        variableWidth: true,
-        centerMode: true,
-        touchThreshold: 30,
       },
     },
     {
@@ -435,14 +426,12 @@ $(".slider__slide_small").on("click", () => {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
-        swipe: true,
-        arrows: false,
-        speed: 1500,
-        easing: "LINEAR",
-        variableWidth: true,
-        centerMode: true,
-        touchThreshold: 30,
+      },
+    },
+    {
+      breakpoint: 380,
+      settings: {
+        arrows: true,
       },
     },
   ],
@@ -552,6 +541,10 @@ $(".category__row")
   });
 
 $(".category__row").on("mouseout", () => {
+  play_st = false;
+});
+
+$(".category__wrapper").on("click", () => {
   play_st = false;
 });
 
