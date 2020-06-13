@@ -27,6 +27,7 @@ $(".category__row").slick({
       breakpoint: 380,
       settings: {
         arrows: true,
+
       },
     },
   ],

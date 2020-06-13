@@ -432,6 +432,7 @@ $(".slider__slide_small").on("click", () => {
       breakpoint: 380,
       settings: {
         arrows: true,
+
       },
     },
   ],

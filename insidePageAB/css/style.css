@@ -2940,6 +2940,11 @@ nav::after {
     line-height: 5.4rem;
   }
 
+  .category .slick-list {
+    max-width: 1000px;
+    width: 100%;
+  }
+
   .category .slick-arrow {
     display: none;
   }
