@@ -160,69 +160,7 @@ $("body").on("click", '[href*="#"]', function (e) {
     .animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 500);
   e.preventDefault();
 });;
-  // $(".slider").slick({
-//   arrow: false,
-//   dots: false,
-//      ***---responsive Height ---***
-// adaptiveHeight: false,
-//      ***--- Slides to show in slider ---***
-// slidesToShow: 1,
-//      ***--- show slides per one click on button ---***
-// slidesToScroll: 1,
-//      ***--- scroll speed ---***
-// speed: 300,
-//      ***--- type of animation ---***
-//  easing: "LINEAR",
-//      ***--- infinite scroll ---***
-// infinite: true,
-//      ***--- first slide to show ---***
-// initialSlide: 0,
-//      ***--- slides autoplay ---***
-// autoplay: false,
-// autoplaySpeed: 3000,
-// pauseOnFocus: true,
-// pauseOnHover: true,
-// pauseOnDotsHover: true,
-//      ***--- turn Off swipe in tracklist on PC ---***
-// draggable: true,
-//      ***--- turn Off swipe in tracklist on mobiles ---***
-// swipe: true,
-//      ***---  ---***
-// touchThreshold: 5,
-//      ***--- block swipe contol with swipe-focus image ---***
-// touchMove: true,
-//      ***--- block/unblock click button for swipe without expect of animate finish ---***
-// waitForAnimate: true,
-//      ***--- center mode for center slide ---***
-// centerMode: false,
-//      ***--- auto width for slides ---***
-// variableWidth: false,
-//      ***--- rows in slider track ---***
-// rows: 1,
-//      ***--- slides per row ---***
-// slidesPerRow: 1,
-//      ***---  vertical slider ---***
-// vertical: false,
-//      ***--- allows use  vertical swipe ---***
-// verticalSwiping: false,
-//      ***--- fade img instead slider ---***
-// fade: false,
-//      ***--- connect with another slider ---***
-// asNavFor: ".class"
-//      ***---  responsive breakpoints---***
-// responsive: [
-//     {
-//         breakpoint: 767,
-//         settings: {
-//             // settings here
-//         }
-//     }
-// ]
-//      ***--- arrows/dots in another div ---***
-// appendArrows:$(".class")
-// appendDots: $(".class")
-// });
-
+  
 $(".slider__row_big").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -300,115 +238,124 @@ $(".slider__slide_small").on("click", () => {
 });
 ;
 
+  /* table spoiler */
   $(".table__spoiler").on("click", () => {
     $(event.currentTarget).children().toggleClass("arrowSpoiler_active");
     $(".table__wrapper").slideToggle(300);
-  });
+});;
 
+  /* feedback */
   var windowHeight = $(window).height();
 
-  $(document).on("scroll", function () {
+$(document).on("scroll", function () {
     var self = $(".feedback__wrapper"),
-      height = self.offset().top + self.height();
+        height = self.offset().top + self.height();
     if ($(document).scrollTop() + windowHeight >= height) {
-      $(".feedback__content").addClass("feedback__content_active");
+        $(".feedback__content").addClass("feedback__content_active");
     }
-  });
+});;
+
+  /* cards resize js */
+  /* article responsive end */
+
+/* CARDS responsive START */
+const resizeCards = () => {
+    if ($(window).width() < 1025) {
+        $(".cards__item").appendTo(".cards__wrapperResponsive-js");
+        /* show on button click */
+        $(function () {
+            $(".cards__item").slice(0, 4).show();
+            $(".cards__button").on("click", function (element) {
+                element.preventDefault();
+                $(".cards__item:hidden").slice(0, 4).slideDown();
+            });
+        });
+    } else {
+        const $items = $(".cards__item");
+        $(".cards__row").append((i) => $items.slice(i * 3, (i + 1) * 3));
+    }
+};
+resizeCards();
+
+
+$(window).on("resize", function () {
+    resizeCards();
+
+});;
+
+  /* article resize js */
+  /* article responsive  */
+const article__title = $(".article__title");
+
+const resizeArticle = () => {
+  if ($(window).width() > 1440) {
+    $(".article__title:eq(0)").prependTo(".columnTitleJS:eq(0)");
+  } else if ($(window).width() < 1440 && $(window).width() > 769) {
+    for (let el = 0; el < article__title.length; el++) {
+      article__title.eq(el).prependTo($(".containerTitleJS").eq(el));
+    }
+  } else if ($(window).width() < 769) {
+    for (let el = 0; el < article__title.length; el++) {
+      article__title.eq(el).prependTo($(".columnTitleJS").eq(el));
+    }
+  }
+};
+
+resizeArticle();
+
+$(window).on("resize", function () {
+  resizeArticle();
+});
+;
 
   /* popUp */
-  const popUp = $(".popUp");
-  const popUp__active = "popUp_active";
+  /* popUp */
+const popUp = $(".popUp");
+const popUp__active = "popUp_active";
 
-  $(".popUp__button-active").on("click", () => {
+$(".popUp__button-active").on("click", () => {
     popUp.addClass(popUp__active);
     $("main").addClass("shadow");
     $("body").addClass("lock");
-  });
+});
 
-  $(".popUp__closeIcon").on("click", () => {
+$(".popUp__closeIcon").on("click", () => {
     popUp.removeClass(popUp__active);
     $("main").removeClass("shadow");
-  });
+});
 
-  $(document).mouseup(() => {
+$(document).mouseup(() => {
     // close search input
 
     if ($(event.target).closest(popUp).length == 0) {
-      popUp.removeClass(popUp__active);
-      $("main").removeClass("shadow");
+        popUp.removeClass(popUp__active);
+        $("main").removeClass("shadow");
     }
-  });
+});
   /* popUp end */
-
-  /* article responsive  */
-  const article__title = $(".article__title");
-
-  const resizeArticle = () => {
-    if ($(window).width() > 1440) {
-      $(".article__title:eq(0)").prependTo(".columnTitleJS:eq(0)");
-    } else if ($(window).width() < 1440 && $(window).width() > 769) {
-      $(".article__title:eq(0)").prependTo(".containerTitleJS:eq(0)");
-    } else if ($(window).width() < 769) {
-      for (let el = 0; el < article__title.length; el++) {
-        article__title.eq(el).prependTo($(".columnTitleJS").eq(el));
-      }
-    } else {
-      for (let el = 0; el < article__title.length; el++) {
-        article__title.eq(el).prependTo($(".containerTitleJS").eq(el));
-      }
-    }
-  };
-
-  resizeArticle();
-
-  /* article responsive end */
-
-  /* CARDS responsive START */
-  const resizeCards = () => {
-    if ($(window).width() < 1025) {
-      $(".cards__item").appendTo(".cards__wrapperResponsive-js");
-      /* show on button click */
-      $(function () {
-        $(".cards__item").slice(0, 4).show();
-        $(".cards__button").on("click", function (element) {
-          element.preventDefault();
-          $(".cards__item:hidden").slice(0, 4).slideDown();
-        });
-      });
-    } else {
-      const $items = $(".cards__item");
-      $(".cards__row").append((i) => $items.slice(i * 3, (i + 1) * 3));
-    }
-  };
-  resizeCards();
-
-  $(window).on("resize", function () {
-    resizeArticle();
-    resizeCards();
-  });
+;
 
   /* show next COMMENTS row start */
   $(function () {
     $(".user").slice(0, 3).show();
     $(".comments__button-js").on("click", function (element) {
-      element.preventDefault();
-      $(".user:hidden").slice(0, 3).slideDown().css({ display: "flex" });
+        element.preventDefault();
+        $(".user:hidden").slice(0, 3).slideDown().css({ display: "flex" });
     });
-  });
-
-  /* show next COMMENTS row end */
+});
+;
 
   /* arrow back in prev page START */
 
   var windowHeight = $(window).height();
 
-  $(document).on("scroll", function () {
+$(document).on("scroll", function () {
     var self = $("main").children().eq(2),
-      height = self.offset().top + self.height();
+        height = self.offset().top + self.height();
     if ($(document).scrollTop() + windowHeight >= height) {
-      $(".arrowBackPage-fixed").addClass("arrowBackPage-fixed_active");
+        $(".arrowBackPage-fixed").addClass("arrowBackPage-fixed_active");
     } else $(".arrowBackPage-fixed").removeClass("arrowBackPage-fixed_active");
-  });
+});;
 
   /* arrow back in prev page END */
 
@@ -442,77 +389,10 @@ $(".slider__slide_small").on("click", () => {
       breakpoint: 380,
       settings: {
         arrows: true,
-
       },
     },
   ],
 });
-
-//   arrows: false,
-//   dots: false,
-//      ***---responsive Height ---***
-// adaptiveHeight: false,
-//      ***--- Slides to show in slider ---***
-// slidesToShow: 1,
-//      ***--- show slides per one click on button ---***
-// slidesToScroll: 1,
-//      ***--- scroll speed ---***
-// speed: 300,
-//      ***--- type of animation ---***
-//  easing: "LINEAR",
-//      ***--- infinite scroll ---***
-// infinite: true,
-//      ***--- first slide to show ---***
-// initialSlide: 0,
-//      ***--- slides autoplay ---***
-// autoplay: false,
-// autoplaySpeed: 3000,
-// pauseOnFocus: true,
-// pauseOnHover: true,
-// pauseOnDotsHover: true,
-//      ***--- turn Off swipe in tracklist on PC ---***
-// draggable: true,
-//      ***--- turn Off swipe in tracklist on mobiles ---***
-// swipe: true,
-//      ***---  ---***
-// touchThreshold: 5,
-//      ***--- block swipe contol with swipe-focus image ---***
-// touchMove: true,
-//      ***--- block/unblock click button for swipe without expect of animate finish ---***
-// waitForAnimate: true,
-//      ***--- center mode for center slide ---***
-// centerMode: false,
-//      ***--- auto width for slides ---***
-// variableWidth: false,
-//      ***--- rows in slider track ---***
-// rows: 1,
-//      ***--- slides per row ---***
-// slidesPerRow: 1,
-//      ***---  vertical slider ---***
-// vertical: false,
-//      ***--- allows use  vertical swipe ---***
-// verticalSwiping: false,
-//      ***--- fade img instead slider ---***
-// fade: false,
-//      ***--- connect with another slider ---***
-// asNavFor: ".class"
-//      ***---  responsive breakpoints---***
-// responsive: [
-//     {
-//         breakpoint: 767,
-//         settings: {
-//             // settings here
-//         }
-//     }
-// ]
-//      ***--- arrows/dots in another div ---***
-// appendArrows:$(".class")
-// appendDots: $(".class")
-// hover
-
-// hover
-
-// hover
 
 function playsl(slider, play_st, play_typ) {
   if (play_st == true) {
