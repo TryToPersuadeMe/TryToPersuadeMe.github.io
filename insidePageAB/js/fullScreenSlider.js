@@ -1,4 +1,3 @@
-
 $(".slider__row_big").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -48,7 +47,10 @@ $(".slider__row_small").slick({
       breakpoint: 769,
       settings: {
         slidesToShow: 4,
-
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
       },
     },
 
@@ -56,7 +58,10 @@ $(".slider__row_small").slick({
       breakpoint: 600,
       settings: {
         slidesToShow: 3,
-
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        cssEase: "linear",
       },
     },
   ],
