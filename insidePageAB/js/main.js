@@ -196,7 +196,7 @@ $(".slider__row_small").slick({
   infinite: false,
   responsive: [
     {
-      breakpoint: 900,
+      breakpoint: 1001,
       settings: {
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -210,10 +210,7 @@ $(".slider__row_small").slick({
       breakpoint: 769,
       settings: {
         slidesToShow: 4,
-        slidesToScroll: 1,
-        infinite: true,
-        speed: 500,
-        cssEase: "linear",
+
       },
     },
 
@@ -221,10 +218,7 @@ $(".slider__row_small").slick({
       breakpoint: 600,
       settings: {
         slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        speed: 500,
-        cssEase: "linear",
+
       },
     },
   ],
