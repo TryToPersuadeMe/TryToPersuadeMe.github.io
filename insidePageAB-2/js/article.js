@@ -15,7 +15,8 @@ const resizeArticle = () => {
 
 resizeArticle();
 
-/* $(window).on("resize", function () {
+$(window).on("resize", function () {
   resizeArticle();
+  console.log("resizeArticle-1");
+  
 });
- */

@@ -26,8 +26,10 @@ const resizeControl = () => {
   }
 };
 
-/* $(window).on("resize", function () {
+$(window).on("resize", function () {
   resizeControl();
-}); */
+  console.log("resizeControl-2");
+
+});
 
 resizeControl();

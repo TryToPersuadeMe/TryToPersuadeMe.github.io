@@ -168,8 +168,10 @@ $(
   $(this).val("");
 });
 
-/* $(window).on("resize", function () {
+$(window).on("resize", function () {
+  console.log("resize slider-5");
+  
   $(".purchases__navigation").slick("setPosition");
   $(".purchases__slider").slick("setPosition");
   $(".row__images-keys").slick("setPosition");
-}); */
+});

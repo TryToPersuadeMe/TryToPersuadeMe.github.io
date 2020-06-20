@@ -1,8 +1,6 @@
 /* CARDS responsive START */
 const resizeLinkCards = () => {
   if ($(window).width() < 1025) {
-    const $items = $(".linkCards__item");
-
     $(".linkCards__item").appendTo(".linkCards__wrapperResponsive-js");
     /* show on button click */
     $(function () {
@@ -13,11 +11,12 @@ const resizeLinkCards = () => {
       });
     });
   } else {
-    $(".linkCards__row").append((i) => $items.slice(i * 3, (i + 1) * 3));
+    $(".linkCards__row").append((i) => $(".linkCards__item").slice(i * 3, (i + 1) * 3));
   }
 };
 resizeLinkCards();
 
-/* $(window).on("resize", function () {
+$(window).on("resize", function () {
   resizeLinkCards();
-}); */
+  console.log("resizeLinkCards-4");
+});

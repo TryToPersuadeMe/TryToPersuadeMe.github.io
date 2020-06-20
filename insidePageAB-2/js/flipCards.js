@@ -1,9 +1,6 @@
-
 /* CARDS responsive START */
 const resizeFlipCards = () => {
   if ($(window).width() < 1025) {
-    const $items = $(".flipcard");
-
     $(".flipcard").appendTo(".offers__wrapperResponsive-js");
     /* show on button click */
     $(function () {
@@ -14,11 +11,12 @@ const resizeFlipCards = () => {
       });
     });
   } else {
-    $(".offers__row-js").append((i) => $items.slice(i * 2, (i + 1) * 2));
+    $(".offers__row-js").append((i) => $(".flipcard").slice(i * 3, (i + 1) * 3));
   }
 };
 resizeFlipCards();
 
-/* $(window).on("resize", function () {
+$(window).on("resize", function () {
   resizeFlipCards();
-}); */
+  console.log("resizeFlipCards-3");
+});
