@@ -1,3 +1,4 @@
+/* qwe */
 /* CARDS responsive START */
 const resizeFlipCards = () => {
   if ($(window).width() < 1025) {

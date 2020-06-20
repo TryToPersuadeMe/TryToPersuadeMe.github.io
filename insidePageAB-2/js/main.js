@@ -220,7 +220,8 @@ $(".findFilter-form__fieldWrapper").on("click", function () {
 ;
 
   /* responsive  flip cards */
-  /* CARDS responsive START */
+  /* qwe */
+/* CARDS responsive START */
 const resizeFlipCards = () => {
   if ($(window).width() < 1025) {
     $(".flipcard").appendTo(".offers__wrapperResponsive-js");
