@@ -600,25 +600,19 @@ input::-webkit-calendar-picker-indicator {
   transition: 0.3s ease;
 }
 
-/* nav {
+nav {
   background-color: #0094f7;
   position: relative;
+}
 
-  &::after {
-    content: "";
-    position: absolute;
-    height: 10px;
-    width: 100%;
-    background-color: white;
-    top: 0;
-  }
-  @media (max-width: 768px) {
-    margin: 10px 0 0 0;
-    &::after {
-      background-color: transparent;
-    }
-  }
-} */
+nav::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  background-color: white;
+  top: 0;
+}
 
 .window {
   position: absolute;
@@ -2541,9 +2535,21 @@ input::-webkit-calendar-picker-indicator {
   position: relative;
   -webkit-perspective: 1000px;
           perspective: 1000px;
-  margin: 0px 5px;
+  margin: 0px 15px;
   font-family: Inter;
   font-weight: 700;
+  height: 0;
+  padding-bottom: 23%;
+}
+
+.flipcard img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .flipcard:hover .flipcard__front {
@@ -2567,11 +2573,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flipcard__front {
-  padding-bottom: 66.7%;
   width: 100%;
   position: absolute;
-  width: 100%;
   left: 0;
+  height: 100%;
   top: 0;
   -webkit-transition: 1s;
   -o-transition: 1s;
@@ -2581,11 +2586,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flipcard__front img {
-  position: absolute;
-  width: 100%;
-  top: 0px;
-  left: 0;
-  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  min-height: 100%;
 }
 
 .flipcard__tag {
@@ -2625,6 +2628,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flipcard__title_back {
+  position: static;
   padding: 1.7rem 1rem;
   text-align: center;
   font-size: 1.6rem;
@@ -2639,36 +2643,52 @@ input::-webkit-calendar-picker-indicator {
   border-top-left-radius: 0;
 }
 
-.flipcard__button {
+.flipcard__buttons {
+  margin-top: 9%;
+}
+
+.flipcard__buttons button {
+  -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
   font-family: "Montserrat";
   font-weight: 600;
   height: 50px;
   max-width: 130px;
   width: 100%;
   font-size: 1.6rem;
-  position: absolute;
-  bottom: 20px;
   z-index: 2;
   background-color: #f76809;
   color: white;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
   border-radius: 5px;
 }
 
-.flipcard__button:first-of-type {
-  left: 35px;
+.flipcard__buttons button:first-of-type {
+  margin-right: 30px;
 }
 
-.flipcard__button:last-of-type {
-  right: 35px;
+.flipcard__buttons button:nth-of-type(2) {
+  background-color: transparent;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  border: 2px solid #ffffff;
+}
+
+.flipcard__buttons button:nth-of-type(2):hover {
+  border: none;
+  background-color: #f76809;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .flipcard__describe {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  top: 0;
-  top: 120px;
   width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -2677,6 +2697,7 @@ input::-webkit-calendar-picker-indicator {
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  margin-top: 8%;
 }
 
 .flipcard__describe p {
@@ -2689,19 +2710,24 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flipcard__back {
-  background-color: black;
   width: 100%;
-  padding-bottom: 66.7%;
+  position: absolute;
   left: 0;
+  height: 100%;
   top: 0;
   -webkit-transition: 1s;
   -o-transition: 1s;
   transition: 1s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background-color: #bdbdbd;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.flipcard__back img {
+  min-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .flipcard__back::after {
@@ -2720,6 +2746,13 @@ input::-webkit-calendar-picker-indicator {
           transform: rotateX(180deg);
 }
 
+.flipcard__backContentWrapper {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
 .flipcard img {
   position: absolute;
   width: 100%;
@@ -2734,10 +2767,20 @@ input::-webkit-calendar-picker-indicator {
   display: none;
 }
 
+.offers__row-js {
+  margin: 30px -15px 0 -15px;
+}
+
+.offers__button-js {
+  margin-top: 40px;
+}
+
 /* column with text with arrow down  */
 
 .textColumn__container {
   position: relative;
+  padding-top: 54px;
+  padding-bottom: 77px;
 }
 
 .textColumn__container p {
@@ -2760,6 +2803,10 @@ input::-webkit-calendar-picker-indicator {
 
 .linkCards__container {
   margin-bottom: 40px;
+}
+
+.linkCards__title {
+  margin: 0 0 25px 0;
 }
 
 .linkCards__wrapperResponsive-js {
@@ -2792,7 +2839,7 @@ input::-webkit-calendar-picker-indicator {
   margin: 0 15px;
 }
 
-.linkCards__item:hover > .cards__text {
+.linkCards__item:hover > .linkCards__text {
   background-color: white;
   color: #0094f7;
   -webkit-transition: 0.3s ease;
@@ -2839,7 +2886,15 @@ input::-webkit-calendar-picker-indicator {
           justify-content: flex-end;
 }
 
+.orderedText__title {
+  font-size: 36px;
+  line-height: 44px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
 .orderedText ol {
+  margin-right: 15px;
   list-style-type: none;
   counter-reset: num;
 }
@@ -2860,7 +2915,7 @@ input::-webkit-calendar-picker-indicator {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  left: -140px;
+  left: -144px;
   width: 50px;
   color: #0094f7;
   text-align: center;
@@ -2950,7 +3005,7 @@ input::-webkit-calendar-picker-indicator {
 
 .article__image img {
   position: absolute;
-  height: 100%;
+  min-height: 100%;
   top: 0;
   left: 0;
   max-height: 733px;
@@ -2970,8 +3025,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .purchases__container {
-  padding-top: 15.5rem;
-  padding-bottom: 15.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 7rem;
 }
 
 .purchases__button {
@@ -3268,11 +3323,11 @@ input::-webkit-calendar-picker-indicator {
 /* SECTION FEEDBACK */
 
 .feedback__header-wrapper {
-  margin: 6rem 0 3rem 0;
+  margin: 2rem 0 3rem 0;
 }
 
 .feedback__container {
-  padding-top: 10rem;
+  padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
@@ -3539,6 +3594,7 @@ input::-webkit-calendar-picker-indicator {
   font-weight: 700;
   position: relative;
   min-height: 55rem;
+  margin: 40px 0 70px 0;
 }
 
 .askQuestion__wrapper::before {
@@ -3974,16 +4030,17 @@ input::-webkit-calendar-picker-indicator {
 
 /* consultation section  */
 
-.consultation {
+.consultation__wrapper {
   background-image: url("../img/consultation/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   min-height: 100vh;
   position: relative;
+  margin: 70px 0;
 }
 
-.consultation::after {
+.consultation__wrapper::after {
   position: absolute;
   content: "";
   top: 0;
@@ -4437,6 +4494,9 @@ input::-webkit-calendar-picker-indicator {
 
 @media (max-width: 1024px) {
   .flipcard {
+    max-width: 320px;
+    height: 240px;
+    margin: 15px;
     display: none;
   }
 
@@ -4456,6 +4516,10 @@ input::-webkit-calendar-picker-indicator {
     margin: 0 -15px;
   }
 
+  .offers__button-js {
+    margin: -60px auto 0 auto;
+  }
+
   .linkCards__wrapperResponsive-js {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4465,7 +4529,6 @@ input::-webkit-calendar-picker-indicator {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin: 0 -15px;
   }
 
   .linkCards__item {
@@ -4485,6 +4548,12 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 1000px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: 1200px;
+  }
+
   .header__content {
     max-width: 620px;
   }
@@ -4629,14 +4698,6 @@ input::-webkit-calendar-picker-indicator {
 
   .findFilter-form .jq-selectbox .placeholder {
     font-size: 1.4rem;
-  }
-
-  .flipcard {
-    max-width: 29rem;
-  }
-
-  .flipcard__title {
-    padding: 1rem 2rem 1.2rem 2rem;
   }
 
   .article__title {
@@ -5003,16 +5064,6 @@ input::-webkit-calendar-picker-indicator {
     margin: 7px 0 35px 0;
   }
 
-  .flipcard__title {
-    font-size: 1.6rem;
-    padding: 1rem 0.5rem 1.2rem 0.5rem;
-  }
-
-  .flipcard__title_back {
-    font-size: 1.4rem;
-    padding: 1rem 2rem 1.2rem 2rem;
-  }
-
   .consultationForm__row input {
     margin: 7px 0 35px 0;
   }
@@ -5031,6 +5082,12 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1170px;
+  }
+
   .header {
     padding-right: 2rem;
   }
@@ -5165,6 +5222,18 @@ input::-webkit-calendar-picker-indicator {
   .navigation__icon_search input:-moz-placeholder {
     color: #b4b4b3;
     font-size: 1.6rem;
+  }
+
+  .navigation__panel {
+    top: -70px;
+  }
+
+  nav {
+    margin: 10px 0 0 0;
+  }
+
+  nav::after {
+    background-color: transparent;
   }
 
   .arrow {
@@ -5480,17 +5549,6 @@ input::-webkit-calendar-picker-indicator {
     max-width: 225px;
     height: 50px;
     font-size: 18px;
-  }
-
-  .flipcard {
-    max-width: 22.5rem;
-    margin: 0 10px;
-  }
-
-  .flipcard__title {
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0.5rem 1rem 0.5rem;
   }
 
   .article__wrapper {
@@ -6394,6 +6452,10 @@ input::-webkit-calendar-picker-indicator {
     font-size: 1.8rem;
   }
 
+  .flipcard {
+    height: 200px;
+  }
+
   .linkCards__item {
     height: 200px;
   }
@@ -6444,7 +6506,7 @@ input::-webkit-calendar-picker-indicator {
 
 .webp .askQuestion__wrapper{ background-image: url(../img/askQuestion/askQuestion__bg.webp); }
 
-.webp .consultation{ background-image: url(../img/consultation/bg.webp); }
+.webp .consultation__wrapper{ background-image: url(../img/consultation/bg.webp); }
 
 .webp .advantages{ background-image: url(../img/advantages/advantages__bg.webp); }
 

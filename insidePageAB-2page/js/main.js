@@ -234,7 +234,7 @@ const resizeFlipCards = () => {
       });
     });
   } else {
-    $(".offers__row-js").append((i) => $(".flipcard").slice(i * 3, (i + 1) * 3));
+    $(".offers__row-js").append((i) => $(".flipcard").slice(i * 3, (i + 3) * 3));
   }
 };
 resizeFlipCards();
@@ -259,7 +259,7 @@ const resizeLinkCards = () => {
       });
     });
   } else {
-    $(".linkCards__row").append((i) => $(".linkCards__item").slice(i * 3, (i + 1) * 3));
+    $(".linkCards__row").append((i) => $(".linkCards__item").slice(i * 3, (i + 3) * 3));
   }
 };
 resizeLinkCards();

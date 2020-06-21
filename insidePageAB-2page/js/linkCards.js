@@ -11,7 +11,7 @@ const resizeLinkCards = () => {
       });
     });
   } else {
-    $(".linkCards__row").append((i) => $(".linkCards__item").slice(i * 3, (i + 1) * 3));
+    $(".linkCards__row").append((i) => $(".linkCards__item").slice(i * 3, (i + 3) * 3));
   }
 };
 resizeLinkCards();

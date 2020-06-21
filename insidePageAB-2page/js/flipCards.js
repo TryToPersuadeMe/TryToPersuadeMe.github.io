@@ -12,7 +12,7 @@ const resizeFlipCards = () => {
       });
     });
   } else {
-    $(".offers__row-js").append((i) => $(".flipcard").slice(i * 3, (i + 1) * 3));
+    $(".offers__row-js").append((i) => $(".flipcard").slice(i * 3, (i + 3) * 3));
   }
 };
 resizeFlipCards();
