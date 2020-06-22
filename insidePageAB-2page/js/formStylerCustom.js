@@ -23,23 +23,43 @@ $('input[type="checkbox"]').click(function (e) {
   $("input:checkbox").attr("disabled", true).trigger("refresh");
 });
 
-$(".findFilter-form__fieldWrapper").on("click", function () {
+/* application form change placeholder  */
+$(".application__form")
+  .find(".jq-selectbox")
+  .on("click", function () {
+    let indexInput = ($(event.currentTarget).index() - 5) / 2;
+    console.log(indexInput);
+
+    let placeholder = {
+      color: "#0094F7",
+      fontWeight: "500",
+    };
+
+    let changePlaceholder = $(event.currentTarget).find(".placeholder");
+
+    if (indexInput == 0) {
+      changePlaceholder.text("Что вас интересует?").css(placeholder);
+    } else if (indexInput == 1) {
+      changePlaceholder.text("Сколько максимум?").css(placeholder);
+    }
+  });
+
+/* find Filer selects change placeholder  */
+$(".findFilter-form__selectWrapper").on("click", function () {
   let indexInput = $(event.currentTarget).index();
   console.log(indexInput);
-
-  // $(".dots-list__item").not(this).removeClass("dots-list__item_active");
-  // $(".dots-list__item").eq(indexInput).addClass("dots-list__item_active");
+  console.log("asdad");
 
   let placeholder = {
     color: "#0094F7",
     fontWeight: "500",
   };
 
-  let changePlaceholder = $(event.currentTarget).find(".placeholder");
+  // let changePlaceholder = $(event.currentTarget).find(".placeholder");
 
-  if (indexInput == 0) {
-    changePlaceholder.text("Что вас интересует?").css(placeholder);
-  } else if (indexInput == 1) {
-    changePlaceholder.text("Какова конечная цель?").css(placeholder);
-  }
+  // if (indexInput == 0) {
+  //   changePlaceholder.text("Что вас интересует?").css(placeholder);
+  // } else if (indexInput == 1) {
+  //   changePlaceholder.text("Сколько максимум?").css(placeholder);
+  // }
 });
