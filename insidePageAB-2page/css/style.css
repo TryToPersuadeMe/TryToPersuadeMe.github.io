@@ -4051,6 +4051,8 @@ nav::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .consultationForm__form {
@@ -4235,6 +4237,7 @@ nav::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 40px;
 }
 
 .consultation__column {
@@ -6174,10 +6177,6 @@ nav::after {
 
   .consultationForm__row input {
     max-width: 10rem;
-  }
-
-  .consultation__row {
-    margin-top: 40px;
   }
 
   .advantages__1000px {

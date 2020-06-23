@@ -26,6 +26,8 @@ const popUpFunction = (popUpClass, popUpClass_active, popUp_button, popUp_closeI
     ) {
       popUpClass.removeClass(popUpClass_active);
       $("main").removeClass("shadow");
+      $("body").removeClass("lock");
+
     } else {
       $("body").addClass("lock");
     }

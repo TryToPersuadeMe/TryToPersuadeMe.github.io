@@ -8,6 +8,7 @@ const findFilterPopUp = (popUpClass, popUpClass_active, popUp_button, popUp_clos
   $("." + popUp_closeIcon).on("click", () => {
     popUpClass.removeClass(popUpClass_active);
     $("main").removeClass("shadow");
+    $("body").removeClass("lock");
   });
 
   $(document).mouseup(() => {
@@ -19,6 +20,9 @@ const findFilterPopUp = (popUpClass, popUpClass_active, popUp_button, popUp_clos
     ) {
       popUpClass.removeClass(popUpClass_active);
       $("main").removeClass("shadow");
+      $("body").removeClass("lock");
+    } else {
+      $("body").addClass("lock");
     }
   });
   /* popUp end */

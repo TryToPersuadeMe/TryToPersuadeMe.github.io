@@ -569,6 +569,8 @@ resizeControl();
     ) {
       popUpClass.removeClass(popUpClass_active);
       $("main").removeClass("shadow");
+      $("body").removeClass("lock");
+
     } else {
       $("body").addClass("lock");
     }
@@ -698,6 +700,7 @@ playsl();
   $("." + popUp_closeIcon).on("click", () => {
     popUpClass.removeClass(popUpClass_active);
     $("main").removeClass("shadow");
+    $("body").removeClass("lock");
   });
 
   $(document).mouseup(() => {
@@ -709,6 +712,9 @@ playsl();
     ) {
       popUpClass.removeClass(popUpClass_active);
       $("main").removeClass("shadow");
+      $("body").removeClass("lock");
+    } else {
+      $("body").addClass("lock");
     }
   });
   /* popUp end */
