@@ -2447,6 +2447,8 @@ nav::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  max-width: 100%;
+  width: 100%;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -2461,6 +2463,9 @@ nav::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
 }
 
 .findFilter-form__fieldsWrapper label {
@@ -2468,7 +2473,6 @@ nav::after {
 }
 
 .findFilter-form__fieldsWrapper_price {
-  min-width: 1px;
   max-width: 295px;
 }
 
@@ -2487,30 +2491,30 @@ nav::after {
   margin-right: 27px;
 }
 
-.findFilter-form__fieldsWrapper_price input::-webkit-input-placeholder {
-  color: #b4b4b3;
-}
-
-.findFilter-form__fieldsWrapper_price input::-moz-placeholder {
-  color: #b4b4b3;
-}
-
-.findFilter-form__fieldsWrapper_price input:-ms-input-placeholder {
-  color: #b4b4b3;
-}
-
+.findFilter-form__fieldsWrapper_price input::-webkit-input-placeholder,
+.findFilter-form__fieldsWrapper_price input::-moz-placeholder,
+.findFilter-form__fieldsWrapper_price input:-ms-input-placeholder,
 .findFilter-form__fieldsWrapper_price input:-moz-placeholder {
   color: #b4b4b3;
 }
 
 .findFilter-form__selectWrapper {
-  min-width: 263px;
   max-width: 263px;
   width: 100%;
   margin-right: 27px;
 }
 
-.findFilter-form__button {
+.findFilter-form__buttons-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+}
+
+.findFilter-form__buttons-wrapper button,
+.findFilter-form__buttons-wrapper input {
   max-width: 125px;
   width: 100%;
   border-radius: 5px;
@@ -2524,7 +2528,7 @@ nav::after {
   background-color: #f76809;
 }
 
-.findFilter-form__button_reset {
+.findFilter-form__buttons-wrapper input {
   margin: 0 9px 0 0;
   background-color: transparent;
   border: 2px solid #ffffff;
@@ -2569,7 +2573,15 @@ nav::after {
   width: 100%;
   font-family: Inter;
   color: #1d3456;
-  padding: 15px 10px;
+  padding: 0px 25px 0 10px;
+  min-height: 50px;
+  max-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 1.6rem;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
@@ -2601,7 +2613,6 @@ nav::after {
   cursor: pointer;
   position: relative;
   color: #0094f7;
-  padding-right: 35px;
 }
 
 .findFilter-form .jq-selectbox ul {
@@ -2642,10 +2653,7 @@ nav::after {
   content: "";
   position: absolute;
   right: 7px;
-  top: 54%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: calc(50% - 2px);
   width: 16px;
   height: 8px;
   background-image: url(../img/icons/arrow-down-blue__icon.svg);
@@ -4087,6 +4095,7 @@ nav::after {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin: 15px 0;
+  position: relative;
 }
 
 .consultationForm__row label {
@@ -4209,20 +4218,20 @@ nav::after {
 
 .consultation__container {
   position: relative;
-  z-index: 1;
   padding-top: 70px;
 }
 
 .consultation__title {
   color: #ffffff;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
 }
 
 .consultation__row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 65px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4246,6 +4255,8 @@ nav::after {
   border-top-right-radius: 5px;
   padding: 20px 70px 20px 60px;
   min-height: 82vh;
+  position: relative;
+  z-index: 2;
   margin-right: 15px;
 }
 
@@ -4438,6 +4449,10 @@ nav::after {
   .feedback__header-wrapper_active-700px {
     display: none;
   }
+
+  .consultationForm__closeIcon {
+    display: none;
+  }
 }
 
 @media (min-width: 701px) {
@@ -4446,6 +4461,12 @@ nav::after {
   }
 
   .consultation__button-responsivePopup {
+    display: none;
+  }
+}
+
+@media (min-width: 767px) {
+  .findFilter-form__closeIcon {
     display: none;
   }
 }
@@ -4522,6 +4543,10 @@ nav::after {
   }
 
   .arrowBackPage-fixed {
+    display: none;
+  }
+
+  .findFilter-form__popUp-button {
     display: none;
   }
 }
@@ -4681,6 +4706,32 @@ nav::after {
 
   .first-screen__title_subtitle {
     font-size: 28px;
+  }
+
+  .findFilter-form {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 30px 0 25px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .findFilter-form__fieldsWrapper {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 50%;
+            flex: 0 1 50%;
+  }
+
+  .findFilter-form__fieldsWrapper_price input:last-of-type {
+    margin: 0;
+  }
+
+  .findFilter-form__buttons-wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 20px;
   }
 
   .flipcard__title {
@@ -4938,6 +4989,17 @@ nav::after {
     font-size: 28px;
   }
 
+  .findFilter-form__fieldsWrapper_price input {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .findFilter-form__buttons-wrapper button,
+  .findFilter-form__buttons-wrapper input {
+    height: 40px;
+    font-size: 14px;
+  }
+
   .findFilter-form .jq-selectbox {
     height: 4rem;
   }
@@ -4945,7 +5007,9 @@ nav::after {
   .findFilter-form .jq-selectbox li,
   .findFilter-form .jq-selectbox__select-text {
     font-size: 1.4rem;
-    padding: 11px 35px 11px 10px;
+    padding: 0 25px 0 10px;
+    min-height: 40px;
+    max-height: 40px;
   }
 
   .findFilter-form .jq-selectbox .placeholder {
@@ -5218,6 +5282,18 @@ nav::after {
 }
 
 @media (max-width: 950px) {
+  .findFilter-form__fieldsWrapper {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+
+  .findFilter-form__fieldsWrapper_price {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+  }
+
   .askQuestion__wrapper {
     min-height: 35rem;
   }
@@ -6145,6 +6221,115 @@ nav::after {
   }
 }
 
+@media (max-width: 767px) {
+  .findFilter-form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 15px 0 15px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    opacity: 0;
+    background-color: #0094f7;
+    left: 50%;
+    top: -100%;
+  }
+
+  .findFilter-form_active {
+    opacity: 1;
+    top: 50%;
+    border-radius: 5px;
+    z-index: 10001;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+
+  .findFilter-form__closeIcon {
+    display: block;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .findFilter-form__closeIcon::after,
+  .findFilter-form__closeIcon::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    left: 0;
+    top: 50%;
+  }
+
+  .findFilter-form__closeIcon::before {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+
+  .findFilter-form__closeIcon::after {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+
+  .findFilter-form__fieldsWrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-width: 100%;
+  }
+
+  .findFilter-form__fieldsWrapper_price {
+    max-width: 100%;
+  }
+
+  .findFilter-form__fieldsWrapper_price input {
+    max-width: 114px;
+  }
+
+  .findFilter-form__selectWrapper {
+    margin: 0px 0 10px 0;
+    max-width: 242px;
+  }
+
+  .findFilter-form__buttons-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .findFilter-form__buttons-wrapper button,
+  .findFilter-form__buttons-wrapper input {
+    max-width: 114px;
+  }
+
+  .findFilter-form__popUp-button {
+    position: fixed;
+    top: 30%;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 50;
+    background-color: black;
+  }
+}
+
 @media (max-width: 700px) {
   .navigation__icon_search input {
     left: -700%;
@@ -6230,8 +6415,60 @@ nav::after {
   }
 
   .consultationForm {
-    position: absolute;
     top: -100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 10001;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 0;
+  }
+
+  .consultationForm_active {
+    opacity: 1;
+    top: 50%;
+    border-radius: 5px;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+
+  .consultationForm__closeIcon {
+    display: block;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .consultationForm__closeIcon::after,
+  .consultationForm__closeIcon::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    left: 0;
+    top: 50%;
+  }
+
+  .consultationForm__closeIcon::before {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+
+  .consultationForm__closeIcon::after {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
   }
 
   .consultation__button-responsivePopup {

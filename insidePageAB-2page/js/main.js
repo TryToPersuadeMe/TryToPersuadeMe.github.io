@@ -221,21 +221,19 @@ $(".application__form")
 /* find Filer selects change placeholder  */
 $(".findFilter-form__selectWrapper").on("click", function () {
   let indexInput = $(event.currentTarget).index();
-  console.log(indexInput);
-  console.log("asdad");
 
   let placeholder = {
     color: "#0094F7",
     fontWeight: "500",
   };
 
-  // let changePlaceholder = $(event.currentTarget).find(".placeholder");
+  let changePlaceholder = $(event.currentTarget).find(".placeholder");
 
-  // if (indexInput == 0) {
-  //   changePlaceholder.text("Что вас интересует?").css(placeholder);
-  // } else if (indexInput == 1) {
-  //   changePlaceholder.text("Сколько максимум?").css(placeholder);
-  // }
+  if (indexInput == 0) {
+    changePlaceholder.text("Что вас интересует?").css(placeholder);
+  } else if (indexInput == 1) {
+    changePlaceholder.text("Конечная цель?").css(placeholder);
+  }
 });
 ;
 
@@ -542,31 +540,67 @@ $(window).on("resize", function () {
 resizeControl();
 ;
 
+  /* askQuestion popUp */
+  const popUpFunction = (popUpClass, popUpClass_active, popUp_button, popUp_closeIcon) => {
   /* popUp */
-  /* popUp */
-const popUp = $(".popUp");
-const popUp__active = "popUp_active";
+  // const popUp = popUpClass;
+  // const popUp__active = popUpClass_active;
 
-$(".popUp__button-active").on("click", () => {
-    popUp.addClass(popUp__active);
+  $("." + popUp_button).on("click", () => {
+    popUpClass.addClass(popUpClass_active);
     $("main").addClass("shadow");
     $("body").addClass("lock");
-});
+  });
 
-$(".popUp__closeIcon").on("click", () => {
-    popUp.removeClass(popUp__active);
+  $("." + popUp_closeIcon).on("click", () => {
+    popUpClass.removeClass(popUpClass_active);
     $("main").removeClass("shadow");
-});
+    $("body").removeClass("lock");
 
-$(document).mouseup(() => {
+  });
+
+  $(document).mouseup(() => {
     // close search input
+    if (
+      $(event.target).closest($(".popUp")).length == 0 &&
+      $(event.target).closest($(".findFilter-form")).length == 0 &&
+      $(event.target).closest($(".consultationForm")).length == 0
 
-    if ($(event.target).closest(popUp).length == 0) {
-        popUp.removeClass(popUp__active);
-        $("main").removeClass("shadow");
+    ) {
+      popUpClass.removeClass(popUpClass_active);
+      $("main").removeClass("shadow");
+    } else {
+      $("body").addClass("lock");
     }
-});
+  });
   /* popUp end */
+};
+
+/* ask question section popUp */
+let popUp_AskQuestion = $(".popUp");
+let popUp_AskQuestion_active = "popUp_active";
+let popUp_AskQuestion_button = "popUp__button-active";
+let popUp_AskQuestion_closeIcon = "popUp__closeIcon";
+
+popUpFunction(
+  popUp_AskQuestion,
+  popUp_AskQuestion_active,
+  popUp_AskQuestion_button,
+  popUp_AskQuestion_closeIcon
+);
+
+/* find filter popUp */
+let popUp_findFilter = $(".findFilter-form");
+let popUp_findFilter_active = "findFilter-form_active";
+let popUp_findFilter_button = "findFilter-form__popUp-button";
+let popUp_findFilter_closeIcon = "findFilter-form__closeIcon";
+
+popUpFunction(
+  popUp_findFilter,
+  popUp_findFilter_active,
+  popUp_findFilter_button,
+  popUp_findFilter_closeIcon
+);
 ;
 
   /* slider on Hover  */
@@ -653,7 +687,44 @@ playsl();
 
 ;
 
-/* consultation Section popUp */
-  @@include ("consultationSection.js");
+/* consultation form popUp */
+  const findFilterPopUp = (popUpClass, popUpClass_active, popUp_button, popUp_closeIcon) => {
+  $("." + popUp_button).on("click", () => {
+    popUpClass.addClass(popUpClass_active);
+    $("main").addClass("shadow");
+    $("body").addClass("lock");
+  });
+
+  $("." + popUp_closeIcon).on("click", () => {
+    popUpClass.removeClass(popUpClass_active);
+    $("main").removeClass("shadow");
+  });
+
+  $(document).mouseup(() => {
+    // close search input
+    if (
+      $(event.target).closest($(".popUp")).length == 0 &&
+      $(event.target).closest($(".findFilter-form")).length == 0 &&
+      $(event.target).closest($(".consultationForm")).length == 0
+    ) {
+      popUpClass.removeClass(popUpClass_active);
+      $("main").removeClass("shadow");
+    }
+  });
+  /* popUp end */
+};
+
+/* find filter popUp */
+let popUp_consultationForm = $(".consultationForm");
+let popUp_consultationForm_active = "consultationForm_active";
+let popUp_consultationForm_button = "consultation__button-responsivePopup";
+let popUp_consultationForm_closeIcon = "consultationForm__closeIcon";
+
+findFilterPopUp(
+  popUp_consultationForm,
+  popUp_consultationForm_active,
+  popUp_consultationForm_button,
+  popUp_consultationForm_closeIcon
+);
 
 });

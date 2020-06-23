@@ -47,19 +47,17 @@ $(".application__form")
 /* find Filer selects change placeholder  */
 $(".findFilter-form__selectWrapper").on("click", function () {
   let indexInput = $(event.currentTarget).index();
-  console.log(indexInput);
-  console.log("asdad");
 
   let placeholder = {
     color: "#0094F7",
     fontWeight: "500",
   };
 
-  // let changePlaceholder = $(event.currentTarget).find(".placeholder");
+  let changePlaceholder = $(event.currentTarget).find(".placeholder");
 
-  // if (indexInput == 0) {
-  //   changePlaceholder.text("Что вас интересует?").css(placeholder);
-  // } else if (indexInput == 1) {
-  //   changePlaceholder.text("Сколько максимум?").css(placeholder);
-  // }
+  if (indexInput == 0) {
+    changePlaceholder.text("Что вас интересует?").css(placeholder);
+  } else if (indexInput == 1) {
+    changePlaceholder.text("Конечная цель?").css(placeholder);
+  }
 });
