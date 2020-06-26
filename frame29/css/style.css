@@ -2593,12 +2593,12 @@ nav::after {
 
 .textColumn__container {
   position: relative;
-  padding-top: 54px;
-  padding-bottom: 77px;
+  padding-top: 34px;
+  padding-bottom: 54px;
 }
 
 .textColumn__container p {
-  max-width: 840px;
+  max-width: 653px;
   width: 100%;
   margin: 0 0 28px 0;
 }
@@ -2608,7 +2608,7 @@ nav::after {
 }
 
 .textColumn__arrowDown {
-  right: 11.5%;
+  right: 22.5%;
 }
 
 /* cards */
@@ -3571,10 +3571,6 @@ nav::after {
     padding-bottom: 54px;
   }
 
-  .textColumn__arrowDown {
-    right: 7.5%;
-  }
-
   .article__title {
     line-height: 5rem;
   }
@@ -3769,7 +3765,6 @@ nav::after {
   }
 
   .textColumn__container {
-    padding-top: 40px;
     padding-bottom: 40px;
   }
 }
@@ -4658,10 +4653,6 @@ nav::after {
 
   .cardItemForm .jq-selectbox__dropdown {
     text-align: start;
-  }
-
-  .textColumn__container {
-    padding-top: 30px;
   }
 
   .technicalСharact__text {
