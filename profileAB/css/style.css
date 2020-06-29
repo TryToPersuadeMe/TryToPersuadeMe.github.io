@@ -1811,6 +1811,14 @@ nav::after {
   margin: 30px 0 0px 0;
 }
 
+.userProfile__tabLink-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .userProfile__tabLink {
   color: #c7c7c7;
   font-family: Montserrat;
@@ -1881,7 +1889,6 @@ nav::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 20px 0 0 0;
 }
 
 .textArea-wrapper textArea {
@@ -1924,7 +1931,8 @@ nav::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0 30px 0 0;
+  border: 1px solid #000;
+  margin: 20px 30px 0 0;
 }
 
 .textArea-wrapper__label {
@@ -2028,6 +2036,7 @@ nav::after {
   height: 5rem;
   border-radius: 5px;
   font-family: Inter;
+  margin: 20px 30px 0 0;
   border: 2px solid rgba(144, 144, 144, 0.5);
 }
 
@@ -2141,6 +2150,7 @@ nav::after {
   display: flex;
   color: #909090;
   font-size: 16px;
+  margin: 20px 30px 0 0;
   font-family: Montserrat;
   line-height: 173%;
 }
@@ -3149,6 +3159,13 @@ nav::after {
     margin-bottom: 20px;
   }
 
+  .news {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
   .news__wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3177,6 +3194,15 @@ nav::after {
     width: 100%;
     min-height: 50px;
     max-height: 50px;
+  }
+
+  .news .jq-checkbox {
+    margin: 30px 0 0 0;
+  }
+
+  .textArea-wrapper__row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   .textArea-wrapper__star-rating label::before,
@@ -3264,6 +3290,15 @@ nav::after {
   .popUp__input:last-child:last-child {
     margin: 0 0 20px 0;
   }
+
+  .userProfile__title {
+    margin: 20px 0 20px 0;
+    text-align: center;
+  }
+
+  .userProfile__tabLink {
+    margin: 15px 30px 0 0;
+  }
 }
 
 @media (max-width: 550px) {
@@ -3313,6 +3348,18 @@ nav::after {
 
   .popUp__button-active {
     margin: 20px 0 0 0;
+  }
+
+  .userProfile__title {
+    font-size: 25px;
+  }
+
+  .userProfile__title_noMessage {
+    font-size: 20px;
+  }
+
+  .textArea-wrapper__sendButton {
+    max-width: 190px;
   }
 }
 
