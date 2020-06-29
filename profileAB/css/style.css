@@ -1642,7 +1642,7 @@ nav::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 1040px;
+  /* checkbox */
 }
 
 .news__wrapper {
@@ -1741,7 +1741,17 @@ nav::after {
           box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-.news__ .jq-checkbox,
+.news__checkbox {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin-left: 30px;
+  top: -15px;
+}
+
+.news .jq-checkbox,
 .news .jq-radio {
   position: relative;
   display: inline-block;
@@ -1762,12 +1772,14 @@ nav::after {
 }
 
 .news .jq-checkbox {
-  margin-left: 30px;
-  top: -15px;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  left: 0;
   -ms-flex-item-align: center;
       align-self: center;
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   border: 1px solid #0094f7;
   -webkit-transition: 0.2s;
@@ -1931,7 +1943,6 @@ nav::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #000;
   margin: 20px 30px 0 0;
 }
 
@@ -3196,7 +3207,7 @@ nav::after {
     max-height: 50px;
   }
 
-  .news .jq-checkbox {
+  .news__checkbox {
     margin: 30px 0 0 0;
   }
 

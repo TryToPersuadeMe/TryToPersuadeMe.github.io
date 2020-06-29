@@ -224,19 +224,19 @@ $(document).mouseup(() => {
   }
 });
 
+$(".news  :checkbox").styler();
 const checkBoxAll = () => {
-  $(":checkbox").styler();
-
   let checked = false;
   $(".userProfile__select-All-Titles").click(function () {
     if (checked) {
-      $(":checkbox").each(function () {
+      $(".news :checkbox").each(function () {
         $(this).prop("checked", false).trigger("refresh");
+        console.log("check-1");
       });
       countCheckedInputs();
       checked = false;
     } else {
-      $(":checkbox").each(function () {
+      $(".news :checkbox").each(function () {
         $(this).prop("checked", true).trigger("refresh");
       });
       checked = true;
@@ -249,7 +249,6 @@ checkBoxAll();
 
 const countCheckedInputs = () => {
   let checkedInput = $(".checked").length;
-  console.log(checkedInput);
 
   if (checkedInput > 0) {
     $(".userProfile__delBTN").addClass("userProfile__delBTN_active");
@@ -258,31 +257,9 @@ const countCheckedInputs = () => {
   }
 };
 
-$(".jq-checkbox").on("click", function () {
+$(".news__checkbox").on("click", function () {
   countCheckedInputs();
 });
-
-/* const checkBoxAll = () => {
-  $(":checkbox").styler();
-
-  var checked = false;
-  $(".userProfile__select-All-Titles").click(function () {
-    if (checked) {
-      $(":checkbox").each(function () {
-        $(this).prop("checked", false).trigger("refresh");
-      });
-      countCheckedInputs();
-      checked = false;
-    } else {
-      $(":checkbox").each(function () {
-        $(this).prop("checked", true).trigger("refresh");
-      });
-      checked = true;
-      countCheckedInputs();
-    }
-    return false;
-  });
-}; */
 ;
 
 
