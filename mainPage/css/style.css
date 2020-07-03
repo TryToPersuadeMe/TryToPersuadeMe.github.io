@@ -3439,15 +3439,12 @@ input::-webkit-calendar-picker-indicator {
           transform: translate(50%, -50%);
   z-index: 10000;
   overflow: auto;
+  /*   &_active {
+    top: 50%;
+    opacity: 1;
+    transition: 1s ease;
+  } */
   /* jquery validation form  */
-}
-
-.registrationForm_active {
-  top: 50%;
-  opacity: 1;
-  -webkit-transition: 1s ease;
-  -o-transition: 1s ease;
-  transition: 1s ease;
 }
 
 .registrationForm_small {
@@ -3712,6 +3709,14 @@ input::-webkit-calendar-picker-indicator {
 
 .overflow {
   position: relative;
+}
+
+.globalPopUp-js__active {
+  top: 50% !important;
+  opacity: 1 !important;
+  -webkit-transition: 1s ease !important;
+  -o-transition: 1s ease !important;
+  transition: 1s ease !important;
 }
 
 .applicationFormPopUp {
