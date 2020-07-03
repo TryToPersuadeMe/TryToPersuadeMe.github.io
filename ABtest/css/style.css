@@ -3408,6 +3408,312 @@ input::-webkit-calendar-picker-indicator {
   margin: 0 0 6px 0;
 }
 
+.registrationForm {
+  max-width: 400px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #0094f7;
+  border-radius: 5px;
+  padding: 0px 20px 20px 20px;
+  font-family: Montserrat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px auto;
+  position: fixed;
+  top: -100%;
+  right: 50%;
+  opacity: 0;
+  -webkit-transition: 1s ease;
+  -o-transition: 1s ease;
+  transition: 1s ease;
+  -webkit-transform: translate(50%, -50%);
+      -ms-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  z-index: 10000;
+  overflow: auto;
+  /* jquery validation form  */
+}
+
+.registrationForm_active {
+  top: 50%;
+  opacity: 1;
+  -webkit-transition: 1s ease;
+  -o-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.registrationForm_small {
+  height: auto !important;
+}
+
+.registrationForm__closeIcon {
+  display: block;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 10px 0;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.registrationForm__closeIcon::after,
+.registrationForm__closeIcon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #909090;
+  left: 0;
+  top: 50%;
+}
+
+.registrationForm__closeIcon::before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.registrationForm__closeIcon::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.registrationForm__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.registrationForm__row_social-media {
+  margin: 10px 0 0 0;
+}
+
+.registrationForm__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 30px;
+  color: #1d3456;
+  margin: 0px 0 20px 0;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.registrationForm__title_active {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  border-bottom: 2px solid #0094f7;
+  color: #0094f7;
+}
+
+.registrationForm__title:last-of-type {
+  margin-left: 30px;
+  position: relative;
+}
+
+.registrationForm__title:last-of-type::before {
+  position: absolute;
+  content: "|";
+  margin: 0 10px;
+  border: 0px;
+  color: #1d3456;
+  top: 0;
+  left: -30px;
+}
+
+.registrationForm__form-wrapper {
+  width: 100%;
+}
+
+.registrationForm__inputField {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 0 12px 0;
+  /* jquery validation form  */
+}
+
+.registrationForm__inputField input {
+  border: 1px solid #1d3456;
+  border-radius: 5px;
+  max-width: 360px;
+  width: 100%;
+  height: 50px;
+  color: #0094f7;
+  padding: 0 10px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.registrationForm__inputField input::-webkit-input-placeholder {
+  color: #b4b4b3;
+  font-size: 14px;
+  font-family: Inter;
+}
+
+.registrationForm__inputField input::-moz-placeholder {
+  font-size: 14px;
+  color: #b4b4b3;
+  font-family: Inter;
+}
+
+.registrationForm__inputField input:-ms-input-placeholder {
+  font-size: 14px;
+  color: #b4b4b3;
+  font-family: Inter;
+}
+
+.registrationForm__inputField input:-moz-placeholder {
+  font-size: 14px;
+  color: #b4b4b3;
+  font-family: Inter;
+}
+
+.registrationForm__inputField label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1d3456;
+}
+
+.registrationForm__inputField label.error {
+  display: none !important;
+}
+
+.registrationForm__inputField input.error {
+  border: 1px solid red;
+}
+
+.registrationForm__checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0 0 0;
+}
+
+.registrationForm__checkbox label {
+  font-size: 14px;
+  color: #727171;
+  max-width: 276px;
+  width: 100%;
+  line-height: 160%;
+  margin-left: 15px;
+}
+
+.registrationForm__checkbox .jq-checkbox {
+  border: 1px solid #1d3456;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.registrationForm__checkbox .jq-checkbox_active {
+  background-image: url(../img/icons/checkMark_icon.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.registrationForm__errorLabelCheckbox {
+  color: red !important;
+}
+
+.registrationForm__button {
+  background-color: #f76809;
+  max-width: 360px;
+  width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  height: 70px;
+  border-radius: 5px;
+  color: #ffffff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  font-weight: 700;
+  margin: 19px 0 30px 0;
+}
+
+.registrationForm__button:hover {
+  -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.registrationForm__social-media {
+  margin-bottom: 22px;
+}
+
+.registrationForm__social-media h4 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 110%;
+  color: #1d3456;
+  text-align: center;
+}
+
+.registrationForm__social-media a {
+  margin: 0 3px;
+}
+
+.registrationForm__link {
+  font-size: 14px;
+  line-height: 160%;
+  text-align: center;
+  color: #727171;
+}
+
+.registrationForm__link a {
+  color: #0094f7;
+}
+
+.popUp__Lock {
+  overflow: hidden;
+}
+
+.popUp__shadow::after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.overflow {
+  position: relative;
+}
+
 @media (min-width: 360px) {
   .travel-order__image_360px {
     display: none;
@@ -4301,7 +4607,7 @@ input::-webkit-calendar-picker-indicator {
   .shadow::after {
     content: "";
     background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
+    min-height: 100%;
     position: absolute;
     width: 100%;
     top: 0;
@@ -5138,6 +5444,24 @@ input::-webkit-calendar-picker-indicator {
 
   .column__text_white {
     font-size: 1.6rem;
+  }
+
+  .registrationForm {
+    max-width: 360px;
+  }
+
+  .registrationForm__title {
+    font-size: 24px;
+  }
+
+  .registrationForm__button {
+    height: 50px;
+    font-size: 18px;
+    margin: 15px 0 20px 0;
+  }
+
+  .registrationForm__social-media h4 {
+    font-size: 24px;
   }
 }
 
@@ -5995,6 +6319,27 @@ input::-webkit-calendar-picker-indicator {
   .category__slide_small-active::after {
     height: 15px;
     width: 5rem;
+  }
+}
+
+@media (max-height: 835px) {
+  .registrationForm {
+    height: 100%;
+  }
+
+  .registrationForm__closeIcon::after,
+  .registrationForm__closeIcon::before {
+    margin: 10px 0;
+  }
+
+  .registrationForm__title {
+    margin: 20px 0 20px 0;
+  }
+}
+
+@media (max-height: 520px) {
+  .registrationForm_small {
+    height: 100% !important;
   }
 }
 

@@ -173,3 +173,6 @@ $(window).on("resize", function () {
   $(".purchases__slider").slick("setPosition");
   $(".row__images-keys").slick("setPosition");
 });
+
+
+
