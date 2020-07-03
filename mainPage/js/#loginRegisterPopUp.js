@@ -1,4 +1,4 @@
-const travelOrderForm__PopUp = () => {
+const loginRegisterPopUp = () => {
   /* popUp */
   const popUp = $(".registrationForm");
   const popUp__active = "registrationForm_active";
@@ -55,4 +55,4 @@ const travelOrderForm__PopUp = () => {
   });
 };
 
-travelOrderForm__PopUp();
+loginRegisterPopUp();

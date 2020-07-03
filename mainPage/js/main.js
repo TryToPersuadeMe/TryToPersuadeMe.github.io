@@ -465,12 +465,45 @@ $(".advantages__click").on("click", function () {
 ;
 
   /* popUp travel order form */
-  const travelOrderForm__PopUp = () => {
+  const applicationFormPopUp = () => {
+  /* popUp */
+  const popUp = $(".applicationFormPopUp");
+  const popUp__active = "applicationFormPopUp_active";
+
+  $(".travel-order__button, .travel-order__button-550px").on("click", () => {
+    popUp.eq(0).addClass(popUp__active);
+    $(".overflow").addClass("popUp__shadow");
+    $("body").addClass("popUp__Lock");
+  });
+
+  $(".applicationFormPopUp__closeIcon").on("click", () => {
+    popUp.removeClass(popUp__active);
+    $(".overflow").removeClass("popUp__shadow");
+    $("body").removeClass("popUp__Lock");
+  });
+
+  $(document).mouseup(() => {
+    // close search input
+
+    if ($(event.target).closest(popUp).length == 0) {
+      popUp.removeClass(popUp__active);
+      $(".overflow").removeClass("popUp__shadow");
+      $("body").removeClass("popUp__Lock");
+    }
+  });
+  /* popUp end */
+};
+
+applicationFormPopUp();
+;
+
+  /* popUP for logion or register */
+  const loginRegisterPopUp = () => {
   /* popUp */
   const popUp = $(".registrationForm");
   const popUp__active = "registrationForm_active";
 
-  $(".travel-order__button, .travel-order__button-550px").on("click", () => {
+  $(".navigation__icon_hide-360px, .navResponsive__login").on("click", () => {
     popUp.eq(0).addClass(popUp__active);
     $(".overflow").addClass("popUp__shadow");
     $("body").addClass("popUp__Lock");
@@ -522,6 +555,6 @@ $(".advantages__click").on("click", function () {
   });
 };
 
-travelOrderForm__PopUp();
+loginRegisterPopUp();
 ;
 });
