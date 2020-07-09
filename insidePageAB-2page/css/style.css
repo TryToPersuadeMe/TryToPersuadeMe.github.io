@@ -1639,12 +1639,24 @@ nav::after {
 }
 
 .application textarea::-webkit-input-placeholder,
+.application input::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #b4b4b3;
+}
+
 .application textarea::-moz-placeholder,
+.application input::-moz-placeholder {
+  font-size: 16px;
+  color: #b4b4b3;
+}
+
 .application textarea:-ms-input-placeholder,
+.application input:-ms-input-placeholder {
+  font-size: 16px;
+  color: #b4b4b3;
+}
+
 .application textarea:-moz-placeholder,
-.application input::-webkit-input-placeholder,
-.application input::-moz-placeholder,
-.application input:-ms-input-placeholder,
 .application input:-moz-placeholder {
   font-size: 16px;
   color: #b4b4b3;
@@ -2211,12 +2223,27 @@ nav::after {
   text-align: center;
 }
 
+.title_white {
+  color: white;
+  z-index: 2;
+  position: relative;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
 .subtitle {
   font-size: 2.4rem;
   color: #1d3456;
   text-align: center;
   font-family: Montserrat;
   padding: 0 2rem;
+}
+
+.subtitle_white {
+  color: white;
+  margin: 26px 0 0 0;
+  z-index: 2;
+  position: relative;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 /* text */
@@ -2268,6 +2295,18 @@ nav::after {
 
 .tag_usefull::after {
   content: "Полезно";
+}
+
+.tag_rent::after {
+  content: "Аренда";
+}
+
+.tag_sale::after {
+  content: "Продажа";
+}
+
+.tag_newBuild::after {
+  content: "Новостройки";
 }
 
 .button {
@@ -2345,7 +2384,6 @@ nav::after {
 /* first screen section */
 
 .first-screen {
-  min-height: 100vh;
   background-image: url("../img/first-screen/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -2354,7 +2392,6 @@ nav::after {
 
 .first-screen__content-wrapper {
   position: relative;
-  min-height: 100vh;
 }
 
 .first-screen__container {
@@ -2492,7 +2529,20 @@ nav::after {
 }
 
 .findFilter-form__fieldsWrapper_price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   max-width: 295px;
+}
+
+.findFilter-form__fieldsWrapper_price div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .findFilter-form__fieldsWrapper_price input {
@@ -2510,9 +2560,18 @@ nav::after {
   margin-right: 27px;
 }
 
-.findFilter-form__fieldsWrapper_price input::-webkit-input-placeholder,
-.findFilter-form__fieldsWrapper_price input::-moz-placeholder,
-.findFilter-form__fieldsWrapper_price input:-ms-input-placeholder,
+.findFilter-form__fieldsWrapper_price input::-webkit-input-placeholder {
+  color: #b4b4b3;
+}
+
+.findFilter-form__fieldsWrapper_price input::-moz-placeholder {
+  color: #b4b4b3;
+}
+
+.findFilter-form__fieldsWrapper_price input:-ms-input-placeholder {
+  color: #b4b4b3;
+}
+
 .findFilter-form__fieldsWrapper_price input:-moz-placeholder {
   color: #b4b4b3;
 }
@@ -2544,7 +2603,16 @@ nav::after {
   line-height: 20px;
   color: #ffffff;
   letter-spacing: 0.02em;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
   background-color: #f76809;
+}
+
+.findFilter-form__buttons-wrapper button:hover,
+.findFilter-form__buttons-wrapper input:hover {
+  -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .findFilter-form__buttons-wrapper input {
@@ -3118,6 +3186,10 @@ nav::after {
   color: #0094f7;
   max-width: 650px;
   margin: 0px 0 20px 0;
+}
+
+.article__title_left {
+  max-width: 100%;
 }
 
 .article__title_small {
@@ -4224,6 +4296,12 @@ nav::after {
   min-height: 100vh;
   position: relative;
   margin: 70px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   overflow: hidden;
 }
 
@@ -4946,12 +5024,21 @@ nav::after {
   }
 
   .application textarea::-webkit-input-placeholder,
+  .application input::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+
   .application textarea::-moz-placeholder,
+  .application input::-moz-placeholder {
+    font-size: 14px;
+  }
+
   .application textarea:-ms-input-placeholder,
+  .application input:-ms-input-placeholder {
+    font-size: 14px;
+  }
+
   .application textarea:-moz-placeholder,
-  .application input::-webkit-input-placeholder,
-  .application input::-moz-placeholder,
-  .application input:-ms-input-placeholder,
   .application input:-moz-placeholder {
     font-size: 14px;
   }
@@ -6198,6 +6285,10 @@ nav::after {
     max-width: 10rem;
   }
 
+  .consultation__column {
+    max-width: 370px;
+  }
+
   .advantages__1000px {
     width: 96%;
   }
@@ -6731,6 +6822,11 @@ nav::after {
     font-size: 16px;
   }
 
+  .orderedText__title {
+    word-wrap: break-word;
+    hyphenate-limit-chars: 6 3 3;
+  }
+
   .article__title {
     font-size: 22px;
     line-height: 27px;
@@ -6777,7 +6873,7 @@ nav::after {
   }
 
   .advantages__container {
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-bottom: 4rem;
   }
 }
@@ -6819,6 +6915,14 @@ nav::after {
 @media (max-width: 450px) {
   .navigation__icon_search input {
     left: -550%;
+  }
+
+  .title_white {
+    color: #1d3456;
+  }
+
+  .subtitle_white {
+    color: #1d3456;
   }
 
   .purchases__navigation li {
@@ -7000,7 +7104,7 @@ nav::after {
   }
 
   .feedback__button {
-    margin: 7rem auto 0 auto;
+    margin: 3rem auto;
   }
 
   .feedback__sliderColumn .slick-list {
