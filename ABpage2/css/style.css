@@ -3188,10 +3188,6 @@ nav::after {
   margin: 0px 0 20px 0;
 }
 
-.article__title_left {
-  max-width: 100%;
-}
-
 .article__title_small {
   padding-bottom: 10px;
   font-size: 3.8rem;
@@ -3237,7 +3233,7 @@ nav::after {
 
 .article__image_left {
   float: left;
-  margin: 0 30px 0 0;
+  margin: 0 30px 15px 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 5px;
@@ -4648,6 +4644,10 @@ nav::after {
 
   .findFilter-form__popUp-button {
     display: none;
+  }
+
+  .article__title_left {
+    max-width: 100%;
   }
 }
 
