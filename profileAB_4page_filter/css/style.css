@@ -1641,8 +1641,6 @@ nav::after {
 }
 
 .filterColumn__spoiler-wrapper {
-  -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   margin: 10px 0 0 0;
   padding: 10px;
   display: none;
@@ -2014,6 +2012,29 @@ nav::after {
   .popUp__input:-moz-placeholder {
     font-size: 1.4rem;
   }
+
+  .filterUserProfile__title {
+    text-align: center;
+  }
+
+  .filterUserProfile__row_mini {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0 20px 20px 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .filterUserProfile__filterColumn {
+    margin: 0 0px 20px 0;
+  }
+
+  .filterColumn {
+    max-width: 360px;
+  }
 }
 
 @media (max-width: 1000px) and (max-width: 768px) {
@@ -2119,31 +2140,6 @@ nav::after {
 
   .popUp__input {
     border: 2px solid #909090;
-  }
-
-  .filterUserProfile__title {
-    text-align: center;
-  }
-
-  .filterUserProfile__row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  .filterUserProfile__row_mini {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin: 0 0 20px 0;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-
-  .filterUserProfile__filterColumn {
-    margin: 0 0 20px 0;
   }
 }
 

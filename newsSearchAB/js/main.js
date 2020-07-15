@@ -161,32 +161,7 @@ $("body").on("click", '[href*="#"]', function (e) {
   e.preventDefault();
 });;
 
-  /* popUp */
-  /* popUp */
-const popUp = $(".popUp");
-const popUp__active = "popUp_active";
 
-$(".popUp__button-active").on("click", () => {
-    popUp.addClass(popUp__active);
-    $("main").addClass("shadow");
-    $("body").addClass("lock");
-});
-
-$(".popUp__closeIcon").on("click", () => {
-    popUp.removeClass(popUp__active);
-    $("main").removeClass("shadow");
-});
-
-$(document).mouseup(() => {
-    // close search input
-
-    if ($(event.target).closest(popUp).length == 0) {
-        popUp.removeClass(popUp__active);
-        $("main").removeClass("shadow");
-    }
-});
-  /* popUp end */
-;
 
   /* arrow back in prev page START */
 
@@ -201,4 +176,46 @@ $(document).on("scroll", function () {
 });;
 
   /* arrow back in prev page END */
+
+  // Change  SELECT/input style/checkbox. jquery.formstyler.min.js + animate all arrows
+$("select").styler({
+  selectPlaceholde: true,
+});
+
+$(".jq-selectbox__trigger-arrow").click(function () {
+  $(this).toggleClass("jq-selectbox__trigger-arrow_active");
+  $(".jq-selectbox__trigger-arrow").not(this).removeClass("jq-selectbox__trigger-arrow_active");
+});
+
+// mouse up
+$(document).mouseup(() => {
+  //  close arrows in input/select
+  if ($(event.target).closest(".jq-selectbox__trigger-arrow").length == 0) {
+    $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
+  }
+});
+$('input[type="reset"]').styler();
+$('input[type="checkbox"]').styler();
+$('input[type="checkbox"]').click(function (e) {
+  $('input[type="checkbox"]').toggleClass("jq-checkbox_active");
+  e.preventDefault();
+  $("input:checkbox").attr("disabled", true).trigger("refresh");
+});
+
+/* find Filer selects change placeholder  */
+$(".findFilter__select-wrapper").on("click", function () {
+  let indexInput = $(event.currentTarget).index();
+
+  let placeholder = {
+    color: "#0094F7",
+    fontWeight: "500",
+  };
+
+  let changePlaceholder = $(event.currentTarget).find(".placeholder");
+
+  if (indexInput == 1) {
+    changePlaceholder.text("Категория").css(placeholder);
+  }
+});
+
 });
