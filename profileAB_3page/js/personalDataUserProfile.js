@@ -14,9 +14,13 @@ $("#changePassForm").validate({
 /* email form */
 
 /* password form */
-$("#changeEmail").validate({
+$("#changeEmailForm").validate({
   rules: {
-    email: "required",
+    changeEmailInput: "required",
+    changeEmailInput2: {
+      required: true,
+      equalTo: "#changeEmailInput",
+    },
   },
 });
 
