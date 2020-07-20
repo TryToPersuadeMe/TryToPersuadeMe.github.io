@@ -294,7 +294,7 @@ input::-webkit-calendar-picker-indicator {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 5;
 }
 
 /*  container for all content */
@@ -4490,6 +4490,21 @@ nav::after {
   opacity: 0;
 }
 
+.fixedArrowUp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 80px;
+  padding: 10px 0;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid #0094F7;
+  text-align: center;
+  z-index: 20;
+  border-radius: 5px;
+}
+
 @media (min-width: 451px) {
   .advantages::after {
     content: "";
@@ -4747,6 +4762,13 @@ nav::after {
 
   .footer__column_contacts p {
     font-weight: 400;
+  }
+
+  .fixedArrowUp {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 60px;
   }
 }
 
@@ -6381,6 +6403,11 @@ nav::after {
 
   .advantages__1000px {
     width: 96%;
+  }
+
+  .fixedArrowUp {
+    bottom: 80px;
+    right: 10px;
   }
 }
 
