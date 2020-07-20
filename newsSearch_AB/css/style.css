@@ -1414,6 +1414,7 @@ nav::after {
 .box__button {
   display: block;
   max-width: 360px;
+  font-family: Montserrat;
   width: 100%;
   color: #0094f7;
   height: 70px;
