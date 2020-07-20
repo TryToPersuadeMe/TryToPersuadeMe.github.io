@@ -1440,138 +1440,6 @@ nav::after {
   color: #0094f7;
 }
 
-/* Ask Question */
-
-.askQuestion__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-image: url(../img/askQuestion/askQuestion__bg.png);
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: "Montserrat";
-  font-weight: 700;
-  position: relative;
-  min-height: 55rem;
-}
-
-.askQuestion__wrapper::before {
-  content: "";
-  background-color: #267fba;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.65;
-}
-
-.askQuestion__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 80%;
-          flex: 1 0 80%;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  position: relative;
-}
-
-.askQuestion__logo {
-  margin: 0 20px;
-  max-width: 326px;
-  width: 100%;
-  position: relative;
-}
-
-.askQuestion__logo img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.askQuestion__text {
-  font-size: 3.5rem;
-  max-width: 490px;
-  color: white;
-  line-height: 110.5%;
-  margin: 0 20px 0 0;
-}
-
-.popUp {
-  max-width: 550px;
-  width: 100%;
-}
-
-.popUp__row {
-  margin: 0 -15px;
-}
-
-.popUp__column {
-  padding: 0 15px;
-  width: 100%;
-  max-width: 292px;
-}
-
-.popUp__input {
-  height: 50px;
-  border-radius: 5px;
-  margin: 0 0 20px 0;
-  padding: 0 10px;
-  font-family: "Inter";
-  color: #0094f7;
-  width: 100%;
-  font-size: 1.6rem;
-  resize: none;
-}
-
-.popUp__input:last-child {
-  margin: 0;
-}
-
-.popUp__input::-webkit-input-placeholder {
-  font-size: 1.6rem;
-  color: #b4b4b3;
-}
-
-.popUp__input::-moz-placeholder {
-  font-size: 1.6rem;
-  color: #b4b4b3;
-}
-
-.popUp__input:-ms-input-placeholder {
-  color: #b4b4b3;
-  font-size: 1.6rem;
-}
-
-.popUp__input:-moz-placeholder {
-  color: #b4b4b3;
-  font-size: 1.6rem;
-}
-
-.popUp__input_textArea {
-  height: 120px;
-  padding: 16px 10px;
-}
-
-.askQuestion_margin {
-  margin: 50px 0 0px 0;
-}
-
 /* full width img */
 
 .fullWidth-Img {
@@ -1639,6 +1507,7 @@ nav::after {
   position: relative;
   min-width: 100%;
   min-height: 60vh;
+  margin-bottom: 7px;
 }
 
 .contactsGetCall__img {
@@ -1895,28 +1764,6 @@ nav::after {
   }
 }
 
-@media (min-width: 950px) {
-  .popUp__closeIcon {
-    display: none;
-  }
-
-  .popUp__button-active {
-    display: none;
-  }
-}
-
-@media (max-width: 1919px) {
-  .askQuestion__wrapper {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  .askQuestion__logo {
-    display: none;
-  }
-}
-
 @media (max-width: 1440px) {
   .navigation__icon_search input {
     top: 40px;
@@ -1940,21 +1787,11 @@ nav::after {
   .footer__column_contacts p {
     font-family: "Futura";
   }
-
-  .askQuestion__wrapper {
-    min-height: 45rem;
-  }
 }
 
 @media (max-width: 1200px) {
   .contactsSection__row {
     margin: 0 0 30px 0;
-  }
-}
-
-@media (max-width: 1100px) {
-  .askQuestion__text {
-    font-size: 3rem;
   }
 }
 
@@ -2083,22 +1920,6 @@ nav::after {
     font-size: 42px;
   }
 
-  .popUp__input::-webkit-input-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .popUp__input::-moz-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .popUp__input:-ms-input-placeholder {
-    font-size: 1.4rem;
-  }
-
-  .popUp__input:-moz-placeholder {
-    font-size: 1.4rem;
-  }
-
   .fullWidth-Img {
     min-height: 40vh;
   }
@@ -2141,94 +1962,6 @@ nav::after {
 @media (max-width: 980px) {
   .first-screen__arrowDown {
     display: none;
-  }
-}
-
-@media (max-width: 950px) {
-  .askQuestion__wrapper {
-    min-height: 35rem;
-  }
-
-  .askQuestion__container {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  .popUp {
-    position: fixed;
-    z-index: 10001;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    left: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 0 0px 40px 0px;
-    top: -100%;
-    max-width: 640px;
-    background-color: white;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    opacity: 0;
-  }
-
-  .popUp_active {
-    opacity: 1;
-    left: 50%;
-    top: 50%;
-    border-radius: 5px;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-  }
-
-  .popUp__closeIcon {
-    display: block;
-    -ms-flex-item-align: end;
-        align-self: flex-end;
-    width: 30px;
-    height: 30px;
-    margin: 5px 10px;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .popUp__closeIcon::after,
-  .popUp__closeIcon::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #909090;
-    left: 0;
-    top: 50%;
-  }
-
-  .popUp__closeIcon::before {
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
-
-  .popUp__closeIcon::after {
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-
-  .popUp__column {
-    max-width: 280px;
-  }
-
-  .popUp__input {
-    border: 2px solid #909090;
   }
 }
 
@@ -2738,18 +2471,8 @@ nav::after {
     max-width: 540px;
   }
 
-  .askQuestion__container {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-
-  .askQuestion__text {
-    text-align: center;
-    margin: 0;
-  }
-
-  .popUp__button-active {
-    margin: 30px 0 0 0;
+  .contactsGetCall {
+    margin-bottom: 13px;
   }
 
   .contactsGetCall__button {
@@ -2820,27 +2543,12 @@ nav::after {
     display: none;
   }
 
-  .popUp {
-    max-width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
   .contactsSection__image p {
     bottom: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .popUp__row {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-
-  .popUp__input:last-child:last-child {
-    margin: 0 0 20px 0;
-  }
-
   .fullWidth-Img {
     min-height: 30vh;
   }
@@ -2909,14 +2617,6 @@ nav::after {
 
   .button__mediumOrange {
     font-size: 16px;
-  }
-
-  .askQuestion__text {
-    font-size: 1.8rem;
-  }
-
-  .popUp__button-active {
-    margin: 20px 0 0 0;
   }
 }
 
@@ -3057,5 +2757,3 @@ nav::after {
 .webp .footer{ background-image: url(../img/footer/footer__bg.webp); }
 
 .webp .first-screen__image-wrapper{ background-image: url(../img/ftrst-screen/1.webp); }
-
-.webp .askQuestion__wrapper{ background-image: url(../img/askQuestion/askQuestion__bg.webp); }
