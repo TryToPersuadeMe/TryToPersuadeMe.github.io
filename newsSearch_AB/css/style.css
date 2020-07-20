@@ -3236,4 +3236,10 @@ nav::after {
   }
 }
 
+@media (max-width: 320px) {
+  .findFilter__select-wrapper {
+    max-width: 290px;
+  }
+}
+
 .webp .footer{ background-image: url(../img/footer/footer__bg.webp); }
