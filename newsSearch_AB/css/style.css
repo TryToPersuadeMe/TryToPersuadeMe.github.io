@@ -2911,8 +2911,14 @@ nav::after {
             justify-content: space-between;
   }
 
+  .box__button {
+    font-size: 22px;
+    height: 60px;
+    max-width: 300px;
+  }
+
   .box .news {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
   .news:nth-of-type(- n + 2) {
