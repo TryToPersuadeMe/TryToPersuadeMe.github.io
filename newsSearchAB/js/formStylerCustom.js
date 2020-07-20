@@ -15,34 +15,17 @@ $(document).mouseup(() => {
     $(".jq-selectbox__trigger-arrow").removeClass("jq-selectbox__trigger-arrow_active");
   }
 });
-
-$(".findFilter-form__fieldWrapper").on("click", function () {
-  let indexInput = $(event.currentTarget).index();
-  console.log(indexInput);
-
-  // $(".dots-list__item").not(this).removeClass("dots-list__item_active");
-  // $(".dots-list__item").eq(indexInput).addClass("dots-list__item_active");
-
-  let placeholder = {
-    color: "#0094F7",
-    fontWeight: "500",
-  };
-
-  let changePlaceholder = $(event.currentTarget).find(".placeholder");
-
-  if (indexInput == 0) {
-    changePlaceholder.text("Что вас интересует?").css(placeholder);
-  } else if (indexInput == 1) {
-    changePlaceholder.text("Какова конечная цель?").css(placeholder);
-  }
+$('input[type="reset"]').styler();
+$('input[type="checkbox"]').styler();
+$('input[type="checkbox"]').click(function (e) {
+  $('input[type="checkbox"]').toggleClass("jq-checkbox_active");
+  e.preventDefault();
+  $("input:checkbox").attr("disabled", true).trigger("refresh");
 });
 
-$(".cardItemForm__select-js").on("click", function () {
-  let indexInput = $(event.currentTarget).index() - 1;
-  console.log(indexInput);
-
-  // $(".dots-list__item").not(this).removeClass("dots-list__item_active");
-  // $(".dots-list__item").eq(indexInput).addClass("dots-list__item_active");
+/* find Filer selects change placeholder  */
+$(".findFilter__select-wrapper").on("click", function () {
+  let indexInput = $(event.currentTarget).index();
 
   let placeholder = {
     color: "#0094F7",
@@ -51,7 +34,7 @@ $(".cardItemForm__select-js").on("click", function () {
 
   let changePlaceholder = $(event.currentTarget).find(".placeholder");
 
-  if (indexInput == 0) {
-    changePlaceholder.text("Всего человек?").css(placeholder);
+  if (indexInput == 1) {
+    changePlaceholder.text("Категория").css(placeholder);
   }
 });
