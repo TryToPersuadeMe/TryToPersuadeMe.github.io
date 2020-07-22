@@ -2465,6 +2465,29 @@ label {
   .userProfile__profileTabs {
     margin: 0 0 30px 0;
   }
+
+  .profileTabs {
+    max-width: 750px;
+  }
+
+  .profileTabs__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .profileTabs__category {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 25%;
+            flex: 0 1 25%;
+    margin-right: 10px;
+  }
+
+  .profileTabs__category a {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -2627,25 +2650,6 @@ label {
   .profileDataSection__button {
     font-size: 16px;
   }
-
-  .profileTabs__wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-
-  .profileTabs__category {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 25%;
-            flex: 0 1 25%;
-    margin-right: 10px;
-  }
-
-  .profileTabs__category a {
-    width: 100%;
-    display: block;
-    text-align: center;
-  }
 }
 
 @media (max-width: 1000px) and (max-width: 768px) {
@@ -2663,12 +2667,6 @@ label {
 @media (max-width: 1000px) and (max-width: 360px) {
   .navigation__icon:first-child::after {
     right: calc(-50%);
-  }
-}
-
-@media (max-width: 999px) {
-  .profileTabs {
-    max-width: 750px;
   }
 }
 
