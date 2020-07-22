@@ -164,12 +164,17 @@ $("body").on("click", '[href*="#"]', function (e) {
   var windowHeight = $(window).height();
 
 $(document).on("scroll", function () {
-    var self = $("main").children().eq(2),
-        height = self.offset().top + self.height();
-    if ($(document).scrollTop() + windowHeight >= height) {
-        $(".arrowBackPage-fixed").addClass("arrowBackPage-fixed_active");
-    } else $(".arrowBackPage-fixed").removeClass("arrowBackPage-fixed_active");
-});;
+  var self = $("main").children().eq(2),
+    height = self.offset().top + self.height();
+  if ($(document).scrollTop() + windowHeight >= height) {
+    $(".arrowBackPage-fixed").addClass("arrowBackPage-fixed_active");
+    $(".fixedArrowUp").addClass("fixedArrowUp__active");
+  } else {
+    $(".arrowBackPage-fixed").removeClass("arrowBackPage-fixed_active");
+    $(".fixedArrowUp").removeClass("fixedArrowUp__active");
+  }
+});
+;
 
   /* formstyler for selects */
   // Change  SELECT/input style/checkbox. jquery.formstyler.min.js + animate all arrows
