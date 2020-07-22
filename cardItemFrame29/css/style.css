@@ -2341,9 +2341,17 @@ nav::after {
 
 .cardItemForm__title {
   font-size: 40px;
+  font-family: Montserrat;
   line-height: 49px;
   color: #1d3456;
   font-weight: 600;
+}
+
+.cardItemForm__fieldsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 25px 0 0 0;
 }
 
 .cardItemForm__row {
@@ -2355,6 +2363,14 @@ nav::after {
           align-items: center;
   margin: 19px 0px 0 0;
   width: 100%;
+}
+
+.cardItemForm__column {
+  margin-right: 17px;
+}
+
+.cardItemForm__column:last-of-type {
+  margin: 0;
 }
 
 .cardItemForm__priceCurrent {
@@ -2410,12 +2426,12 @@ nav::after {
   height: 50px;
   border: 2px solid rgba(144, 144, 144, 0.5);
   border-radius: 5px;
-  margin: 0 17px 0 0;
+  margin: 0 17px 19px 0;
   position: relative;
   font-family: Inter;
 }
 
-.cardItemForm__inputWrapper:nth-of-type(2) {
+.cardItemForm__inputWrapper:last-of-type {
   margin: 0;
 }
 
@@ -2426,10 +2442,6 @@ nav::after {
   cursor: pointer;
   color: #0094f7;
   font-size: 16px;
-}
-
-.cardItemForm__inputWrapper input:nth-of-type(odd) {
-  margin-right: 17px;
 }
 
 .cardItemForm__inputWrapper input::-webkit-input-placeholder {
@@ -2450,6 +2462,13 @@ nav::after {
 .cardItemForm__inputWrapper input::-moz-placeholder {
   font-size: 16px;
   color: #909090;
+}
+
+.cardItemForm__buttons-wrapper {
+  margin: 19px 0px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .cardItemForm__button {
@@ -3937,6 +3956,10 @@ nav::after {
     width: 100%;
   }
 
+  .cardItemSection__functionsLinks {
+    margin-left: 30px;
+  }
+
   .cardItemSection__row {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -3957,22 +3980,33 @@ nav::after {
   }
 
   .cardItemForm__additionalInfo-row {
-    width: 100%;
-  }
-
-  .cardItemForm__additionalInfo-row .currentItem-JS {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 100%;
   }
 
-  .textColumn__container {
-    padding-bottom: 40px;
+  .functionsLinks__button {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 20px;
+    width: 100%;
   }
 
-  .technicalСharact {
-    margin-right: 30px;
+  .functionsLinks img {
+    margin: 0;
+  }
+
+  .textColumn__container {
+    padding-bottom: 40px;
   }
 }
 
@@ -4453,7 +4487,7 @@ nav::after {
   }
 
   .article__container {
-    max-width: 450px;
+    max-width: 490px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     position: relative;
@@ -4485,6 +4519,7 @@ nav::after {
     margin: 0;
     top: 0;
     border-radius: 5px;
+    max-width: 100%;
   }
 
   .askQuestion__container {
@@ -4643,17 +4678,6 @@ nav::after {
   }
 }
 
-@media (max-width: 570px) {
-  .cardItemForm__additionalInfo-row .currentItem-JS {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-}
-
 @media (max-width: 550px) {
   .navigation__icon_search input {
     height: 0;
@@ -4669,6 +4693,25 @@ nav::after {
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
+  }
+
+  .cardItemForm__fieldsContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .cardItemForm__column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    width: 100%;
+  }
+
+  .cardItemForm__buttons-wrapper {
+    margin: 0;
   }
 }
 
@@ -4765,11 +4808,38 @@ nav::after {
 
   .article__title {
     max-width: 310px;
-    margin: -50px auto 0 auto;
+    margin: -47px auto 0 auto;
     padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: white;
+  }
+}
+
+@media (max-width: 460px) {
+  .cardItemSection__functionsLinks {
+    margin: 0;
+  }
+
+  .cardItemForm__additionalInfo-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .functionsLinks__button {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+
+  .functionsLinks img {
+    margin-right: 8px;
   }
 }
 
@@ -4875,8 +4945,18 @@ nav::after {
             justify-content: center;
   }
 
-  .cardItemForm__row:first-of-type input:first-of-type {
-    margin: 0 15px 0 0;
+  .cardItemForm__column_flexWrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .cardItemForm__column_flexWrap .cardItemForm__inputWrapper {
+    margin: 0 0 19px 0;
   }
 
   .cardItemForm__priceCurrent span {
@@ -4887,16 +4967,14 @@ nav::after {
     margin: 20px 0;
   }
 
-  .cardItemForm__inputWrapper_centered {
-    margin: 0 auto 15px auto;
-  }
-
-  .cardItemForm__inputWrapper_centered:last-of-type {
-    margin: 0 auto;
-  }
-
-  .cardItemForm__inputWrapper input:nth-of-type(odd) {
-    margin: 0;
+  .cardItemForm__buttons-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .cardItemForm__button:nth-of-type(odd) {
@@ -4921,7 +4999,7 @@ nav::after {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 30%;
             flex: 0 1 30%;
-    text-align: center;
+    text-align: end;
   }
 
   .block__column {
