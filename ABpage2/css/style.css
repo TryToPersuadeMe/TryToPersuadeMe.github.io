@@ -3899,7 +3899,7 @@ nav::after {
   max-width: 490px;
   color: white;
   line-height: 110.5%;
-  margin: 0 20px 0 0;
+  margin: 0 20px 0 10px;
 }
 
 .popUp {
@@ -4762,7 +4762,7 @@ nav::after {
 }
 
 @media (min-width: 1440px) {
-  .article__column {
+  .article__container {
     max-width: 692px;
     padding: 0 15px;
   }
@@ -4778,6 +4778,10 @@ nav::after {
   .askQuestion__logo {
     display: none;
   }
+
+  .askQuestion__text {
+    margin: 0 20px 0 0px;
+  }
 }
 
 @media (max-width: 1440px) {
@@ -4790,9 +4794,8 @@ nav::after {
     font-weight: 400;
   }
 
-  .article__column {
-    padding: 0 15px;
-    max-width: 662px;
+  .article__container {
+    max-width: 664px;
   }
 
   .fixedArrowUp {
@@ -4820,8 +4823,9 @@ nav::after {
     font-family: "Futura";
   }
 
-  .article__column {
-    max-width: 652px;
+  .article__container {
+    padding: 0 15px;
+    max-width: 654px;
   }
 
   .article__title {
@@ -4996,12 +5000,6 @@ nav::after {
 }
 
 @media (max-width: 1000px) {
-  .container {
-    padding-left: 30px;
-    padding-right: 30px;
-    max-width: 1200px;
-  }
-
   .header__content {
     max-width: 620px;
   }
@@ -5228,9 +5226,9 @@ nav::after {
     right: 7.5%;
   }
 
-  .article__column {
-    padding: 0 30px;
+  .article__container {
     max-width: 100%;
+    padding: 0 15px;
   }
 
   .article__title {
@@ -5659,12 +5657,6 @@ nav::after {
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 1170px;
-  }
-
   .header {
     padding-right: 2rem;
   }
@@ -6175,10 +6167,6 @@ nav::after {
   .article__container_FStext {
     padding-left: 25px;
     padding-right: 25px;
-  }
-
-  .article__column {
-    padding: 0 15px;
   }
 
   .article__title {
@@ -7054,7 +7042,7 @@ nav::after {
 
   .article__title {
     max-width: 310px;
-    margin: -50px auto 0 auto;
+    margin: -47px auto 0 auto;
     padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
