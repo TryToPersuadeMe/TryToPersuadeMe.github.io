@@ -2085,6 +2085,7 @@ nav::after {
 }
 
 .profileTabs__category a {
+  line-height: 150%;
   color: #c7c7c7;
 }
 
@@ -2097,6 +2098,7 @@ nav::after {
 }
 
 .profileTabs__category_active a {
+  line-height: 100%;
   color: #1d3456;
 }
 
@@ -3388,6 +3390,16 @@ nav::after {
             align-items: center;
   }
 
+  .userProfile__checkBoxButtons {
+    margin: 0 0 20px 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
   .user__row {
     margin: 16px 0;
   }
@@ -3753,6 +3765,12 @@ nav::after {
     right: 17px;
     top: 12px;
     width: 25px;
+  }
+}
+
+@media (max-width: 320px) {
+  .sendMessageBlock__textArea {
+    margin-top: 10px;
   }
 }
 

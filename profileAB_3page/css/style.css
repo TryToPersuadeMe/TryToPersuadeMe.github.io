@@ -1908,6 +1908,7 @@ label {
 }
 
 .profileTabs__category a {
+  line-height: 150%;
   color: #c7c7c7;
 }
 
@@ -1920,6 +1921,7 @@ label {
 }
 
 .profileTabs__category_active a {
+  line-height: 100%;
   color: #1d3456;
 }
 

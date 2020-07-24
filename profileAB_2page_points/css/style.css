@@ -2126,6 +2126,7 @@ nav::after {
 }
 
 .profileTabs__category a {
+  line-height: 150%;
   color: #c7c7c7;
 }
 
@@ -2138,6 +2139,7 @@ nav::after {
 }
 
 .profileTabs__category_active a {
+  line-height: 100%;
   color: #1d3456;
 }
 
@@ -2500,7 +2502,7 @@ nav::after {
   }
 
   .points__image {
-    max-width: 400px;
+    max-width: 330px;
   }
 
   .points__orderedText-wrapper li {

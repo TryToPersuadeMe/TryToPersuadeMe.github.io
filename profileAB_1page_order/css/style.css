@@ -2232,6 +2232,7 @@ label {
 }
 
 .profileTabs__category a {
+  line-height: 150%;
   color: #c7c7c7;
 }
 
@@ -2245,6 +2246,7 @@ label {
 
 .profileTabs__category_active a {
   color: #1d3456;
+  line-height: 100%;
 }
 
 .profileTabs__charter {
@@ -3516,6 +3518,12 @@ label {
     right: 17px;
     top: 12px;
     width: 25px;
+  }
+}
+
+@media (max-width: 320px) {
+  .securityChangeForm__textarea {
+    max-width: 200px;
   }
 }
 
