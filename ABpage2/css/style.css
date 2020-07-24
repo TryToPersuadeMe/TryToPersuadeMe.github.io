@@ -3177,6 +3177,10 @@ nav::after {
   position: absolute;
   left: -144px;
   width: 50px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   color: #0094f7;
   text-align: center;
   font-size: 68px;
@@ -4508,7 +4512,6 @@ nav::after {
   padding: 10px 0;
   overflow: hidden;
   right: -100%;
-  border: 1px solid #0094f7;
   text-align: center;
   z-index: 20;
   border-radius: 5px;
@@ -4720,6 +4723,12 @@ nav::after {
 }
 
 @media (min-width: 1000px) {
+  .advantages__1000px {
+    display: none;
+  }
+}
+
+@media (min-width: 1001px) {
   .article__wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4737,17 +4746,6 @@ nav::after {
             flex-direction: row;
   }
 
-  .article__column {
-    max-width: 680px;
-    padding: 0 15px;
-  }
-
-  .advantages__1000px {
-    display: none;
-  }
-}
-
-@media (min-width: 1001px) {
   .category__prevPrice {
     color: #0094f7;
     background-color: white;
@@ -4760,6 +4758,13 @@ nav::after {
 
   .category__prevPrice_1000px {
     display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .article__column {
+    max-width: 692px;
+    padding: 0 15px;
   }
 }
 
@@ -4785,6 +4790,11 @@ nav::after {
     font-weight: 400;
   }
 
+  .article__column {
+    padding: 0 15px;
+    max-width: 662px;
+  }
+
   .fixedArrowUp {
     bottom: 15px;
     right: -100%;
@@ -4808,6 +4818,10 @@ nav::after {
 
   .footer__column_contacts p {
     font-family: "Futura";
+  }
+
+  .article__column {
+    max-width: 652px;
   }
 
   .article__title {
@@ -5216,6 +5230,7 @@ nav::after {
 
   .article__column {
     padding: 0 30px;
+    max-width: 100%;
   }
 
   .article__title {
@@ -7419,6 +7434,10 @@ nav::after {
   .orderedText li:before {
     position: static;
     margin-top: 20px;
+    top: 0;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
   }
 
   .purchases__container {
