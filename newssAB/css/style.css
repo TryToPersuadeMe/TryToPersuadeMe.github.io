@@ -1700,8 +1700,7 @@ nav::after {
 
 .textColumn__container {
   position: relative;
-  padding-top: 34px;
-  padding-bottom: 54px;
+  padding-bottom: 40px;
 }
 
 .textColumn__container p {
@@ -2050,10 +2049,6 @@ nav::after {
   .popUp__input:-moz-placeholder {
     font-size: 1.4rem;
   }
-
-  .textColumn__container {
-    padding-bottom: 54px;
-  }
 }
 
 @media (max-width: 1000px) and (max-width: 768px) {
@@ -2181,10 +2176,6 @@ nav::after {
 
   .logo {
     margin: 0 10px 0 0;
-  }
-
-  .textColumn__container {
-    padding-bottom: 40px;
   }
 }
 
@@ -2751,6 +2742,10 @@ nav::after {
     max-width: 100%;
     min-height: 50px;
     max-height: 50px;
+  }
+
+  .textColumn__container {
+    padding-bottom: 30px;
   }
 }
 
