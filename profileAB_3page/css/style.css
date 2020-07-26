@@ -2253,6 +2253,12 @@ label {
     margin: 0 0 30px 0;
   }
 
+  .personalData__row {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
   .profileTabs {
     max-width: 750px;
   }
@@ -2795,12 +2801,6 @@ label {
     max-width: 220px;
     height: 50px;
     font-size: 18px;
-  }
-
-  .personalData__row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
 }
 
