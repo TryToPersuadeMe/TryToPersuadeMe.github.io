@@ -2915,6 +2915,7 @@ label {
   .personalData__line {
     display: block;
     text-align: center;
+    margin: 0 0 10px 0px;
   }
 
   .personalData__line p:first-of-type {
