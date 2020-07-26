@@ -2731,6 +2731,9 @@ label {
         -ms-flex-align: center;
             align-items: center;
     max-width: 100%;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
@@ -3195,6 +3198,10 @@ label {
     height: 50px;
     font-size: 18px;
   }
+
+  .profileDataSection {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) and (max-width: 600px) {
@@ -3337,6 +3344,15 @@ label {
   .personalData__line {
     display: block;
     text-align: center;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    width: 100%;
+    margin: 0 0 10px 0px;
+  }
+
+  .personalData__line:last-of-type {
+    margin: 0;
   }
 
   .personalData__line p:first-of-type,
