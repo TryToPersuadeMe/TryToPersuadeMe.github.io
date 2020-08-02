@@ -28,8 +28,11 @@ $(".panelControlFeedback__category").on("click", function () {
   $(".feedbackSection__tab ").removeClass("feedbackSection__tab_active");
   $(".feedbackSection__tab ").eq(currentIndex).addClass("feedbackSection__tab_active");
 
+  /* reload slick */
+  $(".feedbackItem-slick-js").slick("setPosition");
+
   if (currentIndex == 1) {
-    $(".panelControlFeedback__sortWrapper").css({ display: "none" });
+    $(".panelControlFeedback__sortWrapper").css({ display: "none"});
   } else {
     $(".panelControlFeedback__sortWrapper").css({ display: "flex" });
   }
