@@ -18,6 +18,11 @@ changeTotal(totalSocialMedia_span, totalSocialMedia);
 $(".panelControlFeedback__category").on("click", function () {
   /* active color span */
   let currentIndex = $(event.currentTarget).index();
+  if (currentIndex == 1) {
+    $(".panelControlFeedback__sortWrapper").css({ display: "none" });
+  } else {
+    $(".panelControlFeedback__sortWrapper").css({ display: "flex" });
+  }
   console.log(currentIndex);
   $(event.currentTarget).addClass("panelControlFeedback__category_active");
   $(".panelControlFeedback__category")
@@ -31,9 +36,5 @@ $(".panelControlFeedback__category").on("click", function () {
   /* reload slick */
   $(".feedbackItem-slick-js").slick("setPosition");
 
-  if (currentIndex == 1) {
-    $(".panelControlFeedback__sortWrapper").css({ display: "none"});
-  } else {
-    $(".panelControlFeedback__sortWrapper").css({ display: "flex" });
-  }
+
 });
