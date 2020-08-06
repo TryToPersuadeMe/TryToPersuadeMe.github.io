@@ -2769,8 +2769,8 @@ nav::after {
 
 .sort p {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 50%;
-          flex: 0 1 50%;
+      -ms-flex: 0 1 60%;
+          flex: 0 1 60%;
   color: #1d3456;
 }
 
@@ -2805,7 +2805,7 @@ nav::after {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  right: 0px;
+  right: -13px;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
