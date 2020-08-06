@@ -19,9 +19,9 @@ $(".panelControlFeedback__category").on("click", function () {
   /* active color span */
   let currentIndex = $(event.currentTarget).index();
   if (currentIndex == 1) {
-    $(".panelControlFeedback__sortWrapper").css({ display: "none" });
+    $(".sort").css({ display: "none" });
   } else {
-    $(".panelControlFeedback__sortWrapper").css({ display: "flex" });
+    $(".sort").css({ display: "flex" });
   }
   console.log(currentIndex);
   $(event.currentTarget).addClass("panelControlFeedback__category_active");
