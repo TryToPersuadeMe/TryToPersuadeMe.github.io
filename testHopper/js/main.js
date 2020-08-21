@@ -107,6 +107,7 @@ function validate() {
 let allInputsArray = document.querySelectorAll("." + classes.input);
 allInputsArray = Array.from(allInputsArray).map((item) => item.getAttribute("id"));
 
+let sendButton = document.querySelector(".form__button_sendForm-js");
 const alertBanner = document.querySelector(".alert");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -120,26 +121,21 @@ document.addEventListener("DOMContentLoaded", () => {
     })(i, input);
   }
 
-  if (localStorage.length > 0) {
-    slideToggle("alert", alertBanner, false);
+  if (localStorage.length) {
+    slideToggle(alertBanner, false);
     for (let index = 0; index < inputsValidate.length; index++) {
       validate.call(inputsValidate[index]);
     }
   }
 });
 
-const slideToggle = (selector, wrapper, state) => {
-  if (state) {
-    wrapper.classList.remove(selector + "_active");
-    wrapper.style.maxHeight = 0;
-  } else {
-    wrapper.classList.add(selector + "_active");
-    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
-  }
+const slideToggle = (wrapper, state) => {
+  state ? (wrapper.style.maxHeight = 0) : (wrapper.style.maxHeight = wrapper.scrollHeight + "px");
 };
 
-const form = document.querySelector(".form").addEventListener("submit", function (event) {
+sendButton.addEventListener("click", function (event) {
+  event.preventDefault();
   invalidInputsWrapper = document.querySelectorAll("." + classes.fieldWrapper + "_invalid");
-  invalidInputsWrapper.length ? event.preventDefault() : slideToggle("alert", alertBanner, true);
+  invalidInputsWrapper.length ? false : slideToggle(alertBanner, true);
 });
 ;

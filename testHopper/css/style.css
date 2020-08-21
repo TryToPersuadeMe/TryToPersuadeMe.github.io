@@ -254,7 +254,15 @@ html {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.form__input:-moz-placeholder {
+.form__input::-ms-input-placeholder {
+  font-family: Ubuntu;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.form__input::placeholder {
   font-family: Ubuntu;
   font-weight: 300;
   font-size: 1.4rem;
