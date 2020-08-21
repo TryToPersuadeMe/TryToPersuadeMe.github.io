@@ -106,7 +106,6 @@ function validate() {
 /* alert with local storage */
 let allInputsArray = document.querySelectorAll("." + classes.input);
 allInputsArray = Array.from(allInputsArray).map((item) => item.getAttribute("id"));
-let invalidInputsWrapper = document.querySelectorAll("." + classes.fieldWrapper + "_invalid");
 
 const alertBanner = document.querySelector(".alert");
 
@@ -140,6 +139,7 @@ const slideToggle = (selector, wrapper, state) => {
 };
 
 const form = document.querySelector(".form").addEventListener("submit", function (event) {
-  invalidInputsWrapper.length != 0 ? event.preventDefault() : slideToggle("alert", alertBanner, true);
+  invalidInputsWrapper = document.querySelectorAll("." + classes.fieldWrapper + "_invalid");
+  invalidInputsWrapper.length ? event.preventDefault() : slideToggle("alert", alertBanner, true);
 });
 ;
