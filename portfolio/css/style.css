@@ -282,6 +282,12 @@ h6 {
   }
 }
 
+@media (max-width: 768px) {
+  .block__column {
+    margin: 20px 0;
+  }
+}
+
 .block__title {
   font-size: 64px;
   font-weight: 500;
