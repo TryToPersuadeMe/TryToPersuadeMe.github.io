@@ -100,6 +100,29 @@ $(document).ready(() => {
     dots: true,
     autoplay: true,
     autoplaySpeed: 2000,
+    cssEase: "linear",
+
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          arrows: true,
+          dots: false,
+        },
+      },
+    ],
+  });
+
+  $(".sliderImage").slick({
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 2000,
   });
 });
 ;
