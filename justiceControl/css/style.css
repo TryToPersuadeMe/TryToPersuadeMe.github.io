@@ -873,42 +873,6 @@ input[type="number"] {
   position: relative;
 }
 
-.article:after {
-  position: absolute;
-  content: "";
-  min-height: 110%;
-  min-width: 120%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  background-image: url("../img/article/backgroundWave.svg");
-  background-position: right;
-  left: 0;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-@media (max-width: 1000px) {
-  .article:after {
-    background-size: 100% 100%;
-    min-width: 120%;
-  }
-}
-
-@media (max-width: 500px) {
-  .article:after {
-    min-width: 130%;
-  }
-}
-
-@media (max-width: 420px) {
-  .article:after {
-    min-width: 150%;
-  }
-}
-
 .article__wrapper {
   margin: 6.5rem 0 7.5rem 0;
   display: -webkit-box;
@@ -926,6 +890,26 @@ input[type="number"] {
           justify-content: center;
   position: relative;
   height: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.article__wrapper:after {
+  position: absolute;
+  content: "";
+  min-height: 110%;
+  min-width: 120%;
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-image: url("../img/article/backgroundWave.svg");
+  background-position: right;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 @media (max-width: 768px) {
