@@ -69,6 +69,7 @@ class Spoiler {
     this.arrow = document.querySelector(props.arrow);
     this.dropDown = document.querySelector(props.dropDown);
     this.button = document.querySelector(props.button);
+    this.q = document.querySelectorAll(props.dropDown);
 
     this.handleClick();
     this.hanldeClickWindow();
@@ -85,7 +86,6 @@ class Spoiler {
   toggleState() {
     if (this.spoiler.classList.contains("spoiler_open")) {
       this.closeState();
-      console.log("asd");
     } else {
       this.openState();
     }
@@ -216,3 +216,39 @@ const responsive = new Header({
   wrapper: ".wrapper",
 });
 ;
+const sliderWrapper = ".manyArticles__row";
+
+const slickSettings = () => {
+  $(sliderWrapper).slick({
+    responsive: [
+      { breakpoint: 4000, settings: "unslick" },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          variableWidth: true,
+          dots: false,
+          infinite: true,
+          arrows: false,
+          dots: true,
+        },
+      },
+    ],
+  });
+};
+
+slickSettings();
+
+$(window).on("resize", function () {
+  if ($(window).width() < 768) {
+    slickSettings();
+  } else {
+    $(sliderWrapper).slick("unslick");
+  }
+});
+;
+
+
+
