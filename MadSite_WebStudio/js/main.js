@@ -426,3 +426,30 @@ $(document).ready(function () {
   });
 });
 ;
+/* opacity scrolling */
+
+var opacity = {
+  wrapper: "opacityScrolling-js",
+  column: "block__column",
+  image: "block__image"
+};
+var block = document.querySelectorAll("." + opacity.wrapper); // let column = document.querySelectorAll("." + opacity.column);
+
+var scrollCoef = 0.0015;
+document.addEventListener("scroll", function () {
+  for (var index = 0; index < block.length; index++) {
+    /* get position of image */
+    var fromTop = block[index].getBoundingClientRect().top;
+    var position = 1 - fromTop * scrollCoef;
+    /* hide or show  */
+
+    if (fromTop >= 0) {
+      /* scroll DOWN */
+      block[index].style.opacity = position + 1.5;
+      /* scroll UP */
+    } else {
+      block[index].style.opacity = 2.5 - position;
+    }
+  }
+});
+;

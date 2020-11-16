@@ -3044,6 +3044,10 @@ input[type="number"] {
   min-width: 2000px;
 }
 
+body {
+  background-color: black;
+}
+
 .webp .firstScreen__wrapper{ background-image: url(../img/firstScreen/background.webp); }
 
 .webp .slick-arrow{ background-image: url(../img/feedbackSlider/icons/arrow_icon.webp); }
