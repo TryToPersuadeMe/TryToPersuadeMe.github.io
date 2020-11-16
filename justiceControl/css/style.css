@@ -919,6 +919,8 @@ input[type="number"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-top: 75px;
+  padding-bottom: 75px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -940,8 +942,6 @@ input[type="number"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 155px;
-  padding-bottom: 155px;
 }
 
 .article__img img,
