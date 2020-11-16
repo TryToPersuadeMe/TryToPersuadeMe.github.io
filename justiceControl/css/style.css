@@ -760,6 +760,12 @@ input[type="number"] {
   padding-bottom: 10rem;
 }
 
+@media (max-width: 768px) {
+  .firstScreen__wrapper {
+    margin-bottom: 10rem;
+  }
+}
+
 .firstScreen__wrapper:after, .firstScreen__wrapper:before {
   position: absolute;
   content: "";
