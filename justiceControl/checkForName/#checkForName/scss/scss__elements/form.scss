@@ -1,0 +1,123 @@
+$formTextSize: 1.6rem;
+
+.form {
+  background: #ffffff;
+  border: 1px solid rgba(230, 229, 242, 0.811762);
+  box-shadow: 0px 1.1rem 3.4rem rgba(206, 205, 205, 0.7);
+  border-radius: 25px;
+  padding: 2.6rem 10rem 5rem 10rem;
+  position: relative;
+  @media (max-width: 768px) {
+    padding: 2.6rem 5rem 5rem 5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem;
+    margin: 0 -2rem;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem -1.5rem 2rem -1.5rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
+    }
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    color: #3f3d56;
+  }
+  &__button {
+    font-size: $formTextSize;
+    height: 5rem;
+    max-width: 100%;
+    width: 100%;
+    margin: 2rem 0 1rem 0;
+  }
+
+  &__text {
+    font-size: $formTextSize;
+    line-height: 1.2;
+    color: #acafb5;
+    padding-left: 1.6rem;
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+    &_link {
+      padding: 0;
+      color: #6672fb;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__label {
+    max-width: 26.2rem;
+    width: 100%;
+    background: transparent;
+    display: inline-block;
+    margin: 0 1.5rem;
+    @media (max-width: 768px) {
+      margin: 1rem 0;
+      max-width: 36rem;
+    }
+    &_data {
+      position: relative;
+
+      input {
+        padding-right: 6rem;
+      }
+      span {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2rem;
+        width: 2rem;
+        height: 2rem;
+        z-index: 1;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .select {
+    max-width: 36rem;
+
+    &__label {
+      width: 100%;
+      max-width: 100%;
+      height: $inputHeight;
+      position: relative;
+      z-index: 1;
+
+      input {
+        position: relative;
+        z-index: -1;
+        cursor: pointer;
+        @include placeholder;
+      }
+    }
+
+    &__dropdown {
+      top: $inputHeight;
+      z-index: 20;
+    }
+    &__arrow svg {
+      width: 2rem;
+      height: 1.2rem;
+      path {
+        fill: #6672fb;
+      }
+    }
+  }
+}

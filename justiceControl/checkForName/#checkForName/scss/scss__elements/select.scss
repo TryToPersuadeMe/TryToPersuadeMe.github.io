@@ -1,0 +1,95 @@
+.select {
+  width: 100%;
+  position: relative;
+
+  /* when select open add class OPEN */
+  &.open {
+    z-index: 2;
+    .select__dropdown {
+      display: block;
+      border: 2px solid #6672fb;
+      background-color: white;
+      max-height: 20rem;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .select__label {
+      border-bottom: none;
+      border: 2px solid #6672fb;
+    }
+
+    .select__arrow {
+      transition: 0.3s ease;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    cursor: pointer;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: black;
+      opacity: 0;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    & > input {
+      position: relative;
+      z-index: -1;
+      height: 100%;
+      min-height: 100%;
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      color: #6672fb;
+      margin-right: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  &__arrow {
+    transition: 0.3s ease;
+  }
+
+  &__dropdown {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 1.5rem;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0px;
+    overflow-y: auto;
+    transition: 0.5s ease;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: 0;
+  }
+
+  &__item {
+    padding: 1rem;
+    border-bottom: 1px solid #6672fb;
+    font-size: 1.4rem;
+    color: #6672fb;
+    cursor: pointer;
+    &:hover {
+      background-color: #6672fba6;
+      color: white;
+      transition: 0.3s ease;
+    }
+  }
+}

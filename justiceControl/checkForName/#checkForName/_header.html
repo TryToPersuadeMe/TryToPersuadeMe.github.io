@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="container header__container">
+    <div class="header__burgerIcon header__burgerIcon_active"><span></span></div>
+    <div class="header__logo_responsive">
+      <img src="./img/header/logoWithShield.svg" alt="логотип Суд Контроль" />
+    </div>
+    <navigation class="navigation">
+      <div class="header__burgerIcon header__burgerIcon_close"></div>
+
+      <div class="header__logo">
+        <img src="./img/header/logo.svg" alt="логотип Суд Контроль" />
+      </div>
+
+      <div class="header__logo_responsive">
+        <img src="./img/header/logoWithShield.svg" alt="логотип Суд Контроль" />
+      </div>
+
+      <div class="navigation__block navigation__block_links">
+        @@include("./html/html_elements/_spoiler.html")
+
+        <a href="#" class="navigation__button navigation__button_bold">Новости</a>
+      </div>
+
+      <div class="navigation__block navigation__block_buttons">
+        <button class="navigation__button">Регистрация</button>
+        <button class="navigation__button button navigation__button_login">Войти</button>
+      </div>
+    </navigation>
+  </div>
+</header>

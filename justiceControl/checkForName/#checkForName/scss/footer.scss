@@ -1,0 +1,202 @@
+.footer {
+  position: relative;
+  box-shadow: 0px 3px 5rem rgba(102, 114, 251, 0.5);
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 3px;
+    background-color: #6672fb;
+    width: 100%;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 10rem;
+
+    @media (max-width: 480px) {
+      padding-bottom: 3rem;
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      background-size: 100%;
+      max-width: 60rem;
+      width: 100%;
+      height: 173%;
+      background-image: url("../img/footer/background.svg");
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+    &:after {
+      top: -32rem;
+      left: -14.5rem;
+      background-position: left;
+      @media (max-width: 1280px) {
+        top: -42rem;
+        left: -14.5rem;
+      }
+
+      @media (max-width: 768px) {
+        top: -32rem;
+        left: -14.5rem;
+      }
+    }
+
+    &::before {
+      bottom: -40rem;
+      right: -13rem;
+      background-position: right;
+      transform: translate(35deg);
+    }
+  }
+
+  &__logoWrapper {
+    margin-right: 2.5rem;
+    @media (max-width: 1280px) {
+      margin: 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 6rem;
+    @media (max-width: 1280px) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 66%;
+    @media (max-width: 1280px) {
+      max-width: 100%;
+      margin-top: 6rem;
+      justify-content: space-around;
+    }
+    @media (max-width: 768px) {
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    @media (max-width: 48rem) {
+    }
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    max-width: 26rem;
+    margin-right: 3rem;
+    &:last-of-type {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      flex: 1 1 auto;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 14rem;
+      &_big {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    color: #6672fb;
+    border-bottom: 1px solid #6672fb;
+    padding-right: 20%;
+    padding-bottom: 1rem;
+    align-self: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.7rem;
+    color: #3f3d56;
+    transition: 0.3s ease;
+
+    @media (max-width: 480px) {
+      font-size: 1.2rem;
+    }
+    &:hover {
+      color: #6672fb;
+    }
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__contact {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    text-transform: capitalize;
+    color: #6672fb;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  &__text {
+    line-height: 1.5;
+    color: #acafb5;
+    margin-top: 1.6rem;
+  }
+
+  &__feedBackForm {
+    margin-top: 0.7rem;
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 26.5rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
+  &__shield {
+    max-width: 6.8rem;
+    margin-bottom: 2rem;
+    @media (max-width: 768px) {
+      margin: 0 1.5rem 0 0;
+    }
+  }
+
+  &__textLogo {
+    max-width: 56.5rem;
+  }
+
+  &__shield,
+  &__textLogo {
+    width: 100%;
+    display: block;
+    img,
+    source {
+      display: block;
+      width: 100%;
+    }
+  }
+}

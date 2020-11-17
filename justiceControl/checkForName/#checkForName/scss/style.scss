@@ -1,0 +1,38 @@
+html,
+body {
+  font-size: 7.5px;
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
+}
+
+/* Reset */
+@import "../scss/scss__settings/reset.scss";
+@import "../scss/scss__settings/slickReset.scss";
+
+/* fonts */
+@import "../scss/scss__settings/fonts.scss";
+
+/* slider required styles */
+
+/* global elements styles */
+@import "./scss__elements/globalElements.scss";
+
+/* sections */
+@import "header.scss";
+@import "./scss__sections/firstScreen.scss";
+@import "./scss__sections/cards.scss";
+@import "./scss__sections/mainArticle.scss";
+@import "./scss__sections/itemsWithImages.scss";
+@import "./scss__sections/articlesColumns.scss";
+@import "./scss__sections/FaQ.scss";
+
+@import "footer.scss";
+
+/* elements */
+@import "./scss__elements/select.scss";
+@import "./scss__elements/form.scss";
+@import "./scss__elements/checkBox.scss";
+@import "./scss__elements/spoiler.scss";
+@import "./scss__elements/card.scss";
+@import "./scss__elements/articleInColumn.scss";
