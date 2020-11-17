@@ -429,12 +429,12 @@ input[type="number"] {
 
 .header:after {
   right: 0;
-  width: 70%;
+  width: 65%;
 }
 
 .header:before {
   left: 0;
-  width: 19%;
+  width: 26%;
 }
 
 .header__logo {
