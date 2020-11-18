@@ -139,9 +139,11 @@ class SpoilerTab {
   }
   handleClick() {
     document.addEventListener("mouseup", () => {
-      let index = Array.from(this.button).indexOf(event.target.parentNode);
-      let currentItem = this.dropDown[index];
-      this.toggleState(currentItem);
+      if (event.target.offsetParent.classList.contains("spoilerTab__button")) {
+        let index = Array.from(this.button).indexOf(event.target.parentNode);
+        let currentItem = this.dropDown[index];
+        this.toggleState(currentItem);
+      }
     });
   }
 }
@@ -164,7 +166,6 @@ class Header {
     this.wrapper = document.querySelector(props.wrapper);
 
     /* click on burger icon */
-    console.log(this.burgerIcon_close);
 
     /* click != burger icon or header. its close menu*/
     this.toggleState();
@@ -195,7 +196,6 @@ class Header {
 
   windowClick() {
     window.addEventListener("click", () => {
-      console.log(event.target);
       if (event.target == this.wrapper) {
         this.header.classList.remove(this.header_active);
         this.body.classList.remove("body-lock");
@@ -214,6 +214,44 @@ const responsive = new Header({
 
   body: "body",
   wrapper: ".wrapper",
+});
+
+class LogedState {
+  constructor(props) {
+    this.$loginButton = document.querySelector(props.loginButton);
+    this.$exitButton = document.querySelector(props.exitButton);
+
+    this.$logedState = document.querySelector(props.logedState);
+    this.$unLogedState = document.querySelector(props.unLogedState);
+
+    this.logedStateButtons = props.logedStateButtons;
+    this.clickLogin = this.clickLogin.bind(this)();
+    this.clickExit = this.clickExit.bind(this)();
+  }
+
+  clickLogin() {
+    this.$loginButton.addEventListener("click", () => {
+      this.$logedState.classList.remove(this.logedStateButtons);
+      this.$unLogedState.classList.add(this.logedStateButtons);
+    });
+  }
+
+  clickExit() {
+    this.$exitButton.addEventListener("click", () => {
+      this.$logedState.classList.add(this.logedStateButtons);
+      this.$unLogedState.classList.remove(this.logedStateButtons);
+    });
+  }
+}
+
+const loged = new LogedState({
+  logedStateButtons: "login-js_changeState",
+
+  exitButton: ".login-js__exit",
+  loginButton: ".login-js__loginButton",
+
+  logedState: ".login-js_loged",
+  unLogedState: ".login-js_unloged",
 });
 ;
 const sliderWrapper = ".manyArticles__row";
