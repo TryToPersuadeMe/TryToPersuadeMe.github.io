@@ -1134,6 +1134,64 @@ input[type="number"] {
           transform: rotate(270deg);
 }
 
+.notes__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3rem -1.5rem 0 -1.5rem;
+}
+
+.notes__item {
+  margin: 1.5rem;
+  max-width: 26rem;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 4px 3.4rem rgba(206, 205, 205, 0.7);
+          box-shadow: 0px 4px 3.4rem rgba(206, 205, 205, 0.7);
+  border-radius: 25px;
+  width: 100%;
+  padding: 2rem;
+}
+
+@media (max-width: 480px) {
+  .notes__item {
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 0.5rem;
+    max-width: 16rem;
+  }
+}
+
+.notes__header {
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  color: #6672fb;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 480px) {
+  .notes__header {
+    font-size: 1.4rem;
+  }
+}
+
+.notes__text {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #3f3d56;
+}
+
+@media (max-width: 480px) {
+  .notes__text {
+    font-size: 1rem;
+  }
+}
+
 .footer {
   position: relative;
   -webkit-box-shadow: 0px 3px 5rem rgba(102, 114, 251, 0.5);
@@ -1509,7 +1567,6 @@ input[type="number"] {
   background: transparent;
   display: inline-block;
   margin: 0 1.5rem;
-  max-width: 30rem;
 }
 
 @media (max-width: 768px) {
@@ -1546,7 +1603,7 @@ input[type="number"] {
 }
 
 .form .select {
-  max-width: 100%;
+  max-width: 36rem;
 }
 
 .form .select__label {
@@ -1717,32 +1774,6 @@ input[type="number"] {
   color: #6672fb;
   font-size: 16px;
   font-weight: 700;
-}
-
-.rangeInput__rowForText {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 -1.5rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.rangeInput__text {
-  margin: 1.5rem;
-  font-size: 1.6rem;
-  line-height: 1.2;
-  color: #3f3d56;
-  display: inline-block;
-  width: auto;
-}
-
-@media (max-width: 480px) {
-  .rangeInput__text {
-    font-size: 12px;
-    text-align: center;
-  }
 }
 
 .checkBox {
@@ -2051,122 +2082,4 @@ input[type="number"] {
     margin-top: 1rem;
     height: 4rem;
   }
-}
-
-.select {
-  width: 100%;
-  position: relative;
-  /* when select open add class OPEN */
-}
-
-.select.open {
-  z-index: 2;
-}
-
-.select.open .select__dropdown {
-  display: block;
-  border: 2px solid #6672fb;
-  background-color: white;
-  max-height: 20rem;
-  opacity: 1;
-  visibility: visible;
-}
-
-.select.open .select__label {
-  border-bottom: none;
-  border: 2px solid #6672fb;
-}
-
-.select.open .select__arrow {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-.select__label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 1.5rem;
-  border: 2px solid transparent;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-
-.select__label:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: black;
-  opacity: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
-
-.select__label > input {
-  position: relative;
-  z-index: -1;
-  height: 100%;
-  min-height: 100%;
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  color: #6672fb;
-  margin-right: 2rem;
-  cursor: pointer;
-}
-
-.select__arrow {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-
-.select__dropdown {
-  position: absolute;
-  border: 2px solid transparent;
-  border-radius: 1.5rem;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  visibility: hidden;
-  max-height: 0px;
-  overflow-y: auto;
-  -webkit-transition: 0.5s ease;
-  -o-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-
-.select__list {
-  padding: 0;
-  margin: 0;
-  list-style: 0;
-}
-
-.select__item {
-  padding: 1rem;
-  border-bottom: 1px solid #6672fb;
-  font-size: 1.4rem;
-  color: #6672fb;
-  cursor: pointer;
-}
-
-.select__item:hover {
-  background-color: #6672fba6;
-  color: white;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
 }
