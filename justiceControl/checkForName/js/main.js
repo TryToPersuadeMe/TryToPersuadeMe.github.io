@@ -323,9 +323,8 @@ class rSlider {
 }
 let range1 = new rSlider({
   element: ".rangeInput__line",
-  form: "#form",
+  form: ".form-watch-rangeInput-js",
   watchingFields: ".watch-progressBar-js",
-  tick: 1,
   // stateText: ".state__text",
 });
 ;
@@ -345,7 +344,10 @@ class AuthorizationForm {
     this.wrapper = document.querySelector(props.wrapper);
     this.popUp();
 
-     this.windowClick()
+    /* close */
+    this.closeIcon = document.querySelector(props.closeIcon);
+    this.windowClick();
+    this.clickCloseIcon();
   }
   tabClick() {
     for (let index = 0; index < this.tab.length; index++) {
@@ -358,7 +360,6 @@ class AuthorizationForm {
           this.authorizationForm.classList.remove("authorizationForm_login");
           this.tab[1].classList.add(this.tab_inactive);
           this.tab[0].classList.remove(this.tab_inactive);
-        
         }
       });
     }
@@ -378,16 +379,24 @@ class AuthorizationForm {
     });
   }
 
+  closePopUp() {
+    this.authorizationForm.classList.remove("authorizationForm_active");
+
+    this.body.classList.remove("body-lock");
+    this.wrapper.classList.remove("wrapper_shadow");
+  }
+
   windowClick() {
     window.addEventListener("click", () => {
       if (event.target == this.wrapper) {
-        this.authorizationForm.classList.remove("authorizationForm_active");
-
-        console.log(this.authorizationForm);
-
-        this.body.classList.remove("body-lock");
-        this.wrapper.classList.remove("wrapper_shadow");
+        this.closePopUp();
       }
+    });
+  }
+
+  clickCloseIcon() {
+    this.closeIcon.addEventListener("click", () => {
+      this.closePopUp();
     });
   }
 }
@@ -396,8 +405,12 @@ const authorizationForm = new AuthorizationForm({
   authorizationForm: ".authorizationForm",
   tabs: ".authorizationForm__tab",
   tab_inactive: "authorizationForm__tab_inactive",
+
   loginForm: ".authorizationForm__loginFormWrapper",
   registrationForm: ".authorizationForm__registrationFormWrapper",
+
+  closeIcon: ".authorizationForm__closeIcon",
+
   wrapper: ".wrapper",
 });
 
