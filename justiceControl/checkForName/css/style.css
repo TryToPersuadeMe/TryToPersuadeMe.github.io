@@ -976,9 +976,10 @@ body.body-lock {
   background-repeat: no-repeat;
   display: block;
   width: 100%;
+  border: 1px solid #000;
   height: 10rem;
   background-image: url("../img/article/backgroundWave.svg");
-  background-size: contain;
+  background-size: 100% 100%;
   background-position: center;
 }
 
