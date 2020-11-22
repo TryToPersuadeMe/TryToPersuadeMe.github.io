@@ -49,7 +49,12 @@ class Select {
   handleValue() {
     if (event.target != this.$label) {
       this.$inputField.value = event.target.innerText;
+      this.validateState();
     }
+  }
+
+  validateState() {
+    this.$label.classList.add("valid");
   }
 
   hanldeClickWindow() {
@@ -256,7 +261,7 @@ class rSlider {
 
     this.inputs = document.querySelectorAll(".watch-progressBar-js");
 
-    // this.stateText = document.querySelectorAll(args.stateText);
+    this.validState = args.validState;
 
     this.updatePos();
   }
@@ -277,23 +282,30 @@ class rSlider {
     this.valueInput.value = "0 %";
 
     /* date range picker. Working only with jquery */
-    $(".dateCalendar").on("apply.daterangepicker", function (ev, picker) {
-      if ($(".counted-js").length <= 0) {
-        count += +1;
-        $(".rangeInput__progressBar").css(`maxWidth`, `${widthPerItem}` * `${count}` + "%");
-        $(".rangeInput__valueInput").val(Math.trunc(widthPerItem * count) + "%");
-        $(".dateCalendar").addClass("counted-js");
-      }
+
+    $(".dateCalendar").each(function (i, el) {
+      $(el).on("apply.daterangepicker", function (ev, picker) {
+        if (!$(el).hasClass("counted-js")) {
+          count += +1;
+          $(".rangeInput__progressBar").css(`maxWidth`, `${widthPerItem}` * `${count}` + "%");
+          $(".rangeInput__valueInput").val(Math.trunc(widthPerItem * count) + "%");
+          $(el).addClass("counted-js");
+          $(el).addClass("input__valid");
+        }
+      });
     });
 
     /* count select */
     this.form.addEventListener("click", () => {
-      if (event.target.classList.contains("select__item")) {
+      if (
+        event.target.classList.contains("select__item") &&
+        !event.target.offsetParent.classList.contains("counted-select-js")
+      ) {
         count += +1;
-        console.log(event.target);
-
+        this.validInput();
         this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
         this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
+        event.target.offsetParent.classList.add("counted-select-js");
       }
     });
 
@@ -317,39 +329,30 @@ class rSlider {
           this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
           this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
           this.center(widthPerItem * count);
-          // this.validInput();
+          this.validInput();
         } else {
           count--;
           this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
           this.progressBar.style.maxWidth = widthPerItem * count + "%";
           event.target.setAttribute("data-watch", "false");
-          // this.validInput();
+          this.validInput();
           this.center(widthPerItem * count);
         }
       });
     }
   }
 
-  select() {
-    document.addEventListener("loc", listener, options);
+  validInput() {
+    if (event.target.value.length > 0) {
+      event.target.classList.add(this.validState);
+    } else event.target.classList.remove(this.validState);
   }
-
-  // validInput() {
-  //   if (event.target.value.length > 0) {
-  //     event.target.classList.add("input__valid");
-  //   } else {
-  //     event.target.classList.remove("input__valid");
-  //   }
-  // }
-
-  // changeText(el) {
-  //   this.stateText[el].classList.add("state__text_active");
-  // }
 }
 let range1 = new rSlider({
   element: ".rangeInput__line",
   form: ".form-watch-rangeInput-js",
   watchingFields: ".watch-progressBar-js",
+  validState: "input__valid",
   // stateText: ".state__text",
 });
 ;
@@ -498,60 +501,98 @@ $(document).ready(function () {
 ;
 class AdditionalFormPick {
   constructor(props) {
+    this.form = document.querySelector(props.form);
     this.formWrapper = document.querySelectorAll(props.formWrapper);
     this.formWrapper_active = document.querySelector(props.formWrapper_active);
     this.nextButton = document.querySelectorAll(props.nextButton);
     this.previousButton = document.querySelectorAll(props.previousButton);
-
     this.checkbox = document.querySelectorAll(props.checkbox);
-    this.watchingInput = document.querySelectorAll(props.watchingInput + `[type = "checkbox"]`);
-    this.nextButtonClick();
+    this.watchingCheckboxes = document.querySelectorAll(
+      props.watchingInput + `[type = "checkbox"]`
+    );
+
+    this.watchingInput = document.querySelectorAll(props.watchingInput);
+    this.toggleState();
   }
 
   nextButtonClick() {
-    this.formWrapper_active.addEventListener("click", (event) => {
-      if (event.target.classList.contains("button-next-js")) {
-        event.preventDefault();
-        this.getChosenForms();
-        this.chosenFormsArr[0].classList.add("form__wrapper_active");
-      }
-    });
-    // this.nextButton.addEventListener("click", () => {
-    //   console.log("nextButton");
-    // });
+    if (this.count < this.chosenForms.length) {
+      this.formWrapper.forEach((element) => {
+        element.classList.remove("form__wrapper_active");
+        element.classList.remove("form__wrapper_animation");
+      });
+
+      this.chosenForms[this.count].classList.add("form__wrapper_active");
+      setTimeout(() => {
+        this.chosenForms[this.count].classList.add("form__wrapper_animation");
+        this.count = this.count + 1;
+      }, 0);
+    } else {
+      console.log("send data here");
+    }
   }
 
-  //   previousButtonClick() {
-  //     this.formWrapper_active.addEventListener("click", () => {
-  //       if (event.target.classList.contains("button-next-js")) {
-  //         console.log("false");
-  //       }
-  //     });
-  //   }
-
-  // toggleState() {
-  //   if (condition) {
-  //     this.nextButtonClick();
-  //   } else {
-  //     this.previousButtonClick();
-  //   }
-  // }
-
-  getChosenForms() {
-    this.chosenFormsArr = [];
-    this.checkedCheckboxes = Array.from(this.watchingInput).filter((value, index) => {
-      if (value.dataset.checkboxkey > "0" && value.checked == true)
-        this.chosenFormsArr.push(this.formWrapper[index + 1]);
+  previousButtonClick() {
+    this.formWrapper.forEach((element) => {
+      element.classList.remove("form__wrapper_active");
+      element.classList.remove("form__wrapper_animation");
     });
+    this.count = this.count - 1;
+
+    this.formWrapper[this.count].classList.add("form__wrapper_active");
+    setTimeout(() => {
+      this.formWrapper[this.count].classList.add("form__wrapper_animation");
+    }, 0);
+  }
+
+  toggleState() {
+    this.count = 0;
+
+    this.form.addEventListener("click", (event) => {
+      this.getChosenForms();
+      if (this.chosenForms.length > 0) {
+        if (event.target.classList.contains("button-next-js")) {
+          event.preventDefault();
+          this.saveValue();
+          this.nextButtonClick();
+          console.log(this.valuesDataArr);
+        } else if (event.target.classList.contains("button-previous-js")) {
+          event.preventDefault();
+          this.saveValue();
+          this.previousButtonClick();
+        }
+      }
+    });
+  }
+  getChosenForms() {
+    this.checkedCheckboxes = Array.from(this.watchingCheckboxes).map((value, index) => {
+      if (value.dataset.checkboxkey > "0" && value.checked == true) {
+        return this.formWrapper[index + 1];
+      }
+    });
+
+    this.chosenForms = this.checkedCheckboxes.filter((value) => {
+      return typeof value != typeof undefined;
+    });
+  }
+
+  saveValue() {
+    /* get all names atr */
+    this.valuesDataArr = Array.from(this.watchingInput).map((value, index, array) => {
+      this.atr = this.watchingInput[index].getAttribute("name");
+      this.valueData = this.watchingInput[index].value;
+      return `${this.atr}=${this.valueData}`;
+    });
+    /* delete duplicates */
+    this.valuesDataArr = [...new Set(this.valuesDataArr)];
   }
 }
 
 let additionalFormPick = new AdditionalFormPick({
-  form: ".form-watch-rangeInput-js",
-
   nextButton: ".button-next-js",
   previousButton: ".button-previous-js",
 
+  form: ".form ",
   formWrapper: ".form__wrapper",
   formWrapper_active: ".form__wrapper_active",
 
