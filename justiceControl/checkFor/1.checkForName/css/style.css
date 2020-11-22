@@ -1847,6 +1847,8 @@ body.body-lock {
       -ms-transform: scale(0.1);
           transform: scale(0.1);
   opacity: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .form__wrapper:first-of-type {
@@ -1894,6 +1896,7 @@ body.body-lock {
           justify-content: space-between;
   margin: 3rem 0rem 0rem 0rem;
   width: 100%;
+  max-width: 100%;
 }
 
 .form__row_buttons {
