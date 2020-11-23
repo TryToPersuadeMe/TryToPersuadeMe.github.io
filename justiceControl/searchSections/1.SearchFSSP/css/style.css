@@ -228,6 +228,12 @@ body.body-lock {
   font-size: 1.4rem;
   height: 5rem;
   padding: 0 2rem;
+  transition: 0.3s ease;
+}
+
+.input__valid {
+  color: white;
+  background-color: #6672fb;
 }
 
 .input:focus {
@@ -1049,7 +1055,7 @@ body.body-lock {
 .footer__wrapper {
   overflow: hidden;
   position: relative;
-  padding-bottom: 10rem;
+  padding-bottom: 6rem;
 }
 
 @media (max-width: 480px) {
@@ -1397,13 +1403,24 @@ body.body-lock {
 }
 
 .checkBox {
-  display: block;
-  margin-bottom: 0.9rem;
-  font-size: 1.6rem;
-  line-height: 1.2;
-  color: #3f3d56;
-  padding-left: 2.8rem;
   position: relative;
+  padding-left: 3.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.checkBox__wrapper {
+  display: block;
+  color: #3f3d56;
+}
+
+.checkBox__label {
+  line-height: 1.2;
+  font-size: 1.6rem;
+}
+
+.checkBox__label:hover + .checkBox__note {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (max-width: 480px) {
@@ -1460,11 +1477,6 @@ body.body-lock {
 
 .checkBox input:checked + .checkBox__text:before {
   background-color: #6672fb;
-  opacity: 1;
-}
-
-.checkBox input:hover ~ .checkBox__note {
-  visibility: visible;
   opacity: 1;
 }
 
@@ -1531,6 +1543,11 @@ body.body-lock {
   display: flex;
 }
 
+.subscribe__checkBox {
+  margin: 1.5rem 0;
+  display: block;
+}
+
 .subscribe__image {
   max-width: 50%;
   margin-right: 3rem;
@@ -1579,19 +1596,6 @@ body.body-lock {
   margin-bottom: 1.5rem;
   border-radius: 15px;
   height: 5rem;
-}
-
-.subscribeForm__label input {
-  background-color: transparent;
-  color: #6672fb;
-  border: 2px solid white;
-  height: 100%;
-  width: 100%;
-  border-radius: 15px;
-  padding: 0 2rem;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
 }
 
 .subscribeForm__label input:focus {
@@ -1659,6 +1663,12 @@ body.body-lock {
 .subscribeForm .checkBox__text {
   font-size: 1.6rem;
   line-height: 1.2;
+  padding-left: 2rem;
+  width: 100%;
+}
+
+.subscribeForm .checkBox__text:after, .subscribeForm .checkBox__text:before {
+  left: -1rem;
 }
 
 @media (max-width: 480px) {
@@ -1674,8 +1684,8 @@ body.body-lock {
 
 .hover-icon::after {
   content: "";
-  height: 7rem;
-  width: 7rem;
+  height: 6rem;
+  width: 6rem;
   border: 2px solid #6672fb;
   display: block;
   border-radius: 100%;
@@ -1697,11 +1707,11 @@ body.body-lock {
   position: absolute;
   right: 0;
   display: inline-block;
-  top: 70px;
+  top: 7rem;
   font-size: 1.6rem;
   line-height: 1.2;
   max-width: 80%;
-  padding: 3rem;
+  padding: 2rem;
   -webkit-transition: 0.5s ease;
   -o-transition: 0.5s ease;
   transition: 0.5s ease;
@@ -2207,35 +2217,35 @@ body.body-lock {
   border: 2px solid #6672fb;
 }
 
-.authorizationForm__label input::-webkit-input-placeholder {
+.authorizationForm__label input ::-webkit-input-placeholder {
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.3;
   color: #acafb5;
 }
 
-.authorizationForm__label input::-moz-placeholder {
+.authorizationForm__label input ::-moz-placeholder {
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.3;
   color: #acafb5;
 }
 
-.authorizationForm__label input:-ms-input-placeholder {
+.authorizationForm__label input :-ms-input-placeholder {
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.3;
   color: #acafb5;
 }
 
-.authorizationForm__label input::-ms-input-placeholder {
+.authorizationForm__label input ::-ms-input-placeholder {
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.3;
   color: #acafb5;
 }
 
-.authorizationForm__label input::placeholder {
+.authorizationForm__label input ::placeholder {
   font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.3;

@@ -165,12 +165,12 @@ class AuthorizationForm {
       this.tab[index].addEventListener("click", () => {
         if (this.tab[index].classList.contains("authorizationForm__tab-login-js")) {
           this.authorizationForm.classList.add("authorizationForm_login");
-          this.tab[0].classList.add(this.tab_inactive);
-          this.tab[1].classList.remove(this.tab_inactive);
-        } else {
-          this.authorizationForm.classList.remove("authorizationForm_login");
           this.tab[1].classList.add(this.tab_inactive);
           this.tab[0].classList.remove(this.tab_inactive);
+        } else {
+          this.authorizationForm.classList.remove("authorizationForm_login");
+          this.tab[0].classList.add(this.tab_inactive);
+          this.tab[1].classList.remove(this.tab_inactive);
         }
       });
     }
@@ -241,4 +241,29 @@ const togglePasswodVisible = () => {
 };
 
 togglePasswodVisible();
+;
+class Valid {
+  constructor(props) {
+    this.inputs = document.querySelectorAll(".input");
+    this.validState = props.validState;
+    this.validInputField();
+  }
+
+
+  stateRule() {
+    if (event.target.value.length > 0) {
+      event.target.classList.add("input__valid");
+    } else event.target.classList.remove("input__valid");
+  }
+
+  validInputField() {
+    document.addEventListener("input", () => {
+      this.stateRule();
+    });
+  }
+}
+
+let valid = new Valid({
+  validState: "input__valid",
+});
 ;
