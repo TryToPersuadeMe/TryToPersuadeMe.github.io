@@ -1839,7 +1839,7 @@ body.body-lock {
 }
 
 .form__rangeInput {
-  margin: 5rem 0 0 0;
+  margin: 5rem 0 2rem 0;
 }
 
 .form__wrapper {
@@ -1898,13 +1898,8 @@ body.body-lock {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 3rem 0rem 0rem 0rem;
   width: 100%;
   max-width: 100%;
-}
-
-.form__row_buttons {
-  margin: 2rem 0rem 0rem 0rem;
 }
 
 @media (max-width: 768px) {
@@ -3282,7 +3277,7 @@ body.body-lock {
   background-color: #fff;
   border-radius: 16px;
   border: 1px solid #ddd;
-  width: 278px;
+  width: 238px !important;
   max-width: none;
   padding: 0;
   margin-top: 7px;
@@ -3293,6 +3288,12 @@ body.body-lock {
   font-family: "Montserrat";
   font-size: 15px;
   line-height: 1em;
+}
+
+@media (max-width: 768px) {
+  .daterangepicker {
+    width: 278px !important;
+  }
 }
 
 .daterangepicker:before,
@@ -3391,6 +3392,10 @@ body.body-lock {
 .daterangepicker .drp-calendar {
   display: none;
   max-width: 300px;
+}
+
+.drp-calendar {
+  width: 100%;
 }
 
 .daterangepicker .drp-calendar.left {
@@ -3512,7 +3517,8 @@ body.body-lock {
   color: #fff;
 }
 
-.daterangepicker th.month {
+.daterangepicker th.month,
+select.monthselect {
   width: auto;
   font-size: 1.8rem;
   text-align: center;
@@ -3534,11 +3540,21 @@ body.body-lock {
   height: auto;
   margin: 0;
   cursor: default;
+  color: #383d4a;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.daterangepicker select.monthselect option,
+.daterangepicker select.yearselect option {
+  color: #383d4a;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
 .daterangepicker select.monthselect {
   margin-right: 2%;
-  width: 56%;
+  width: 60%;
 }
 
 .daterangepicker select.yearselect {
@@ -3643,9 +3659,6 @@ body.body-lock {
 
 /*  Larger Screen Styling */
 @media (min-width: 564px) {
-  .daterangepicker {
-    width: auto;
-  }
   .daterangepicker .ranges ul {
     width: 140px;
   }

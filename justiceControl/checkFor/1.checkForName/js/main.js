@@ -260,9 +260,6 @@ class rSlider {
     this.progressBar.appendChild(this.valueInput, this.el);
 
     this.inputs = document.querySelectorAll(".watch-progressBar-js");
-
-    this.validState = args.validState;
-
     this.updatePos();
   }
 
@@ -290,7 +287,6 @@ class rSlider {
           $(".rangeInput__progressBar").css(`maxWidth`, `${widthPerItem}` * `${count}` + "%");
           $(".rangeInput__valueInput").val(Math.trunc(widthPerItem * count) + "%");
           $(el).addClass("counted-js");
-          $(el).addClass("input__valid");
         }
       });
     });
@@ -302,7 +298,6 @@ class rSlider {
         !event.target.offsetParent.classList.contains("counted-select-js")
       ) {
         count += +1;
-        this.validInput();
         this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
         this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
         event.target.offsetParent.classList.add("counted-select-js");
@@ -329,30 +324,22 @@ class rSlider {
           this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
           this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
           this.center(widthPerItem * count);
-          this.validInput();
         } else {
           count--;
           this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
           this.progressBar.style.maxWidth = widthPerItem * count + "%";
           event.target.setAttribute("data-watch", "false");
-          this.validInput();
+
           this.center(widthPerItem * count);
         }
       });
     }
-  }
-
-  validInput() {
-    if (event.target.value.length > 0) {
-      event.target.classList.add(this.validState);
-    } else event.target.classList.remove(this.validState);
   }
 }
 let range1 = new rSlider({
   element: ".rangeInput__line",
   form: ".form-watch-rangeInput-js",
   watchingFields: ".watch-progressBar-js",
-  validState: "input__valid",
   // stateText: ".state__text",
 });
 ;
@@ -459,7 +446,6 @@ const togglePasswodVisible = () => {
 
 togglePasswodVisible();
 ;
-
 $(document).ready(function () {
   $(".dateCalendar").daterangepicker({
     singleDatePicker: true,
@@ -468,6 +454,7 @@ $(document).ready(function () {
     linkedCalendars: false,
     showCustomRangeLabel: false,
     opens: "center",
+    showDropdowns: true,
     locale: {
       format: "DD-MM-YYYY",
       daysOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
@@ -511,7 +498,12 @@ class AdditionalFormPick {
       props.watchingInput + `[type = "checkbox"]`
     );
 
+    this.formTitle = document.querySelector(props.form__title);
     this.watchingInput = document.querySelectorAll(props.watchingInput);
+    this.checkBoxWrapper = document.querySelectorAll(props.checkBoxWrapper);
+
+    this.checkBoxContent = document.querySelector(".check-box-push-js");
+
     this.toggleState();
   }
 
@@ -523,9 +515,17 @@ class AdditionalFormPick {
       });
 
       this.chosenForms[this.count].classList.add("form__wrapper_active");
+
+      console.log(this.formWrapper[this.count].dataset.title);
+
       setTimeout(() => {
         this.chosenForms[this.count].classList.add("form__wrapper_animation");
+
+        this.checkBoxWrapper[this.chosenForms[this.count].dataset.formkey].appendChild(
+          this.checkBoxContent
+        );
         this.count = this.count + 1;
+        this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
       }, 0);
     } else {
       console.log("send data here");
@@ -542,6 +542,8 @@ class AdditionalFormPick {
     this.formWrapper[this.count].classList.add("form__wrapper_active");
     setTimeout(() => {
       this.formWrapper[this.count].classList.add("form__wrapper_animation");
+      this.checkBoxWrapper[this.count].appendChild(this.checkBoxContent);
+      this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
     }, 0);
   }
 
@@ -550,15 +552,13 @@ class AdditionalFormPick {
 
     this.form.addEventListener("click", (event) => {
       this.getChosenForms();
+
       if (this.chosenForms.length > 0) {
         if (event.target.classList.contains("button-next-js")) {
           event.preventDefault();
-          this.saveValue();
           this.nextButtonClick();
-          console.log(this.valuesDataArr);
         } else if (event.target.classList.contains("button-previous-js")) {
           event.preventDefault();
-          this.saveValue();
           this.previousButtonClick();
         }
       }
@@ -576,16 +576,16 @@ class AdditionalFormPick {
     });
   }
 
-  saveValue() {
-    /* get all names atr */
-    this.valuesDataArr = Array.from(this.watchingInput).map((value, index, array) => {
-      this.atr = this.watchingInput[index].getAttribute("name");
-      this.valueData = this.watchingInput[index].value;
-      return `${this.atr}=${this.valueData}`;
-    });
-    /* delete duplicates */
-    this.valuesDataArr = [...new Set(this.valuesDataArr)];
-  }
+  // saveValue() {
+  //   /* get all names atr */
+  //   this.valuesDataArr = Array.from(this.watchingInput).map((value, index, array) => {
+  //     this.atr = this.watchingInput[index].getAttribute("name");
+  //     this.valueData = this.watchingInput[index].value;
+  //     return `${this.atr}=${this.valueData}`;
+  //   });
+  //   /* delete duplicates */
+  //   this.valuesDataArr = [...new Set(this.valuesDataArr)];
+  // }
 }
 
 let additionalFormPick = new AdditionalFormPick({
@@ -596,6 +596,43 @@ let additionalFormPick = new AdditionalFormPick({
   formWrapper: ".form__wrapper",
   formWrapper_active: ".form__wrapper_active",
 
+  form__title: ".form__title",
+
   watchingInput: ".watch-progressBar-js",
+
+  checkBoxWrapper: ".form__checkBoxWrapper",
+});
+;
+class Valid {
+  constructor(props) {
+    this.inputs = document.querySelectorAll(".input");
+    this.validState = props.validState;
+    this.validCalendar();
+    this.validInputField();
+  }
+
+  validCalendar() {
+    $(".dateCalendar").each(function (i, el) {
+      $(el).on("apply.daterangepicker", function (ev, picker) {
+        $(el).addClass(this.validState);
+      });
+    });
+  }
+
+  stateRule() {
+    if (event.target.value.length > 0) {
+      event.target.classList.add(this.validState);
+    } else event.target.classList.remove(this.validState);
+  }
+
+  validInputField() {
+    document.addEventListener("input", () => {
+      this.stateRule();
+    });
+  }
+}
+
+let valid = new Valid({
+  validState: "input__valid",
 });
 ;
