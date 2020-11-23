@@ -1771,6 +1771,8 @@ body.body-lock {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  position: absolute;
+  right: 2rem;
 }
 
 .select__dropdown {
