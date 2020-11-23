@@ -157,9 +157,6 @@ class rSlider {
     this.progressBar.appendChild(this.valueInput, this.el);
 
     this.inputs = document.querySelectorAll(".watch-progressBar-js");
-
-    // this.stateText = document.querySelectorAll(args.stateText);
-
     this.updatePos();
   }
 
@@ -178,17 +175,37 @@ class rSlider {
     let count = 0;
     this.valueInput.value = "0 %";
 
+    /* date range picker. Working only with jquery */
+
+    $(".dateCalendar").each(function (i, el) {
+      $(el).on("apply.daterangepicker", function (ev, picker) {
+        if (!$(el).hasClass("counted-js")) {
+          count += +1;
+          $(".rangeInput__progressBar").css(`maxWidth`, `${widthPerItem}` * `${count}` + "%");
+          $(".rangeInput__valueInput").val(Math.trunc(widthPerItem * count) + "%");
+          $(el).addClass("counted-js");
+        }
+      });
+    });
+
+    /* count select */
     this.form.addEventListener("click", () => {
-      if (event.target.classList.contains("select__item")) {
-        count = count + 1;
+      if (
+        event.target.classList.contains("select__item") &&
+        !event.target.offsetParent.classList.contains("counted-select-js")
+      ) {
+        count += +1;
         this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
         this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
+        event.target.offsetParent.classList.add("counted-select-js");
       }
     });
 
+    /* count input */
     for (let index = 0; index < this.inputs.length; index++) {
       this.inputs[index].setAttribute("data-watch", "false");
       this.inputs[index].value = "";
+
       this.inputs[index].addEventListener("input", () => {
         if (widthPerItem < 0 || count < 0) {
           this.valueInput.value = "0 %";
@@ -209,25 +226,17 @@ class rSlider {
           this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
           this.progressBar.style.maxWidth = widthPerItem * count + "%";
           event.target.setAttribute("data-watch", "false");
+
           this.center(widthPerItem * count);
         }
       });
     }
   }
-
-  select() {
-    document.addEventListener("loc", listener, options);
-  }
-
-  // changeText(el) {
-  //   this.stateText[el].classList.add("state__text_active");
-  // }
 }
 let range1 = new rSlider({
   element: ".rangeInput__line",
-  form: "#form",
+  form: ".form-watch-rangeInput-js",
   watchingFields: ".watch-progressBar-js",
-  tick: 1,
   // stateText: ".state__text",
 });
 ;
@@ -257,12 +266,12 @@ class AuthorizationForm {
       this.tab[index].addEventListener("click", () => {
         if (this.tab[index].classList.contains("authorizationForm__tab-login-js")) {
           this.authorizationForm.classList.add("authorizationForm_login");
-          this.tab[0].classList.add(this.tab_inactive);
-          this.tab[1].classList.remove(this.tab_inactive);
-        } else {
-          this.authorizationForm.classList.remove("authorizationForm_login");
           this.tab[1].classList.add(this.tab_inactive);
           this.tab[0].classList.remove(this.tab_inactive);
+        } else {
+          this.authorizationForm.classList.remove("authorizationForm_login");
+          this.tab[0].classList.add(this.tab_inactive);
+          this.tab[1].classList.remove(this.tab_inactive);
         }
       });
     }
@@ -333,4 +342,264 @@ const togglePasswodVisible = () => {
 };
 
 togglePasswodVisible();
+;
+class AdditionalFormPick {
+  constructor(props) {
+    this.form = document.querySelector(props.form);
+    this.formWrapper = document.querySelectorAll(props.formWrapper);
+    this.formWrapper_active = document.querySelector(props.formWrapper_active);
+    this.nextButton = document.querySelectorAll(props.nextButton);
+    this.previousButton = document.querySelectorAll(props.previousButton);
+    this.checkbox = document.querySelectorAll(props.checkbox);
+    this.watchingCheckboxes = document.querySelectorAll(
+      props.watchingInput + `[type = "checkbox"]`
+    );
+
+    this.formTitle = document.querySelector(props.form__title);
+    this.watchingInput = document.querySelectorAll(props.watchingInput);
+    this.checkBoxWrapper = document.querySelectorAll(props.checkBoxWrapper);
+
+    this.checkBoxContent = document.querySelector(".check-box-push-js");
+
+    this.toggleState();
+  }
+
+  nextButtonClick() {
+    if (this.count < this.chosenForms.length) {
+      this.formWrapper.forEach((element) => {
+        element.classList.remove("form__wrapper_active");
+        element.classList.remove("form__wrapper_animation");
+      });
+
+      this.chosenForms[this.count].classList.add("form__wrapper_active");
+
+      console.log(this.formWrapper[this.count].dataset.title);
+
+      setTimeout(() => {
+        this.chosenForms[this.count].classList.add("form__wrapper_animation");
+
+        this.checkBoxWrapper[this.chosenForms[this.count].dataset.formkey].appendChild(
+          this.checkBoxContent
+        );
+        this.count = this.count + 1;
+        this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
+      }, 0);
+    } else {
+      console.log("send data here");
+    }
+  }
+
+  previousButtonClick() {
+    this.formWrapper.forEach((element) => {
+      element.classList.remove("form__wrapper_active");
+      element.classList.remove("form__wrapper_animation");
+    });
+    this.count = this.count - 1;
+
+    this.formWrapper[this.count].classList.add("form__wrapper_active");
+    setTimeout(() => {
+      this.formWrapper[this.count].classList.add("form__wrapper_animation");
+      this.checkBoxWrapper[this.count].appendChild(this.checkBoxContent);
+      this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
+    }, 0);
+  }
+
+  toggleState() {
+    this.count = 0;
+
+    this.form.addEventListener("click", (event) => {
+      this.getChosenForms();
+
+      if (this.chosenForms.length > 0) {
+        if (event.target.classList.contains("button-next-js")) {
+          event.preventDefault();
+          this.nextButtonClick();
+        } else if (event.target.classList.contains("button-previous-js")) {
+          event.preventDefault();
+          this.previousButtonClick();
+        }
+      }
+    });
+  }
+  getChosenForms() {
+    this.checkedCheckboxes = Array.from(this.watchingCheckboxes).map((value, index) => {
+      if (value.dataset.checkboxkey > "0" && value.checked == true) {
+        return this.formWrapper[index + 1];
+      }
+    });
+
+    this.chosenForms = this.checkedCheckboxes.filter((value) => {
+      return typeof value != typeof undefined;
+    });
+  }
+
+  // saveValue() {
+  //   /* get all names atr */
+  //   this.valuesDataArr = Array.from(this.watchingInput).map((value, index, array) => {
+  //     this.atr = this.watchingInput[index].getAttribute("name");
+  //     this.valueData = this.watchingInput[index].value;
+  //     return `${this.atr}=${this.valueData}`;
+  //   });
+  //   /* delete duplicates */
+  //   this.valuesDataArr = [...new Set(this.valuesDataArr)];
+  // }
+}
+
+let additionalFormPick = new AdditionalFormPick({
+  nextButton: ".button-next-js",
+  previousButton: ".button-previous-js",
+
+  form: ".form ",
+  formWrapper: ".form__wrapper",
+  formWrapper_active: ".form__wrapper_active",
+
+  form__title: ".form__title",
+
+  watchingInput: ".watch-progressBar-js",
+
+  checkBoxWrapper: ".form__checkBoxWrapper",
+});
+;
+$(document).ready(function () {
+  $(".dateCalendar").daterangepicker({
+    singleDatePicker: true,
+
+    autoApply: true,
+    linkedCalendars: false,
+    showCustomRangeLabel: false,
+    opens: "center",
+    showDropdowns: true,
+    locale: {
+      format: "DD-MM-YYYY",
+      daysOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+      monthNames: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
+      ],
+      firstDay: 1,
+    },
+  });
+
+  /* placeholder */
+  $(".dateCalendar").val("");
+
+  // $(calendar).on("apply.daterangepicker", function (ev, picker) {
+  //   count = count + 1;
+  //   this.progressBar.style.maxWidth = this.dataRange.offsetWidth + widthPerItem * count + "%";
+  //   this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
+  // });
+});
+;
+class Valid {
+  constructor(props) {
+    this.inputs = document.querySelectorAll(".input");
+    this.validState = props.validState;
+    this.validCalendar();
+    this.validInputField();
+  }
+
+  validCalendar() {
+    $(".dateCalendar").each(function (i, el) {
+      $(el).on("apply.daterangepicker", function (ev, picker) {
+        $(el).addClass("input__valid");
+      });
+    });
+  }
+
+  stateRule() {
+    if (event.target.value.length > 0) {
+      event.target.classList.add("input__valid");
+    } else event.target.classList.remove("input__valid");
+  }
+
+  validInputField() {
+    document.addEventListener("input", () => {
+      this.stateRule();
+    });
+  }
+}
+
+let valid = new Valid({
+  validState: "input__valid",
+});
+;
+// import "./select/style.scss";
+
+class Select {
+  constructor(el) {
+    if (typeof el === "string") {
+      el = document.querySelectorAll(el);
+    }
+
+    if (typeof el[Symbol.iterator] === "function") {
+      return [...el].map((n) => new Select(n));
+    }
+
+    this.$select = el;
+
+    this.$inputField = this.$select.querySelector("input");
+    this.$label = this.$select.querySelector(".select__label");
+
+    this.$body = document.querySelector("body");
+
+    this.handleClick();
+    this.hanldeClickWindow();
+  }
+
+  openState() {
+    this.$select.classList.add("open");
+  }
+
+  closeState() {
+    this.$select.classList.remove("open");
+  }
+
+  /* open/close dropdown list */
+  toggleState() {
+    if (this.$select.classList.contains("open")) {
+      this.closeState();
+    } else {
+      this.openState();
+    }
+  }
+
+  handleClick() {
+    this.$select.addEventListener("mouseup", () => {
+      this.toggleState();
+      this.handleValue();
+    });
+  }
+
+  /* change value of input */
+  handleValue() {
+    if (event.target != this.$label) {
+      this.$inputField.value = event.target.innerText;
+      this.validateState();
+    }
+  }
+
+  validateState() {
+    this.$label.classList.add("valid");
+  }
+
+  hanldeClickWindow() {
+    window.addEventListener("click", () => {
+      if (event.target != this.$label) {
+        this.closeState();
+      }
+    });
+  }
+}
+
+const select = new Select(".select");
 ;

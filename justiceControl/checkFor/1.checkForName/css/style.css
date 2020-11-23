@@ -1185,13 +1185,14 @@ body.body-lock {
 
 @media (max-width: 768px) {
   .itemsWithImages__img {
+    height: 8rem;
     max-width: 8rem;
   }
 }
 
 .itemsWithImages__subTitles {
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   line-height: 1.2;
   text-align: center;
 }
@@ -1938,6 +1939,8 @@ body.body-lock {
 }
 
 .form__label {
+  background: transparent;
+  display: inline-block;
   max-width: 30%;
   width: 100%;
   margin-right: 1.5rem;
@@ -1954,11 +1957,6 @@ body.body-lock {
     max-width: 36rem;
     margin: 1rem 0;
   }
-}
-
-.form__label {
-  background: transparent;
-  display: inline-block;
 }
 
 .form__label_icon {

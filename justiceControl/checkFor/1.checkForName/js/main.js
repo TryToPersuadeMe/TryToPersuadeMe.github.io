@@ -369,12 +369,12 @@ class AuthorizationForm {
       this.tab[index].addEventListener("click", () => {
         if (this.tab[index].classList.contains("authorizationForm__tab-login-js")) {
           this.authorizationForm.classList.add("authorizationForm_login");
-          this.tab[0].classList.add(this.tab_inactive);
-          this.tab[1].classList.remove(this.tab_inactive);
-        } else {
-          this.authorizationForm.classList.remove("authorizationForm_login");
           this.tab[1].classList.add(this.tab_inactive);
           this.tab[0].classList.remove(this.tab_inactive);
+        } else {
+          this.authorizationForm.classList.remove("authorizationForm_login");
+          this.tab[0].classList.add(this.tab_inactive);
+          this.tab[1].classList.remove(this.tab_inactive);
         }
       });
     }
@@ -614,15 +614,15 @@ class Valid {
   validCalendar() {
     $(".dateCalendar").each(function (i, el) {
       $(el).on("apply.daterangepicker", function (ev, picker) {
-        $(el).addClass(this.validState);
+        $(el).addClass("input__valid");
       });
     });
   }
 
   stateRule() {
     if (event.target.value.length > 0) {
-      event.target.classList.add(this.validState);
-    } else event.target.classList.remove(this.validState);
+      event.target.classList.add("input__valid");
+    } else event.target.classList.remove("input__valid");
   }
 
   validInputField() {
