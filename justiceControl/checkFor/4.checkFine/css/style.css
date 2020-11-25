@@ -3438,3 +3438,133 @@ select.monthselect {
   color: #535353;
   font-size: 12px;
 }
+
+.select {
+  width: 100%;
+  position: relative;
+  /* when select open add class OPEN */
+}
+
+.select.open {
+  z-index: 2;
+}
+
+.select.open .select__dropdown {
+  display: block;
+  border: 2px solid #6672fb;
+  background-color: white;
+  max-height: 20rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.select.open .select__label {
+  border-bottom: none;
+  border: 2px solid #6672fb;
+}
+
+.select.open .select__arrow {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.select .valid {
+  background-color: #6672fb;
+}
+
+.select .valid > input {
+  color: white;
+}
+
+.select .valid .select__arrow svg path {
+  fill: white;
+}
+
+.select__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1.5rem;
+  border: 2px solid transparent;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.select__label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.select__label > input {
+  position: relative;
+  z-index: -1;
+  height: 100%;
+  min-height: 100%;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  color: #6672fb;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.select__arrow {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  position: absolute;
+  right: 2rem;
+}
+
+.select__dropdown {
+  position: absolute;
+  border: 2px solid transparent;
+  border-radius: 1.5rem;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0px;
+  overflow-y: auto;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.select__list {
+  padding: 0;
+  margin: 0;
+  list-style: 0;
+}
+
+.select__item {
+  padding: 1rem;
+  font-size: 1.4rem;
+  color: #acafb5;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.select__item:hover {
+  color: #6672fb;
+}

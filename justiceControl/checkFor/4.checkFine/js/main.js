@@ -373,16 +373,15 @@ class AdditionalFormPick {
 
       this.chosenForms[this.count].classList.add("form__wrapper_active");
 
-      console.log(this.formWrapper[this.count].dataset.title);
-
       setTimeout(() => {
         this.chosenForms[this.count].classList.add("form__wrapper_animation");
 
         this.checkBoxWrapper[this.chosenForms[this.count].dataset.formkey].appendChild(
           this.checkBoxContent
         );
+        this.formTitle.innerText = this.chosenForms[this.count].dataset.title;
+
         this.count = this.count + 1;
-        this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
       }, 0);
     } else {
       console.log("send data here");
@@ -390,13 +389,15 @@ class AdditionalFormPick {
   }
 
   previousButtonClick() {
-    this.formWrapper.forEach((element) => {
+    this.count = this.count - 1;
+
+    this.formWrapper.forEach((element, id) => {
       element.classList.remove("form__wrapper_active");
       element.classList.remove("form__wrapper_animation");
     });
-    this.count = this.count - 1;
 
     this.formWrapper[this.count].classList.add("form__wrapper_active");
+
     setTimeout(() => {
       this.formWrapper[this.count].classList.add("form__wrapper_animation");
       this.checkBoxWrapper[this.count].appendChild(this.checkBoxContent);
@@ -409,7 +410,6 @@ class AdditionalFormPick {
 
     this.form.addEventListener("click", (event) => {
       this.getChosenForms();
-
       if (this.chosenForms.length > 0) {
         if (event.target.classList.contains("button-next-js")) {
           event.preventDefault();
@@ -421,15 +421,21 @@ class AdditionalFormPick {
       }
     });
   }
+
   getChosenForms() {
     this.checkedCheckboxes = Array.from(this.watchingCheckboxes).map((value, index) => {
       if (value.dataset.checkboxkey > "0" && value.checked == true) {
         return this.formWrapper[index + 1];
       }
     });
-
     this.chosenForms = this.checkedCheckboxes.filter((value) => {
       return typeof value != typeof undefined;
+    });
+
+    this.chosenForms.every((value, index, array) => {
+      if (typeof value == typeof undefined) {
+        console.log("Asd");
+      }
     });
   }
 
@@ -532,4 +538,74 @@ $(document).ready(function () {
   //   this.valueInput.value = Math.trunc(widthPerItem * count) + "%";
   // });
 });
+;
+// import "./select/style.scss";
+
+class Select {
+  constructor(el) {
+    if (typeof el === "string") {
+      el = document.querySelectorAll(el);
+    }
+
+    if (typeof el[Symbol.iterator] === "function") {
+      return [...el].map((n) => new Select(n));
+    }
+
+    this.$select = el;
+
+    this.$inputField = this.$select.querySelector("input");
+    this.$label = this.$select.querySelector(".select__label");
+
+    this.$body = document.querySelector("body");
+
+    this.handleClick();
+    this.hanldeClickWindow();
+  }
+
+  openState() {
+    this.$select.classList.add("open");
+  }
+
+  closeState() {
+    this.$select.classList.remove("open");
+  }
+
+  /* open/close dropdown list */
+  toggleState() {
+    if (this.$select.classList.contains("open")) {
+      this.closeState();
+    } else {
+      this.openState();
+    }
+  }
+
+  handleClick() {
+    this.$select.addEventListener("mouseup", () => {
+      this.toggleState();
+      this.handleValue();
+    });
+  }
+
+  /* change value of input */
+  handleValue() {
+    if (event.target != this.$label) {
+      this.$inputField.value = event.target.innerText;
+      this.validateState();
+    }
+  }
+
+  validateState() {
+    this.$label.classList.add("valid");
+  }
+
+  hanldeClickWindow() {
+    window.addEventListener("click", () => {
+      if (event.target != this.$label) {
+        this.closeState();
+      }
+    });
+  }
+}
+
+const select = new Select(".select");
 ;

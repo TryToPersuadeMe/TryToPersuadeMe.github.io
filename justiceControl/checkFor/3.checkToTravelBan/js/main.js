@@ -380,16 +380,15 @@ class AdditionalFormPick {
 
       this.chosenForms[this.count].classList.add("form__wrapper_active");
 
-      console.log(this.formWrapper[this.count].dataset.title);
-
       setTimeout(() => {
         this.chosenForms[this.count].classList.add("form__wrapper_animation");
 
         this.checkBoxWrapper[this.chosenForms[this.count].dataset.formkey].appendChild(
           this.checkBoxContent
         );
+        this.formTitle.innerText = this.chosenForms[this.count].dataset.title;
+
         this.count = this.count + 1;
-        this.formTitle.innerText = this.formWrapper[this.count].dataset.title;
       }, 0);
     } else {
       console.log("send data here");
@@ -397,13 +396,15 @@ class AdditionalFormPick {
   }
 
   previousButtonClick() {
-    this.formWrapper.forEach((element) => {
+    this.count = this.count - 1;
+
+    this.formWrapper.forEach((element, id) => {
       element.classList.remove("form__wrapper_active");
       element.classList.remove("form__wrapper_animation");
     });
-    this.count = this.count - 1;
 
     this.formWrapper[this.count].classList.add("form__wrapper_active");
+
     setTimeout(() => {
       this.formWrapper[this.count].classList.add("form__wrapper_animation");
       this.checkBoxWrapper[this.count].appendChild(this.checkBoxContent);
@@ -416,7 +417,6 @@ class AdditionalFormPick {
 
     this.form.addEventListener("click", (event) => {
       this.getChosenForms();
-
       if (this.chosenForms.length > 0) {
         if (event.target.classList.contains("button-next-js")) {
           event.preventDefault();
@@ -428,15 +428,21 @@ class AdditionalFormPick {
       }
     });
   }
+
   getChosenForms() {
     this.checkedCheckboxes = Array.from(this.watchingCheckboxes).map((value, index) => {
       if (value.dataset.checkboxkey > "0" && value.checked == true) {
         return this.formWrapper[index + 1];
       }
     });
-
     this.chosenForms = this.checkedCheckboxes.filter((value) => {
       return typeof value != typeof undefined;
+    });
+
+    this.chosenForms.every((value, index, array) => {
+      if (typeof value == typeof undefined) {
+        console.log("Asd");
+      }
     });
   }
 
