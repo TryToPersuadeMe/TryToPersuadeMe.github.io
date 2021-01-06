@@ -89,6 +89,7 @@ let observer = new IntersectionObserver(
 
 block.forEach((value) => observer.observe(value));
 ;
+
 $(document).ready(() => {
   $(".slider__wrapper").slick({
     infinite: true,
