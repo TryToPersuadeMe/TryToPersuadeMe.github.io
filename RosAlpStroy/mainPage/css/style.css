@@ -376,6 +376,7 @@ body {
 
 .fullWidthPicture {
   height: 45vh;
+  min-height: 40rem;
   position: relative;
   position: relative;
   z-index: 3;
@@ -581,7 +582,8 @@ body {
     min-height: 100vh;
     height: 100vh;
     width: 55%;
-    padding: 4rem 0;
+    overflow: auto;
+    padding: 0;
   }
   .navigation_active {
     left: 0;
@@ -618,10 +620,8 @@ body {
 @media (max-width: 950px) {
   .navigation__wrapper {
     min-height: 100%;
-    height: 100%;
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
-    overflow: auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -704,16 +704,36 @@ body {
 
 .advantages__gridContainer {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(38rem, 1fr));
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5rem 3rem;
+  gap: 4rem;
+}
+
+@media (max-width: 900px) {
+  .advantages__gridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    justify-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .advantages__gridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 3rem;
+  }
 }
 
 .advantages__item {
-  max-width: 30rem;
+  max-width: 28rem;
   width: 100%;
   position: relative;
   height: 16rem;
+}
+
+.advantages__image {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .advantages__image img,
@@ -725,10 +745,19 @@ body {
   left: 0;
 }
 
+.advantages__image img,
+.advantages__image source {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .advantages__text {
   font-weight: 500;
   font-size: 2.4rem;
   line-height: 1.2;
+  position: absolute;
+  bottom: 0;
+  right: 0%;
 }
 
 .service__gridBox {
@@ -1883,6 +1912,38 @@ button.swiper-pagination-bullet {
   opacity: 0;
   font-size: 0;
   margin: 0;
+}
+
+.feedback__row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4.5rem;
+}
+
+@media (max-width: 950px) {
+  .feedback__row {
+    grid-template-columns: 1fr;
+    grid-template-rows: -webkit-min-content -webkit-min-content;
+    grid-template-rows: min-content min-content;
+  }
+}
+
+.feedback__item {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 3px solid #ff3d00;
+  border-radius: 4px;
+}
+
+.feedback__text {
+  font-size: 2.2rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .feedback__text {
+    font-size: 1.8rem;
+  }
 }
 
 .contacts__row {
