@@ -370,10 +370,12 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: white;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .header__logo {
@@ -390,6 +392,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@media (max-width: 650px) {
+  .header__logo {
+    display: none;
+  }
 }
 
 .header__logo img,
@@ -414,6 +422,12 @@ body {
   font-weight: 700;
   font-size: 2.8rem;
   color: #ff4433;
+}
+
+@media (max-width: 480px) {
+  .header__number {
+    font-size: 2.4rem;
+  }
 }
 
 .header__schedule {
@@ -483,6 +497,14 @@ body {
     -webkit-transform: translateX(-50%) rotate(-45deg);
         -ms-transform: translateX(-50%) rotate(-45deg);
             transform: translateX(-50%) rotate(-45deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__burgerMenu {
+    width: 6rem;
+    margin-left: 2rem;
+    height: 6rem;
   }
 }
 
