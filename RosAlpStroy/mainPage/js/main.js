@@ -84,7 +84,6 @@ class responsiveHeader {
 
   toggleState() {
     document.addEventListener("click", () => {
-      console.log(event.target.classList.contains(this.burgerIcon_active));
       if (
         event.target == this.burgerIcon &&
         !event.target.classList.contains(this.burgerIcon_active)
@@ -100,10 +99,21 @@ class responsiveHeader {
   }
 }
 
-const exitPopup = new responsiveHeader({
+const headerBurgerMenu = new responsiveHeader({
   navigation: "navigation",
   burgerIcon: "header__burgerMenu",
 });
+
+const dropListNavigation = () => {
+  const button = document.querySelectorAll(".dropList__toggleButton");
+  const droplist = document.querySelectorAll(".dropList");
+
+  button.forEach((value, index) => {
+    value.addEventListener("click", () => droplist[index].classList.toggle("dropList_active"));
+  });
+};
+
+dropListNavigation();
 ;
 
 /* slow scroll */

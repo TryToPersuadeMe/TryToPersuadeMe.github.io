@@ -141,7 +141,7 @@ input[type="number"] {
 /* global settings */
 html,
 body {
-  font-size: 10px;
+  font-size: 8.5px;
 }
 
 .wrapper {
@@ -851,9 +851,14 @@ body {
 .priceTable__name {
   font-size: 2.1rem;
   margin-right: 2rem;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 70%;
-          flex: 1 0 70%;
+}
+
+@media (min-width: 651px) {
+  .priceTable__name {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 70%;
+            flex: 1 0 70%;
+  }
 }
 
 @media (max-width: 650px) {
@@ -864,16 +869,21 @@ body {
 
 .priceTable__price {
   font-weight: bold;
-  font-size: 2.4rem;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
+  font-size: 2.2rem;
   text-align: end;
+}
+
+@media (min-width: 651px) {
+  .priceTable__price {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 30%;
+            flex: 0 1 30%;
+  }
 }
 
 @media (max-width: 650px) {
   .priceTable__price {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 }
 
@@ -1025,6 +1035,10 @@ body {
   .leaveAnApplicationSection__container .markedList {
     display: none;
   }
+}
+
+.leaveAnApplicationSection__container .markedList__li_circle {
+  text-shadow: 0px 0px 10px black;
 }
 
 .leaveAnApplicationSection__container .markedList__li_circle:before {
