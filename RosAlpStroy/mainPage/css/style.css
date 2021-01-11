@@ -1220,11 +1220,16 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-shadow: 0px 0px 10px black;
+  text-shadow: 0px 0px 6px black;
 }
 
 .leaveAnApplicationSection__fullHeightBcgrImage {
   background-image: url("../img/bigBackgroundImages/2.jpg");
+}
+
+.leaveAnApplicationSection__fullHeightBcgrImage:after {
+  content: "";
+  background: rgba(10, 0, 32, 0.45);
 }
 
 @media (max-width: 480px) {
@@ -1290,6 +1295,13 @@ body {
   .leaveAnApplicationSection .markedList {
     display: none;
   }
+}
+
+.leaveAnApplicationSection .markedList__li_big {
+  display: inline;
+  font-weight: 700;
+  font-size: 2.4rem;
+  width: 100%;
 }
 
 .leaveAnApplicationSection .markedList__li_circle:before {
