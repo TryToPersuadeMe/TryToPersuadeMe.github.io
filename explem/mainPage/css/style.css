@@ -785,7 +785,7 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
     background-color: white;
-    position: absolute;
+    position: fixed;
     padding: 1rem 2rem;
     bottom: 0;
     left: 0;
@@ -1266,6 +1266,12 @@ body {
   .getRegion__currentRegion::after {
     width: 4px;
     height: 8px;
+  }
+}
+
+@media (max-width: 475px) {
+  .responsiveBox__container {
+    padding-bottom: 5rem;
   }
 }
 
