@@ -687,8 +687,8 @@ body {
   display: block;
   width: 8px;
   height: 8px;
-  border: 1px solid #828282;
   margin-right: 5px;
+  border: 1px solid #828282;
 }
 
 @media (max-width: 1024px) {
@@ -706,35 +706,12 @@ body {
   }
 }
 
-@media (min-width: 601px) {
+@media (min-width: 376px) {
   .selectCheckboxes__input:checked + .selectCheckboxes__label + .selectCheckboxes__checkboxIcon {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url("../img/icons/checkmark.svg");
-  }
-}
-
-@media (max-width: 600px) {
-  .selectCheckboxes.open __droplist {
-    padding: 0.5rem 0;
-  }
-  .selectCheckboxes__line {
-    position: relative;
-    padding: 1rem 1.3rem;
-  }
-  .selectCheckboxes__input:checked + .selectCheckboxes__label + .selectCheckboxes__checkboxIcon {
-    background-color: #eae0d7;
-  }
-  .selectCheckboxes__checkboxIcon {
-    position: absolute;
-    min-width: 100%;
-    background-color: rgba(234, 224, 215, 0);
-    z-index: -1;
-    min-height: 100%;
-    border: 0px solid #000;
-    top: 0;
-    left: 0;
   }
 }
 
@@ -1337,16 +1314,34 @@ body {
 }
 
 @media (max-width: 375px) {
-  .mainFilters__wrapper .selectCheckboxes__title {
+  .mainFilters .selectCheckboxes__title {
     font-size: 1.2rem;
   }
-  .mainFilters__wrapper .selectCheckboxes__title.chose::before {
+  .mainFilters .selectCheckboxes__title.chose::before {
     width: 4px;
     height: 4px;
     left: 15px;
   }
-  .mainFilters__wrapper .open .selectCheckboxes__droplist {
-    padding-left: 0;
+  .mainFilters .selectCheckboxes.open .selectCheckboxes__droplist {
+    padding: 0.5rem 0;
+  }
+  .mainFilters .selectCheckboxes__line {
+    position: relative;
+    z-index: 2;
+    padding: 1rem 1.3rem;
+  }
+  .mainFilters .selectCheckboxes__input:checked + .selectCheckboxes__label + .selectCheckboxes__checkboxIcon {
+    background-color: #eae0d7;
+  }
+  .mainFilters .selectCheckboxes__checkboxIcon {
+    background-color: rgba(234, 224, 215, 0);
+    position: absolute;
+    min-width: 100%;
+    z-index: -1;
+    min-height: 100%;
+    border: 0px solid #000;
+    top: 0;
+    left: 0;
   }
   .panel__button_reset, .panel__button_submit {
     font-size: 1.6rem;
