@@ -1157,12 +1157,6 @@ body {
   }
 }
 
-@media (max-width: 475px) {
-  .responsiveBox__container {
-    padding-bottom: 5rem;
-  }
-}
-
 @media (max-width: 375px) {
   .footer {
     display: none;
