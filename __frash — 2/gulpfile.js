@@ -1,5 +1,5 @@
 let project_folder = require("path").basename(__dirname);
-let source_folder = "#catalog-1";
+let source_folder = "#login-1";
 
 let path = {
   build: {
@@ -12,7 +12,7 @@ let path = {
   },
   src: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-    css: source_folder + "/scss/style.scss",
+    css: source_folder + "/scss/main.scss",
     js: source_folder + "/js/main.js",
     js_plugins: source_folder + "/js/js__plugins/*.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
