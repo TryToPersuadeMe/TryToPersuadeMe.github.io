@@ -469,6 +469,7 @@ input[type="search"]::-webkit-search-results-decoration {
   max-width: 50%;
   background-color: transparent;
   text-align: end;
+  color: black;
   margin-left: 20px;
   cursor: pointer;
 }
@@ -1747,6 +1748,7 @@ input[type="search"]::-webkit-search-results-decoration {
           justify-content: space-between;
   margin-bottom: 13px;
   font-weight: 300;
+  line-height: 1.2;
 }
 
 .placeAnOrder__line > *:first-child {
@@ -1800,6 +1802,9 @@ input[type="search"]::-webkit-search-results-decoration {
   }
   .placeAnOrder__line > *:first-child {
     margin-right: 10px;
+  }
+  .placeAnOrder__line > *:last-child {
+    text-align: center;
   }
   .placeAnOrder__line_final {
     margin-top: 10px;
