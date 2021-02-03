@@ -467,6 +467,7 @@ input[type="search"]::-webkit-search-results-decoration {
   min-height: 100%;
   width: 100%;
   max-width: 50%;
+  background-color: transparent;
   text-align: end;
   margin-left: 20px;
   cursor: pointer;
@@ -688,9 +689,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .orderedItem__counter {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -708,6 +709,8 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 100%;
   text-align: center;
   margin: 0 5px;
+  max-width: 100%;
+  width: 100%;
 }
 
 @media (min-width: 701px) {
