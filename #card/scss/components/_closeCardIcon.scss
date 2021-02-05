@@ -1,0 +1,48 @@
+.closeCardIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-left: auto;
+  width: 80px;
+  height: 80px;
+  background-color: #ebe1d7;
+  z-index: 10;
+  transition: 0.3s ease;
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+  cursor: pointer;
+  &::after,
+  &::before {
+    content: "";
+    transition: 0.3s ease;
+    display: block;
+    position: absolute;
+    z-index: 10;
+    height: 2px;
+    width: 22px;
+    background-color: black;
+    top: 25px;
+    right: 10px;
+  }
+  &:after {
+    transform: rotate(45deg);
+  }
+
+  &:before {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    background-color: black;
+    &::after,
+    &::before {
+      background-color: #ebe1d7;
+      width: 25px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .closeCardIcon {
+    display: none;
+  }
+}
