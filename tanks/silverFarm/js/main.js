@@ -98,7 +98,6 @@ window.addEventListener("click", function (e) {
     select.classList.remove(header.language + "_open");
   }
 });
-;
 const totalInput = document.getElementById("totalQuantity");
 
 /* coef per 1 step */
@@ -253,7 +252,6 @@ class FormCount {
     }
   }
 }
-;
 const form = document.getElementById("silverFarmForm");
 const name = document.getElementById("name");
 const inputs = form.getElementsByTagName("input");
@@ -296,4 +294,3 @@ form.addEventListener("submit", function () {
 
   console.log(jsonString);
 });
-;
