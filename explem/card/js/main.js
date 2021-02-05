@@ -250,13 +250,29 @@ const dragAndDrop = () => {
   const $panel = document.querySelector(".filters");
   let offsetY;
 
-  $panel.addEventListener("dragstart", () => {
+  $panel.addEventListener("touchstart", () => {
     offsetY = event.pageY;
   });
 
-  $panel.addEventListener("dragend", () => {
-    event.currentTarget.style.bottom = (event.pageY - offsetY) * -1 + "px";
+  $panel.addEventListener("touchend", () => {
+    let elementY = event.pageY - offsetY;
+
+    if (elementY < 0) {
+      event.currentTarget.style.top = "0px";
+    } else {
+      event.currentTarget.style.top = elementY + "px";
+    }
   });
+  const startPosition = () => {
+    $panel.style.top = ($panel.scrollHeight / 100) * 80 + "px";
+    console.log("asd");
+  };
+
+  window.addEventListener("resize", () => {
+    startPosition();
+  });
+
+  startPosition();
 };
 
 dragAndDrop();
