@@ -1226,7 +1226,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .touchIcon::after {
   content: "";
   min-width: 100%;
-  min-height: 30px;
+  min-height: 50px;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
