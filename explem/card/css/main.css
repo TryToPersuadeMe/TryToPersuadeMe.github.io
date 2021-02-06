@@ -1281,6 +1281,18 @@ input[type="search"]::-webkit-search-results-decoration {
   .filters {
     max-width: 100%;
     padding: 40px 20px;
+    top: 0%;
+    left: 0;
+    z-index: 7;
+    position: fixed;
+    min-height: 100vh;
+    -webkit-transition: 0.1s ease-in-out;
+    -o-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+    background-color: white;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   .filters__field, .filters__2colWrapper {
     max-width: 500px;
@@ -1299,19 +1311,7 @@ input[type="search"]::-webkit-search-results-decoration {
 @media (max-width: 475px) {
   .filters {
     padding-bottom: 60px;
-    position: fixed;
     padding: 20px 20px 40px 20px;
-    top: 0%;
-    left: 0;
-    z-index: 7;
-    min-height: 100vh;
-    -webkit-transition: 0.2s ease;
-    -o-transition: 0.2s ease;
-    transition: 0.2s ease;
-    background-color: white;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
   }
   .filters__field, .filters__2colWrapper {
     max-width: 300px;

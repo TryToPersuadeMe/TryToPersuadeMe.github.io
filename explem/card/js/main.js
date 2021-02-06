@@ -344,6 +344,7 @@ var DragAndDrop = /*#__PURE__*/function () {
     /* events */
 
     this.touchMoveEvent();
+    this.resizeEvent();
   }
 
   _createClass(DragAndDrop, [{
@@ -387,6 +388,17 @@ var DragAndDrop = /*#__PURE__*/function () {
         _this7.elementY = event.changedTouches[0].clientY;
 
         _this7.checkCurrentPosition(_this7.elementY);
+      });
+    }
+  }, {
+    key: "resizeEvent",
+    value: function resizeEvent() {
+      var _this8 = this;
+
+      window.addEventListener("resize", function () {
+        _this8.startedPosition_DragableItem();
+
+        _this8.startedPosition_DragIcon(-20);
       });
     }
   }]);
