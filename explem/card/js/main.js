@@ -1,234 +1,310 @@
-const updateSidesSlides = () => {
-  const slidesArr = document.querySelectorAll(".additionalSlide");
-  const slide_next = document.querySelector(".swiper-slide-next");
-  const slide_prev = document.querySelector(".swiper-slide-prev");
-  const slide_current = document.querySelector(".swiper-slide-active");
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var updateSidesSlides = function updateSidesSlides() {
+  var slidesArr = document.querySelectorAll(".additionalSlide");
+  var slide_next = document.querySelector(".swiper-slide-next");
+  var slide_prev = document.querySelector(".swiper-slide-prev");
+  var slide_current = document.querySelector(".swiper-slide-active");
   slidesArr[0].innerHTML = slide_next.innerHTML;
   slidesArr[1].innerHTML = slide_prev.innerHTML;
+};
+
+var addClass = function addClass() {
+  var $container = document.querySelector(".swiper-wrapper");
+  var $slide = $container.querySelectorAll(".swiper-slide");
+  $slide.forEach(function (el) {
+    return el.children[0].classList.add("swiper-zoom-container");
+  });
 };
 
 var swiper = new Swiper(".swiper-container", {
   slidesPerView: 1,
   speed: 500,
   loop: true,
-  grabCursor: true,
-
+  zoom: {
+    maxRatio: 3
+  },
   pagination: {
     el: ".swiperStuffSlider__pagination",
     clickable: true,
     dynamicBullets: true,
-    dynamicMainBullets: 4,
-    clickable: true,
+    dynamicMainBullets: 0
   },
   navigation: {
     nextEl: ".swiperStuffSlider__button_next",
-    prevEl: ".swiperStuffSlider__button_prev",
+    prevEl: ".swiperStuffSlider__button_prev"
   },
-
   on: {
-    transitionEnd: function () {
+    slideChangeTransitionEnd: function slideChangeTransitionEnd() {
       updateSidesSlides();
     },
-    resize: function () {
+    resize: function resize() {
       if (window.innerWidth <= 1000) {
         this.changeDirection("vertical", true);
       } else {
         this.changeDirection("horizontal", true);
       }
     },
-    beforeInit: function () {
+    beforeInit: function beforeInit() {
+      addClass();
+
       if (window.innerWidth <= 1000) {
         this.changeDirection("vertical", true);
       } else {
         this.changeDirection("horizontal", true);
       }
-    },
-  },
+    }
+  }
 });
 ;
-class Select {
-  constructor(el) {
+
+var Select = /*#__PURE__*/function () {
+  function Select(el) {
+    _classCallCheck(this, Select);
+
     if (typeof el === "string") {
       el = document.querySelectorAll(el);
     }
 
     if (typeof el[Symbol.iterator] === "function") {
-      return [...el].map((n) => new Select(n));
+      return _toConsumableArray(el).map(function (n) {
+        return new Select(n);
+      });
     }
 
     this.$select = el;
-
     this.$inputField = this.$select.querySelector("input");
     this.$label = this.$select.querySelector(".select__label");
-
     this.$body = document.querySelector("body");
-
     this.handleClick();
     this.hanldeClickWindow();
   }
 
-  openState() {
-    this.$select.classList.add("open");
-  }
-
-  closeState() {
-    this.$select.classList.remove("open");
-  }
-
-  /* open/close dropdown list */
-  toggleState() {
-    if (this.$select.classList.contains("open")) {
-      this.closeState();
-    } else {
-      this.openState();
+  _createClass(Select, [{
+    key: "openState",
+    value: function openState() {
+      this.$select.classList.add("open");
     }
-  }
-
-  handleClick() {
-    this.$select.addEventListener("mouseup", () => {
-      this.toggleState();
-      this.handleValue();
-    });
-  }
-
-  /* change value of input */
-  handleValue() {
-    if (event.target != this.$label) {
-      this.$inputField.value = event.target.innerText;
+  }, {
+    key: "closeState",
+    value: function closeState() {
+      this.$select.classList.remove("open");
     }
-  }
+    /* open/close dropdown list */
 
-  hanldeClickWindow() {
-    window.addEventListener("click", () => {
-      if (event.target != this.$label) {
+  }, {
+    key: "toggleState",
+    value: function toggleState() {
+      if (this.$select.classList.contains("open")) {
         this.closeState();
+      } else {
+        this.openState();
       }
-    });
-  }
-}
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      var _this = this;
 
-const select = new Select(".select");
+      this.$select.addEventListener("mouseup", function () {
+        _this.toggleState();
+
+        _this.handleValue();
+      });
+    }
+    /* change value of input */
+
+  }, {
+    key: "handleValue",
+    value: function handleValue() {
+      if (event.target != this.$label) {
+        this.$inputField.value = event.target.innerText;
+      }
+    }
+  }, {
+    key: "hanldeClickWindow",
+    value: function hanldeClickWindow() {
+      var _this2 = this;
+
+      window.addEventListener("click", function () {
+        if (event.target != _this2.$label) {
+          _this2.closeState();
+        }
+      });
+    }
+  }]);
+
+  return Select;
+}();
+
+var select = new Select(".select");
 ;
-class responsiveHeader {
-  constructor(props) {
+
+var responsiveHeader = /*#__PURE__*/function () {
+  function responsiveHeader(props) {
+    _classCallCheck(this, responsiveHeader);
+
     this.navigation = document.querySelector("." + props.navigation);
     this.burgerIcon = document.querySelector("." + props.burgerIcon);
     this.burgerIcon_active = props.burgerIcon_active;
-
     this.htmlBody = document.querySelector("body");
-
     this.BurgerClick();
     this.WindowClick();
   }
 
-  openState() {
-    this.navigation.classList.add("responsiveMenu_active");
-    this.burgerIcon.classList.add(this.burgerIcon_active);
-    this.htmlBody.classList.add("bodyOverlay");
-  }
+  _createClass(responsiveHeader, [{
+    key: "openState",
+    value: function openState() {
+      this.navigation.classList.add("responsiveMenu_active");
+      this.burgerIcon.classList.add(this.burgerIcon_active);
+      this.htmlBody.classList.add("bodyOverlay");
+    }
+  }, {
+    key: "closeState",
+    value: function closeState() {
+      this.navigation.classList.remove("responsiveMenu_active");
+      this.burgerIcon.classList.remove(this.burgerIcon_active);
+      this.htmlBody.classList.remove("bodyOverlay");
+    }
+  }, {
+    key: "BurgerClick",
+    value: function BurgerClick() {
+      var _this3 = this;
 
-  closeState() {
-    this.navigation.classList.remove("responsiveMenu_active");
-    this.burgerIcon.classList.remove(this.burgerIcon_active);
-    this.htmlBody.classList.remove("bodyOverlay");
-  }
+      this.burgerIcon.addEventListener("click", function () {
+        if (!event.currentTarget.classList.contains(_this3.burgerIcon_active)) {
+          _this3.openState();
+        } else {
+          _this3.closeState();
+        }
+      });
+    }
+  }, {
+    key: "WindowClick",
+    value: function WindowClick() {
+      var _this4 = this;
 
-  BurgerClick() {
-    this.burgerIcon.addEventListener("click", () => {
-      if (!event.currentTarget.classList.contains(this.burgerIcon_active)) {
-        this.openState();
-      } else {
-        this.closeState();
-      }
-    });
-  }
+      document.addEventListener("click", function () {
+        if (event.target.classList.contains("bodyOverlay")) {
+          _this4.closeState();
+        }
+      });
+    }
+  }]);
 
-  WindowClick() {
-    document.addEventListener("click", () => {
-      if (event.target.classList.contains("bodyOverlay")) {
-        this.closeState();
-      }
-    });
-  }
-}
+  return responsiveHeader;
+}();
 
-const headerBurgerMenu = new responsiveHeader({
+var headerBurgerMenu = new responsiveHeader({
   navigation: "responsiveMenu",
   burgerIcon: "burgerIcon",
-  burgerIcon_active: "burgerIcon_active",
+  burgerIcon_active: "burgerIcon_active"
 });
 
+var TextSpoiler = /*#__PURE__*/function () {
+  function TextSpoiler(el) {
+    _classCallCheck(this, TextSpoiler);
 
-class TextSpoiler {
-  constructor(el) {
     if (typeof el === "string") {
       el = document.querySelectorAll(el);
     }
 
     if (typeof el[Symbol.iterator] === "function") {
-      return [...el].map((n) => new TextSpoiler(n));
+      return _toConsumableArray(el).map(function (n) {
+        return new TextSpoiler(n);
+      });
     }
 
     this.$spoiler = el;
-
     this.$dropList = this.$spoiler.querySelector(".textSpoiler-dropList");
     this.$button = this.$spoiler.querySelector(".textSpoiler-button");
-
     this.handleClick();
     this.hanldeClickWindow();
   }
 
-  openState() {
-    this.$spoiler.classList.add("opened");
-  }
-
-  closeState() {
-    this.$spoiler.classList.remove("opened");
-  }
-
-  toggleState() {
-    if (this.$spoiler.classList.contains("opened")) {
-      this.closeState();
-    } else {
-      this.openState();
+  _createClass(TextSpoiler, [{
+    key: "openState",
+    value: function openState() {
+      this.$spoiler.classList.add("opened");
     }
-  }
-
-  handleClick() {
-    this.$button.addEventListener("click", () => {
-      this.toggleState();
-    });
-  }
-
-  hanldeClickWindow() {
-    window.addEventListener("click", () => {
-      if (event.target != this.$button) {
+  }, {
+    key: "closeState",
+    value: function closeState() {
+      this.$spoiler.classList.remove("opened");
+    }
+  }, {
+    key: "toggleState",
+    value: function toggleState() {
+      if (this.$spoiler.classList.contains("opened")) {
         this.closeState();
+      } else {
+        this.openState();
       }
-    });
-  }
-}
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      var _this5 = this;
 
-const textSpoiler = new TextSpoiler(".textSpoiler");
+      this.$button.addEventListener("click", function () {
+        _this5.toggleState();
+      });
+    }
+  }, {
+    key: "hanldeClickWindow",
+    value: function hanldeClickWindow() {
+      var _this6 = this;
+
+      window.addEventListener("click", function () {
+        if (event.target != _this6.$button) {
+          _this6.closeState();
+        }
+      });
+    }
+  }]);
+
+  return TextSpoiler;
+}();
+
+var textSpoiler = new TextSpoiler(".textSpoiler");
 ;
-const countPerClick = (button, counter) => {
-  const $button = document.querySelectorAll(button);
-  const $counter = document.querySelector(counter);
-  let totalQuantity = Number($counter.innerText);
 
-  const plus = () => {
+var countPerClick = function countPerClick(button, counter) {
+  var $button = document.querySelectorAll(button);
+  var $counter = document.querySelector(counter);
+  var totalQuantity = Number($counter.innerText);
+
+  var plus = function plus() {
     $counter.dataset.counted = "true";
     totalQuantity = totalQuantity + 1;
     $counter.innerText = totalQuantity;
   };
 
-  const minus = () => {
+  var minus = function minus() {
     $counter.dataset.counted = "false";
     totalQuantity = totalQuantity - 1;
     $counter.innerText = totalQuantity;
   };
 
-  const toggle = () => {
+  var toggle = function toggle() {
     if ($counter.dataset.counted == "true") {
       minus();
     } else {
@@ -237,25 +313,31 @@ const countPerClick = (button, counter) => {
   };
 
   if ($button.length > 1) {
-    $button.forEach((el) => el.addEventListener("click", () => toggle()));
+    $button.forEach(function (el) {
+      return el.addEventListener("click", function () {
+        return toggle();
+      });
+    });
   } else {
-    $button[0].addEventListener("mouseup", () => toggle());
+    $button[0].addEventListener("mouseup", function () {
+      return toggle();
+    });
   }
 };
 
 countPerClick(".filters__addFavoriteButton", "#favorites-counter");
 countPerClick(".filters__button", "#bag-counter");
 ;
-const dragAndDrop = () => {
-  const $panel = document.querySelector(".filters");
-  let offsetY;
 
-  $panel.addEventListener("touchstart", () => {
-    offsetY = event.pageY;
+var dragAndDrop = function dragAndDrop() {
+  var $panel = document.querySelector(".filters");
+  var offsetY;
+  $panel.addEventListener("touchstart", function (event) {
+    offsetY = event.targetTouches[0].clientY;
   });
-
-  $panel.addEventListener("touchend", () => {
-    let elementY = event.pageY - offsetY;
+  $panel.addEventListener("touchend", function () {
+    var elementY = event.changedTouches[0].clientY;
+    console.log(elementY);
 
     if (elementY < 0) {
       event.currentTarget.style.top = "0px";
@@ -263,15 +345,14 @@ const dragAndDrop = () => {
       event.currentTarget.style.top = elementY + "px";
     }
   });
-  const startPosition = () => {
-    $panel.style.top = ($panel.scrollHeight / 100) * 80 + "px";
-    console.log("asd");
+
+  var startPosition = function startPosition() {
+    $panel.style.top = $panel.scrollHeight / 100 * 70 + "px";
   };
 
-  window.addEventListener("resize", () => {
+  window.addEventListener("resize", function () {
     startPosition();
   });
-
   startPosition();
 };
 
