@@ -329,32 +329,71 @@ countPerClick(".filters__addFavoriteButton", "#favorites-counter");
 countPerClick(".filters__button", "#bag-counter");
 ;
 
-var dragAndDrop = function dragAndDrop() {
-  var $panel = document.querySelector(".filters");
-  var offsetY;
-  $panel.addEventListener("touchstart", function (event) {
-    offsetY = event.targetTouches[0].clientY;
-  });
-  $panel.addEventListener("touchend", function () {
-    var elementY = event.changedTouches[0].clientY;
-    console.log(elementY);
+var DragAndDrop = /*#__PURE__*/function () {
+  function DragAndDrop(props) {
+    _classCallCheck(this, DragAndDrop);
 
-    if (elementY < 0) {
-      event.currentTarget.style.top = "0px";
-    } else {
-      event.currentTarget.style.top = elementY + "px";
+    this.$dragableItem = document.querySelector(".filters");
+    this.$dragIcon = document.querySelector(".touchIcon");
+    /* set started position */
+
+    this.startY;
+    this.additionalSpaceForY;
+    this.startedPosition_DragableItem();
+    this.startedPosition_DragIcon(-20);
+    /* events */
+
+    this.touchMoveEvent();
+  }
+
+  _createClass(DragAndDrop, [{
+    key: "startedPosition_DragableItem",
+    value: function startedPosition_DragableItem() {
+      this.startY = this.$dragableItem.scrollHeight / 100 * 70;
+      this.$dragableItem.style.top = this.startY + "px";
     }
-  });
+  }, {
+    key: "startedPosition_DragIcon",
+    value: function startedPosition_DragIcon(number) {
+      this.space = number;
+      this.$dragIcon.style.top = this.space + "px";
+      /* складываем числа. Если вычесть отрицательные числа, то получится сложение между ними */
 
-  var startPosition = function startPosition() {
-    $panel.style.top = $panel.scrollHeight / 100 * 70 + "px";
-  };
+      this.additionalSpaceForY = this.space + this.$dragIcon.scrollHeight;
+    }
+  }, {
+    key: "checkCurrentPosition",
+    value: function checkCurrentPosition(currentElementY) {
+      /* если вытащить элемент за пределы экрана ВВЕРХ*/
+      if (currentElementY < 0) {
+        /* нужно сделать отрицательное число положительным.ы После этого прибавляем дополнительный отступ */
+        this.$dragableItem.style.top = this.additionalSpaceForY * -1 + 50 + "px";
+        /* если вытащить элемент за пределы экрана ВНИЗ*/
+      } else if (currentElementY > this.startY) {
+        this.startedPosition_DragableItem();
+        /* если перемещать элемент ВНУТРИ экрана*/
+      } else {
+        this.$dragableItem.style.top = currentElementY + "px";
+      }
+    }
+  }, {
+    key: "touchMoveEvent",
+    value: function touchMoveEvent() {
+      var _this7 = this;
 
-  window.addEventListener("resize", function () {
-    startPosition();
-  });
-  startPosition();
-};
+      this.$dragableItem.addEventListener("touchmove", function () {
+        _this7.elementY = event.changedTouches[0].clientY;
 
-dragAndDrop();
+        _this7.checkCurrentPosition(_this7.elementY);
+      });
+    }
+  }]);
+
+  return DragAndDrop;
+}();
+
+var dragAndDrop = new DragAndDrop({
+  dragableItem: ".filters",
+  dragIcon: ".touchIcon"
+});
 ;

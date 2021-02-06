@@ -1214,7 +1214,19 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 10px;
 }
 
+.touchIcon {
+  max-width: 60px;
+  width: 100%;
+  height: 5px;
+  background: rgba(62, 62, 62, 0.71);
+  border-radius: 5px;
+  position: absolute;
+}
+
 @media (min-width: 1025px) {
+  .touchIcon {
+    display: none;
+  }
   .filters__button {
     min-width: 200px;
   }
@@ -1275,14 +1287,12 @@ input[type="search"]::-webkit-search-results-decoration {
   .filters {
     padding-bottom: 60px;
     position: fixed;
+    padding: 20px 20px 40px 20px;
     top: 0%;
     left: 0;
-    z-index: 16;
+    z-index: 7;
     min-height: 100vh;
     background-color: white;
-    -webkit-transition: 0.3s ease;
-    -o-transition: 0.3s ease;
-    transition: 0.3s ease;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
