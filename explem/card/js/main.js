@@ -365,9 +365,11 @@ var DragAndDrop = /*#__PURE__*/function () {
     key: "checkCurrentPosition",
     value: function checkCurrentPosition(currentElementY) {
       /* если вытащить элемент за пределы экрана ВВЕРХ*/
-      if (currentElementY < 0) {
+      this.innerSpaceY = 50;
+
+      if (currentElementY < this.innerSpaceY) {
         /* нужно сделать отрицательное число положительным.ы После этого прибавляем дополнительный отступ */
-        this.$dragableItem.style.top = this.additionalSpaceForY * -1 + 50 + "px";
+        this.$dragableItem.style.top = this.additionalSpaceForY * -1 + this.innerSpaceY + "px";
         /* если вытащить элемент за пределы экрана ВНИЗ*/
       } else if (currentElementY > this.startY) {
         this.startedPosition_DragableItem();

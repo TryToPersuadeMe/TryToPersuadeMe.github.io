@@ -1223,6 +1223,19 @@ input[type="search"]::-webkit-search-results-decoration {
   position: absolute;
 }
 
+.touchIcon::after {
+  content: "";
+  min-width: 100%;
+  min-height: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0;
+  position: absolute;
+  opacity: 0;
+}
+
 @media (min-width: 1025px) {
   .touchIcon {
     display: none;
