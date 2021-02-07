@@ -338,6 +338,7 @@ var DragAndDrop = /*#__PURE__*/function () {
     this.$dragableItem = document.querySelector(props.dragableItem);
     this.$dragIcon = document.querySelector(props.dragIcon);
     this.$closeStickyContent = document.querySelector(props.closeStickyContent);
+    this.$htmlBody = document.querySelector("body");
     /* set started position */
 
     this.startY;
@@ -403,6 +404,7 @@ var DragAndDrop = /*#__PURE__*/function () {
 
         swiper.allowSlidePrev = true;
         swiper.allowSlideNext = true;
+        _this8.$htmlBody.style.overflow = "auto";
       });
     }
   }, {
@@ -417,6 +419,7 @@ var DragAndDrop = /*#__PURE__*/function () {
 
         swiper.allowSlidePrev = false;
         swiper.allowSlideNext = false;
+        _this9.$htmlBody.style.overflow = "hidden";
       });
     }
   }, {
