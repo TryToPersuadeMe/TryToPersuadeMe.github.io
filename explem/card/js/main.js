@@ -539,14 +539,16 @@ var slowScrolltoAnchors = function slowScrolltoAnchors() {
   try {
     var _loop = function _loop() {
       var anchor = _step.value;
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        var blockID = anchor.getAttribute("href").substr(1);
-        document.getElementById(blockID).scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+      setTimeout(function () {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          var blockID = anchor.getAttribute("href").substr(1);
+          document.getElementById(blockID).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         });
-      });
+      }, 0);
     };
 
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
