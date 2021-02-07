@@ -1338,6 +1338,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 20px;
   line-height: 20px;
   text-transform: uppercase;
+  color: black;
 }
 
 .infoPopup__button:not(:last-of-type) {
