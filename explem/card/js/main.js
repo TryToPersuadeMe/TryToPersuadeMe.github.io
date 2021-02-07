@@ -24,10 +24,8 @@ var updateSidesSlides = function updateSidesSlides() {
   var slidesArr = document.querySelectorAll(".additionalSlide");
   var slide_next = document.querySelector(".swiper-slide-next");
   var slide_prev = document.querySelector(".swiper-slide-prev");
-  var slide_current = document.querySelector(".swiper-slide-active");
   slidesArr[0].innerHTML = slide_next.innerHTML;
   slidesArr[1].innerHTML = slide_prev.innerHTML;
-  console.log(slidesArr);
 };
 
 var addClass = function addClass() {
@@ -492,7 +490,7 @@ var CallWindows = /*#__PURE__*/function () {
     value: function handleCallButtonClick() {
       var _this12 = this;
 
-      this.$button.forEach(function (value) {
+      this.$button.forEach(function (value, q, w) {
         value.addEventListener("click", function () {
           if (value.classList.contains("infoPopup__button")) {
             _this12.showPopUp();
@@ -502,6 +500,13 @@ var CallWindows = /*#__PURE__*/function () {
             setTimeout(function () {
               return value.offsetParent.classList.remove("active");
             }, 800);
+          }
+
+          if (window.innerWidth >= 1000) {
+            value.setAttribute("data-href", value.hash);
+            value.setAttribute("href", "false");
+          } else {
+            value.setAttribute("href", value.dataset.href);
           }
         });
       });
@@ -552,8 +557,6 @@ var slowScrolltoAnchors = function slowScrolltoAnchors() {
   } finally {
     _iterator.f();
   }
-
-  console.log("asd");
 };
 
 slowScrolltoAnchors();
