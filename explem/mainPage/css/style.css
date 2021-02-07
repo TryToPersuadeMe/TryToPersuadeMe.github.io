@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* global important styles */
 /*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +17,7 @@
 
 :focus,
 :active {
-  outline: none;
+  outline: none !important;
 }
 
 a:focus,
@@ -102,14 +103,30 @@ address > * {
   font-style: normal;
 }
 
-input[type='search']::-webkit-search-decoration,
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-results-button,
-input[type='search']::-webkit-search-results-decoration {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+p {
+  margin: 0;
+}
+
+a:hover {
+  color: inherit;
+}
+
 /*--------------------*/
+@font-face {
+  font-family: "Bebas Neue Book";
+  src: url("../fonts/BebasNeueBook__400/BebasNeueBook__400.eot");
+  src: local("☺"), url("../fonts/BebasNeueBook__400/BebasNeueBook__400.woff") format("woff"), url("../fonts/BebasNeueBook__400/BebasNeueBook__400.ttf") format("truetype"), url("../fonts/BebasNeueBook__400/BebasNeueBook__400.svg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @font-face {
   font-family: "Bebas Neue";
   src: url("../fonts/BebasNeue__400/BebasNeue__400.eot");
@@ -182,7 +199,20 @@ body {
 .input {
   background-color: transparent;
   width: 100%;
+  font-size: 1.6rem;
   border-bottom: 0.5px solid #000000;
+}
+
+@media (max-width: 700px) {
+  .input {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 475px) {
+  .input {
+    font-size: 0.7rem;
+  }
 }
 
 .input_boldBorder {
@@ -220,7 +250,7 @@ body {
 }
 
 .firstScreenSection {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue Book";
   background: -o-linear-gradient(216.49deg, #fff4e7 82.5%, #d7d7d7 121.02%);
   background: linear-gradient(233.51deg, #fff4e7 82.5%, #d7d7d7 121.02%);
   min-height: 100vh;
@@ -242,6 +272,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-family: "Bebas Neue";
 }
 
 .firstScreenSection__backgroundImage {
@@ -320,10 +351,6 @@ body {
   -webkit-writing-mode: tb-rl;
       -ms-writing-mode: tb-rl;
           writing-mode: tb-rl;
-  margin-right: 8rem;
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -337,7 +364,14 @@ body {
 }
 
 .navigation_vertical > .navigation__link, .navigation_vertical > .searchForm__label {
-  margin: 2rem 0;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.navigation_vertical > .navigation__link:not(:last-child), .navigation_vertical > .searchForm__label:not(:last-child) {
+  margin-bottom: 4.5rem;
 }
 
 .navigation_horizontal {
@@ -356,6 +390,7 @@ body {
 
 .navigation_horizontal > .navigation__link, .navigation_horizontal > .searchForm__label {
   margin: 0 2rem;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .navigation__anchorsWrapper {
@@ -370,10 +405,14 @@ body {
 
 .navigation__link, .searchForm__label {
   font-size: 4.8rem;
-  color: rgba(0, 0, 0, 0.4);
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  background-color: transparent;
+}
+
+.navigation__link.active, .active.searchForm__label {
+  color: black;
 }
 
 .navigation__link:hover, .searchForm__label:hover {
@@ -422,12 +461,9 @@ body {
   width: 100%;
 }
 
-.searchForm__text {
-  font-weight: 300;
-}
-
 .searchForm__label {
   position: relative;
+  font-weight: 300;
 }
 
 .searchForm__inputSearch {
@@ -459,6 +495,22 @@ body {
 
 .stikyBar {
   display: none;
+}
+
+.counter {
+  position: relative;
+}
+
+.counter__number {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -25%);
+      -ms-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
+  position: absolute;
+  font-family: "Bebas Neue";
+  font-size: 1.4rem;
+  color: black;
 }
 
 @media (min-width: 1025px) {
@@ -598,6 +650,7 @@ body {
     padding-bottom: 3rem;
     padding-top: 12rem;
     overflow: hidden;
+    font-family: "Bebas Neue";
   }
   .responsiveMenu_active {
     left: 0;
@@ -804,33 +857,189 @@ body {
     width: 100%;
     height: 100%;
   }
+  .counter__number {
+    font-size: 1rem;
+  }
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  font-family: "Bebas Neue Book";
+  grid-template-columns: auto auto;
 }
 
-.gallery__image picture > * {
+.gallery .galleryPicture {
+  position: relative;
+}
+
+.gallery .galleryPicture_big {
+  grid-column: 1/2 span;
+}
+
+.gallery .galleryPicture picture > * {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.gallery__image_big {
-  grid-column: 1/2 span;
+@media (min-width: 1001px) {
+  .gallery .galleryPicture > *:not(.galleryPicture__image) {
+    opacity: 0;
+    -webkit-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: 0.5s ease;
+  }
+  .gallery .galleryPicture:hover > * {
+    opacity: 1;
+  }
+}
+
+.gallery .galleryPicture__title {
+  position: absolute;
+  top: 1em;
+  left: 3.3em;
+  -webkit-transform: translateY(-25%);
+      -ms-transform: translateY(-25%);
+          transform: translateY(-25%);
+  font-size: 4vw;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.gallery .galleryPicture__suptitle {
+  position: absolute;
+  font-size: 1.2vw;
+  color: black;
+  bottom: 8em;
+  right: 8em;
+}
+
+.gallery .galleryPicture:nth-child(1) .galleryPicture__title {
+  top: 1em;
+  left: 3.3em;
+}
+
+.gallery .galleryPicture:nth-child(1) .galleryPicture__suptitle {
+  bottom: 8em;
+  right: 8em;
+}
+
+.gallery .galleryPicture:nth-child(2) .galleryPicture__title {
+  top: 1em;
+  left: 1em;
+}
+
+.gallery .galleryPicture:nth-child(2) .galleryPicture__suptitle {
+  bottom: 14em;
+  right: 11em;
+}
+
+.gallery .galleryPicture:nth-child(3) .galleryPicture__title {
+  top: 1em;
+  left: 3.5em;
+}
+
+.gallery .galleryPicture:nth-child(3) .galleryPicture__suptitle {
+  bottom: 11em;
+  right: 5em;
+  max-width: 4vw;
+}
+
+.gallery .galleryPicture:nth-child(4) .galleryPicture__title {
+  top: 1em;
+  left: 1em;
+}
+
+.gallery .galleryPicture:nth-child(4) .galleryPicture__suptitle {
+  top: 5.8em;
+  left: 14em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle {
+  max-width: 4vw;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(1) {
+  top: 20em;
+  left: 20em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(2) {
+  top: 25em;
+  right: 25em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(3) {
+  bottom: 10em;
+  right: 40em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(4) {
+  top: 13em;
+  right: 33em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(5) {
+  bottom: 9em;
+  left: 18em;
+}
+
+.gallery .galleryPicture:nth-child(5) .galleryPicture__suptitle:nth-of-type(6) {
+  bottom: 12em;
+  right: 18em;
+}
+
+.gallery .galleryPicture:nth-child(6) .galleryPicture__title {
+  top: 1.5em;
+  left: 7.5em;
+}
+
+.gallery .galleryPicture:nth-child(7) .galleryPicture__title {
+  top: 7em;
+  left: 1em;
+}
+
+.gallery .galleryPicture:nth-child(8) .galleryPicture__title {
+  top: 6em;
+  left: 8em;
 }
 
 @media (max-width: 1024px) {
   .gallery {
     grid-template-columns: 1fr;
   }
-  .gallery__image {
+  .gallery .galleryPicture {
     display: none;
   }
-  .gallery__image:nth-of-type(-n + 4) {
+  .gallery .galleryPicture:nth-of-type(-n + 4) {
     display: block;
+  }
+  .gallery .galleryPicture__title {
+    font-size: 8vw;
+  }
+  .gallery .galleryPicture__suptitle {
+    font-size: 4vw;
+  }
+  .gallery .galleryPicture:nth-child(1) .galleryPicture__title, .gallery .galleryPicture:nth-child(2) .galleryPicture__title, .gallery .galleryPicture:nth-child(3) .galleryPicture__title {
+    top: 6em;
+    left: 0.2em;
+  }
+  .gallery .galleryPicture:nth-child(1) .galleryPicture__suptitle, .gallery .galleryPicture:nth-child(2) .galleryPicture__suptitle, .gallery .galleryPicture:nth-child(3) .galleryPicture__suptitle {
+    bottom: 4em;
+    right: 3em;
+  }
+  .gallery .galleryPicture:nth-child(3) .galleryPicture__suptitle {
+    bottom: 7em;
+    right: 2em;
+    max-width: 14vw;
+  }
+  .gallery .galleryPicture:nth-child(4) .galleryPicture__title {
+    top: 0.5em;
+    left: 4.5em;
+  }
+  .gallery .galleryPicture:nth-child(4) .galleryPicture__suptitle {
+    top: 2.5em;
+    left: 11em;
   }
 }
 
