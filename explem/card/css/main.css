@@ -3,10 +3,6 @@
 /* mixins */
 /* for select plugin */
 /* space in input / select */
-/* exemple - .overlay {
-  z-index: z(overlay);
-}
- */
 /* for z-index layers */
 /* vendors - code from side sources and Libraries */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");

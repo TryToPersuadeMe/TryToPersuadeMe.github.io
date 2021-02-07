@@ -453,8 +453,8 @@ var CallWindows = /*#__PURE__*/function () {
     this.$button = document.querySelectorAll(props.button);
     this.$button_close = this.$popUp.querySelector(props.button_close);
     this.$parent = document.querySelector(props.parent);
-    this.handleCallButtonClick();
     this.handleCloseIconClick();
+    this.buttonsIterate();
   }
 
   _createClass(CallWindows, [{
@@ -487,27 +487,38 @@ var CallWindows = /*#__PURE__*/function () {
     }
   }, {
     key: "handleCallButtonClick",
-    value: function handleCallButtonClick() {
+    value: function handleCallButtonClick(element) {
+      if (element.classList.contains("infoPopup__button")) {
+        this.showPopUp();
+      } else {
+        this.showPopUp();
+        setTimeout(function () {
+          return element.offsetParent.classList.remove("active");
+        }, 800);
+      }
+    }
+  }, {
+    key: "setupAnchorsHashes",
+    value: function setupAnchorsHashes(element) {
+      element.setAttribute("data-href", element.hash);
+
+      if (window.innerWidth >= 1000) {
+        element.setAttribute("href", "#");
+        console.log("Asd");
+      } else {
+        element.setAttribute("href", element.dataset.href);
+      }
+    }
+  }, {
+    key: "buttonsIterate",
+    value: function buttonsIterate() {
       var _this12 = this;
 
-      this.$button.forEach(function (value, q, w) {
-        value.addEventListener("click", function () {
-          if (value.classList.contains("infoPopup__button")) {
-            _this12.showPopUp();
-          } else {
-            _this12.showPopUp();
+      this.$button.forEach(function (element) {
+        _this12.setupAnchorsHashes(element);
 
-            setTimeout(function () {
-              return value.offsetParent.classList.remove("active");
-            }, 800);
-          }
-
-          if (window.innerWidth >= 1000) {
-            value.setAttribute("data-href", value.hash);
-            value.setAttribute("href", "false");
-          } else {
-            value.setAttribute("href", value.dataset.href);
-          }
+        element.addEventListener("click", function () {
+          _this12.handleCallButtonClick(element);
         });
       });
     }
@@ -539,16 +550,14 @@ var slowScrolltoAnchors = function slowScrolltoAnchors() {
   try {
     var _loop = function _loop() {
       var anchor = _step.value;
-      setTimeout(function () {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          var blockID = anchor.getAttribute("href").substr(1);
-          document.getElementById(blockID).scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        var blockID = anchor.getAttribute("href").substr(1);
+        document.getElementById(blockID).scrollIntoView({
+          behavior: "smooth",
+          block: "start"
         });
-      }, 0);
+      });
     };
 
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
