@@ -25,6 +25,7 @@ var updateSidesSlides = function updateSidesSlides() {
   var slide_current = document.querySelector(".swiper-slide-active");
   slidesArr[0].innerHTML = slide_next.innerHTML;
   slidesArr[1].innerHTML = slide_prev.innerHTML;
+  console.log(slidesArr);
 };
 
 var addClass = function addClass() {
@@ -333,24 +334,27 @@ var DragAndDrop = /*#__PURE__*/function () {
   function DragAndDrop(props) {
     _classCallCheck(this, DragAndDrop);
 
-    this.$dragableItem = document.querySelector(".filters");
-    this.$dragIcon = document.querySelector(".touchIcon");
+    this.$dragableItem = document.querySelector(props.dragableItem);
+    this.$dragIcon = document.querySelector(props.dragIcon);
+    this.$closeStickyContent = document.querySelector(props.closeStickyContent);
     /* set started position */
 
     this.startY;
     this.additionalSpaceForY;
     this.startedPosition_DragableItem();
-    this.startedPosition_DragIcon(-20);
+    this.startedPosition_DragIcon(30);
     /* events */
 
     this.touchMoveEvent();
+    this.touchStartEvent();
+    this.touchEndEvent();
     this.resizeEvent();
   }
 
   _createClass(DragAndDrop, [{
     key: "startedPosition_DragableItem",
     value: function startedPosition_DragableItem() {
-      this.startY = this.$dragableItem.scrollHeight / 100 * 70;
+      this.startY = this.$closeStickyContent.scrollHeight;
       this.$dragableItem.style.top = this.startY + "px";
     }
   }, {
@@ -366,7 +370,7 @@ var DragAndDrop = /*#__PURE__*/function () {
     key: "checkCurrentPosition",
     value: function checkCurrentPosition(currentElementY) {
       /* если вытащить элемент за пределы экрана ВВЕРХ*/
-      this.innerSpaceY = 50;
+      this.innerSpaceY = 100;
 
       if (currentElementY < this.innerSpaceY) {
         /* нужно сделать отрицательное число положительным.ы После этого прибавляем дополнительный отступ */
@@ -380,25 +384,43 @@ var DragAndDrop = /*#__PURE__*/function () {
       }
     }
   }, {
-    key: "touchMoveEvent",
-    value: function touchMoveEvent() {
+    key: "touchStartEvent",
+    value: function touchStartEvent() {
       var _this7 = this;
 
-      this.$dragableItem.addEventListener("touchmove", function () {
-        _this7.elementY = event.changedTouches[0].clientY;
+      this.$dragIcon.addEventListener("touchstart", function () {
+        _this7.$dragableItem.classList.remove("overflowY");
+      });
+    }
+  }, {
+    key: "touchEndEvent",
+    value: function touchEndEvent() {
+      var _this8 = this;
 
-        _this7.checkCurrentPosition(_this7.elementY);
+      this.$dragIcon.addEventListener("touchend", function () {
+        _this8.$dragableItem.classList.add("overflowY");
+      });
+    }
+  }, {
+    key: "touchMoveEvent",
+    value: function touchMoveEvent() {
+      var _this9 = this;
+
+      this.$dragIcon.addEventListener("touchmove", function () {
+        _this9.elementY = event.changedTouches[0].clientY;
+
+        _this9.checkCurrentPosition(_this9.elementY);
       });
     }
   }, {
     key: "resizeEvent",
     value: function resizeEvent() {
-      var _this8 = this;
+      var _this10 = this;
 
       window.addEventListener("resize", function () {
-        _this8.startedPosition_DragableItem();
+        _this10.startedPosition_DragableItem();
 
-        _this8.startedPosition_DragIcon(-20);
+        _this10.startedPosition_DragIcon(30);
       });
     }
   }]);
@@ -407,7 +429,86 @@ var DragAndDrop = /*#__PURE__*/function () {
 }();
 
 var dragAndDrop = new DragAndDrop({
-  dragableItem: ".filters",
-  dragIcon: ".touchIcon"
+  dragableItem: ".screen",
+  dragIcon: ".touchIcon",
+  closeStickyContent: ".swiperStuffSlider"
+});
+;
+
+var CallWindows = /*#__PURE__*/function () {
+  function CallWindows(props) {
+    _classCallCheck(this, CallWindows);
+
+    this.$popUp = document.querySelector(props.popUp);
+    this.$button = document.querySelectorAll(props.button);
+    this.$button_close = this.$popUp.querySelector(props.button_close);
+    this.$parent = document.querySelector(props.parent);
+    this.handleCallButtonClick();
+    this.handleCloseIconClick();
+  }
+
+  _createClass(CallWindows, [{
+    key: "showPopUp",
+    value: function showPopUp() {
+      this.$popUp.classList.add("active");
+    }
+  }, {
+    key: "hidePopUp",
+    value: function hidePopUp() {
+      this.$popUp.classList.remove("active");
+    }
+  }, {
+    key: "toggleState",
+    value: function toggleState() {
+      if (this.$popUp.classList.contains("acitve")) {
+        this.hidePopUp();
+      } else {
+        this.showPopUp();
+      }
+    }
+  }, {
+    key: "handleCloseIconClick",
+    value: function handleCloseIconClick() {
+      var _this11 = this;
+
+      this.$button_close.addEventListener("click", function () {
+        return _this11.hidePopUp();
+      });
+    }
+  }, {
+    key: "handleCallButtonClick",
+    value: function handleCallButtonClick() {
+      var _this12 = this;
+
+      this.$button.forEach(function (value) {
+        value.addEventListener("click", function () {
+          if (value.classList.contains("infoPopup__button")) {
+            _this12.showPopUp();
+          } else {
+            _this12.showPopUp();
+
+            setTimeout(function () {
+              return value.offsetParent.classList.remove("active");
+            }, 800);
+          }
+        });
+      });
+    }
+  }]);
+
+  return CallWindows;
+}();
+
+var popUp_details = new CallWindows({
+  popUp: ".popUp_details",
+  button: ".popUp__button_details-js",
+  button_close: ".popUp__closePopup",
+  parent: ".screen"
+});
+var popUp_sizes = new CallWindows({
+  popUp: ".popUp_sizes",
+  button: ".popUp__button_sizes-js",
+  button_close: ".popUp__closePopup",
+  parent: ".screen"
 });
 ;
