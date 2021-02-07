@@ -40,6 +40,7 @@ var swiper = new Swiper(".swiper-container", {
   slidesPerView: 1,
   speed: 500,
   loop: true,
+  loopAdditionalSlides: 1,
   zoom: {
     maxRatio: 3
   },
@@ -399,6 +400,9 @@ var DragAndDrop = /*#__PURE__*/function () {
 
       this.$dragIcon.addEventListener("touchend", function () {
         _this8.$dragableItem.classList.add("overflowY");
+
+        swiper.allowSlidePrev = true;
+        swiper.allowSlideNext = true;
       });
     }
   }, {
@@ -410,6 +414,9 @@ var DragAndDrop = /*#__PURE__*/function () {
         _this9.elementY = event.changedTouches[0].clientY;
 
         _this9.checkCurrentPosition(_this9.elementY);
+
+        swiper.allowSlidePrev = false;
+        swiper.allowSlideNext = false;
       });
     }
   }, {
