@@ -90,7 +90,6 @@ class TextSpoiler {
 
   hanldeClickWindow() {
     window.addEventListener("click", () => {
-      console.log(event.target);
       if (event.target != this.$button) {
         this.closeState();
       }
@@ -99,4 +98,97 @@ class TextSpoiler {
 }
 
 const textSpoiler = new TextSpoiler(".textSpoiler");
+;
+const openMenuDesktop = () => {
+  const activateButton = document.querySelector("#open-destrop-menu");
+
+  activateButton.addEventListener("click", () => {});
+};
+
+class AnimateDestktopMenu {
+  constructor(props) {
+    this.$button = document.querySelector(props.button);
+    this.$verticalMenu = document.querySelectorAll(".navigation_vertical");
+    this.$searchForm = document.querySelector(".searchForm");
+    this.$tagBox = document.querySelector(".firstScreenSection__tagsBox");
+
+    this.hideMenuState();
+    this.buttonClick();
+  }
+
+  hideMenuState() {
+    this.hide = {
+      opacity: "0",
+      visibility: "hidden",
+      //   display: "none",
+    };
+
+    Object.assign(this.$verticalMenu[0].style, this.hide);
+    Object.assign(this.$verticalMenu[1].style, this.hide);
+    Object.assign(this.$searchForm.style, this.hide);
+    Object.assign(this.$tagBox.style, this.hide);
+  }
+
+  showMenuState() {
+    this.show = {
+      opacity: "1",
+      visibility: "visible",
+      //   display: "block",
+    };
+
+    Object.assign(this.$verticalMenu[0].style, this.show);
+    Object.assign(this.$verticalMenu[1].style, this.show);
+    Object.assign(this.$searchForm.style, this.show);
+    Object.assign(this.$tagBox.style, this.show);
+  }
+
+  showAnimate() {
+    this.$verticalMenu[0].classList.add("animate__animated", "animate__fadeInLeftBig");
+    this.$verticalMenu[1].classList.add("animate__animated", "animate__fadeInRightBig");
+    this.$searchForm.classList.add("animate__animated", "animate__fadeInUpBig");
+    this.$tagBox.classList.add("animate__animated", "animate__fadeInUpBig");
+
+    this.$verticalMenu[0].classList.remove("animate__fadeOutLeftBig");
+    this.$verticalMenu[1].classList.remove("animate__fadeOutRightBig");
+    this.$searchForm.classList.remove("animate__fadeOutDownBig");
+    this.$tagBox.classList.remove("animate__fadeOutDownBig");
+  }
+
+  hideAnimate() {
+    this.$verticalMenu[0].classList.remove("animate__fadeInLeftBig");
+    this.$verticalMenu[1].classList.remove("animate__fadeInRightBig");
+    this.$searchForm.classList.remove("animate__fadeInUpBig");
+    this.$tagBox.classList.remove("animate__fadeInUpBig");
+
+    this.$verticalMenu[0].classList.add("animate__animated", "animate__fadeOutLeftBig");
+    this.$verticalMenu[1].classList.add("animate__animated", "animate__fadeOutRightBig");
+    this.$searchForm.classList.add("animate__animated", "animate__fadeOutDownBig");
+    this.$tagBox.classList.add("animate__animated", "animate__fadeOutDownBig");
+  }
+
+  toggleState() {
+    if (event.currentTarget.classList.contains("active")) {
+      this.showAnimate();
+      setTimeout(() => {
+        this.showMenuState();
+      }, 0);
+    } else {
+      this.hideAnimate();
+      setTimeout(() => {
+        this.hideMenuState();
+      }, 0);
+    }
+  }
+
+  buttonClick() {
+    this.$button.addEventListener("click", () => {
+      event.currentTarget.classList.toggle("active");
+      this.toggleState();
+    });
+  }
+}
+
+const animateDestktopMenu = new AnimateDestktopMenu({
+  button: "#toggle-desktop-menu",
+});
 ;
