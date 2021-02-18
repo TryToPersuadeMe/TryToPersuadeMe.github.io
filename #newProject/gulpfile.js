@@ -1,5 +1,5 @@
 let project_folder = require("path").basename(__dirname);
-let source_folder = "#menu";
+let source_folder = "#mainPage";
 
 let fs = require("fs");
 
@@ -24,6 +24,7 @@ let path = {
     html: source_folder + "/**/*.html",
     css: source_folder + "/scss/**/*.scss",
     js: source_folder + "/js/**/*.js",
+    js_plugins: source_folder + "/js/**/*.js",
     resources: source_folder + "/resources/**/*.{jpg,png,svg,gif,ico,webp}",
   },
   clean: "./" + project_folder + "/",
@@ -177,7 +178,7 @@ const images = () => {
   // .pipe(browsersync.stream());
 };
 
-gulp.task("svgSprite", function () {
+const makeSprite = () => {
   return gulp
     .src([source_folder + "/resources/iconsSprite/*.svg"])
     .pipe(
@@ -192,19 +193,20 @@ gulp.task("svgSprite", function () {
       })
     )
     .pipe(dest(path.build.resources));
-});
+};
 
-gulp.task(`svgSpriteSymbol`, function () {
-  return gulp
-    .src([source_folder + "/resources/iconsSprite/*.svg"])
-    .pipe(svgSymbols())
-    .pipe(dest(path.build.resources));
-});
+// gulp.task(`svgSpriteSymbol`, function () {
+//   return gulp
+//     .src([source_folder + "/resources/iconsSprite/*.svg"])
+//     .pipe(svgSymbols())
+//     .pipe(dest(path.build.resources));
+// });
 
 const watchFiles = () => {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
+  gulp.watch([path.watch.js_plugins], js);
   gulp.watch([path.watch.resources], images);
 };
 
@@ -214,9 +216,15 @@ const clean = () => {
 };
 
 // Сценарий выполнения Gulp
-let build = gulp.series(clean, gulp.parallel(js, js_plugins, css, html, images, fonts), fontsStyle);
+let build = gulp.series(
+  clean,
+  gulp.parallel(js, js_plugins, css, html, images, fonts),
+  // fontsStyle,
+  makeSprite
+);
 let watch = gulp.parallel(build, watchFiles); /* browserSync) */
 
+exports.makeSprite = makeSprite;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
 exports.images = images;
