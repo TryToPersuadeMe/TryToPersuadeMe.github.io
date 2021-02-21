@@ -1450,15 +1450,16 @@ input[type="search"]::-webkit-search-results-decoration {
   }
   .navigation__link_main {
     font-size: 0px;
+    position: relative;
     margin: 0;
   }
   .navigation__link_main::after {
-    position: static;
     margin-left: 15px;
   }
   .navigation__select:hover > .navigation__dropList {
     padding: 15px;
     margin: 0px 0 20px 20px;
+    margin: 0;
   }
   .navigation__select:hover > .navigation__dropList .navigation__link {
     font-size: 14px;
