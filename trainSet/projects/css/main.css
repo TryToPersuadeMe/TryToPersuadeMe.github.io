@@ -1,15 +1,10 @@
 @charset "UTF-8";
 /* abstracts */
 /* mixins */
-<<<<<<< HEAD
+/* space for project bar */
 /* exemple - .overlay {
   z-index: z(overlay);
 }
-=======
-/* exemple - .overlay {
-  z-index: z(overlay);
-}
->>>>>>> f935f812fd7300c2365d9124319a7dcba95c545b
  */
 /* for z-index layers */
 /* vendors - code from side sources and Libraries */
@@ -4775,7 +4770,7 @@ input[type="search"]::-webkit-search-results-decoration {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../resources/iconsSprite/longArrow-icon.svg");
+  background-image: url("../resources/icons/longArrow-icon.svg");
   width: 40px;
   height: 6px;
 }
@@ -4969,7 +4964,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-right: 15px;
 }
 
-.footer__socialMedia picture > * {
+.footer__socialMedia * {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -4989,6 +4984,34 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .tabs {
   position: relative;
+}
+
+.tabs__backgroundLine {
+  position: relative;
+}
+
+.tabs__backgroundLine::after, .tabs__backgroundLine::before,
+.tabs__backgroundLine span {
+  content: "";
+  position: absolute;
+  top: 0;
+  min-height: 90px;
+  background-color: white;
+  max-width: 100%;
+  width: 100%;
+  left: 0;
+}
+
+.tabs__backgroundLine::before {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.tabs__backgroundLine::after {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
 }
 
 .tabs__pagination {
@@ -5048,7 +5071,7 @@ input[type="search"]::-webkit-search-results-decoration {
   background-color: #3b79a8;
 }
 
-.tabs__container {
+.tabs__slidesContainer {
   padding-top: 100px;
   margin-top: 90px;
   position: relative;

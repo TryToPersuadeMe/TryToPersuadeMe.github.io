@@ -1,15 +1,9 @@
 @charset "UTF-8";
 /* abstracts */
 /* mixins */
-<<<<<<< HEAD
 /* exemple - .overlay {
   z-index: z(overlay);
 }
-=======
-/* exemple - .overlay {
-  z-index: z(overlay);
-}
->>>>>>> f935f812fd7300c2365d9124319a7dcba95c545b
  */
 /* for z-index layers */
 /* vendors - code from side sources and Libraries */
@@ -4211,24 +4205,22 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: grid;
+  grid-template-columns: 250px 1fr auto;
+  gap: 30px;
 }
 
 .header__logo {
-  max-width: 250px;
   width: 100%;
 }
 
 .header__navigation {
-  max-width: 550px;
+  max-width: 600px;
   width: 100%;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  justify-self: center;
 }
 
 .header__navigation > *:not(:last-child) {
@@ -4243,6 +4235,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .header__authorization > *:not(:last-child) {
   margin-right: 30px;
+}
+
+.burgerIcon {
+  display: none;
 }
 
 .firstScreen__wrapper {
