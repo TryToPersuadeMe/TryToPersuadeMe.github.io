@@ -2,7 +2,6 @@ class responsiveHeader {
   constructor(props) {
     this.navigation = document.querySelector("." + props.navigation);
     this.burgerIcon = document.querySelector("." + props.burgerIcon);
-    this.burgerIcon_active = props.burgerIcon_active;
 
     this.htmlBody = document.querySelector("body");
 
@@ -11,20 +10,20 @@ class responsiveHeader {
   }
 
   openState() {
-    this.navigation.classList.add("responsiveMenu_active");
-    this.burgerIcon.classList.add(this.burgerIcon_active);
-    this.htmlBody.classList.add("bodyOverlay");
+    this.navigation.classList.add("active");
+    this.burgerIcon.classList.add("active");
+    this.htmlBody.classList.add("body-overlay");
   }
 
   closeState() {
-    this.navigation.classList.remove("responsiveMenu_active");
-    this.burgerIcon.classList.remove(this.burgerIcon_active);
-    this.htmlBody.classList.remove("bodyOverlay");
+    this.navigation.classList.remove("active");
+    this.burgerIcon.classList.remove("active");
+    this.htmlBody.classList.remove("body-overlay");
   }
 
   BurgerClick() {
     this.burgerIcon.addEventListener("click", () => {
-      if (!event.currentTarget.classList.contains(this.burgerIcon_active)) {
+      if (!event.currentTarget.classList.contains("active")) {
         this.openState();
       } else {
         this.closeState();
@@ -34,7 +33,7 @@ class responsiveHeader {
 
   WindowClick() {
     document.addEventListener("click", () => {
-      if (event.target.classList.contains("bodyOverlay")) {
+      if (event.target.classList.contains("body-overlay")) {
         this.closeState();
       }
     });
@@ -42,8 +41,7 @@ class responsiveHeader {
 }
 
 const headerBurgerMenu = new responsiveHeader({
-  navigation: "responsiveMenu",
-  burgerIcon: "burgerMenu",
-  burgerIcon_active: "burgerMenu_active",
+  navigation: "header",
+  burgerIcon: "burgerIcon",
 });
 ;
