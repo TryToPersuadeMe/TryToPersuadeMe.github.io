@@ -1,0 +1,63 @@
+/* Fonts */
+
+@import "fonts";
+
+/* Fonts end */
+
+/* reset styles */
+@import "reset";
+/* reset styles END*/
+
+/* Slick slider */
+@import "slick-slider";
+
+/* Slick slider END*/
+
+/* Form styler Input/selector */
+@import "jquery.formstyler";
+
+/* Form styler Input/selector END */
+
+/* Date-range */
+@import "daterangepicker";
+/* Date-range END*/
+
+@mixin responsiveImage {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  height: auto;
+}
+
+/* mixin which used in ALL  WEBSITE*/
+@import "#mixinsGlobal";
+
+/* mixin which used in THIS PAGE*/
+@import "mixinsLocal";
+
+.container {
+  @include container;
+  @media (max-width: 1000px) {
+    max-width: 960px;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+@include body_lock-shadow;
+
+/*Header*/
+.header {
+  @include header;
+}
+
+.language {
+  @include changeLanguage;
+}
+
+/* Main */
+/* <!-- First-screen block. Slider --> */
+$borderRadius: 5px;
