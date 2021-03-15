@@ -4565,6 +4565,10 @@ button.swiper-pagination-bullet {
 
 /* base */
 /* layout */
+.description:not(:last-of-type) {
+  padding-bottom: 150px;
+}
+
 .description__blockTitle {
   margin-bottom: 30px;
 }
@@ -4665,7 +4669,7 @@ button.swiper-pagination-bullet {
   width: 100%;
   justify-self: start;
   padding-bottom: 80px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -4740,6 +4744,9 @@ button.swiper-pagination-bullet {
 }
 
 @media (max-width: 1024px) {
+  .description:not(:last-of-type) {
+    padding-bottom: 100px;
+  }
   .description__row {
     min-height: 475px;
   }
@@ -4779,6 +4786,9 @@ button.swiper-pagination-bullet {
 }
 
 @media (max-width: 768px) {
+  .description:not(:last-of-type) {
+    padding-bottom: 70px;
+  }
   .mainSlider__slider .swiper-button-next {
     right: 25%;
   }
