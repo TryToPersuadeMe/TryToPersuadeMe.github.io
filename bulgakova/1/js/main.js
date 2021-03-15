@@ -1,10 +1,10 @@
 var navPanel = new Swiper(".navigationSlider__container", {
   spaceBetween: 20,
-  watchOverflow: true,
+  // watchOverflow: true,
   autoHeight: true,
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".navigationSlider__arrow_next",
+    prevEl: ".navigationSlider__arrow_prev",
   },
 
   breakpoints: {
@@ -22,6 +22,12 @@ var navPanel = new Swiper(".navigationSlider__container", {
     // when window width is >= 640px
     769: {
       slidesPerView: 4,
+    },
+  },
+
+  on: {
+    afterInit: function () {
+     console.log(this);
     },
   },
 });
@@ -237,7 +243,6 @@ class Tabs {
 
       if (next) {
         this.getCurrentTab() >= this.$tabContent.length ? (tab_order = 1) : (tab_order = this.getCurrentTab() + 1);
- 
       }
 
       this.iteration(props, tab_order);
@@ -252,17 +257,56 @@ class Tabs {
 
 const tabs = new Tabs({
   button: {
-    selector: "tabButton-js",
-    data: "tab_button",
+    selector: "tabButton-js_1",
+    data: "tab_button_1",
   },
 
   tabContent: {
-    selector: "mainSlider",
-    data: "tab_content",
+    selector: "mainSlider_1",
+    data: "tab_content_1",
   },
 
   /* контейнер с табами  */
-  container: "description__container",
+  container: "description__container_1",
+
+  /* стартовый таб */
+  startedSlider: 0,
+
+  /* счетчик табов */
+  counter: {
+    status: false,
+    current_counter_el: "tabsControlPanel__currentTab",
+    next_counter_el: "tabsControlPanel__nextTab",
+  },
+
+  /* стрелки */
+  arrows: {
+    status: false,
+    next: "tabsControlPanel__arrow-next",
+    prev: "tabsControlPanel__arrow-prev",
+  },
+
+  /* анимация появления */
+  animation: {
+    animation_show: "animate__fadeInUp",
+  },
+});
+
+
+
+const tabs_2 = new Tabs({
+  button: {
+    selector: "tabButton-js_2",
+    data: "tab_button_2",
+  },
+
+  tabContent: {
+    selector: "mainSlider_2",
+    data: "tab_content_2",
+  },
+
+  /* контейнер с табами  */
+  container: "description__container_2",
 
   /* стартовый таб */
   startedSlider: 0,
