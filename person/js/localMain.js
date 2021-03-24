@@ -4,7 +4,7 @@ var allBloggersSliderSection = new Swiper(".allBloggers__slider", {
   speed: 500,
   watchOverflow: true,
   scrollbar: {
-    el: ".swiper-scrollbar",
+    el: ".allBloggers__scrollbar",
     hide: false,
   },
 
@@ -28,3 +28,12 @@ const watchVideo = () => {
 
 watchVideo();
 ;
+var personalCardCustomScroll = new Swiper(".personalCard__containerInfo", {
+  direction: "vertical",
+  slidesPerView: "auto",
+  freeMode: true,
+  scrollbar: {
+    el: ".personalCard__scrollBar",
+  },
+  mousewheel: true,
+});
