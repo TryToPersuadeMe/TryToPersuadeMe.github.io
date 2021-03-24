@@ -988,6 +988,8 @@ button.swiper-pagination-bullet {
 }
 
 .allBloggers__slider {
+  max-width: 100%;
+  width: 100%;
   padding-bottom: 65px;
   position: relative;
 }
@@ -1131,12 +1133,11 @@ button.swiper-pagination-bullet {
 
 .previewCard {
   position: relative;
-  max-width: 310px;
   width: 100%;
+  height: 310px;
   font-family: Montserrat;
   color: #eff3f5;
   z-index: 4;
-  height: 310px;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1236,6 +1237,12 @@ button.swiper-pagination-bullet {
      object-fit: contain;
 }
 
+@media (max-width: 1200px) {
+  .previewCard {
+    height: 360px;
+  }
+}
+
 @media (max-width: 1024px) {
   .previewCard__name {
     font-size: 24px;
@@ -1245,6 +1252,12 @@ button.swiper-pagination-bullet {
 @media (max-width: 768px) {
   .previewCard__name {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  .previewCard {
+    height: 310px;
   }
 }
 
