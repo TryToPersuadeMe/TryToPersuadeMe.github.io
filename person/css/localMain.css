@@ -1192,6 +1192,7 @@ button.swiper-pagination-bullet {
   font-weight: bold;
   font-size: 30px;
   grid-column: 1/2 span;
+  line-height: 1.2;
 }
 
 .previewCard__gridWrapper {
@@ -1203,7 +1204,7 @@ button.swiper-pagination-bullet {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 20px 10px;
+  gap: 10px;
 }
 
 .previewCard__gridWrapper > :nth-child(odd):not(:first-child) {

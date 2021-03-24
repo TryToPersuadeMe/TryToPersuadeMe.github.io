@@ -168,6 +168,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .bg-pink {
   background-color: #6e105e;
+  background-color: transparent;
 }
 
 @media (max-width: 900px) {
@@ -200,6 +201,13 @@ input[type="search"]::-webkit-search-results-decoration {
   .bodyOverlay::after {
     width: 20%;
   }
+}
+
+#backgroundThreeJS {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 303;
 }
 
 .header__container {
@@ -466,15 +474,14 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .footer .socialMedia {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
 }
 
 .footer .socialMedia__item {
+  display: inline-block;
   width: 32px;
   height: 32px;
 }
