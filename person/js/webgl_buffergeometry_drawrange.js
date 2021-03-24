@@ -1,10 +1,5 @@
 import * as THREE from "./js_plugins/three.module.js";
 
-// import Stats from "./js_plugins/stats.module.js";
-// import { GUI } from "./js_plugins/dat.gui.module.js";
-
-// import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
-
 let group;
 let container, stats;
 const particlesData = [];
@@ -229,8 +224,8 @@ function animate() {
 }
 
 function render() {
-  // const time = Date.now() * 0.001;
+  const time = Date.now() * 0.001;
 
-  // group.rotation.y = time * 0.1;
+  group.rotation.y = time * 0.1;
   renderer.render(scene, camera);
 }
