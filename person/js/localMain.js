@@ -69,3 +69,4 @@ var personalCardCustomScroll = new Swiper(".personalCard__containerInfo", {
   },
   mousewheel: true,
 });
+;

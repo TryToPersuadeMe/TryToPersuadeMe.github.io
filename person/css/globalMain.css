@@ -425,13 +425,16 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 40px;
 }
 
 .footer__logo {
   max-width: 200px;
   width: 100%;
-  margin-right: 80px;
+  margin-right: 30px;
 }
 
 .footer__logo img,
@@ -449,11 +452,10 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.footer__row > :not(:last-child) {
-  margin-right: 25px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-bottom: 60px;
+  margin-right: -20px;
 }
 
 .footer__column {
@@ -470,7 +472,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .footer__text {
   font-size: 20px;
   color: #eff3f5;
+  margin-bottom: 15px;
   font-weight: 600;
+  margin-right: 25px;
 }
 
 .footer .socialMedia {
@@ -478,6 +482,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  margin: -30px 0 0 0;
 }
 
 .footer .socialMedia__item {
@@ -494,4 +499,42 @@ input[type="search"]::-webkit-search-results-decoration {
 .footer .socialMedia__item source {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .footer__text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .footer__row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    padding: 0;
+  }
+  .footer .socialMedia {
+    margin: 0;
+  }
+  .footer__text {
+    margin: 0 0 20px 0;
+  }
+  .footer__logo {
+    margin: 0 0 20px 0;
+  }
 }
