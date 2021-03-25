@@ -231,6 +231,16 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .navigation__link {
   color: #eff3f5;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.navigation__link:hover {
+  -webkit-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+          transform: scale(1.15);
 }
 
 .pageLanguage__type {
@@ -550,6 +560,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 @media (min-width: 1025px) {
   * {
+    cursor: none !important;
+  }
+  *::before,
+  * *::after {
     cursor: none !important;
   }
   .pointer {
