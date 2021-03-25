@@ -44,20 +44,7 @@ var allBloggersSliderSection = new Swiper(".allBloggers__slider", {
   },
 });
 ;
-const watchVideo = () => {
-  const $container = document.querySelector(".videoGallery__galleryGrid");
 
-  $container.addEventListener("click", () => {
-    if (event.target.classList.contains("videoCard")) {
-      let iFrame = event.target.querySelector(".videoCard__iframeVideo");
-      iFrame.setAttribute("src", iFrame.dataset.src);
-      event.target.classList.add("active");
-    }
-  });
-};
-
-watchVideo();
-;
 var personalCardCustomScroll = new Swiper(".personalCard__containerInfo", {
   direction: "vertical",
   slidesPerView: "auto",
@@ -69,4 +56,62 @@ var personalCardCustomScroll = new Swiper(".personalCard__containerInfo", {
   },
   mousewheel: true,
 });
+;
+
+window.onload = function () {
+  const $anchors = document.querySelectorAll("a");
+  $anchors.forEach((item) => item.classList.add("hoverable"));
+
+  trackMouse(".hoverable", ".js-pointer");
+};
+
+function trackMouse(hover, pointer) {
+  var $hover = document.querySelectorAll(hover);
+  var $pointer = document.querySelector(pointer);
+
+  var off = 50;
+  var first = !0;
+
+  function mouseX(evt) {
+    if (!evt) evt = window.event;
+    if (evt.pageX) return evt.pageX;
+    else if (evt.clientX)
+      return evt.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+    else return 0;
+  }
+
+  function mouseY(evt) {
+    if (!evt) evt = window.event;
+    if (evt.pageY) return evt.pageY;
+    else if (evt.clientY)
+      return evt.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+    else return 0;
+  }
+
+  function follow(evt) {
+    if (first) {
+      first = !1;
+      $pointer.style.opacity = 1;
+    }
+
+    TweenMax.to($pointer, 0.7, {
+      left: parseInt(mouseX(evt)) - off + "px",
+      top: parseInt(mouseY(evt)) - off + "px",
+      ease: Power3.easeOut,
+    });
+  }
+  document.onmousemove = follow;
+  console.log($hover);
+
+  (function hoverable() {
+    $hover.forEach(function (item) {
+      item.addEventListener("mouseover", function () {
+        $pointer.classList.add("hide");
+      });
+      item.addEventListener("mouseout", function () {
+        $pointer.classList.remove("hide");
+      });
+    });
+  })();
+}
 ;
