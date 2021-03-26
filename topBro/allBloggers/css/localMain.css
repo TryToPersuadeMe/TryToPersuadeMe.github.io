@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* abstracts */
 /* mixins */
 /* exemple - .overlay {
@@ -463,6 +464,7 @@
   }
 }
 
+/* select */
 .select {
   position: relative;
   max-width: 450px;
@@ -473,14 +475,25 @@
   z-index: 5;
 }
 
-.select.open .select__dropdown {
-  opacity: 1;
-  max-height: 245px;
-  visibility: visible;
+.select.open:after, .select.open:before {
+  bottom: 0;
+  position: absolute;
+  content: "";
+  display: block;
 }
 
-.select.open .select__label {
-  border-bottom: none;
+.select.open .select__dropdown {
+  opacity: 1;
+  max-height: 230px;
+  visibility: visible;
+  scrollbar-width: none;
+  /* хром, сафари */
+  /* ie 10+ */
+  -ms-overflow-style: none;
+}
+
+.select.open .select__dropdown::-webkit-scrollbar {
+  width: 0;
 }
 
 .select.open .select__arrow {
@@ -555,14 +568,38 @@
   background: #6e105e;
   -webkit-box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
           box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
-  border-radius: 12px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
   min-width: 225px;
+  padding-bottom: 30px;
 }
 
 .select__list {
   padding: 0;
   margin: 0;
   list-style: 0;
+  position: relative;
+  top: 30px;
+}
+
+.select__list::before {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../resources/icons/arrowSide-icon.svg");
+  width: 15px;
+  height: 15px;
+  left: 50%;
+  top: -15px;
+  -webkit-transform: translateX(-50%) rotate(-90deg);
+      -ms-transform: translateX(-50%) rotate(-90deg);
+          transform: translateX(-50%) rotate(-90deg);
+  position: absolute;
+  content: "";
+}
+
+.select__list:last-child {
+  padding-bottom: 15px;
 }
 
 .select__item {
@@ -572,14 +609,6 @@
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   font-size: 16px;
-}
-
-.select__item:first-of-type {
-  padding-top: 20px;
-}
-
-.select__item:last-of-type {
-  padding-bottom: 20px;
 }
 
 .select__item:hover {

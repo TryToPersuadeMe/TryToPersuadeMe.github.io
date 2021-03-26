@@ -13,6 +13,8 @@ class Select {
     this.$visibleLabelText = this.$select.querySelector(".select__visibleText");
     this.$hiddenInput = this.$select.querySelector(".select__input");
 
+    this.$dropdown = this.$select.querySelector(".select__dropdown");
+
     this.$label = this.$select.querySelector(".select__label");
 
     this.$body = document.querySelector("body");
@@ -22,20 +24,19 @@ class Select {
   }
 
   openState() {
-    console.log("open");
     this.$select.classList.add("open");
   }
 
   closeState() {
-    console.log("close");
     this.$select.classList.remove("open");
+
+    
   }
 
   /* open/close dropdown list */
   toggleState() {
     if (this.$select.classList.contains("open")) {
       this.closeState();
-      console.log("click on object");
     } else {
       this.openState();
     }
@@ -43,7 +44,6 @@ class Select {
 
   handleClick() {
     this.$select.addEventListener("mouseup", () => {
-      console.log(event.target);
       this.toggleState();
       this.handleValue();
     });
@@ -51,7 +51,7 @@ class Select {
 
   /* change value of input */
   handleValue() {
-    if (event.target != this.$label) {
+    if (event.target.classList.contains("select__item")) {
       this.$visibleLabelText.innerText = event.target.innerText;
       this.$hiddenInput.value = this.$visibleLabelText.innerText;
       this.$hiddenInput.setAttribute("name", this.$visibleLabelText.innerText);
@@ -60,9 +60,10 @@ class Select {
 
   hanldeClickWindow() {
     window.addEventListener("click", () => {
+      console.log(document.querySelectorAll(".select__dropdown"));
+
       if (event.target != this.$label && event.target != this.$hiddenInput) {
         this.closeState();
-        console.log(event.target);
       }
     });
   }
