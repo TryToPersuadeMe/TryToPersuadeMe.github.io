@@ -14,23 +14,26 @@ class Select {
     this.$hiddenInput = this.$select.querySelector(".select__input");
 
     this.$dropdown = this.$select.querySelector(".select__dropdown");
-
+    this.$list = this.$select.querySelector(".select__list");
     this.$label = this.$select.querySelector(".select__label");
+    this.$scrollIcon = this.$select.querySelector(".select__scrollIcon");
 
     this.$body = document.querySelector("body");
-
+    this.maxHeight = 230;
     this.handleClick();
+    this.closeState(this.maxHeight);
     this.hanldeClickWindow();
   }
 
-  openState() {
+  openState(maxHeight) {
     this.$select.classList.add("open");
+    this.$dropdown.style.maxHeight = maxHeight + "px";
+    this.addScrollIcon();
   }
 
   closeState() {
     this.$select.classList.remove("open");
-
-    
+    this.$dropdown.style.maxHeight = "0px";
   }
 
   /* open/close dropdown list */
@@ -38,8 +41,13 @@ class Select {
     if (this.$select.classList.contains("open")) {
       this.closeState();
     } else {
-      this.openState();
+      this.openState(this.maxHeight);
     }
+  }
+
+  addScrollIcon() {
+    let list_height = this.$list.offsetHeight;
+    if (list_height > this.maxHeight) this.$scrollIcon.classList.add("active");
   }
 
   handleClick() {
