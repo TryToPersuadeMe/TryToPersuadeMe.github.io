@@ -1,6 +1,7 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
 import { ImprovedNoise } from "https://threejs.org/examples/jsm/math/ImprovedNoise.js";
+import { EventDispatcher } from "./eventDispatcher.js";
 
 const perlin = new ImprovedNoise();
 
@@ -101,7 +102,7 @@ let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 
 ig.instanceCount = Infinity;
 ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(g.attributes.position.array, 3));
 let im = new THREE.MeshBasicMaterial({
-  color: 0x93f1f1,
+  color: 0xd3f1f1,
   onBeforeCompile: (shader) => {
     shader.vertexShader = `
       attribute vec3 instPos;
@@ -124,8 +125,24 @@ renderer.setAnimationLoop((_) => {
   renderer.render(scene, camera);
 });
 
-//https://github.com/gre/smoothstep/blob/master/index.js
 function smoothstep(min, max, value) {
   var x = Math.max(0, Math.min(1, (value - min) / (max - min)));
   return x * x * (3 - 2 * x);
 }
+
+/* events */
+class Car extends EventDispatcher {
+  start() {
+    this.dispatchEvent({ type: "wheel", message: "vroom vroom!" });
+  }
+}
+
+// Using events
+
+var car = new Car();
+
+car.addEventListener("wheel", function (event) {
+  console.log(event);
+});
+
+car.start();

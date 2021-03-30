@@ -7,11 +7,5 @@ canvas {
   top: 0;
   left: 0;
   z-index: -2;
-}
-
-.qw {
-  font-size: 40px;
-  color: white;
-  position: relative;
-  z-index: -1;
+  overflow: scroll;
 }
