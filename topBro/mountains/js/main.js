@@ -1,7 +1,6 @@
 import * as THREE from "https://threejs.org/build/three.module.js";
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
 import { ImprovedNoise } from "https://threejs.org/examples/jsm/math/ImprovedNoise.js";
-import { EventDispatcher } from "/js/eventDispatch.js";
 
 const perlin = new ImprovedNoise();
 
