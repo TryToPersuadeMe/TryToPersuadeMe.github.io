@@ -7,7 +7,7 @@ const perlin = new ImprovedNoise();
 
 let backColor = 0x000022;
 let scene = new THREE.Scene();
-scene.fog = new THREE.Fog(backColor, 109.5, 110);
+// scene.fog = new THREE.Fog(backColor, 109.5, 110);
 let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 1, 1000);
 camera.position.set(0, 5, 100);
 let renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -17,12 +17,12 @@ document.body.appendChild(renderer.domElement);
 
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 5, 0);
-controls.maxDistance = 200;
-controls.minPolarAngle = Math.PI * 0.5;
-controls.maxPolarAngle = Math.PI * 0.5;
-controls.minAzimuthAngle = 0;
-controls.maxAzimuthAngle = 0;
-controls.enablePan = false;
+// controls.maxDistance = 200;
+// controls.minPolarAngle = Math.PI * 0.5;
+// controls.maxPolarAngle = Math.PI * 0.5;
+// controls.minAzimuthAngle = 0;
+// controls.maxAzimuthAngle = 0;
+// controls.enablePan = false;
 
 controls.zoomSpeed = -1;
 controls.update();
@@ -144,5 +144,3 @@ var car = new Car();
 car.addEventListener("wheel", function (event) {
   console.log(event);
 });
-
-car.start();
