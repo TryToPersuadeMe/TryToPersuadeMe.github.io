@@ -3,6 +3,7 @@ var descriptionSlider = new Swiper(".casesExample__slider", {
   watchOverflow: true,
   speed: 800,
   autoHeight: true,
+
   scrollbar: {
     el: ".allBloggers__scrollbar",
     hide: false,
@@ -12,10 +13,6 @@ var descriptionSlider = new Swiper(".casesExample__slider", {
     nextEl: ".allBloggers-button-next",
     prevEl: ".allBloggers-button-prev",
   },
-
-  observer: true,
-  observeParents: true,
-  observeSlideChildren: true,
 
   breakpoints: {
     // when window width is >= 640px
@@ -48,9 +45,6 @@ var clientsSlider = new Swiper(".ourClientsSection__clienInfo-slider", {
   autoHeight: true,
   centeredSlides: true,
   spaceBetween: 30,
-
-  //   freeMode: true,
-  watchSlidesVisibility: true,
 
   navigation: {
     nextEl: ".comment-button-next",

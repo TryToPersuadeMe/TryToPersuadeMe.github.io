@@ -15,14 +15,14 @@ renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 let controls = new OrbitControls(camera, renderer.domElement);
-// controls.target.set(0, 5, 0);
-// controls.maxDistance = 200;
-// controls.minPolarAngle = Math.PI * 0.5;
-// controls.maxPolarAngle = Math.PI * 0.5;
-// controls.minAzimuthAngle = 0;
-// controls.maxAzimuthAngle = 0;
-// controls.enablePan = false;
-// controls.zoomSpeed = -1;
+controls.target.set(0, 5, 0);
+controls.maxDistance = 200;
+controls.minPolarAngle = Math.PI * 0.5;
+controls.maxPolarAngle = Math.PI * 0.5;
+controls.minAzimuthAngle = 0;
+controls.maxAzimuthAngle = 0;
+controls.enablePan = false;
+controls.zoomSpeed = -1;
 
 let light = new THREE.DirectionalLight(0xff99dd, 0.5);
 light.position.set(0, 35, -250);
@@ -202,8 +202,8 @@ console.log(so.scale.x);
 const animate = () => {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
-  so.scale.x = scrollPos * 0.001;
-  so.scale.y = scrollPos * 0.001;
+  // so.scale.x = scrollPos * 0.001;
+  // so.scale.y = scrollPos * 0.001;
 };
 animate();
 
