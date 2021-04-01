@@ -40,12 +40,9 @@ var commentsSlider = new Swiper(".ourClientsSection__comments-slider ", {
 });
 
 var clientsSlider = new Swiper(".ourClientsSection__clienInfo-slider", {
-  slidesPerView: "auto",
+  spaceBetween: 50,
   speed: 600,
-  autoHeight: true,
   centeredSlides: true,
-  spaceBetween: 30,
-
   navigation: {
     nextEl: ".comment-button-next",
     prevEl: ".comment-button-prev",
@@ -53,10 +50,22 @@ var clientsSlider = new Swiper(".ourClientsSection__clienInfo-slider", {
 
   breakpoints: {
     320: {
-      spaceBetween: 10,
+      slidesPerView: 1,
+      spaceBetween: 0,
     },
     376: {
       spaceBetween: 30,
+    },
+    481: {
+      slidesPerView: "auto",
+    },
+  },
+
+  on: {
+    function() {
+      this.updateProgress();
+      this.updateSize();
+      this.updateSlides();
     },
   },
 });
