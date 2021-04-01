@@ -187,14 +187,15 @@ scene.add(bo);
 
 window.addEventListener("resize", onWindowResize);
 
-/* let clock = new THREE.Clock();
+let clock = new THREE.Clock();
 renderer.setAnimationLoop((_) => {
   let t = clock.getElapsedTime();
   globalUniforms.time.value = t;
-  setTerrain(t * 0.05);
-  so.position.copy(camera.position).setY(20).z -= 500;
+  // setTerrain(t * 0.05);
+  // so.position.copy(camera.position).setY(20).z -= 500;
   renderer.render(scene, camera);
-}); */
+});
+
 let scrollPos = 0;
 const scrollListener = window.addEventListener("scroll", () => (scrollPos = 1 + window.scrollY));
 console.log(so.scale.x);
