@@ -25,7 +25,6 @@ let light = new THREE.DirectionalLight(0xffffff, 0.5);
 light.position.set(0, 0.0625, -1);
 scene.add(light, new THREE.AmbientLight(0xffffff, 1.5));
 
-// scene.add(new THREE.GridHelper(125, 10, 0x007f7f, 0x007f7f));
 
 // let globalCounter = 1;
 let chunks = [];
