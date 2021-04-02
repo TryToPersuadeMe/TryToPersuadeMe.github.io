@@ -31,46 +31,6 @@ let globalUniforms = {
   time: { value: 0 },
 };
 
-// dots
-  let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 8, 6));
-
-const addDots = (element) => {
-  ig.instanceCount = Infinity;
-
-  ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(element.attributes.position.array, 3));
-
-  let im = new THREE.MeshBasicMaterial({
-    color: 0xd3f1f1,
-    onBeforeCompile: (shader) => {
-      shader.vertexShader = `
-      attribute vec3 instPos;
-      ${shader.vertexShader}
-    `.replace(
-        `#include <begin_vertex>`,
-        `#include <begin_vertex>
-        transformed += instPos;
-      `
-      );
-      shader.fragmentShader = shader.fragmentShader.replace(
-        `#include <fog_fragment>`,
-        `#ifdef USE_FOG
-          #ifdef FOG_EXP2
-            float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
-          #else
-            float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
-          #endif
-          if (fogDepth > fogFar) discard;
-          gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
-        #endif`
-      );
-    },
-  });
-  let io = new THREE.Mesh(ig, im);
-  io.frustumCulled = false;
-  
-  scene.add(io);
-};
-
 let chunks = [];
 let chunkHeight = 525;
 const createChunk = (posZ, color) => {
@@ -80,7 +40,6 @@ const createChunk = (posZ, color) => {
   g.rotateX(Math.PI * -0.5);
   let sc = new THREE.Vector2(10, 25);
   let pos = g.attributes.position;
-
   let uv = g.attributes.uv;
   let vUv = new THREE.Vector2();
 
@@ -119,9 +78,6 @@ const createChunk = (posZ, color) => {
   let o = new THREE.Mesh(g, m);
   chunk.add(o);
   chunk.position.z = posZ;
-
-  setTerrain(0, pos, vUv, uv, sc, g);
-  addDots(g);
   chunks.push(chunk);
   scene.add(chunk);
 };
@@ -166,18 +122,55 @@ so.position.copy(camera.position).setY(20).z -= chunkHeight * 1.7;
 
 scene.add(so);
 
-function setTerrain(t, pos, vUv, uv, sc, g) {
-  for (let i = 0; i < pos.count; i++) {
-    vUv.fromBufferAttribute(uv, i);
-    let s = smoothstep(0.01, 0.125, Math.abs(vUv.x - 0.5));
-    vUv.multiply(sc);
-    let y = perlin.noise(vUv.x, vUv.y + 1, 0.005 + t) * 0.5 + 0.5;
-    pos.setY(i, Math.pow(y, 5) * 75 * s);
-  }
-  pos.needsUpdate = true;
-  g.computeVertexNormals();
-  // ig.attributes.instPos.needsUpdate = true;
-}
+// dots
+const addDots = (element) => {
+  console.log(element);
+  let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 8, 6));
+  ig.instanceCount = Infinity;
+  ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(element.attributes.position.array, 3));
+  let im = new THREE.MeshBasicMaterial({
+    color: 0xd3f1f1,
+    onBeforeCompile: (shader) => {
+      shader.vertexShader = `
+      attribute vec3 instPos;
+      ${shader.vertexShader}
+    `.replace(
+        `#include <begin_vertex>`,
+        `#include <begin_vertex>
+        transformed += instPos;
+      `
+      );
+      shader.fragmentShader = shader.fragmentShader.replace(
+        `#include <fog_fragment>`,
+        `#ifdef USE_FOG
+          #ifdef FOG_EXP2
+            float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
+          #else
+            float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
+          #endif
+          if (fogDepth > fogFar) discard;
+          gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+        #endif`
+      );
+    },
+  });
+  let io = new THREE.Mesh(ig, im);
+  io.frustumCulled = false;
+  scene.add(io);
+};
+// function setTerrain(t) {
+//   for (let i = 0; i < pos.count; i++) {
+//     vUv.fromBufferAttribute(uv, i);
+//     let s = smoothstep(0.01, 0.125, Math.abs(vUv.x - 0.5));
+//     vUv.multiply(sc);
+//     let y = perlin.noise(vUv.x, vUv.y + 1, 0.005 + t) * 0.5 + 0.5;
+//     pos.setY(i, Math.pow(y, 5) * 75 * s);
+//   }
+//   pos.needsUpdate = true;
+//   g.computeVertexNormals();
+//   ig.attributes.instPos.needsUpdate = true;
+// }
+// setTerrain(0);
 
 // background
 
@@ -207,10 +200,8 @@ function setTerrain(t, pos, vUv, uv, sc, g) {
 let scrollPos = 0;
 const scrollListener = window.addEventListener("scroll", () => {
   scrollPos = 1 + window.scrollY;
-  console.log(scrollPos);
-  chunks.forEach((chunk) => {
-    chunk.position.z += scrollPos * 0.005;
-  });
+  // console.log(scrollPos);
+  chunks.forEach((chunk) => (chunk.position.z += scrollPos * 11));
 });
 
 let clock = new THREE.Clock();
