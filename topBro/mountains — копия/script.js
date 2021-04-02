@@ -16,11 +16,11 @@ document.body.appendChild(renderer.domElement);
 
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 5, 0);
-controls.minPolarAngle = Math.PI * 0.5;
-controls.maxPolarAngle = Math.PI * 0.5;
-controls.minAzimuthAngle = 0;
-controls.maxAzimuthAngle = 0;
-controls.enablePan = false;
+// controls.minPolarAngle = Math.PI * 0.5;
+// controls.maxPolarAngle = Math.PI * 0.5;
+// controls.minAzimuthAngle = 0;
+// controls.maxAzimuthAngle = 0;
+// controls.enablePan = false;
 // controls.zoomSpeed = -1;
 
 let light = new THREE.DirectionalLight(0xff99dd, 0.5);
@@ -200,8 +200,7 @@ const addDots = (element) => {
 let scrollPos = 0;
 const scrollListener = window.addEventListener("scroll", () => {
   scrollPos = 1 + window.scrollY;
-  // console.log(scrollPos);
-  chunks.forEach((chunk) => (chunk.position.z += scrollPos * 11));
+  chunks.forEach((chunk) => (chunk.position.z += scrollPos * 0.001));
 });
 
 let clock = new THREE.Clock();

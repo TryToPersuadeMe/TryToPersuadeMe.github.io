@@ -14,17 +14,15 @@ let renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
-let docHeight = document.querySelector("body").offsetHeight;
-
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 5, 0);
-// controls.maxDistance = 200;
-// controls.minPolarAngle = Math.PI * 0.5;
-// controls.maxPolarAngle = Math.PI * 0.5;
-// controls.minAzimuthAngle = 0;
-// controls.maxAzimuthAngle = 0;
-// controls.enablePan = false;
-// controls.zoomSpeed = -1;
+controls.maxDistance = 200;
+controls.minPolarAngle = Math.PI * 0.5;
+controls.maxPolarAngle = Math.PI * 0.5;
+controls.minAzimuthAngle = 0;
+controls.maxAzimuthAngle = 0;
+controls.enablePan = false;
+controls.zoomSpeed = -1;
 
 let light = new THREE.DirectionalLight(0xff99dd, 0.5);
 light.position.set(0, 35, -250);
@@ -34,7 +32,7 @@ let globalUniforms = {
   time: { value: 0 },
 };
 
-let g = new THREE.PlaneGeometry(200, 525, 50, 125);
+let g = new THREE.PlaneGeometry(200, 500, 50, 125);
 g.rotateX(Math.PI * -0.5);
 let sc = new THREE.Vector2(10, 25);
 
@@ -73,11 +71,8 @@ let m = new THREE.MeshStandardMaterial({
     //console.log(shader.fragmentShader);
   },
 });
-
-
 m.defines = { USE_UV: "" };
 let o = new THREE.Mesh(g, m);
-
 scene.add(o);
 
 //sun
@@ -118,57 +113,54 @@ so.position.copy(camera.position).setY(20).z -= 500;
 scene.add(so);
 
 // dots
-// let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 8, 6));
-// ig.instanceCount = Infinity;
-// ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(g.attributes.position.array, 3));
-// let im = new THREE.MeshBasicMaterial({
-//   color: 0xd3f1f1,
-//   onBeforeCompile: (shader) => {
-//     shader.vertexShader = `
-//       attribute vec3 instPos;
-//       ${shader.vertexShader}
-//     `.replace(
-//       `#include <begin_vertex>`,
-//       `#include <begin_vertex>
-//         transformed += instPos;
-//       `
-//     );
-//     shader.fragmentShader = shader.fragmentShader.replace(
-//       `#include <fog_fragment>`,
-//       `#ifdef USE_FOG
-//           #ifdef FOG_EXP2
-//             float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
-//           #else
-//             float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
-//           #endif
-//           if (fogDepth > fogFar) discard;
-//           gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
-//         #endif`
-//     );
-//     //console.log(shader.vertexShader);
-//   },
-// });
-// let io = new THREE.Mesh(ig, im);
-// io.frustumCulled = false;
-// scene.add(io);
+let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 8, 6));
+ig.instanceCount = Infinity;
+ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(g.attributes.position.array, 3));
+let im = new THREE.MeshBasicMaterial({
+  color: 0xd3f1f1,
+  onBeforeCompile: (shader) => {
+    shader.vertexShader = `
+      attribute vec3 instPos;
+      ${shader.vertexShader}
+    `.replace(
+      `#include <begin_vertex>`,
+      `#include <begin_vertex>
+        transformed += instPos;
+      `
+    );
+    shader.fragmentShader = shader.fragmentShader.replace(
+      `#include <fog_fragment>`,
+      `#ifdef USE_FOG
+          #ifdef FOG_EXP2
+            float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
+          #else
+            float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
+          #endif
+          if (fogDepth > fogFar) discard;
+          gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+        #endif`
+    );
+    //console.log(shader.vertexShader);
+  },
+});
+let io = new THREE.Mesh(ig, im);
+io.frustumCulled = false;
+scene.add(io);
 
-// let q1 =
+function setTerrain(t) {
+  for (let i = 0; i < pos.count; i++) {
+    vUv.fromBufferAttribute(uv, i);
+    let s = smoothstep(0.01, 0.125, Math.abs(vUv.x - 0.5));
+    vUv.multiply(sc);
+    let y = perlin.noise(vUv.x, vUv.y + 1, 0.005 + t) * 0.5 + 0.5;
+    pos.setY(i, Math.pow(y, 5) * 75 * s);
+  }
+  pos.needsUpdate = true;
+  g.computeVertexNormals();
+  ig.attributes.instPos.needsUpdate = true;
+}
 
-// function setTerrain(t) {
-//   for (let i = 0; i < pos.count; i++) {
-//     vUv.fromBufferAttribute(uv, i);
-
-//     let s = smoothstep(0.01, 0.125, Math.abs(vUv.x - 0.5));
-//     vUv.multiply(sc);
-//     let y = perlin.noise(vUv.x, vUv.y + 1, 0.005 + t) * 0.5 + 0.5;
-//     pos.setY(i, Math.pow(y, 5) * 75 * s);
-//   }
-//   pos.needsUpdate = true;
-//   g.computeVertexNormals();
-//   ig.attributes.instPos.needsUpdate = true;
-// }
-
-// setTerrain(0);
+setTerrain(0);
 
 // background
 
@@ -195,35 +187,24 @@ scene.add(bo);
 
 window.addEventListener("resize", onWindowResize);
 
-/* let clock = new THREE.Clock();
+let clock = new THREE.Clock();
 renderer.setAnimationLoop((_) => {
   let t = clock.getElapsedTime();
   globalUniforms.time.value = t;
-  setTerrain(t * 0.05);
-  so.position.copy(camera.position).setY(20).z -= 500;
+  // setTerrain(t * 0.05);
+  // so.position.copy(camera.position).setY(20).z -= 500;
   renderer.render(scene, camera);
-}); */
-let scrollPos = 0;
-window.addEventListener("scroll", () => {
-  scrollPos = window.scrollY;
-
-  console.log(scrollPos);
-  // if (condition) {
-
-  // }
 });
 
-camera.position.z = scrollPos + 50 * 0.1;
-console.log(camera);
+let scrollPos = 0;
+const scrollListener = window.addEventListener("scroll", () => (scrollPos = 1 + window.scrollY));
+console.log(so.scale.x);
 
 const animate = () => {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
   // so.scale.x = scrollPos * 0.001;
   // so.scale.y = scrollPos * 0.001;
-  // camera.position.z = scrollPos;
-
-  console.log(camera.position.y);
 };
 animate();
 
