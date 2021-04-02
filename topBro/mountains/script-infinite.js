@@ -172,7 +172,7 @@ scene.add(so);
 
 // background
 
-let bg = new THREE.SphereGeometry(2000, 64, 32);
+let bg = new THREE.SphereGeometry(2000, 564, 32);
 let bm = new THREE.MeshBasicMaterial({
   fog: false,
   side: THREE.BackSide,

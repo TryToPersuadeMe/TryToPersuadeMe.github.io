@@ -6,13 +6,13 @@ const perlin = new ImprovedNoise();
 
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000);
-camera.position.set(0, 0.25, 1);
+camera.position.set(0, 0.5, 1);
 let renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 let controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 0.25, 0);
+controls.target.set(0, 0.5, 0);
 controls.update();
 
 let light = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -61,6 +61,7 @@ scene.add(so);
 
 //scene.add(new THREE.GridHelper(125, 10, 0x007f7f, 0x007f7f));
 
+/* chunk */
 let globalCounter = 1;
 let chunks = [];
 
@@ -129,6 +130,43 @@ function createChunk(posZ) {
 
   chunk.position.z = posZ;
 
+console.log(chunk.attributes);
+
+  // dots
+  let ig = new THREE.InstancedBufferGeometry().copy(new THREE.SphereGeometry(0.2, 8, 6));
+  ig.instanceCount = Infinity;
+  ig.setAttribute("instPos", new THREE.InstancedBufferAttribute(pg.attributes.position.array, 3));
+  let im = new THREE.MeshBasicMaterial({
+    color: 0xd3f1f1,
+    onBeforeCompile: (shader) => {
+      shader.vertexShader = `
+      attribute vec3 instPos;
+      ${shader.vertexShader}
+    `.replace(
+        `#include <begin_vertex>`,
+        `#include <begin_vertex>
+        transformed += instPos;
+      `
+      );
+      shader.fragmentShader = shader.fragmentShader.replace(
+        `#include <fog_fragment>`,
+        `#ifdef USE_FOG
+          #ifdef FOG_EXP2
+            float fogFactor = 1.0 - exp( - fogDensity * fogDensity * fogDepth * fogDepth );
+          #else
+            float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
+          #endif
+          if (fogDepth > fogFar) discard;
+          gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+        #endif`
+      );
+      //console.log(shader.vertexShader);
+    },
+  });
+  let io = new THREE.Mesh(ig, im);
+  io.frustumCulled = false;
+  scene.add(io);
+
   updateChunk(chunk);
 
   chunks.push(chunk);
@@ -160,4 +198,10 @@ function updateChunk(chunk) {
 function smoothstep(min, max, value) {
   var x = Math.max(0, Math.min(1, (value - min) / (max - min)));
   return x * x * (3 - 2 * x);
+}
+
+function onWindowResize() {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
 }
