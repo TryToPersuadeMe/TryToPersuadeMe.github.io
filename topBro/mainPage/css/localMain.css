@@ -1774,6 +1774,9 @@ button.swiper-pagination-bullet {
   .clientInfo:not(.swiper-slide-prev) {
     max-width: 80px;
   }
+  .clientInfo:not(.swiper-slide-prev) > .clientInfo__name {
+    opacity: 0;
+  }
   .clientInfo__image {
     -webkit-transition: 0.6s ease;
     -o-transition: 0.6s ease;
@@ -1915,11 +1918,18 @@ button.swiper-pagination-bullet {
         -ms-flex-direction: column;
             flex-direction: column;
     text-align: center;
-    border: 1px solid #f3efef;
-    width: auto;
     -webkit-transition: 0.6s ease-in-out;
     -o-transition: 0.6s ease-in-out;
     transition: 0.6s ease-in-out;
+    width: auto;
+    max-width: 200px;
+  }
+  .clientInfo.swiper-slide:not(.swiper-slide-active) {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
   }
   .clientInfo > :first-child {
     margin: 0 0 20px 0;
@@ -1935,9 +1945,6 @@ button.swiper-pagination-bullet {
 }
 
 @media (max-width: 380px) {
-  .clientInfo {
-    max-width: 160px;
-  }
   .ourClientsSection .swiper-button-next,
   .ourClientsSection .swiper-button-prev {
     width: 25px;
