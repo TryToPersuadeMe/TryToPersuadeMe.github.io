@@ -6,10 +6,10 @@ const perlin = new ImprovedNoise();
 
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000);
-camera.position.set(0, 0.5, 1);
+camera.position.set(0, 2.5, 60);
 
-// let backColor = 0xff7fbb;
-// scene.fog = new THREE.Fog(backColor, 2, 100);
+let backColor = 0xff7fbb;
+scene.fog = new THREE.Fog(backColor, 5, 80);
 
 let renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(innerWidth, innerHeight);
@@ -100,26 +100,28 @@ let scrollPos = 0;
 window.addEventListener("scroll", () => (scrollPos = window.scrollY));
 
 renderer.setAnimationLoop((_) => {
-  let t = clock.getDelta() * 25;
+  let t = clock.getDelta() * 50;
   // renderer.setClearColor(backColor);
 
-  so.scale.x = 1 + scrollPos * 0.00005;
-  so.scale.y = 1 + scrollPos * 0.00005;
+  // so.scale.x = 1 + scrollPos * 0.00005;
+  // so.scale.y = 1 + scrollPos * 0.00005;
 
   globalUniforms.time.value = clock.getElapsedTime();
   let calcedPos = (scrollPos * 0.0025) % 50;
+
+  //  chunks[1].position.z += t;
 
   chunks.forEach((chunk) => {
     // let scrollPosCounted = scrollPos / 500;
     // console.log(scrollPosCounted);
     // chunk.position.z = scrollPosCounted;
 
-    // chunk.position.z += t;
+    chunk.position.z += t;
 
-    chunk.position.z = calcedPos;
-    console.log(chunk.position.z);
+    // chunk.position.z = calcedPos;
+    // console.log(chunk.position.z);
 
-    if (chunk.position.z > 125 / 2) {
+    if (chunk.position.z > 125) {
       let p = chunk.position.z % 125;
       console.log(p);
       chunk.position.z = -125 + p;
