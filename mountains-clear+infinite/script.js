@@ -9,7 +9,7 @@ let camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000
 camera.position.set(0, 2.5, 60);
 
 let backColor = 0xff7fbb;
-scene.fog = new THREE.Fog(backColor, 5, 80);
+scene.fog = new THREE.Fog(backColor, 5, 60);
 
 let renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(innerWidth, innerHeight);
@@ -92,7 +92,7 @@ let globalCounter = 1;
 let chunks = [];
 
 createChunk(0, 0x00007f);
-createChunk(-125, 0x00007f);
+createChunk(-250, 0x00007f);
 
 let clock = new THREE.Clock();
 
@@ -100,11 +100,11 @@ let scrollPos = 0;
 window.addEventListener("scroll", () => (scrollPos = window.scrollY));
 
 renderer.setAnimationLoop((_) => {
-  let t = clock.getDelta() * 50;
+  // let t = clock.getDelta() * 50;
   // renderer.setClearColor(backColor);
 
-  // so.scale.x = 1 + scrollPos * 0.00005;
-  // so.scale.y = 1 + scrollPos * 0.00005;
+  so.scale.x = 1 + scrollPos * 0.00005;
+  so.scale.y = 1 + scrollPos * 0.00005;
 
   globalUniforms.time.value = clock.getElapsedTime();
   let calcedPos = (scrollPos * 0.0025) % 50;
@@ -116,9 +116,9 @@ renderer.setAnimationLoop((_) => {
     // console.log(scrollPosCounted);
     // chunk.position.z = scrollPosCounted;
 
-    chunk.position.z += t;
+    // chunk.position.z += t;
 
-    // chunk.position.z = calcedPos;
+    chunk.position.z = calcedPos;
     // console.log(chunk.position.z);
 
     if (chunk.position.z > 125) {
