@@ -104,12 +104,12 @@ console.log(document.querySelector("div").offsetHeight);
 
 renderer.setAnimationLoop((_) => {
   let t = clock.getDelta() * 50;
-  renderer.setClearColor(backColor);
+  // renderer.setClearColor(backColor);
   so.scale.x = 1 + scrollPos * 0.0001;
   so.scale.y = 1 + scrollPos * 0.0001;
   // globalUniforms.time.value = clock.getElapsedTime();
   let calcedPos = scrollPos * 0.007;
-
+  // globalUniforms.time.value = clock.getElapsedTime();
   chunks.forEach((chunk) => {
     // chunk.position.z += t - t;
 
