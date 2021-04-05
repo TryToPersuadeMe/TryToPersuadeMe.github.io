@@ -63,8 +63,6 @@ so.position.copy(camera.position).setY(10).z -= 250;
 
 scene.add(so);
 
-//scene.add(new THREE.GridHelper(125, 10, 0x007f7f, 0x007f7f));
-
 // background
 let bg = new THREE.SphereGeometry(400, 64, 32);
 let bm = new THREE.MeshBasicMaterial({
@@ -88,50 +86,44 @@ let bo = new THREE.Mesh(bg, bm);
 scene.add(bo);
 
 /* chunk */
-let globalCounter = 1;
+let globalCounter = 0;
 let chunks = [];
 
 createChunk(0, 0x00007f);
-createChunk(-250, 0x00007f);
+createChunk(-125, 0x00007f);
 
 let clock = new THREE.Clock();
 
 let scrollPos = 0;
-window.addEventListener("scroll", () => (scrollPos = window.scrollY));
+window.addEventListener("scroll", () => {
+  scrollPos = window.scrollY;
+  console.log(scrollPos);
+});
+
+console.log(document.querySelector("div").offsetHeight);
 
 renderer.setAnimationLoop((_) => {
-  // let t = clock.getDelta() * 50;
-  // renderer.setClearColor(backColor);
-
+  let t = clock.getDelta() * 50;
+  renderer.setClearColor(backColor);
   so.scale.x = 1 + scrollPos * 0.00005;
   so.scale.y = 1 + scrollPos * 0.00005;
-
-  globalUniforms.time.value = clock.getElapsedTime();
-  let calcedPos = (scrollPos * 0.0025) % 50;
-
-  //  chunks[1].position.z += t;
+  // globalUniforms.time.value = clock.getElapsedTime();
+  let calcedPos = scrollPos * 0.007;
 
   chunks.forEach((chunk) => {
-    // let scrollPosCounted = scrollPos / 500;
-    // console.log(scrollPosCounted);
-    // chunk.position.z = scrollPosCounted;
-
-    // chunk.position.z += t;
+    chunk.position.z += t - t;
 
     chunk.position.z = calcedPos;
-    // console.log(chunk.position.z);
 
     if (chunk.position.z > 125) {
       let p = chunk.position.z % 125;
-      console.log(p);
+      console.log("Asd");
       chunk.position.z = -125 + p;
       updateChunk(chunk);
     }
+    renderer.render(scene, camera);
   });
-
-  renderer.render(scene, camera);
 });
-console.log(camera);
 
 // dots
 // let pos = g.attributes.position;
