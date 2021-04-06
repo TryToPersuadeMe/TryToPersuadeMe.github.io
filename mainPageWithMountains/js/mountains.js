@@ -6,7 +6,7 @@ const perlin = new ImprovedNoise();
 
 let backColor = 0xff7fbb;
 let scene = new THREE.Scene();
-scene.fog = new THREE.Fog(backColor, 2, 260);
+// scene.fog = new THREE.Fog(backColor, 1, 60);
 
 let camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000);
 camera.position.set(0, 1, 60);
@@ -17,6 +17,7 @@ document.body.appendChild(renderer.domElement);
 let controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0.5, 0);
 controls.update();
+// controls.enabled = false;
 
 let light = new THREE.DirectionalLight(0xcc3991, 0.4);
 light.position.set(0, 30, -200);
@@ -143,9 +144,39 @@ let globalUniforms = {
   time: { value: 0 },
 };
 /* sun */
+
 let sg = new THREE.CircleGeometry(20, 64);
 let sm = new THREE.MeshBasicMaterial({
-  color: 0xffeeff,
+  map: new THREE.TextureLoader().load("./resources/sun.png"),
+  // uniforms: {
+  //   color1: {
+  //     value: new THREE.Color("#fc2cae"),
+  //   },
+  //   color2: {
+  //     value: new THREE.Color("#ffee4b"),
+  //   },
+  // },
+  // vertexShader: `
+  //   varying vec2 vUv;
+
+  //   void main() {
+  //     vUv = uv;
+  //     gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+  //   }
+  // `,
+  // fragmentShader: `
+  //   uniform vec3 color1;
+  //   uniform vec3 color2;
+  
+  //   varying vec2 vUv;
+    
+  //   void main() {
+      
+  //     gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+  //   }
+  // `,
+
+  // color: 0xffeeff,
   fog: false,
   transparent: true,
   onBeforeCompile: (shader) => {
@@ -157,7 +188,7 @@ let sm = new THREE.MeshBasicMaterial({
       `
         vec2 uv = vUv - 0.5;
         float f = smoothstep(0.5, 0.475, length(uv));
-        
+
         // stripes
         vec2 sUv = uv;
         sUv.y *= 100.;
@@ -170,15 +201,27 @@ let sm = new THREE.MeshBasicMaterial({
         vec4 diffuseColor = vec4( col, pow(f, 3.) * sf );
       `
     );
-    //console.log(shader.fragmentShader);
   },
 });
 sm.defines = { USE_UV: "" };
 sm.extensions = { derivatives: true };
 let so = new THREE.Mesh(sg, sm);
-so.position.copy(camera.position).setY(10).z -= 400;
+so.position.copy(camera.position).setY(20).z -= 400;
 
 scene.add(so);
+
+/* stars */
+let pts = [];
+for (let i = 0; i < 400; i++) {
+  pts.push(new THREE.Vector3().random().subScalar(0.5).multiplyScalar(620));
+}
+let g = new THREE.BufferGeometry().setFromPoints(pts);
+let m = new THREE.PointsMaterial({ map: new THREE.TextureLoader().load(imgData), size: 2.25, alphaTest: 0.5 });
+let p = new THREE.Points(g, m);
+p.position.copy(so.position).setY(20).z -= 20;
+// p.position.x = 100
+// p.position.y = 10;
+scene.add(p);
 
 function updateChunk(chunk) {
   let g = chunk.children[0].geometry;
