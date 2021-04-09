@@ -1975,14 +1975,14 @@ button.swiper-pagination-bullet {
   -webkit-animation: scale infinite 3s ease;
           animation: scale infinite 3s ease;
   left: 20px;
-  bottom: 150px;
+  bottom: 130px;
 }
 
 .firstScreen__socialMediaItem_2 {
   -webkit-animation: scale infinite 4s linear;
           animation: scale infinite 4s linear;
   left: 50%;
-  bottom: 120px;
+  bottom: 110px;
 }
 
 .firstScreen__socialMediaItem_3 {
@@ -1996,7 +1996,7 @@ button.swiper-pagination-bullet {
   right: 5%;
   -webkit-animation: scale infinite 5s ease-in-out;
           animation: scale infinite 5s ease-in-out;
-  bottom: 75px;
+  bottom: 65px;
 }
 
 .firstScreen__linkButton {
@@ -2456,6 +2456,12 @@ button.swiper-pagination-bullet {
     min-height: 36px;
     padding: 0 26px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .socialMediaDynamic {
+    padding-top: 0;
   }
   .sectionSupTitle {
     font-size: 26px;
