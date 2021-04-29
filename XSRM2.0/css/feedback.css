@@ -574,7 +574,7 @@ body.overlay::after {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("../resources/_global/greyMask.svg");
+  background-image: url("../resources/global/greyMask.svg");
   position: absolute;
   right: 50%;
   top: 0px;
