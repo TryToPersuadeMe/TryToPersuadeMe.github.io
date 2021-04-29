@@ -1,0 +1,157 @@
+// .sidesBlock .block:last-of-type .block__container {
+//   padding: 0;
+// }
+
+.sidesBlock {
+  @include backgroundImage("../resources/mainPage/background-5.svg", cover);
+}
+
+.block {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 170px;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-shadow: 0px 5px 19px rgba(89, 89, 89, 0.25);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__column {
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 150%;
+    color: #333333;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 150%;
+    color: #888c9b;
+    &:not(:last-of-type) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .block {
+    &__image {
+      height: 0;
+      position: relative;
+      padding-bottom: 60%;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  .block {
+    &_reversSides {
+      $this: ".block";
+      #{$this}_column {
+        order: 1;
+      }
+
+      #{$this}__image {
+        order: 2;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .block {
+    &__container {
+      padding-bottom: 100px;
+    }
+  }
+}
+
+@media (max-width: 768px) and( min-width:481px) {
+  .block {
+    &__column {
+      max-width: 400px;
+      text-align: center;
+      margin: -50px auto 0 auto;
+      position: relative;
+      padding: 20px;
+      z-index: 2;
+      background-color: white;
+      border-top-right-radius: 24px;
+      border-top-left-radius: 24px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .block {
+    &__container {
+      padding-bottom: 70px;
+      display: block;
+    }
+
+    &__column {
+      text-align: center;
+    }
+
+    &__image {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    &__title {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 150%;
+      color: #333333;
+      margin-bottom: 30px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 150%;
+      color: #888c9b;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .block {
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    &__title {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+  }
+}
+

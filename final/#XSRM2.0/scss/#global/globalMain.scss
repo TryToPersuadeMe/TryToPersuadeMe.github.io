@@ -1,0 +1,17 @@
+/* abstracts */
+@import "./_abstracts/mixins.scss";
+@import "./_abstracts/variables.scss";
+@import "./_abstracts/functions.scss";
+
+/* base */
+@import "./_base/fonts.scss";
+@import "./_base/reset.scss";
+@import "./_base/mainContainer.scss";
+
+/* layout */
+@import "./layout/header";
+@import "./layout/footer";
+
+/* components */
+@import "./components/text";
+@import "./components/sectionWaveMask"

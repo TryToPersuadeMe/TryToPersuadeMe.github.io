@@ -1,0 +1,17 @@
+/* abstracts */
+@import "./_abstracts/mixins.scss";
+@import "./_abstracts/variables.scss";
+@import "./_abstracts/functions.scss";
+
+/* vendors - code from side sources and Libraries */
+// @import "./vendors/animate.scss";
+
+/* layout */
+
+@import "./layout/firstScreen";
+@import "./layout/writeUs";
+
+/* components */
+@import "./components/input";
+
+/* pages */

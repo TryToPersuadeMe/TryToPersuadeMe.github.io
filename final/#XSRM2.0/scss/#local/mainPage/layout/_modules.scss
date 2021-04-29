@@ -1,0 +1,22 @@
+.modules {
+  &__gridWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 20px;
+    @include backgroundImage("../resources/mainPage/background-3.svg", contain);
+    background-position: center top;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modules {
+  }
+}
+
+@media (max-width: 700px) {
+  .modules {
+    &__gridWrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+}

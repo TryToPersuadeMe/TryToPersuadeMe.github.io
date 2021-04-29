@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="ключевые слова" />
+    <meta name="description" content="крутой сайт" />
+    <link href="./img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/contacts.min.css" />
+    <title>X-SRM</title>
+  </head>
+  <body>
+    <div class="wrapper wrapper_mainPage">
+      @@include("./html/_#header.html") @@include("./html/contacts/_firstScreen.html")
+
+      <div class="contacts backgroundMask backgroundMask_smallMargin">
+        <div class="waveBackground">
+          <section class="writeUs">
+            <div class="container writeUs__container">
+              <div class="writeUs__wrapper">
+                <h2 class="sectionTitle sectionTitle_margin sectionTitle_blue writeUs__sectionTitle">Напишите нам</h2>
+                <h4 class="writeUs__text writeUs__subTitle">Мы будем рады ответить на ваш запрос!</h4>
+
+                <form action="#" class="writeUs__form">
+                  <label class="customInput writeUs__customInput"
+                    ><span class="customInput__text customInput__text_required">Имя</span
+                    ><input class="customInput__input" type="text" placeholder="Напишите ваше имя" required />
+                  </label>
+
+                  <label class="customInput writeUs__customInput"
+                    ><span class="customInput__text customInput__text_required">Электронная почта</span
+                    ><input class="customInput__input" type="email" placeholder="Напишите ваш электронный адрес" required />
+                  </label>
+
+                  <label class="customInput customInput_textArea writeUs__customInput"
+                    ><span class="customInput__text">Текст сообщения</span>
+                    <textarea class="customInput__input" type="text" placeholder="Введите текст сообщения"></textarea>
+                  </label>
+
+                  <div class="customInput writeUs__note">
+                    <p class="writeUs__text writeUs__text_small">
+                      Поля, отмеченные <span style="color: #ad6fa1">*</span> обязательные для заполнения
+                    </p>
+                  </div>
+                </form>
+
+                <button class="writeUs__button">Отправить</button>
+              </div>
+            </div>
+          </section>
+
+          @@include("./html/_#footer.html")
+        </div>
+      </div>
+    </div>
+
+    <!-- main js -->
+    <script src="./js/global.js"></script>
+  </body>
+</html>

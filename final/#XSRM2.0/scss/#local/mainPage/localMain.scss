@@ -1,0 +1,21 @@
+/* abstracts */
+@import "./_abstracts/mixins.scss";
+@import "./_abstracts/variables.scss";
+@import "./_abstracts/functions.scss";
+
+/* vendors - code from side sources and Libraries */
+// @import "./vendors/animate.scss";
+
+/* layout */
+@import "./layout/firstScreen";
+@import "./layout/features.scss";
+@import "./layout/sideBlocks";
+@import "./layout/modules";
+@import "./layout/calculator";
+@import "./layout/partners";
+
+/* components */
+@import "./components/cards";
+@import "./components/customCheckbox";
+
+/* pages */
