@@ -421,6 +421,7 @@ body.overlay::after {
   display: grid;
   grid-template-columns: 50% 50%;
   gap: 3rem;
+  margin-bottom: 5rem;
 }
 
 .application__presentation {
