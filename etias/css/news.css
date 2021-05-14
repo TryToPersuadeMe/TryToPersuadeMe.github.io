@@ -489,6 +489,7 @@ body.overlay::after {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  margin-top: 12rem;
 }
 
 .pagination__container::before, .pagination__container::after {
@@ -677,7 +678,7 @@ body.overlay::after {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 30px;
+  height: 3rem;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -712,13 +713,14 @@ body.overlay::after {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   border-radius: 5px;
-  top: calc(30px + 1rem);
+  top: calc(3rem + 1rem);
   left: 0;
   opacity: 0;
   visibility: hidden;
   overflow-y: auto;
   width: 100%;
   background: white;
+  min-width: 13rem;
   max-width: 13rem;
 }
 
