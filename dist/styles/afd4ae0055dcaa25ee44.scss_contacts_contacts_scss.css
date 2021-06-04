@@ -70,28 +70,39 @@
     max-width: -webkit-fit-content;
     max-width: -moz-fit-content;
     max-width: fit-content;
-    -ms-flex-item-align: start;
-        align-self: flex-start;
-    -webkit-transform: translateY(-17%);
-            transform: translateY(-17%); }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
   .firstScreenParralax__painting {
     font-family: "Herr Von Muellerhoff";
     font-size: 26rem;
     text-align: center;
     color: #a69479;
-    position: relative;
-    line-height: 0;
+    position: absolute;
     z-index: -1;
-    bottom: 50%; }
+    line-height: 0.65;
+    bottom: 0%;
+    right: 0; }
   .firstScreenParralax__defaultTitle {
     font-family: "trajan-pro-3";
     font-size: 5.2rem;
     color: #ffffff;
-    text-align: right; }
+    text-align: right;
+    position: relative; }
 
 @media (max-width: 1440px) {
   .firstScreenParralax {
-    min-height: 6rem; }
+    min-height: 35rem; }
     .firstScreenParralax_centered {
       min-height: 35rem; }
     .firstScreenParralax__painting {
@@ -101,12 +112,9 @@
 
 @media (max-width: 768px) {
   .firstScreenParralax {
-    min-height: 7.5rem; }
+    min-height: 26rem; }
     .firstScreenParralax_centered {
       min-height: 26rem; }
-      .firstScreenParralax_centered .firstScreenParralax__container {
-        -webkit-transform: translateY(35%);
-                transform: translateY(35%); }
     .firstScreenParralax__painting {
       font-size: 10.5rem; }
     .firstScreenParralax__defaultTitle {
