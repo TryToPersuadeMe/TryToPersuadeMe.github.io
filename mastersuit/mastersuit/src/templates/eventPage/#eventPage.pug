@@ -1,0 +1,52 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper
+      .firstScreenParralax.eventsFirstScreen
+        +header("ru")
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting Events
+          h4.firstScreenParralax__defaultTitle События
+        
+      .eventPage.zIndexLayer
+        .container.eventPage__container 
+          h4.eventPage__title УЖИН-ЧУВСТВ 
+          h4.eventPage__title от Key. Family Event Service X MasterSuit 
+          p.eventPage__date.defaultText.defaultText_startAlign 25.02.2021
+            span.eventPage__datePainting 25.02.2021
+
+          .eventPage__textWrapper 
+            p.eventPage__text.defaultText.defaultText_startAlign Ужин Чувств с элементами иммерсии и сенсорной реальности, организованный командой Key. Family Event Service X MasterSuit. 
+            p.eventPage__text.defaultText.defaultText_startAlign Концепция ужина была основана на теории, согласно которой контекст еды и напитка влияет на вкус и что вкус может быть усилен или преобразован окружающей средой. Это был симбиоз модного показа и гастрономии! 
+          
+          .eventPage__gridContainer
+            .eventPage__img
+              img(src=require("@/assets/images/eventPage/cards/1.jpg"), alt="event").wow.animate__animated.animate__fadeInLeft
+            
+            .eventPage__img
+              img(src=require("@/assets/images/eventPage/cards/2.jpg"), alt="event").wow.animate__animated.animate__fadeInUp
+            
+            .eventPage__img 
+              img(src=require("@/assets/images/eventPage/cards/3.jpg"), alt="event").wow.animate__animated.animate__fadeInRight
+
+          .eventPage__gridContainer.eventPage__gridContainer_big
+            .eventPage__img.eventPage__img_big 
+              img(src=require("@/assets/images/eventPage/cards/4.jpg"), alt="event").wow.animate__animated.animate__fadeInLeft  
+            
+            .eventPage__img.eventPage__img_big 
+              img(src=require("@/assets/images/eventPage/cards/5.jpg"), alt="event").wow.animate__animated.animate__fadeInRight
+      
+    
+      +footer("ru")
+
+      

@@ -1,0 +1,42 @@
+.language {
+  font-size: 2.1rem;
+  letter-spacing: 0.1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  &__link {
+    color: #ffffff;
+    &:first-of-type {
+      position: relative;
+      &::after {
+        content: "/";
+        position: absolute;
+
+        top: 0;
+        top: 0;
+        margin: 0 0.5rem;
+        cursor: default;
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .language {
+    font-size: 1.6rem;
+    gap: 1.5rem;
+    &__link {
+      &:first-of-type {
+        &::after {
+          margin: 0 0.3rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .language {
+    font-size: 1.4rem;
+    gap: 1.3rem;
+  }
+}

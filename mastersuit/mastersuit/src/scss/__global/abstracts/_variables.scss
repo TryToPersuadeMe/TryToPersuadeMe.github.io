@@ -1,0 +1,19 @@
+// Sass Variables
+$body-html-px: 10px;
+
+// $blue: #000066;
+
+// $mainTextColor: $blue;
+$mainFontFamily: "Cabin", sans-serif;
+$mainBackgroundColor: white;
+.overlay {
+  z-index: z(overlay);
+}
+
+$z-layers: (
+  header: 105,
+  burgerIcon: 102,
+  navigation: 101,
+  popUp: 51,
+  popUp-shadow: 50,
+);

@@ -1,0 +1,19 @@
+.textBlock {
+  padding-top: 13rem;
+  background-color: $mainBackgroundColor;
+  padding-bottom: 13rem;
+}
+
+@media (max-width: 1440px) {
+  .textBlock {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .textBlock {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}

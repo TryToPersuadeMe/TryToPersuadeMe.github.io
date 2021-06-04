@@ -1,0 +1,43 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper
+      .firstScreenParralax.eventsFirstScreen
+        +header("ru")
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting Events
+          h4.firstScreenParralax__defaultTitle События
+        
+      .eventPage.zIndexLayer
+        .container.eventPage__container 
+          h4.eventPage__title путешествие в мир шотландского  
+          h4.eventPage__title односолодового виски вместе с The Macallan 
+          p.eventPage__date.defaultText.defaultText_startAlign 01.04.2021
+            span.eventPage__datePainting 01.04.2021
+
+          .eventPage__textWrapper 
+            p.eventPage__text.defaultText.defaultText_startAlign Дегустационный сет этого вечера - это новинки в линейке The Macallan Double
+            p.eventPage__text.defaultText.defaultText_startAlign Cask 15-ти и 18-ти лет выдержки, лимитированный The Macallan Edition №6, роскошный The Macallan Estate.
+            p.eventPage__text.defaultText.defaultText_startAlign Мы в полной мере окунулись в историю создания этого благородного напитка, а также: 
+            p.eventPage__text.defaultText.defaultText_startAlign - Узнали тонкости и нюансы, влияющие на вкус;
+            p.eventPage__text.defaultText.defaultText_startAlign - Научились правильно дегустировать этот напиток;
+            p.eventPage__text.defaultText.defaultText_startAlign - Получили незабываемый опыт общения с экспертом.
+            p.eventPage__text.defaultText.defaultText_startAlign Так же мы затронули столь популярную в последнее время тему инвестирования в виски.
+            p.eventPage__text.defaultText.defaultText_startAlign Нашим проводником стал наш друг, замечательный оратор
+            p.eventPage__text.defaultText.defaultText_startAlign и бренд-амбассадор виски The Macallan Алексей Савкин
+        .eventPage__videoContainer
+          video(controls).eventPage__video    
+              source(src=require("@/assets/video/1.mp4") type="video/mp4") 
+      +footer("ru")
+
+      

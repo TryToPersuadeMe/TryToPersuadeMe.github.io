@@ -1,0 +1,8 @@
+mixin pictureBlock(additionalClass, size)
+    if size== "false"
+        .pictureBlock(class=additionalClass)
+            .pictureBlock__backgroungParralax
+    else if size== "true"
+        .pictureBlock(class=additionalClass)
+            .pictureBlock__backgroungParralax.pictureBlock__backgroungParralax_big
+    

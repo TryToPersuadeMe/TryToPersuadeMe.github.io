@@ -1,0 +1,46 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+mixin articleBlock([...text], img, animateClass, direction)
+  .articleBlock(class=`articleBlock_${direction}`)
+    .articleBlock__img
+      img(src=require(`@/assets/images/${img}.jpg`), alt="" class=`${animateClass}`).wow.animate__animated
+    .articleBlock__column
+      .articleBlock__logo
+        img(src=require("@/assets/images/_global/logo_black.svg"), alt="logo")
+      .articleBlock__textWrapper 
+        each val in [...text]
+          p.articleBlock__text.defaultText.defaultText_startAlign= val
+          
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper.aboutUsPage
+      .firstScreenParralax
+        +header("en")
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting About
+          h4.firstScreenParralax__defaultTitle About us
+
+      .describe.zIndexLayer
+        .container.describe__container
+          +articleBlock(["One of the most famous Moscow boutique-ateliers “Mastersuit”, located on the Prechistenka street, has opened its cafe with a menu of European cuisine.","Once you open massive wooden doors, you will find yourself in a bright space with large windows overlooking one of the central streets of Moscow."],"aboutUs/articles/1","animate__fadeInLeft")
+          
+      +pictureBlock("eventsPictureBlock","true")
+
+      .describe.zIndexLayer
+        .container.describe__container
+          +articleBlock(["Alexander Keller worked on the bar list. He is also known for such projects like Mendeleev Bar, LADO, Strelka","Therefore, you can boldly go to Mastersuit Café for an aperitif."],"aboutUs/articles/2","animate__fadeInRight","reverse")
+      
+      
+      +footer("en")
+
+      

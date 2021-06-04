@@ -1,0 +1,203 @@
+/* vendors - code from side sources and Libraries */
+@import "@scss/__global/abstracts/mixins.scss";
+@import "@scss/__global/abstracts/variables.scss";
+@import "@scss/__global/abstracts/functions.scss";
+
+/* vendors - code from side sources and Libraries */
+
+/* layout */
+@import "@scss/_adjacent/layout/firstScreenParralax.scss";
+@import "@scss/_adjacent/layout/bookingContacts.scss";
+
+/* components */
+@import "@scss/_adjacent/components/calendar.scss";
+
+/* pages */
+
+.contacts {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 13rem;
+    padding-bottom: 24rem;
+  }
+
+  &__column {
+    max-width: 65rem;
+    margin-right: 10rem;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 2.6rem;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.6rem;
+  }
+
+  &__form {
+    max-width: 57rem;
+    width: 100%;
+
+    .booking__form {
+      margin: 0;
+    }
+
+    .booking__input {
+      border: 0.13rem solid #a69479;
+      background-color: transparent;
+      color: #a69479;
+    }
+  }
+}
+
+.map {
+  @include backgroundImage("@/assets/images/contacts/map.png", cover);
+  min-height: 66rem;
+}
+
+.contactCard {
+  background-color: white;
+  max-width: 85rem;
+  box-shadow: 0px 0px 17.1889px 5.28889px rgba(0, 0, 0, 0.11);
+  transform: translateY(-25%) scale(0.9);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  text-align: center;
+  position: relative;
+  &:after {
+    content: "";
+    width: 110%;
+    height: 130%;
+    border: 0.13rem solid #a69479;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  &__text {
+    color: black;
+    margin-bottom: 1.5rem;
+  }
+
+  &__socialMedia {
+    svg {
+      path {
+        fill: #a69479;
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .contacts {
+    &__container {
+      padding-top: 10rem;
+      padding-bottom: 18rem;
+    }
+
+    &__column {
+      max-width: 48rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__form {
+      max-width: 43rem;
+    }
+  }
+  .map {
+    min-height: 50rem;
+  }
+
+  .contactCard {
+    max-width: 60rem;
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts {
+    &__container {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+    }
+
+    .booking__input_small {
+      max-width: 9.5rem;
+    }
+
+    &__column,
+    &__form {
+      // max-width: 100%;
+      // width: 100%;
+      // max-width: 24rem;
+    }
+    &__column {
+      margin-right: 4rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  .map {
+    min-height: 50rem;
+  }
+
+  .contactCard {
+    max-width: 60rem;
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .contactCard {
+    padding: 2rem;
+
+    &__text {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .contacts {
+    .defaultText {
+      text-align: center;
+    }
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-bottom: 7rem;
+      justify-items: center;
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    &__column {
+      margin: 0;
+    }
+  }
+
+  .map {
+    min-height: 35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map {
+    min-height: 25rem;
+  }
+}

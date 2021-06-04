@@ -1,0 +1,45 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+mixin card(text,date,img)
+  .card
+    .card__img
+      img(src=require(`@/assets/images/events/events/${img}.jpg`), alt="event")
+    .card__textWrapper
+      each val in text
+        p.card__text= val
+      p.card__date=date
+        span.card__painting= date
+      a.card__readMoreLink(href="#") read more 
+  
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper
+      .firstScreenParralax.eventsFirstScreen
+        +header("en")
+        .firstScreenParralax__container.container.zIndexLayer
+            h1.firstScreenParralax__painting Events
+            h4.firstScreenParralax__defaultTitle EVENTS
+
+      .events.zIndexLayer
+        .events__container.container
+          +card(["Held kids event: Crazy Tea Party based on «Alice in Wonderland»", "by KEY. FAMILY EVENT SERVICE И MASTERSUIT"],"25.04.2021",1)
+          +card(["An amazing journey into the world of Scottish single malt whiskey with The Macallan"],"01.04.2021",2)
+          +card(["The dinner of senses by Key. Family Event Service X MasterSuit"],"25.02.2021",3)
+
+
+
+      
+      +footer("en")
+
+      

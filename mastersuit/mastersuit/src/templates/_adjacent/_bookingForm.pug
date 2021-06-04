@@ -1,0 +1,15 @@
+mixin formBooking(language)
+    if language== "ru"
+        form(action="").booking__form
+            input(type="text" placeholder="Ваше ФИО").booking__input
+            input(type="text" placeholder="Дата и время").booking__input.booking__input_date
+            input(type="number" placeholder="Кол-во").booking__input.booking__input_small
+            textarea(placeholder="Комментарий").booking__input.booking__textArea
+            button.booking__button Отправить
+    else if language== "en"
+        form(action="").booking__form
+            input(type="text" placeholder="Your name").booking__input
+            input(type="text" placeholder="Date and time").booking__input.booking__input_date
+            input(type="number" placeholder="Quantity").booking__input.booking__input_small
+            textarea(placeholder="Message").booking__input.booking__textArea
+            button.booking__button Send

@@ -1,0 +1,48 @@
+/* vendors - code from side sources and Libraries */
+@import "@scss/__global/abstracts/mixins.scss";
+@import "@scss/__global/abstracts/variables.scss";
+@import "@scss/__global/abstracts/functions.scss";
+
+/* vendors - code from side sources and Libraries */
+
+/* layout */
+@import "@scss/_adjacent/layout/firstScreenParralax.scss";
+
+/* components */
+
+/* pages */
+
+.gallery {
+  background-color: $mainBackgroundColor;
+  &__container {
+    padding-top: 20rem;
+    padding-bottom: 20rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  .gallery {
+    &__container {
+      padding-top: 15rem;
+      padding-bottom: 15rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    &__container {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    &__container {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+}

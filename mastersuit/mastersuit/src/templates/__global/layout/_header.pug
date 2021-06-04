@@ -1,0 +1,47 @@
+include ../abstracts/mixins/socialMedia.pug
+
+
+
+mixin header(language)
+  if language=="ru"
+    header.header
+      .container.header__container
+        a(href="/", title="title").header__logo
+          img(src=require("@/assets/images/_global/logo.svg"), alt="logo")
+        a.header__num(href="tel:+79104492425") +7 910 449 24 25  
+        +socialMedia("header__socialMedia")
+        .header__language.language
+          a.language__link(href="#") en 
+          a.language__link(href="#") ru
+        .burgerIcon
+          span 
+
+    navigation.navigation
+      .navigation__container
+        a(href="/").navigation__link Главная
+        a(href="/events.html").navigation__link События
+        a(href="/aboutUs.html").navigation__link О нас
+        a(href="#").navigation__link Галерея
+        a(href="/menu.html").navigation__link Меню
+        a(href="/contacts.html").navigation__link Контакты
+  else if language=="en"
+    header.header
+      .container.header__container
+        a(href="/", title="title").header__logo
+          img(src=require("@/assets/images/_global/logo.svg"), alt="logo")
+        a.header__num(href="tel:+79104492425") +7 910 449 24 25  
+        +socialMedia("header__socialMedia")
+        .header__language.language
+          a.language__link(href="#") en 
+          a.language__link(href="#") ru
+        .burgerIcon
+          span 
+
+    navigation.navigation
+      .navigation__container
+        a(href="/").navigation__link Main
+        a(href="/events.html").navigation__link Events
+        a(href="/aboutUs.html").navigation__link About us
+        a(href="#").navigation__link Gallery
+        a(href="/menu.html").navigation__link Menu
+        a(href="/contacts.html").navigation__link Contacts

@@ -1,0 +1,24 @@
+.contacts {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  position: relative;
+  &__booking {
+    margin-left: auto;
+  }
+}
+
+.map {
+  @include backgroundImage("@/assets/images/index/contacts/map.png", cover);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 550px) {
+  .map {
+    display: none;
+  }
+}

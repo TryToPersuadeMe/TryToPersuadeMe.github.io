@@ -1,0 +1,336 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+mixin menuItem(title,pos,categoryTitle,categorySupTitle)
+  if categoryTitle
+    .menu__box
+      .menu__categoryLine
+        h3.menu__title.menu__title_bold= categoryTitle
+        p.menu__text.menu__text_bold.defaultText= categorySupTitle
+      h3.menu__title=  title
+      .menu__column
+        each val in pos
+          .menu__line
+            p.menu__text.defaultText.defaultText_startAlign= val[0]
+            span.menu__dot
+            p.menu__text.defaultText= val[1]
+  else 
+    .menu__box
+      h3.menu__title=  title
+      .menu__column
+        each val in pos
+          .menu__line
+            p.menu__text.defaultText.defaultText_startAlign= val[0]
+            span.menu__dot
+            p.menu__text.defaultText= val[1]    
+    
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper
+      .firstScreenParralax.menuParralaxBlock
+        +header("en")
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting Menu
+          h4.firstScreenParralax__defaultTitle Menu
+          button.firstScreenParralax__button.defaultText Download menu
+        
+      .menu.zIndexLayer
+        .container.menu__container 
+          .menu__wrapper
+            +menuItem("Breakfast",[
+              ["Soft-boiled egg", "150"],
+              ["Two egg omelet", "300"], 
+              ["Three fried eggs", "300"], 
+              ["Benedict with stewed spinach, salted salmon and Hollandez sauce", "550"],
+              ["Scrambled eggs with truffle, avocado slices and corn salad", "570"],
+              ["French toast with persimmon and vanilla sauce", "450"],
+              ["Syrniki with sour cream and berries", "550"],
+              ["Croissant classic, pistachio, almond", "250/270/370"],
+              ])
+
+            +menuItem("Porridge",[
+              ["Quinoa porridge with coconut milk and homemade strawberry jam", "300"],
+              ["Oatmeal porridge with raspberries and blueberries ", "300"], 
+              ])
+
+            +menuItem("Snacks and salads",[
+              ["Stracciella with plum, caramelized pecans and hibiscus powder", "900"],
+              ["Salmon tataki with ponzu sauce", "750"], 
+              ["Salmon tartare with avocado", "750"], 
+              ["Scallop with coconut tapioca", "550"], 
+              ["Beef tartare with sibulet onion emulsion", "700"], 
+              ["Scallop with mashed celery", "750"], 
+              ["Green salad with Argentinian shrimps, quinoa and sesame sauce", "850"], 
+              ["Seasonal vegetable salad with olive oil", "750"], 
+              ])
+
+
+            +menuItem("Children's menu",[
+              ["Vegetable salad with olive oil", "300"],
+              ["Chicken cutlets with baked potatoes", "350"], 
+              ["Noodle soup with chicken broth", "450"], 
+              ["Pancakes with turkey and mozzarella cheese", "400"], 
+              ["Oatmeal porridge with berries", "400"], 
+              ["Syrniki with berries", "450"], 
+              ["Ice cream (1 scoop)", "150"], 
+              ])
+          .menu__wrapper
+            //- +menuItem("Десерты",[
+            //-   ["Эскимо Фисташковое", "350"],
+            //-   ["Эскимо Шоколадное", "350"],
+            //-   ["Десерт Картошка", "350"],
+            //-   ["Медовик", "360"],
+            //-   ["Морковный кекс", "360"],
+            //-   ["Тарталетка Сникерс", "350"],
+            //-   ["Лимонная тарталетка", "300"],
+            //-   ["Круассан миндальный", "270"],
+            //-   ["Круассан классический", "250"],
+            //-   ["Круассан фисташковый", "370"],
+            //-   ["Эклер Ванильный", "300"],
+            //-   ["Эклер Малина-Личи", "300"],
+            //-   ["Эклер Фисташковый", "300"],
+            //-   ["Овсяное Печенье", "80"],
+            //-   ["Печенье Кантучини", "50"],
+            //-   ["Трюфель с фундуком", "165"],
+            //-   ])
+
+            +menuItem("Hot dishes",[
+              ["Risotto with porcini mushrooms and truffle", "1200"],
+              ["Salmon with cauliflower, green peas and sweet pepper sauce", "1100"],
+              ["Beef tenderloin with mashed celery and kvass sauce", "1200"],
+              ["Ravioli with spinach and mozzarella", "800"],
+              ])
+
+            +menuItem("Side dishes",[
+              ["Cauliflower steak with peanut sauce", "500"],
+              ["Asparagus with hollandaise sauce", "550"],
+              ["Spinach", "350"],
+              ["Baked potatoes with truffle oil", "350"],
+              ["Carrots with montblue mousse", "350"],
+              ])
+
+            +menuItem("Wine snacks",[
+              ["Cheeses: parmesan, montblu, brie", "600"],
+              ["Olives", "300"],
+              ["Prosciutto", "600"],
+              ])
+
+              
+            +menuItem("Soups",[
+              ["Cauliflower cream soup with seafood", "950"],
+              ["Chicken broth noodle soup", "450"],
+              ["Tom Yam", "700"],
+              ])
+
+      .firstScreenParralax.firstScreenParralax_centered.menuParralaxBlock-drinks
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting Drinks
+          h4.firstScreenParralax__defaultTitle напитки
+          .menu.zIndexLayer
+      .container.menu__container 
+        .menu__wrapper
+            +menuItem("Игристые и шампанские вина",[
+              ["Lanson Black Label Brut", "1490/8940"],
+              ["Villa Sandi Prosecco Di Valdobbiadene DOCG Superiore Extra Dry", "670/4020"],
+              ],"Вино","125/750мл")
+
+            +menuItem("Белые вина",[
+              ["Vinuva Organic Pinot Grigio Terre Siciliane IGT Enoitalia", "590/3540"],
+              ["Duett Riesling & Veltliner Niederosterreich Leth", " 690/4140"],
+              ])
+
+            +menuItem("Красные вина",[
+              ["Zweight Classic Burgenland Norbert Schmeltzer", "720/4320"],
+              ["Cacciata Chianti Classico DOCG Castellani", "690/4140"],
+              ["Gran Passione Apassimento Rosso Puglia IGT Botter", "720/4320"],
+              ])
+
+            +menuItem("Аперетивы и дижестивы",[
+              ["Ottos", "380"],
+              ["Suze", "400"],
+              ["Bonal", "380"],
+              ["Fernet Branca", "410"],
+              ["Pierre Ferrand Dry Curacao", "400"],
+              ["Ulrich, Amaro", "420"],
+              ["Ferro China Balivia, Amaro", "420"],
+              ["Aperol", "380"],
+              ])
+
+
+            +menuItem("Авторские",[
+              ["#1. Oxygen (соджу грейпфрут, лемонграсс, апельсин, соевое молоко)", "750"],
+              ["#2. Echo (щавель, груша, писко мосто верде Италия, рислинг)", "750"],
+              ["#3. Diamond Chip (джин Roku, соджу слива и грейпфрут, цветы апельсина) ", "750"],
+              ["#4. Amadeus (джин из амальфитанских лимонов, винный персик, алоэ, биттер из альпийских трав)", "750"],
+              ["#6. Treveller (джин Sipsmith, кордиал из лайма с кокосовым улуном, ликер из бергамота,анис)", "750"],
+              ["#7. Royal mile (апельсин, винный персик, Laphroig 10y.o., просекко)", "750"],
+              ["#8. Summertime (джин настоянный на зернах маракуйи, кальвадос, ваниль, просекко)", "750"],
+              ["#9. Black Pearl (малина, ежевика, мескаль, итальянское амаро, шираз)", "750"],
+              ["#10. Signature (Macallan 15y.o., ликер из ромашки, амаро, шоколадный биттер)", "1250"],
+              ["#11. Tazmanian (пряный ром, печеный ананас, персик)", "750"],
+              ["#12. Masquerade (ягодный джин, мята, кокос, черная смородина) ", "750"],
+              ["#14. Imperial gold (Macallan 12y.o., кокос, кафирский лайм, имбирь, куркума)", "900"],
+              ["#15. Trofeo (писко мосто верде Италия, бузина, жасмин, алоэ)", "750"],
+              ],"Коктейли")
+
+
+             +menuItem("Классика",[
+              ["Old Fashioned (бурбон, сахар, смесь биттеров)", "750"],
+              ["Vieux Care (виски рай, сладкий вермут, бенедиктин, креольский биттер)", "750"],
+              ["Whiskey Sour (бурбон, сахар, лимон, биттер)", "750"],
+              ["Negroni (джин, сладкий вермут, биттер) ", "750"],
+              ["French 75 (джин, лимон, просекко) ", "750"],
+              ["Daiquiri (белый ром, лайм, сахар) ", "750"],
+              ["Moscow Mule (водка, биттер, лимон, имбирный эль) ", "750"],
+              ["Pisco Sour (писко мосто верде Италия, лимон, сахар)", "750"],
+              ["Apple Jack Rabbit (кальвадос, кленовый сироп, лимон и апельсин)", "750"],
+              ["Sidecar (коньяк, оранж кюрасао, лимон, сахар)", "750"],
+              ["Aperol Spritz (апероль, газированная вода, просекко)", "650"],
+              ["Negroni Sbagliato (сладкий вермут, биттер, просекко)", "650"],
+              ["Bellini (розовый персик, просекко)", "650"],
+              ["Kir Royal (ликер из черной смородины, шампанское)", "1750"],
+              ],)
+
+            +menuItem("Шоты",[
+              ["Арбузный шот (свежий арбуз, маракуйа, лимон, водка)", "350"],
+              ["Малиновый шот (малина, бузина, ром, просекко)", "350"],
+              ],)
+
+            +menuItem("Горячие",[
+              ["Глинтвейн (крсное вино, пряности, ликер Grand Marnier, фрукты)", "750"],
+              ["Горячий масляный ром (пряный ром, свежий лайм, яблочный сок, сливочное масло,ваниль, яблоки и пряности)", "750"],
+              ],)
+
+        .menu__wrapper
+            +menuItem("Водка",[
+              ["Onegin", "350"],
+              ],"Крепкий алкоголь","40 мл")
+
+            +menuItem("Джин",[
+              ["Roku", "620"],
+              ["Sipsmith London Dry", "750"],
+              ["Brockmans", "730"],
+              ])
+
+            +menuItem("Текила, мескаль и реасель",[
+              ["Koch, Mezcal", "430"],
+              ])
+
+            +menuItem("Ром и кашаса",[
+              ["Don Papa", "610"],
+              ["Spytail", "530"],
+              ["Ron de Jeremy Reserva", "590"],
+              ])
+
+            +menuItem("Виски",[
+              ["Macallan 12y.o.", "1100"],
+              ["Laphroig 10 y.o.", "940"],
+              ["Makers Mark", "580"],
+              ])
+
+            +menuItem("Коньяк, граппа, писко и другие бренди",[
+              ["Courvoisier XO ", "3600"],
+              ["Pisco Barsol Mosto Verde Italia", "620"],
+              ])
+
+            +menuItem("Лимонады",[
+              ["Апельсин-ваниль (свежий апельсин, ваниль, лимон, газированная вода)", "450"],
+              ["Арбузный (арбуз, маракуйа, лимон, газированная вода)", "450"],
+              ["Малина и имбирь (малина, имбирь, лимон, мед, газированная вода)", "450"],
+              ],"Безалкогольные напитки")
+
+            +menuItem("Смузи",[
+              ["Сникерс", "600"],
+              ["Зеленый", "600"],
+              ["Ягодный", "600"],
+              ],)
+
+            +menuItem("Свежевыжатые соки",[
+              ["Апельсин", "430"],
+              ["Грейпфрут", "430"],
+              ["Яблоко", "440"],
+              ["Морковь", "430"],
+              ["Сельдерей", "430"],
+              ],)
+
+            +menuItem("Соки в бутылках",[
+              ["Яблоко", "320"],
+              ["Вишня", "320"],
+              ["Персик", "320"],
+              ["Клюква", "320"],
+              ["Томат", "320"],
+              ],)
+
+            +menuItem("Минеральная вода",[
+              ["Dausuz 280 ml", "320"],
+              ["San Cassiano 250 ml ", "470"],
+              ["San Cassiano 750 ml", "760"],
+              ],)
+
+            +menuItem("Газированные напитки",[
+              ["Coca-Cola, Coca-Cola Zero 330 ml", "350"],
+              ["Sprite 330 ml", "350"],
+              ["Fanta 330 ml", "350"],
+              ["Hartidges Ginger Beer 330 ml", "400"],
+              ["Fever Tree 200 ml", "300"],
+              ],)
+
+            +menuItem("Кофе",[
+              ["Эспрессо", "200"],
+              ["Американо", "250"],
+              ["Капучино", "390"],
+              ["Флэт уайт", "470"],
+              ["Латте", "470"],
+              ],)
+
+            +menuItem("Специальный кофе",[
+              ["Матча Латте", "430"],
+              ["Куркума Латте", "490"],
+              ["Ванильный Раф", "470"],
+              ["Какао", "320"],
+              ],)
+
+            +menuItem("Растительное молоко",[
+              ["Соевое 100 мл", "150"],
+              ["Миндальное 100 мл", "150"],
+              ["Овсяное 100 мл", "150"],
+              ["Кокосовое 100 мл", "150"],
+              ],)
+            
+            +menuItem("Чай",[
+              ["Инглиш Брекфаст", "430"],
+              ["Эрл Грей", "430"],
+              ["Черный с тимьяном", "470"],
+              ["Кокосовый улун", "420"],
+              ["Сенча", "400"],
+              ["Женьшень", "490"],
+              ["Пуэр Премиум", "490"],
+              ["Тигуанинь", "490"],
+              ["Жасмин", "390"],
+              ["Мята-малина", "480"],
+              ["Ромашка", "200"],
+              ["Мята", "200"],
+              ["Иван-чай смородина", "390"],
+              ["Липа", "230"],
+              ["Каскара", "490"],
+              ["Матча", "490"],
+              ["Гречишный премиум", "490"],
+              ["Саган дайля", "390"],
+              ],)
+
+            +menuItem("Фруктовые чаи",[
+              ["Малиново-имбирный", "450"],
+              ["Облепиховый", "450"],
+              ],)
+
+      +footer("en")

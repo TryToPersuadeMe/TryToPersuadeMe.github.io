@@ -1,0 +1,300 @@
+// @import "@scss/__global/abstracts/mixins.scss";
+// @import "@scss/__global/abstracts/variables.scss";
+// @import "@scss/__global/abstracts/functions.scss";
+
+.header {
+  width: 100%;
+  margin-top: 2rem;
+  @extend .zIndexLayer;
+
+  position: relative;
+  z-index: z(header);
+
+  $this: &;
+
+  #{$this}__num,
+  #{$this}__socialMedia,
+  #{$this}__language {
+    transition: 0.3s ease;
+  }
+
+  &.opened {
+    #{$this}__num,
+    #{$this}__socialMedia,
+    #{$this}__language {
+      opacity: 0;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__num {
+    color: white;
+    font-size: 2.1rem;
+  }
+
+  &__num,
+  &__socialMedia,
+  &__language {
+    margin-right: 6.5rem;
+  }
+
+  &__logo {
+    margin-right: auto;
+    max-width: 14rem;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__socialMedia {
+  }
+
+  &__language {
+  }
+}
+
+.burgerIcon {
+  display: flex;
+  align-items: center;
+  width: 2.7rem;
+  height: 1.6rem;
+
+  position: relative;
+  z-index: z(burgerIcon);
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &::after,
+  &::before,
+  span {
+    content: "";
+    position: absolute;
+    left: 0%;
+    border-radius: 0.3rem;
+    width: 100%;
+    height: 0.2rem;
+    background-color: white;
+    transition: 0.3s ease;
+  }
+  span {
+    transform: translateY(50%);
+    transition: 0.3s ease;
+  }
+
+  &::after {
+    top: 0%;
+  }
+
+  &::before {
+    top: 100%;
+  }
+
+  &.active {
+    transform: scale(1.5);
+    span {
+      opacity: 0;
+    }
+    &::after,
+    &::before {
+      top: 50%;
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.navigation {
+  position: fixed;
+  background: #1f1f1d;
+  max-width: 54rem;
+  width: 100%;
+  z-index: z(navigation);
+  height: 100vh;
+  padding: 13rem 4rem 4rem 4rem;
+  top: 0;
+  overflow-y: auto;
+  right: -100%;
+  transition: 0.5s ease;
+  &.active {
+    right: 0%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  &__link {
+    font-size: 2.1rem;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    padding-bottom: 1.5rem;
+    padding-left: 9rem;
+    position: relative;
+    transition: 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      transition: 0.3s ease;
+      bottom: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0.12rem;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 4rem;
+    }
+    &:hover {
+      color: #a69479;
+      text-shadow: 0px 0px 9.25556px rgba(166, 148, 121, 0.82);
+      &:after {
+        box-shadow: 0px 0px 4.25556px rgba(166, 148, 121, 0.82);
+        background-color: rgba(166, 148, 121, 0.82);
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .header {
+    &__logo {
+      max-width: 10rem;
+    }
+
+    &__num {
+      font-size: 1.6rem;
+    }
+
+    &__num,
+    &__socialMedia,
+    &__language {
+      margin-right: 5rem;
+    }
+  }
+
+  .burgerIcon {
+    width: 2rem;
+    height: 1.6rem;
+  }
+
+  .navigation {
+    max-width: 38rem;
+    padding: 10rem 3rem 3rem 3rem;
+
+    &__link {
+      font-size: 1.6rem;
+      padding-left: 7rem;
+
+      &:not(:last-of-type) {
+        margin-bottom: 2.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__logo {
+      max-width: 8rem;
+    }
+
+    &__num {
+      font-size: 1.4rem;
+    }
+
+    &__num,
+    &__socialMedia,
+    &__language {
+      margin-right: 1.6rem;
+    }
+  }
+
+  .navigation {
+    max-width: 22rem;
+    padding: 7rem 2rem 2rem 2rem;
+
+    &__link {
+      font-size: 1.4rem;
+      padding-bottom: 0.8rem;
+      padding-left: 2rem;
+      &:not(:last-of-type) {
+        margin-bottom: 2.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    $this: &;
+
+    &.opened {
+      #{$this}__logo {
+        transition: 0.3s ease;
+        opacity: 0;
+      }
+
+      #{$this}__language {
+        opacity: 1;
+      }
+    }
+
+    &__container {
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .socialMedia,
+    &__num {
+      display: none;
+    }
+
+    &__logo {
+      order: 2;
+      max-width: 14rem;
+      position: absolute;
+      top: 0;
+      transition: 0.3s ease;
+      left: 50%;
+      transform: translate(-50%, 0%);
+    }
+
+    &__language {
+      order: 3;
+      margin: 0;
+    }
+  }
+
+  .burgerIcon {
+    order: 1;
+    margin: 0;
+  }
+
+  .navigation {
+    right: auto;
+    left: -100%;
+    &.active {
+      left: 0%;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+/* abstracts */
+@import "@scss/__global/abstracts/mixins.scss";
+@import "@scss/__global/abstracts/variables.scss";
+@import "@scss/__global/abstracts/functions.scss";
+
+/* base */
+@import "@scss/__global/base/fonts.scss";
+@import "@scss/__global/base/reset.scss";
+@import "@scss/__global/base/mainContainer.scss";
+
+/* vendors - code from side sources and Libraries */
+
+@import "@scss/__global/layout/header";
+@import "@scss/__global/layout/footer";
+@import "@scss/__global/layout/pictureBlock.scss";
+
+/* layout */
+
+/* components */
+@import "@scss/__global/components/socialMedia";
+@import "@scss/__global/components/language";
+@import "@scss/__global/components/text";
+
+/* pages */

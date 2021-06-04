@@ -1,0 +1,189 @@
+/* vendors - code from side sources and Libraries */
+@import "@scss/__global/abstracts/mixins.scss";
+@import "@scss/__global/abstracts/variables.scss";
+@import "@scss/__global/abstracts/functions.scss";
+
+/* vendors - code from side sources and Libraries */
+
+/* layout */
+@import "@scss/_adjacent/layout/firstScreenParralax.scss";
+
+/* components */
+
+/* pages */
+
+.events {
+  background-color: $mainBackgroundColor;
+  padding-top: 13rem;
+  padding-bottom: 23rem;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    justify-content: space-between;
+    justify-items: center;
+    gap: 7rem;
+    padding: 0 4rem;
+  }
+  .card {
+    max-width: 100%;
+    width: 100%;
+    max-width: 50rem;
+    &__textWrapper {
+      margin: 0 -2rem;
+      position: relative;
+    }
+
+    &__img {
+      height: 52.9rem;
+      border: 0.13rem solid #a69479;
+
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 0;
+      padding-bottom: 115%;
+      img {
+        object-fit: cover;
+        width: 110%;
+        height: 86%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &__readMoreLink {
+      font-weight: 500;
+      font-size: 2.1rem;
+      letter-spacing: 0.1em;
+      color: #a69479;
+      padding-bottom: 0.2rem;
+      border-bottom: 0.1rem solid #a69479;
+      margin-top: 2rem;
+      display: inline-block;
+      transition: 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 2.6rem;
+      letter-spacing: 0.1em;
+      color: #000000;
+
+      line-height: 1.6;
+      letter-spacing: 0.1em;
+    }
+
+    &__painting {
+      font-family: "Herr Von Muellerhoff";
+      font-size: 6.5rem;
+      letter-spacing: 0.1em;
+      color: #a69479;
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(-10%);
+    }
+
+    &__date {
+      font-size: 2.1rem;
+      letter-spacing: 0.1em;
+      padding-top: 2.6rem;
+      display: flex;
+      position: relative;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .events {
+    padding-top: 10rem;
+    padding-bottom: 15rem;
+    &__container {
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+    .card {
+      &__text {
+        font-size: 2rem;
+        line-height: 1.5;
+      }
+
+      &__painting {
+        font-size: 5rem;
+      }
+
+      &__date {
+        font-size: 1.6rem;
+      }
+
+      &__readMoreLink {
+        font-size: 1.6rem;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .events {
+    padding-bottom: 12rem;
+
+    &__container {
+      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    }
+
+    .card {
+      &__textWrapper {
+        margin: 0 -1rem;
+      }
+      &__img {
+      }
+
+      &__text {
+        font-size: 1.4rem;
+      }
+
+      &__painting {
+        font-size: 4rem;
+      }
+
+      &__date {
+        font-size: 1.3rem;
+      }
+
+      &__readMoreLink {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .events {
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    .card {
+      &__painting {
+        font-size: 3.5rem;
+      }
+
+      &__date {
+        font-size: 1.2rem;
+      }
+
+      &__readMoreLink {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

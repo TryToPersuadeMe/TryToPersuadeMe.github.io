@@ -1,0 +1,47 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+mixin articleBlock([...text], img, animateClass, direction)
+  .articleBlock(class=`articleBlock_${direction}`)
+    .articleBlock__img
+      img(src=require(`@/assets/images/${img}.jpg`), alt="" class=`${animateClass}`).wow.animate__animated
+    .articleBlock__column
+      .articleBlock__logo
+        img(src=require("@/assets/images/_global/logo_black.svg"), alt="logo")
+      .articleBlock__textWrapper 
+        each val in [...text]
+          p.articleBlock__text.defaultText.defaultText_startAlign= val
+          
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper.aboutUsPage
+      .firstScreenParralax
+        +header("ru")
+        .firstScreenParralax__container.container.zIndexLayer
+          h1.firstScreenParralax__painting About
+          h4.firstScreenParralax__defaultTitle о нас
+
+      .describe.zIndexLayer
+        .container.describe__container
+          +articleBlock(["Одно из самых известных московских бутик-ателье «Mastersuit» на Пречистенке открыло свое кафе с меню европейской кухни.","Открыв массивные деревянные двери, вы попадаете в светлое пространство с большими окнами, выходящими на одну из центральных улиц Москвы."],"aboutUs/articles/1","animate__fadeInLeft")
+          
+      +pictureBlock("eventsPictureBlock","true")
+
+      .describe.zIndexLayer
+        .container.describe__container
+          +articleBlock(["Над барной картой работал Александр Келлер. За его плечами такие проекты, как Mendeleev Bar, ЛАДО, Strelka.","Поэтому в Mastersuit Café можно смело отправляться также и за аперитивом."],"aboutUs/articles/2","animate__fadeInRight","reverse")
+      
+      
+      +footer("ru")
+
+      

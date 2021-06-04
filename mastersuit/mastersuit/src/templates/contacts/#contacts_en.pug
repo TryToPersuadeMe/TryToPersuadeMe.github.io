@@ -1,0 +1,41 @@
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/_adjacent/_bookingForm.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - events
+  body 
+    .wrapper
+      .firstScreenParralax.eventsFirstScreen
+        +header("en")
+        .firstScreenParralax__container.container.zIndexLayer
+            h1.firstScreenParralax__painting Contacts
+            h4.firstScreenParralax__defaultTitle Contacts
+
+      .contacts
+        .container.contacts__container
+          .contacts__column 
+            h4.contacts__title Contact with us
+            p.contacts__text.defaultText.defaultText_startAlign You can book a table online or contact us by phone or via social networks.
+
+          .contacts__form
+            +formBooking("en")
+
+      
+      .map
+        .container
+          .contactCard
+            .contactCard__text.defaultText Moscow, Prechistenka, 13
+            a(href="tel:+7 910 449 24 25").contactCard__text.defaultText +7 910 449 24 25
+            +socialMedia("contactCard__socialMedia")
+        
+      +footer("en")
+
+      

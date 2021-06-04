@@ -1,0 +1,161 @@
+//- mixins
+include ~@/templates/_adjacent/pictureBlock.pug
+include ~@/templates/_adjacent/_bookingForm.pug
+include ~@/templates/__global/layout/_footer.pug
+include ~@/templates/__global/layout/_header.pug
+
+
+mixin popUp(id,img, title,[...text])
+  .popUp(id=`popUpWindow-js-${id}`)
+    .popUp__container
+      button.popUp__closeButton закрыть
+      .popUp__img
+        img(src=require(`@/assets/images/${img}`), alt="img")
+      .popUp__column
+        h3.popUp__title= title
+        .popUp__textWrapper
+          each val in [...text]
+            p.popUp__text= val
+        
+
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mastersuit - main page
+  body
+  .wrapper.wrapper_absoluteHeader
+    +header("en")
+
+
+    .firstScreen.zIndexLayer
+      .containter.firstScreen__container
+        h1.firstScreen__title Fashion Cafe with authentic handmade desserts that are cooked with only natural ingredients.
+        .firstScreen__logo 
+          img(src=require("@/assets/images/_global/logo.svg"), alt="logo")
+      
+      .swiper-container.firstScreen__slider
+        .container.firstScreen__paginationContainer
+          .firstScreen__pagination.swiper-pagination
+        .swiper-wrapper
+          .swiper-slide.firstScreen__slide
+            .firstScreen__bgImage 
+              img(src=require("@/assets/images/index/firstScreen/1.png"), alt="ресторан")
+          .swiper-slide.firstScreen__slide
+            .firstScreen__bgImage 
+              img(src=require("@/assets/images/index/firstScreen/2.png"), alt="ресторан")
+          .swiper-slide.firstScreen__slide
+            .firstScreen__bgImage 
+              img(src=require("@/assets/images/index/firstScreen/3.png"), alt="ресторан")
+          .swiper-slide.firstScreen__slide
+            .firstScreen__bgImage 
+              img(src=require("@/assets/images/index/firstScreen/4.png"), alt="ресторан")
+          .swiper-slide.firstScreen__slide
+            .firstScreen__bgImage 
+              img(src=require("@/assets/images/index/firstScreen/5.png"), alt="ресторан")
+    
+    .textBlock.zIndexLayer 
+      .container
+        p.defaultText One of the most famous Moscow
+        p.defaultText boutique-ateliers “Mastersuit”,
+        p.defaultText  located on the Prechistenka street, has opened its cafe 
+        p.defaultText  with a menu of European cuisine.
+
+    +pictureBlock("mainPageParallax","true")
+
+      
+
+
+
+    .notesWrapper.zIndexLayer
+      .container
+        .noteBlock
+          .noteBlock__img 
+            img(src=require("@/assets/images/index/noteBlock/1.jpg"), alt="img").wow.animate__animated.animate__fadeInLeft
+          
+          .noteBlock__column 
+            h4.noteBlock__painting New menu
+            h2.noteBlock__title New summer menu
+            .noteBlock__textWrapper
+              p.defaultText.noteBlock__text New special meals of the summer menu 
+              p.defaultText.noteBlock__text from our chef are already waiting for you!
+            button(data-window="1").noteBlock__readMore.call-popUp-js Read more
+
+        .noteBlock.noteBlock_reverse
+          .noteBlock__img 
+            img(src=require("@/assets/images/index/noteBlock/2.jpg"), alt="img").wow.animate__animated.animate__fadeInRight
+          
+          .noteBlock__column 
+            h4.noteBlock__painting Yandex delivery
+            h2.noteBlock__title Yandex.Eda
+            .noteBlock__textWrapper
+              p.defaultText.noteBlock__text Now you can order your favorite meals to your home or office. 
+                a(href="https://eda.yandex.ru/restaurant/masetsuit_cafe_prechistenka_13").noteBlock__text_link Yandex.Eda 
+            button(data-window="2").noteBlock__readMore.call-popUp-js Read more
+
+        .noteBlock
+          .noteBlock__img 
+            img(src=require("@/assets/images/index/noteBlock/3.jpg"), alt="img").wow.animate__animated.animate__fadeInLeft
+          
+          .noteBlock__column 
+            h4.noteBlock__painting Coffee blends
+            h2.noteBlock__title Our first signature 
+            h2.noteBlock__title coffee blends
+            .noteBlock__textWrapper
+              p.defaultText.noteBlock__text ESPRESSO №1
+              p.defaultText.noteBlock__text Ethiopia, Brazil, Uganda, Guatemala, Honduras
+              p.defaultText.noteBlock__text Taste: milk chocolate, prunes, buckwheat honey
+              p.defaultText.noteBlock__text ESPRESSO №2
+              p.defaultText.noteBlock__text Peru, Brazil, Uganda
+              p.defaultText.noteBlock__text Taste: walnut, caramel, dark chocolate
+            button(data-window="3").noteBlock__readMore.call-popUp-js Read more
+
+
+    .contacts.zIndexLayer
+      .map
+      .booking.contacts__booking
+        .booking__wrapper
+          p.booking__text.defaultText.defaultText_white Book a table
+          +formBooking("en")
+           
+          
+
+    .gallery.zIndexLayer
+      .gallery__container.container
+
+
+    +popUp(1,"index/noteBlock/1.jpg", "Новое летнее меню", ["Новые специальные позиции летнего меню от нашего шеф-повара уже ждут вас!", "Мы расширили меню завтраков, которые также действуют в течении всего дня. Добавили морепродукты и зеленые салаты, которые идеально подойдут в жаркий летний день. "] )
+    
+    .popUp(id="popUpWindow-js-2")
+      .popUp__container
+        button.popUp__closeButton close
+        .popUp__img
+          img(src=require(`@/assets/images/index/noteBlock/2.jpg`), alt="img")
+        .popUp__column
+          h3.popUp__title YANDEX.EDA
+          .popUp__textWrapper
+              p.popUp__text Now you can order your favorite meals to your home or office. 
+              p.popUp__text Have a nice breakfast or a delicious and healthy lunch break in a couple of clicks. 
+                a(href="#").popUp__text.popUp__text_link  Yandex.Eda
+              p.popUp__text.popUp__text_margin *At the moment, we can deliver only in the Khamovniki area
+    
+    
+    +popUp(3,"index/noteBlock/3.jpg", "Our first signature coffee blends", [
+      "Our first signature coffee blends", 
+      "ESPRESSO #1",
+      "Ethiopia, Brazil, Uganda, Guatemala, Honduras",
+      "Taste: milk chocolate, prunes, buckwheat honey",
+      "ESPRESSO #2",
+      "Peru, Brazil, Uganda",
+      "Taste: walnut, caramel, dark chocolate",
+      "We roast coffee ourselves, under the strict guidance of the world champion in coffee roasting in 2019 - Arseny Kuznetsov (Person of the Year in the coffee industry).",
+      ] )
+      
+    +footer("en")
+
+
+      
