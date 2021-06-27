@@ -80,24 +80,59 @@ class Accordion {
       this.$parent_cell.getAttribute(this.toggleStatusAttribute) === "false"
     ) {
       // this.closeAllOpenedLists(event);
-      this.activate(this.$inner_cell);
+      this.activate(this.$inner_cell, event);
     } else {
-      this.hide(this.$inner_cell);
+      this.hide(this.$inner_cell, this.$parent_cell, event);
     }
   }
 
-  activate(el) {
+  activate(el, event) {
+    this.time = 500;
     this.$parent_cell.setAttribute(this.toggleStatusAttribute, "true");
     this.$parent_cell.classList.add("toggleArrow");
-    el.style.maxHeight = el.scrollHeight + "px";
+    el.style.transition = `${this.time * 0.001}s ease`;
     el.classList.add("active");
+    el.style.maxHeight = 0;
+
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        el.style.maxHeight = el.scrollHeight + "px";
+        resolve(el);
+      }, 0);
+    });
+
+    promise.then((el) => {
+      setTimeout(() => {
+        el.style.maxHeight = "fit-content";
+        event.stopPropagation();
+      }, this.time);
+    });
   }
 
-  hide(el, parent = this.$parent_cell) {
-    el.style.maxHeight = 0;
-    el.classList.remove("active");
-    parent.setAttribute(this.toggleStatusAttribute, "false");
-    parent.classList.remove("toggleArrow");
+  hide(el, parent = this.$parent_cell, event) {
+    this.time = 500;
+    el.style.maxHeight = el.scrollHeight + "px";
+
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        el.style.maxHeight = "0";
+        resolve(el);
+      }, 0);
+    });
+
+    setTimeout(() => {
+      parent.setAttribute(this.toggleStatusAttribute, "false");
+      parent.classList.remove("toggleArrow");
+    }, 50);
+
+    promise.then((el) => {
+      setTimeout(() => {
+        parent.setAttribute(this.toggleStatusAttribute, "false");
+        parent.classList.remove("toggleArrow");
+        el.classList.remove("active");
+        event.stopPropagation();
+      }, this.time);
+    });
   }
 }
 

@@ -230,9 +230,9 @@ body {
 }
 
 .accordion .toggleArrow > .cell__container::before {
-  -webkit-transform: translateY(-50%) rotate(-90deg);
-      -ms-transform: translateY(-50%) rotate(-90deg);
-          transform: translateY(-50%) rotate(-90deg);
+  -webkit-transform: translateY(-50%) rotate(0deg);
+      -ms-transform: translateY(-50%) rotate(0deg);
+          transform: translateY(-50%) rotate(0deg);
 }
 
 .accordion__cell {
@@ -240,14 +240,12 @@ body {
 }
 
 .accordion__cell .accordion {
-  opacity: 0;
-  max-height: 0px;
-  visibility: hidden;
+  display: none;
+  overflow: hidden;
 }
 
 .accordion__cell .active {
-  visibility: visible;
-  opacity: 1;
+  display: block;
 }
 
 .accordion__cell .active > .accordion__cell:first-of-type > .cell__container {
@@ -282,9 +280,9 @@ body {
   position: absolute;
   top: 50%;
   left: 10px;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translateY(-50%) rotate(-90deg);
+      -ms-transform: translateY(-50%) rotate(-90deg);
+          transform: translateY(-50%) rotate(-90deg);
   -webkit-transition: 0.5s ease;
   -o-transition: 0.5s ease;
   transition: 0.5s ease;
