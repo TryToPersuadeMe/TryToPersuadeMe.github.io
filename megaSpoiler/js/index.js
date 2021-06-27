@@ -1,9 +1,11 @@
 class Accordion {
   constructor(props) {
     this.$wrapper = document.querySelectorAll(props.parent);
+    // время анимации у списков
+    this.time = 500;
+    this.toggleStatusAttribute = props.toggleStatusAttribute;
 
     this.$wrapper.forEach((wrapper) => {
-      this.toggleStatusAttribute = props.toggleStatusAttribute;
       this.handleClick(wrapper);
       this.setupToggleDataset();
       this.styleLastAccodrions(wrapper);
@@ -11,9 +13,7 @@ class Accordion {
   }
 
   handleClick(wrapper) {
-    wrapper.addEventListener("click", (event) => {
-      this.toggle(event);
-    });
+    wrapper.addEventListener("click", (event) => this.toggle(event));
   }
 
   styleLastAccodrions(wrapper) {
@@ -87,7 +87,6 @@ class Accordion {
   }
 
   activate(el, event) {
-    this.time = 500;
     this.$parent_cell.setAttribute(this.toggleStatusAttribute, "true");
     this.$parent_cell.classList.add("toggleArrow");
     el.style.transition = `${this.time * 0.001}s ease`;
@@ -103,14 +102,13 @@ class Accordion {
 
     promise.then((el) => {
       setTimeout(() => {
-        el.style.maxHeight = "fit-content";
+        el.style.removeProperty("max-height");
         event.stopPropagation();
       }, this.time);
     });
   }
 
   hide(el, parent = this.$parent_cell, event) {
-    this.time = 500;
     el.style.maxHeight = el.scrollHeight + "px";
 
     const promise = new Promise((resolve, reject) => {
