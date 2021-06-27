@@ -241,8 +241,8 @@ body {
 
 .accordion__cell .accordion {
   display: none;
-  overflow: hidden;
   padding: 0 6px;
+  margin: 0 -6px;
 }
 
 .accordion__cell .active {
